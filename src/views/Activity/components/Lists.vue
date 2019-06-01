@@ -1,0 +1,98 @@
+<template>
+	<ul v-if="lists.length>0" class="activities">
+		<transition-group tag="ul" name="fade">
+			<li v-for="(list,index) in lists" :key="index" @click="openActivity(list)" class="activity">
+				<ims-image class="img" lazy :src="list.imageUrl">
+					<div class="img_placeholder" slot="placeholder"></div>
+				</ims-image>
+				<div class="title">
+					<p class="p">{{list.title}}</p>
+					<img class="icon" src="../../../assets/img/arrow_right_d.png">
+				</div>
+				<div v-if="list.detailDemo == 'T01' && footRedDot" class="actv_8888"></div>
+			</li>
+		</transition-group>
+	</ul>
+</template>
+<script>
+import ImsImage from '@/components/ims-image.vue'
+import { mapGetters } from 'vuex'
+export default {
+	components: {
+		ImsImage
+	},
+		computed:{
+		...mapGetters(['footRedDot'])
+	},
+	props: {
+		lists: {
+			type: Array,
+			default: []
+		}
+	},
+	methods: {
+		openActivity(list) {
+			this.$router.push('/activity-detail?id=' + list.id)
+			localStorage.setItem('activity-detail', JSON.stringify(list))
+		}
+	}
+}
+</script>
+<style lang="less" scoped>
+.activities {
+	width: 100%;
+	padding: 44px 15px 30px 15px;
+	box-sizing: border-box;
+	.activity {
+		background: transparent;
+		border-radius: 5px;
+		overflow: hidden;
+		margin-top: 10px;
+		position: relative;
+	}
+	.actv_8888{
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 100px;
+		height: 100px;
+		background: url('../../../assets/88_88.png') no-repeat;
+		background-size: 100%;
+	}
+	.img_placeholder {
+		width: 100%;
+		height: 100%;
+		background: url('../../../assets/activity_load@2x.png') no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+	.img {
+		display: block;
+		width: 100%;
+		height: 124px;
+		overflow: hidden;
+	}
+	.title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-right: 8px;
+		background: #fff;
+	}
+	.p {
+		.line-camp(1);
+		max-width: 330px;
+		flex: 1;
+		font-size: 14px;
+		color: rgba(51, 51, 51, 1);
+		line-height: 36px;
+		padding: 0 8px;
+	}
+	.icon {
+		width: 12px;
+		height: 12px;
+	}
+}
+</style>
+
+

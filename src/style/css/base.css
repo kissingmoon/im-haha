@@ -1,0 +1,56 @@
+/*display*/
+.display-flex {
+  display: flex;
+}
+/*伸缩流方向*/
+.flex-column {
+  flex-direction: column;
+}
+/*换行*/
+.flex-wrap {
+  flex-wrap: wrap;
+}
+/*居中*/
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+/*主轴对齐*/
+.justify-center {
+  justify-content: center;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-between {
+  justify-content: space-between;
+}
+/*侧轴对齐*/
+.align-start {
+  align-items: flex-start;
+}
+.align-end {
+  align-items: flex-end;
+}
+.align-center {
+  align-items: center;
+}
+.align-baseline {
+  align-items: baseline;
+}
+/*伸缩性*/
+.flex-auto {
+  flex: auto;
+}
+.flex-1 {
+  flex: 1;
+}
+html,body{
+  height: 100%;
+}
+.loading-parent--hidden{
+  overflow: hidden;
+}
+.loading-parent--relative{
+  position: relative !important;
+}

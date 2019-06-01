@@ -1,0 +1,314 @@
+<template>
+	<div class="reg-wrapper">
+		<div class="main-container display-flex">
+			<div class="submit-box display-flex flex-center flex-column" @click="goBefore">
+				<div class="submit-box__btn--top"></div>
+				<div class="submit-box__btn--bot">返回登录</div>
+			</div>
+			<div class="form-box flex-1">
+				<div class="form-title">注册</div>
+				<div class="form-input-content">
+					<div class="form-input-item" v-for="(v, k) in formData" :key="k">
+						<ims-input
+							:name="k"
+							v-model="v.model"
+							:placeholder="v.placeholder"
+							:type="v.type"
+							:valueType="v.valueType"
+							:maxlength="v.maxlength"
+							@onInputFocus="inputFocusFun(v, k)"
+							@onInputBlur="inputBlurFun(v, k)"
+							@onleftClick="leftClickFun(v, k)"
+							@onrightClick="rightClickFun(v, k)"
+						>
+							<div class="slot-icon--left" :class="v.leftIconClass" slot="leftIcon"></div>
+							<div class="slot-icon--right" :class="v.rightIconClass" slot="rightIcon">
+								<img v-if="v.imgSrc" :src="codeSrc" alt>
+							</div>
+						</ims-input>
+						<div class="input-tip">
+							<span v-show="pointers.formData == k">{{ v.regTip }}</span>
+						</div>
+					</div>
+				</div>
+				<div
+					class="form-submit-content display-flex flex-center"
+					:class="{ 'active': btnActive }"
+					@click="register"
+				>注册</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+import imsInput from '@/components/ims-input/ims-input'
+import mainOptions from '@/config/main-option.js'
+import { randomWord } from '@/js/tools.js'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { net_register } from '@/js/network.js'
+import { Promise } from 'q'
+
+export default {
+	data() {
+		return {
+			formData: {
+				userId: {
+					model: '',
+					placeholder: '请输入用户名',
+					leftIconClass: 'left-icon__userId',
+					rightIconClass: '',
+					type: '',
+					regTip: '请输入6-11位字母或数字',
+					valueType: 'letterNum',
+					maxlength: 11
+				},
+				pwd: {
+					model: '',
+					placeholder: '请输入密码',
+					leftIconClass: 'left-icon__pwd',
+					rightIconClass: 'right-icon__eye',
+					type: 'password',
+					regTip: '请输入6-16位字母或数字',
+					valueType: 'letterNum',
+					maxlength: 16
+				},
+				confirmPwd: {
+					model: '',
+					placeholder: '确认密码',
+					leftIconClass: 'left-icon__pwd',
+					rightIconClass: 'right-icon__eye',
+					type: 'password',
+					regTip: '',
+					valueType: 'letterNum',
+					maxlength: 16
+				},
+				code: {
+					model: '',
+					placeholder: '验证码',
+					leftIconClass: 'left-icon__code',
+					rightIconClass: 'right-icon__code',
+					rightIconClass: '',
+					type: '',
+					regTip: '',
+					imgSrc: true,
+					valueType: 'num',
+					maxlength: 4
+				}
+			},
+			pointers: {
+				formData: -1
+			},
+			btnActive: false,
+			code_id: '',
+			codeSrc: ''
+		}
+	},
+	components: {
+		imsInput
+	},
+	computed: {
+		...mapGetters(['net_btn_click', 'platformFlag'])
+	},
+	watch: {
+		formData: {
+			handler(newVal, oldVal) {
+				var allRight = true
+				for (let key in newVal) {
+					if (!newVal[key].model) {
+						allRight = false
+					} else if (key == 'userId') {
+						this.formData.userId.rightIconClass = 'right-icon__clear'
+					}
+				}
+				this.btnActive = allRight
+			},
+			deep: true
+		}
+	},
+	created() {
+		this.setCode()
+	},
+	methods: {
+		...mapMutations({
+			setUserToken: 'SET_USER_TOKEN',
+			setAccount: 'SET_ACCOUNT'
+		}),
+		goBefore() {
+			this.$emit('goBefore')
+		},
+		leftClickFun() {},
+		rightClickFun(v, k) {
+			if (k == 'code') {
+				this.formData.code.model = ''
+				this.setCode()
+			}
+		},
+		inputFocusFun(v, k) {
+			this.pointers.formData = k
+		},
+		inputBlurFun(v, k) {
+			this.pointers.formData = -1
+			if (k == 'userId') {
+				this.formData.userId.rightIconClass = ''
+			}
+		},
+		setCode() {
+			this.code_id = 'H' + randomWord(false, 8, 10)
+			this.codeSrc = `${mainOptions.generatorCode}?code_id=${this.code_id}`
+		},
+		checkForm(param) {
+			let keys = Object.keys(param)
+			for (let item of keys) {
+				if (item == 'userId') {
+					if (param[item].model.length < 6) {
+						this.$toast('用户名长度最少6位')
+						return false
+					}
+				}
+				if (item == ('pwd' || 'confirmPwd')) {
+					if (param['pwd'].model != param['confirmPwd'].model) {
+						this.$toast('两次密码输入不一致')
+						return false
+					}
+					if (param[item].model.length < 6) {
+						this.$toast('密码长度最少6位')
+						return false
+					}
+				}
+				if (item == 'code') {
+					if (param[item].model.length != 4) {
+						this.$toast('请输入4位数字验证码')
+						return false
+					}
+				}
+			}
+			return true
+		},
+		async register() {
+			if (!this.btnActive) return
+			let result = this.checkForm(this.formData)
+			if (!result) return
+			let param = {}
+			param.code = this.formData.code.model
+			param.inviteCode = ''
+			param.codeId = this.code_id
+			param.userId = this.formData.userId.model.toLowerCase()
+			param.pwd = this.formData.pwd.model
+			param.platformFlag = this.platformFlag
+			param.agentUrl = location.host
+			let res = await net_register(param)
+			if (res.code == '200') {
+				toast('注册成功！')
+				this.setUserToken(res.data.token)
+				localStorage.setItem('U_TK', res.data.token)
+				this.$api.getUserInfo()
+				this.$router.go(-1)
+			} else {
+				this.formData.code.model = ''
+				this.setCode()
+				toast(res.msg)
+			}
+		}
+	}
+}
+</script>
+
+<style lang="less" scoped>
+.reg-wrapper {
+	width: 100%;
+	height: 100%;
+	padding: 0 12px;
+	flex-shrink: 0;
+	box-sizing: border-box;
+	.main-container {
+		height: 100%;
+		.submit-box {
+			width: 54px;
+			background: rgba(0, 0, 0, 1);
+			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.91);
+			opacity: 0.3;
+			.submit-box__btn--top {
+				width: 24px;
+				height: 24px;
+				background: url('./../img/renss.png');
+				background-size: 100% 100%;
+				margin-bottom: 15px;
+			}
+			.submit-box__btn--bot {
+				width: 15px;
+				color: #ffffff;
+				font-size: 14px;
+			}
+		}
+		.form-box {
+			background: rgba(255, 255, 255, 0.1);
+			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.1);
+			padding: 0 15px 18px 15px;
+			.form-title {
+				padding: 20px 0;
+				text-align: center;
+				font-size: 15px;
+				font-family: 'HiraginoSansGB-W3';
+				font-weight: normal;
+				color: rgba(229, 200, 139, 1);
+			}
+			.form-input-content {
+				.form-input-item {
+					.input-tip {
+						color: #ffffff;
+						font-size: 12px;
+						height: 18px;
+					}
+					.slot-icon--left {
+						width: 15px;
+						height: 18px;
+						background-size: 100% 100%;
+						background-repeat: no-repeat;
+						&.left-icon__userId {
+							.bg-image('./../img/dl_peo');
+						}
+						&.left-icon__pwd {
+							.bg-image('./../img/dl_password');
+						}
+						&.left-icon__code {
+							.bg-image('./../img/yanzhengma');
+						}
+					}
+					.slot-icon--right {
+						background-size: 100% 100%;
+						background-repeat: no-repeat;
+						&.right-icon__eye {
+							width: 18px;
+							height: 12px;
+							.bg-image('./../img/yanjing');
+						}
+						&.right-icon__clear {
+							width: 17px;
+							height: 17px;
+							.bg-image('./../img/clear');
+						}
+						img {
+							display: flex;
+							width: 80px;
+							height: 35px;
+						}
+					}
+				}
+			}
+			.form-submit-content {
+				height: 42px;
+				border-radius: 21px;
+				font-size: 18px;
+				font-family: 'HiraginoSansGB-W3';
+				font-weight: normal;
+				color: rgba(255, 255, 255, 1);
+				background: rgba(155, 155, 155, 0.8);
+				&.active {
+					background: rgba(229, 200, 139, 1);
+				}
+			}
+		}
+	}
+}
+</style>
