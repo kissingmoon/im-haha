@@ -30,29 +30,29 @@ export default {
 				{
 					name: '首页',
 					active: false,
-					icon: require('./img/i1.png'),
-					activeIcon: require('./img/i2.png'),
+					icon: require('./img/home.png'),
+					activeIcon: require('./img/home_active.png'),
 					path: '/'
 				},
 				{
 					name: '活动',
 					active: false,
-					icon: require('./img/i5.png'),
-					activeIcon: require('./img/i6.png'),
+					icon: require('./img/sponsor.png'),
+					activeIcon: require('./img/sponsor_active.png'),
 					path: '/activity'
 				},
 				{
 					name: '教程',
 					active: false,
-					icon: require('./img/i3.png'),
-					activeIcon: require('./img/i4.png'),
+					icon: require('./img/guide.png'),
+					activeIcon: require('./img/guide_active.png'),
 					path: '/course'
 				},
 				{
 					name: '我的',
 					active: false,
-					icon: require('./img/i9.png'),
-					activeIcon: require('./img/i10.png'),
+					icon: require('./img/profile.png'),
+					activeIcon: require('./img/profile_active.png'),
 					path: '/user'
 				}
 			]
@@ -85,7 +85,7 @@ export default {
 
 <style lang="less" scoped>
 .footer {
-	height: 55px;
+	// height: 55px;
 	width: 100%;
 	.navs {
 		height: 100%;
@@ -98,7 +98,7 @@ export default {
 		bottom: 0;
 		z-index: 99;
 		height: 55px;
-		background-color: #ffffff;
+		background-color: rgba(255, 255, 255, .8);
 		z-index: 999;
 	}
 	.nav {
@@ -109,7 +109,7 @@ export default {
 		color: rgba(216, 216, 216, 1);
 	}
 	.nav.active {
-		color: #e5c88b;
+		color: @text_color_navs;
 	}
 	.img_box {
 		width: 23px;

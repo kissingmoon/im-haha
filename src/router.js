@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from './views/Home/index.vue'
 import Home from './views/Home/Home.vue'
+import Course from './views/Course/Course.vue'
+import Activity from './views/Activity/Activity.vue'
+import User from './views/User/User.vue'
 import store from './store'
 Vue.use(Router)
 
@@ -163,7 +166,7 @@ let routes = [
       {
         path: '/course',
         name: 'Course',
-        component: () => import(/* webpackChunkName: "Course" */ './views/Course/Course.vue'),
+        component: Course,
         meta: {
           keepAlive: true
         }
@@ -171,15 +174,15 @@ let routes = [
       {
         path: '/activity',
         name: 'Activity',
-        component: () => import(/* webpackChunkName: "Activity" */ './views/Activity/Activity.vue'),
+        component: Activity,
         meta: {
           keepAlive: true
         }
       },
       {
         path: '/user',
-        component: () => import(/* webpackChunkName: "user" */ './views/User/User.vue'),
-        name: 'user',
+        name: 'User',
+        component: User,
         meta: {
           keepAlive: true
         }
@@ -228,12 +231,12 @@ let router = new Router({
 
 router.beforeEach((to, from, next) => {
   let U_TK = localStorage.getItem('U_TK')
-  if(!U_TK){
+  if (!U_TK) {
     //如果没有token 而且访问的路由需要登入那就到首页
-    let needLogin = needLoginRoutes.some((item)=>{
+    let needLogin = needLoginRoutes.some(item => {
       return to.path == item.path
     })
-    if(needLogin){
+    if (needLogin) {
       next('/')
     }
   }

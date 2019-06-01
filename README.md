@@ -1,4 +1,6 @@
-# 亚博仿站  https://www.yabo2021.com/app/home
+# YG娱乐
+
+## 亚博仿站  https://www.yabo2021.com/app/home
 
 ### less使用方法
 

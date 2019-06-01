@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'fontLibrary';
+  src: url('../font/DINCOND-BOLD.otf');
+}
 /*display*/
 .display-flex {
   display: flex;

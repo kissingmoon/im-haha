@@ -1,10 +1,10 @@
 <template>
-	<div>
-		<div class="head_title">
+	<div class="user_wrapper">
+		<!-- <div class="head_title">
 			<p class="p">
 				<img class="head_title_img" src="../../assets/grzx.png">
 			</p>
-		</div>
+		</div>-->
 		<div class="user">
 			<div class="top">
 				<div class="info">
@@ -19,22 +19,29 @@
 				</div>
 				<div class="options">
 					<div class="account">
-						<p class="p1">￥{{account.userMoney || '0.00'}}</p>
+						<p class="p1">
+							<span class="p1_0">￥</span>
+							<span class="p1_1">{{account.userMoney || '0.00'}}</span>
+						</p>
 						<p class="p2">账户余额</p>
 					</div>
 					<div class="linear"></div>
 					<div class="opts">
 						<div @click="clickThis(10)" class="opt">
-							<img class="img" src="./img/icon2.png" >
-							<p>存款</p>
+							<img class="img" src="./img/icon_new_mine_desposit.png">
+							<p class="p">存款</p>
 						</div>
+						<!-- <div @click="clickThis(11)" class="opt">
+							<img class="img" src="./img/icon_new_mine_transfer.png">
+							<p class="p">转账</p>
+						</div> -->
 						<div @click="clickThis(11)" class="opt">
-							<img class="img" src="./img/icon3.png" >
-							<p>取款</p>
+							<img class="img" src="./img/icon_new_mine_withdraw.png">
+							<p class="p">取款</p>
 						</div>
 						<div @click="clickThis(12,false)" class="opt">
-							<img class="img" src="./img/icon1.png" >
-							<p>优惠</p>
+							<img class="img" src="./img/icon_new_mine_discount.png">
+							<p class="p">优惠</p>
 						</div>
 					</div>
 				</div>
@@ -42,49 +49,49 @@
 
 			<div class="btns">
 				<div @click="clickThis(0)" class="btn">
-					<img class="img" src="./img/i1.png">
+					<img class="img" src="./img/icon_new_mine_personal.png">
 					<p class="p">个人资料</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(1)" class="btn">
-					<img class="img" src="./img/i2.png">
+					<img class="img" src="./img/icon_new_mine_deal.png">
 					<p class="p">交易记录</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(2)" class="btn">
-					<img class="img" src="./img/i3.png">
+					<img class="img" src="./img/icon_new_betting_log.png">
 					<p class="p">投注记录</p>
 				</div>
 			</div>
 			<div class="btns">
 				<div @click="clickThis(3)" class="btn">
-					<img class="img" src="./img/i4.png">
+					<img class="img" src="./img/icon_new_mine_courtesy.png">
 					<p class="p">额度转换</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(4)" class="btn">
-					<img class="img" src="./img/i5.png">
+					<img class="img" src="./img/icon_new_mine_vip.png">
 					<p class="p">VIP详情</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(5,false)" class="btn">
-					<img class="img" src="./img/i6.png">
+					<img class="img" src="./img/icon_new_mine_bankcard.png">
 					<p class="p">客服</p>
 				</div>
 			</div>
 			<div class="btns">
 				<div @click="clickThis(6,false)" class="btn">
-					<img class="img" src="./img/i7.png">
+					<img class="img" src="./img/icon_new_mine_proxy.png">
 					<p class="p">关于</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(7)" class="btn">
-					<img class="img" src="./img/i8.png">
+					<img class="img" src="./img/icon_new_mine_about.png">
 					<p class="p">安全中心</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(8)" class="btn">
-					<img class="img" src="./img/i9.png">
+					<img class="img" src="./img/icon_new_mine_loginout.png">
 					<p class="p">账号退出</p>
 				</div>
 			</div>
@@ -206,8 +213,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+@top_height: 50px;
 .head_title {
-	height: 50px;
+	// height: @top_height;
 	.p {
 		position: fixed;
 		left: 0;
@@ -215,8 +223,8 @@ export default {
 		top: 0;
 		font-size: 0;
 		color: rgba(51, 51, 51, 1);
-		height: 50px;
-		line-height: 50px;
+		height: @top_height;
+		line-height: @top_height;
 		z-index: 1000;
 		background-color: @base_color;
 		text-align: center;
@@ -227,29 +235,47 @@ export default {
 		margin-top: 13px;
 	}
 }
+.user_wrapper {
+	background: url('../../assets/page_bg_default2.jpg') no-repeat center;
+	background-size: cover;
+	height: 100%;
+}
+
 .user {
+	padding-top: 50px;
 	.top {
-		width: 345px;
-		height: 172px;
-		background: linear-gradient(-85deg, rgba(228, 170, 96, 1) 0%, rgba(229, 200, 139, 1) 100%);
-		border-radius: 14px;
-		padding: 18px 0 0 0;
-		margin: 0 auto 29px;
+		width: 349px;
+		height: 160px;
+		background-color: rgba(255, 255, 255, 0.5);
+		box-shadow: 0 0.02rem 0.04rem 0 rgba(0, 0, 0, 0.1);
+		border-radius: 5px;
+		padding: 14px 15px;
+		margin: 0 auto 21px;
 		box-sizing: border-box;
+		color: @text_color;
 	}
 }
 .options {
-	color: #fff;
+	color: @text_color;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 18px 0 28px;
 	.account {
 		text-align: center;
+		flex: 1;
 		.p1 {
-			font-size: 20px;
+			font-size: 16px;
 			font-weight: 500;
-			margin-bottom: 5.5px;
+			color: #0076ff;
+			margin-bottom: 4px;
+			.p1_0 {
+				font-weight: 600;
+				font-family: 'PingFangSC-Regular', sans-serif;
+			}
+			.p1_1 {
+				font-weight: 600;
+				font-family: 'fontLibrary', 'sans-serif';
+			}
 		}
 		.p2 {
 			font-size: 12px;
@@ -259,9 +285,8 @@ export default {
 	.linear {
 		width: 1px;
 		height: 30px;
-		background: rgba(255, 255, 255, 1);
-		opacity: 0.43;
-		margin: 0 10px 0 20px;
+		background: rgba(0, 0, 0, 0.2);
+		margin: 0 10px 0 5px;
 	}
 	.opts {
 		display: flex;
@@ -269,33 +294,33 @@ export default {
 		justify-content: space-between;
 		align-items: center;
 		text-align: center;
-		.opt {
+		.opt{
 			padding: 0 10px;
 		}
-		p {
+		.p {
 			font-size: 13px;
 		}
 		.img {
-			width: 28px;
-			height: 28px;
+			width: 46px;
+			height: 46px;
 			display: block;
-			margin-bottom: 6.5px;
 		}
 	}
 }
 .info {
 	display: flex;
 	align-items: center;
-	padding-left: 28px;
-	margin-bottom: 18px;
+	margin-bottom: 16px;
+	padding-left: 8px;
 	.avator {
-		width: 60px;
-		height: 60px;
+		width: 54px;
+		height: 54px;
 		box-sizing: border-box;
 		border-radius: 50%;
 		overflow: hidden;
-		margin-right: 15px;
+		margin-right: 14px;
 		background: #fff;
+		border: 2px solid rgba(255, 255, 255, 0.6);
 		.img {
 			display: block;
 			width: 100%;
@@ -307,9 +332,12 @@ export default {
 	}
 	.name {
 		margin-bottom: 6px;
+		font-size: 19px;
+		color: #fff;
 	}
 	.id {
-		font-size: 12px;
+		font-size: 10px;
+		color: rgba(255, 255, 255, 0.8);
 	}
 	.login {
 		width: 70px;
@@ -325,31 +353,33 @@ export default {
 	}
 }
 .btns {
-	width: 345px;
+	width: 349px;
 	height: 73px;
-	background: rgba(255, 255, 255, 1);
-	border-radius: 7px;
-	margin: 0 auto 18px;
+	box-shadow: 0 0.02rem 0.04rem rgba(0, 0, 0, 0.1);
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
+	margin: 0 auto 21px;
 	display: flex;
 	align-items: center;
 	.linear {
 		width: 1px;
-		height: 22px;
-		background: rgba(237, 237, 237, 1);
+		height: 23px;
+		background: #c1cdd2;
 	}
 	.btn {
 		flex: 1;
 		text-align: center;
 	}
 	.img {
-		width: 25px;
-		height: 25px;
+		width: 29px;
+		height: 29px;
 		display: block;
-		margin: 0 auto 4.5px;
+		margin: 0 auto;
 	}
 	.p {
-		font-size: 13px;
-		color: rgba(51, 51, 51, 1);
+		font-size: 12px;
+		line-height: 17px;
+		color: @text_color;
 	}
 }
 </style>
