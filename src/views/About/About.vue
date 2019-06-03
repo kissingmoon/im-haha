@@ -1,7 +1,7 @@
 <template>
 	<div class="about-wrapper">
 		<div class="header-container">
-			<ims-header title="关于中博"></ims-header>
+			<ims-header class="about_head" title="关于中博"></ims-header>
 		</div>
 		<div class="banner-container">
 			<img src="./img/title-bg.png" alt>
@@ -40,6 +40,12 @@ export default {
 
 <style lang="less" scoped>
 .about-wrapper {
+	min-height: 100%;
+	box-sizing: border-box;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+
 	.grey-text {
 		color: #6c6c6c;
 	}
@@ -50,7 +56,6 @@ export default {
 	}
 	.text-container {
 		padding: 28px 15px;
-		background-color: #ffffff;
 		line-height: 16px;
 		.text-title {
 			padding: 10px 18px;

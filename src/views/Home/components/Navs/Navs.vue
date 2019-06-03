@@ -85,7 +85,7 @@ export default {
 
 <style lang="less" scoped>
 .footer {
-	// height: 55px;
+	// height: @app_footer_height;
 	width: 100%;
 	.navs {
 		height: 100%;
@@ -97,8 +97,8 @@ export default {
 		right: 0;
 		bottom: 0;
 		z-index: 99;
-		height: 55px;
-		background-color: rgba(255, 255, 255, .8);
+		height: @app_footer_height;
+		background-color: rgba(255, 255, 255, 0.8);
 		z-index: 999;
 	}
 	.nav {
@@ -106,7 +106,7 @@ export default {
 		text-align: center;
 		font-size: 10px;
 		font-weight: bold;
-		color: rgba(216, 216, 216, 1);
+		color: #666;
 	}
 	.nav.active {
 		color: @text_color_navs;

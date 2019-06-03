@@ -7,7 +7,7 @@
 				</ims-image>
 				<div class="title">
 					<p class="p">{{list.title}}</p>
-					<img class="icon" src="../../../assets/img/arrow_right_d.png">
+					<img class="icon" src="../../../assets/icon_right.png">
 				</div>
 				<div v-if="list.detailDemo == 'T01' && footRedDot" class="actv_8888"></div>
 			</li>
@@ -41,7 +41,7 @@ export default {
 <style lang="less" scoped>
 .activities {
 	width: 100%;
-	padding: 44px 15px 30px 15px;
+	padding: 52px 15px 30px 15px;
 	box-sizing: border-box;
 	.activity {
 		background: transparent;
@@ -89,8 +89,8 @@ export default {
 		padding: 0 8px;
 	}
 	.icon {
-		width: 12px;
-		height: 12px;
+		width: 16px;
+		height: 16px;
 	}
 }
 </style>

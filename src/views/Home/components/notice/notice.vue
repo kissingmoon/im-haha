@@ -107,7 +107,7 @@ export default {
 	padding: 9px 20px 8px 17px;
 }
 .icon {
-	width: 16.5px;
+	width: 25px;
 	height: 15px;
 	background: url('./icon.png') no-repeat;
 	background-size: 100%;
@@ -115,6 +115,7 @@ export default {
 }
 .text {
 	display: inline-block;
+	color: #fff;
 }
 .wrap {
 	height: 15px;

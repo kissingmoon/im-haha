@@ -46,20 +46,20 @@ export default {
 			this.$emit('click', index)
 		},
 		scrollIntoView() {
-			var tabs = this.$refs.tabs
-			var nav = this.$refs.nav
-			var scrollLeft = nav.scrollLeft,
+			let tabs = this.$refs.tabs
+			let nav = this.$refs.nav
+			let scrollLeft = nav.scrollLeft,
 				navWidth = nav.offsetWidth
-			var tab = tabs[this.curActive],
+			let tab = tabs[this.curActive],
 				offsetLeft = tab.offsetLeft,
 				tabWidth = tab.offsetWidth
 			this.scrollTo(nav, scrollLeft, offsetLeft - (navWidth - tabWidth) / 2)
 		},
 		scrollTo: function scrollTo(el, from, to) {
-			var count = 0
-			var frames = Math.round((this.duration * 1000) / 16)
+			let count = 0
+			let frames = Math.round((this.duration * 1000) / 16)
 
-			var animate = function() {
+			let animate = function() {
 				el.scrollLeft += (to - from) / frames
 				if (++count < frames) {
 					requestAnimationFrame(animate)
@@ -86,7 +86,7 @@ export default {
 	}
 }
 </script>
-<style lang="less" scoped>
+<style lang="less">
 .tabs_wrapper {
 	width: 100%;
 	overflow: hidden;
@@ -103,7 +103,7 @@ export default {
 		display: inline-block;
 		border-radius: 20px;
 		overflow: hidden;
-		background: rgba(255, 255, 255, 0.6);
+		background: rgba(255, 255, 255, 0.3);
 		padding: 0 2px;
 	}
 	.tab {
@@ -113,21 +113,22 @@ export default {
 		line-height: 40px;
 		min-width: 60px;
 		padding: 0 15px;
-		font-size: 15px;
+		font-size: 12px;
 		z-index: 4;
 		position: relative;
 		transition: all 0.2s linear;
+		color: #4a4a4a;
+		opacity: 0.5;
 	}
 	.tab_active {
-		color: #fff;
+		opacity: 1;
 	}
 	.linear {
 		z-index: 3;
 		position: absolute;
 		height: 36px;
 		border-radius: 18px;
-		background: red;
-		background: #e5c88b;
+		background: #fff;
 		top: 2px;
 		left: 0;
 	}

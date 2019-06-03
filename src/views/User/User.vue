@@ -81,12 +81,12 @@
 			</div>
 			<div class="btns">
 				<div @click="clickThis(6,false)" class="btn">
-					<img class="img" src="./img/icon_new_mine_proxy.png">
+					<img class="img" src="./img/icon_new_mine_about.png">
 					<p class="p">关于</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(7)" class="btn">
-					<img class="img" src="./img/icon_new_mine_about.png">
+					<img class="img" src="./img/icon_new_mine_proxy.png">
 					<p class="p">安全中心</p>
 				</div>
 				<div class="linear"></div>
@@ -278,8 +278,8 @@ export default {
 			}
 		}
 		.p2 {
-			font-size: 12px;
-			opacity: 0.71;
+			font-size: 11px;
+			color: #1e1e1e;
 		}
 	}
 	.linear {

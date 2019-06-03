@@ -1,8 +1,8 @@
 <template>
-	<div>
-		<div class="head_title">
+	<div class="home_wrapper">
+		<!-- <div class="head_title">
 			<p class="p"><img class="head_title_img" src="../../assets/zb.png" ></p>
-		</div>
+		</div> -->
 		<div v-if="isShow" class="home">
 			<div class="top">
 				<swiper-top :lists="swiperTopData"/>
@@ -96,11 +96,19 @@ export default {
 		margin-top: 13px;
 	}
 }
+.home_wrapper{
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-bottom: @app_footer_height;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size:100% ;
+	background-attachment: fixed;
+}
 .home {
-	background: #e5e5e5;
 	padding-bottom: 20px;
 }
 .top {
+	padding-top: 12px;
 	margin-bottom: 12px;
 }
 </style>

@@ -68,9 +68,12 @@ export default {
 	}
 }
 .course_wrapper {
-	height: 100%;
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-bottom: @app_footer_height;
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	background-size: cover;
+	background-size:100% ;
+	background-attachment: fixed;
 }
 .courses {
 	padding: 21px 10px;

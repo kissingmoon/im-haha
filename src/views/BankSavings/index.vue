@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="bank_savings_wrapper">
 		<ims-header title="存款"/>
 		<div v-if="isShow" class="bank_savings">
 			<section class="section">
@@ -174,6 +174,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.bank_savings_wrapper {
+	min-height: 100%;
+	box-sizing: border-box;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+	padding-top: @app_head_height;
+}
 .error {
 	width: 100%;
 	height: 100vh;
@@ -185,7 +193,7 @@ export default {
 	display: block;
 	width: 265px;
 	height: 44px;
-	background: rgba(229, 200, 139, 1);
+	background: linear-gradient(to right, #60e6ff, #46a8fe);
 	border-radius: 22px;
 	border: none;
 	outline: none;
@@ -199,7 +207,7 @@ export default {
 	background: rgb(221, 186, 111);
 }
 .submit:disabled {
-	background-color: #b2b2b2;
+	background: rgba(139, 139, 139, .5);
 	color: #fff;
 }
 .money_input {
@@ -269,20 +277,24 @@ export default {
 			display: inline-block;
 			width: 76px;
 			height: 41px;
-			background: rgba(255, 255, 255, 1);
-			box-shadow: 0px 0px 6px 0px rgba(227, 227, 227, 0.59);
-			border-radius: 6px;
+			border-radius: 5px;
 			font-size: 13px;
 			font-weight: 500;
-			color: rgba(126, 126, 126, 1);
+			color: #4a4a4a;
+			box-shadow: 0 0.02rem 0.04rem 0 rgba(0, 0, 0, 0.1);
+			background: rgba(255, 255, 255, 0.5);
 			line-height: 41px;
 			text-align: center;
 			margin: 0 6.5px;
-			transition: all 0.2s linear;
+			border: 1px solid transparent;
+			box-sizing: border-box;
 		}
 		.li.active {
-			color: rgba(255, 255, 255, 1);
+			border: 1px solid #019cfd;
 			background: rgba(229, 200, 139, 1);
+			background: url('./img/depnav_active.png') no-repeat;
+			background-size: 17px;
+			background-position: top right;
 		}
 	}
 	.pay_ways {
@@ -296,8 +308,9 @@ export default {
 			display: inline-block;
 			width: 80px;
 			height: 68px;
-			background: rgba(255, 255, 255, 1);
-			border-radius: 4px;
+			background: rgba(255, 255, 255, 0.5);
+			box-shadow: 0px 0.02rem 0.04rem 0px rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
 			text-align: center;
 			font-size: 11px;
 			font-weight: 500;
@@ -305,7 +318,7 @@ export default {
 			margin: 0 4px 13px;
 			position: relative;
 			box-sizing: border-box;
-			border: 1px solid #fff;
+			border: 1px solid transparent;
 			position: relative;
 			vertical-align: top;
 			.pp {
@@ -317,17 +330,17 @@ export default {
 			}
 		}
 		.li.active {
-			border: 1px solid #e5c88b;
+			border: 1px solid #019cfd;
 		}
 		.active .bg {
 			position: absolute;
 			right: 0;
-			bottom: 0;
+			top: 0;
 			width: 17px;
 			height: 17px;
-			background: url('../../assets/img/icon.png') no-repeat;
+			background: url('./img/depnav_active.png') no-repeat;
 			background-size: 17px;
-			background-position: bottom right;
+			background-position: top right;
 		}
 	}
 }

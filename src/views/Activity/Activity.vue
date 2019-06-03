@@ -1,13 +1,13 @@
 <template>
-	<div>
-		<div class="head_title">
+	<div class="activity_wrapper">
+		<!-- <div class="head_title">
 			<p class="p">
 				<img class="head_title_img" src="../../assets/hd.png">
 			</p>
-		</div>
+		</div>-->
 		<div v-if="isShow">
 			<div class="tabs_com">
-				<Tabs :tabs="tabs" @click="clickTab"/>
+				<Tabs class="actv_tabs" :tabs="tabs" @click="clickTab"/>
 			</div>
 			<Lists v-if="lists.length>0" :lists="lists"/>
 			<div v-else class="empty">
@@ -72,20 +72,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.empty {
-	padding-top: 100px;
-	.img {
-		width: 200px;
-		display: block;
-		margin: 0 auto;
-	}
-	.p {
-		font-size: 16px;
-		color: rgba(51, 51, 51, 1);
-		line-height: 22px;
-		text-align: center;
-	}
-}
 .head_title {
 	height: 50px;
 	.p {
@@ -107,58 +93,42 @@ export default {
 		margin-top: 13px;
 	}
 }
-.activities {
-	width: 100%;
-	padding: 44px 15px 30px 15px;
+.activity_wrapper {
+	min-height: 100%;
 	box-sizing: border-box;
-	.activity {
-		background: transparent;
-		border-radius: 5px;
-		overflow: hidden;
-		margin-top: 10px;
+	padding-bottom: @app_footer_height;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+	.empty {
+		padding-top: 100px;
+		.img {
+			width: 200px;
+			display: block;
+			margin: 0 auto;
+		}
+		.p {
+			font-size: 16px;
+			color: rgba(51, 51, 51, 1);
+			line-height: 22px;
+			text-align: center;
+		}
 	}
-	.img_placeholder {
+	.tabs_com {
+		position: fixed;
+		left: 0;
+		// top: 50px;
+		top: 12px;
 		width: 100%;
-		height: 100%;
-		// background: url('../../assets/activity_load@2x.png') no-repeat;
-		// background-size: cover;
-		// background-position: center;
-	}
-	.img {
-		display: block;
-		width: 100%;
-		height: 124px;
-		overflow: hidden;
-	}
-	.title {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding-right: 8px;
-		background: #fff;
-	}
-	.p {
-		.line-camp(1);
-		max-width: 330px;
-		flex: 1;
-		font-size: 14px;
-		color: rgba(51, 51, 51, 1);
-		line-height: 36px;
-		padding: 0 8px;
-	}
-	.icon {
-		width: 12px;
-		height: 12px;
+		height: 40px;
+		z-index: 1000;
 	}
 }
-.tabs_com {
-	position: fixed;
-	left: 0;
-	top: 50px;
-	width: 100%;
-	height: 50px;
-	background: @base_color;
-	z-index: 1000;
+.actv_tabs {
+	/deep/ .tabs {
+		background: rgba(255, 255, 255, 0.8);
+	}
 }
 </style>
+
 

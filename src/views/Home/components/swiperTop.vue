@@ -30,8 +30,8 @@ export default {
 				initialSlide: 1,
 				loop: true,
 				autoplay: true,
-				slidesPerView: 1.1, //看到的滑块个数
-				spaceBetween: 10,
+				slidesPerView: 1.07, //看到的滑块个数
+				spaceBetween: 5,
 				centeredSlides: true,
 				watchSlidesProgress: true
 			}
@@ -71,13 +71,15 @@ export default {
 <style lang='less' scoped>
 .swiper-pagination {
 	/deep/ .swiper-pagination-bullet {
-		border: 1px solid #e5c88b;
+		width: 3px;
+		height: 3px;
+		border: 1px solid #fff;
 		box-sizing: border-box;
 		background: transparent;
 		opacity: 1;
 	}
 	/deep/ .swiper-pagination-bullet-active {
-		background: #e5c88b;
+		background: #fff;
 	}
 }
 
@@ -85,12 +87,12 @@ export default {
 	width: 100%;
 }
 .swiper_slide {
-	width: 350px;
+	width: 355px;
 	.img {
 		display: block;
 		width: 100%;
 		border-radius: 7px;
-		max-height: 148px;
+		max-height: 150px;
 	}
 }
 </style>

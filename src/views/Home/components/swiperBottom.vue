@@ -161,12 +161,11 @@ export default {
 		align-items: center;
 		justify-content: center;
 		height: 45px;
-		background: #fff;
-		box-shadow: 0px 0px 16px 0px rgba(199, 199, 199, 0.58);
+		background: rgba(255, 255, 255, .66);
 		border-radius: 5px;
 		font-size: 12px;
 		font-weight: 500;
-		color: rgba(51, 51, 51, 1);
+		color: rgb(102, 102, 102);;
 		transition: all 0.2s ease;
 		.img {
 			width: 22px;
@@ -175,8 +174,8 @@ export default {
 		}
 	}
 	.index.active {
-		background: rgba(228, 199, 138, 1);
-		color: rgba(255, 255, 255, 1);
+		background: url('../../../assets/tab_golden_active.png');
+		color: #fff;
 	}
 	.bottom_swiper {
 		height: 100%;

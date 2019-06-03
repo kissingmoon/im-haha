@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="chess_wrapper">
 		<ims-header :title="title"/>
 		<ul class="lists">
 			<li
@@ -47,6 +47,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.chess_wrapper {
+	padding-top: @app_head_height;
+	min-height: 100%;
+	box-sizing: border-box;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+}
 .lists {
 	width: 100%;
 	padding: 21px 11px 0;
