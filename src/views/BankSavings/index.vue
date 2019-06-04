@@ -213,7 +213,7 @@ export default {
 .money_input {
 	width: 345px;
 	height: 51px;
-	background: rgba(255, 255, 255, 1);
+	background: rgba(255, 255, 255, .5);
 	border-radius: 4px;
 	margin: 0 auto;
 	display: flex;

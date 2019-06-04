@@ -1037,6 +1037,616 @@ export default {
 	}
 }
 </script>
+<style lang="less">
+@table_border_color: #333;
+.van-dialog {
+	width: 76%;
+	border-radius: 6px;
+}
+.actv_btn_box {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 20px 0;
+}
+.actv_btn {
+	display: block;
+	width: 173px;
+	height: 42px;
+	background: linear-gradient(180deg, @color_shallow_blue 0%, @color_deep_blue 100%);
+	box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.5), 0px 2px 0px 0px rgba(97, 51, 34, 1),
+		0px 1px 0px 0px rgba(255, 234, 152, 1);
+	font-size: 17px;
+	color: rgba(255, 255, 255, 1);
+	line-height: 42px;
+	border-radius: 21px;
+	transition: all 0.1s linear;
+	margin: 0 auto;
+}
+.actv_btn:active {
+	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px rgba(97, 51, 34, 1),
+		0px 1px 0px 0px rgba(255, 234, 152, 1);
+}
+.actv_detail {
+	background: #fff;
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	width: 100%;
+}
+.actv_main {
+	padding: 0 15px 60px;
+	background: #fff;
+}
+.actv_h {
+	font-size: 18px;
+	font-weight: bold;
+	color: rgba(51, 51, 51, 1);
+	line-height: 25px;
+	padding: 24px 0 10px;
+}
+.actv_p {
+	font-size: 13px;
+	color: rgba(116, 116, 116, 1);
+	line-height: 19px;
+}
+.actv_h5 {
+	padding: 24px 0 10px;
+	font-size: 16px;
+	font-weight: 500;
+	color: @color_deep_blue;
+	line-height: 22px;
+	display: flex;
+	align-items: center;
+}
+.actv_reat {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	background: @color_deep_blue;
+	transform: rotate(45deg);
+	margin-right: 9px;
+}
+.margin_top_9 {
+	margin-top: 9px;
+}
+.margin_bottom_9 {
+	margin-bottom: 9px;
+}
+</style>
+<style lang="less">
+// 活动1
+.actv_table {
+	border-bottom: 1px solid @actv_table_border_color;
+	.row {
+		display: flex;
+		border-left: 1px solid @actv_table_border_color;
+		border-top: 1px solid @actv_table_border_color;
+	}
+	.col {
+		flex: 1;
+		font-size: 10px;
+		color: rgba(51, 51, 51, 1);
+		line-height: 14px;
+		min-width: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-right: 1px solid @actv_table_border_color;
+		padding: 5px 0;
+	}
+	.col.fb-5 {
+		flex-basis: 5em;
+	}
+}
+</style>
+<style lang="less">
+//活动2
+.actv_table2 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col1 {
+		flex: 1;
+	}
+	.col2 {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
+<style lang="less">
+//活动3
+.actv_table3 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col3_0 {
+		flex: 38%;
+	}
+	.col3_1 {
+		flex-basis: 30%;
+	}
+	.col2 {
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
+<style lang="less">
+// 活动4
+.actv_table4 {
+	border-bottom: 1px solid @actv_table_border_color;
+	.row {
+		display: flex;
+		border-left: 1px solid @actv_table_border_color;
+		border-top: 1px solid @actv_table_border_color;
+	}
+	.col {
+		flex: 1;
+		font-size: 10px;
+		color: rgba(51, 51, 51, 1);
+		line-height: 14px;
+		min-width: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-right: 1px solid @actv_table_border_color;
+		padding: 5px 0;
+	}
+	.col.fb-5 {
+		flex-basis: 5em;
+	}
+}
+</style>
+<style lang="less">
+//活动5
+.actv_table5 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col3_0 {
+		flex: 38%;
+	}
+	.col3_1 {
+		flex-basis: 30%;
+	}
+	.col2 {
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
+<style lang="less">
+//活动6
+.actv_table6 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col1 {
+		flex: 1;
+	}
+	.col2 {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
+<style lang="less">
+//活动8
+.actv_table8 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col1 {
+		flex: 1;
+	}
+	.col2 {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
+<style lang="less">
+//活动9
+.actv_table9 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col1 {
+		flex: 1;
+	}
+	.col2 {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
+<style lang="less">
+//活动10
+.actv_table10 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col3_0 {
+		flex: 38%;
+	}
+	.col3_1 {
+		flex-basis: 30%;
+	}
+	.col2 {
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
+<style lang="less">
+//活动11
+.actv_table11 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col3_0 {
+		flex: 38%;
+	}
+	.col3_1 {
+		flex-basis: 30%;
+	}
+	.col2 {
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
+<style lang="less">
+//活动12
+.actv_table12 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col3_0 {
+		flex: 38%;
+	}
+	.col3_1 {
+		flex-basis: 30%;
+	}
+	.col2 {
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
+<style lang="less">
+//活动13
+.actv_table13 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col3_0 {
+		flex: 38%;
+	}
+	.col3_1 {
+		flex-basis: 30%;
+	}
+	.col2 {
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+.actv_table13_0 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col3_0 {
+		flex: 30%;
+	}
+	.col3_1 {
+		flex-basis: 38%;
+	}
+	.col2 {
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
 <style lang="less" >
 //活动 8888
 .flex_30 {
@@ -1101,8 +1711,8 @@ export default {
 .actv_table12 {
 	display: flex;
 	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
 	font-size: 10px;
 	line-height: 14px;
 	text-align: center;
@@ -1122,619 +1732,12 @@ export default {
 		padding: 5px 0;
 		height: 24px;
 		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
 	}
 	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-</style>
-<style lang="less">
-.van-dialog{
-	width: 76%;
-	border-radius: 6px;
-}
-.actv_btn_box {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	padding: 20px 0;
-}
-.actv_btn {
-	display: block;
-	width: 173px;
-	height: 42px;
-	background: linear-gradient(180deg, rgba(230, 187, 115, 1) 0%, rgba(221, 159, 86, 1) 100%);
-	box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.5), 0px 2px 0px 0px rgba(97, 51, 34, 1),
-		0px 1px 0px 0px rgba(255, 234, 152, 1);
-	font-size: 17px;
-	color: rgba(255, 255, 255, 1);
-	line-height: 42px;
-	border-radius: 21px;
-	transition: all 0.1s linear;
-	margin: 0 auto;
-}
-.actv_btn:active {
-	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px rgba(97, 51, 34, 1),
-		0px 1px 0px 0px rgba(255, 234, 152, 1);
-}
-.actv_detail {
-	background: #fff;
-	height: 100vh;
-	width: 100%;
-}
-.actv_main {
-	padding: 0 15px 60px;
-	background: #fff;
-}
-.actv_h {
-	font-size: 18px;
-	font-weight: bold;
-	color: rgba(51, 51, 51, 1);
-	line-height: 25px;
-	padding: 24px 0 10px;
-}
-.actv_p {
-	font-size: 13px;
-	color: rgba(116, 116, 116, 1);
-	line-height: 19px;
-}
-.actv_h5 {
-	padding: 24px 0 10px;
-	font-size: 16px;
-	font-weight: 500;
-	color: rgba(229, 200, 139, 1);
-	line-height: 22px;
-	display: flex;
-	align-items: center;
-}
-.actv_reat {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	background: rgba(229, 200, 139, 1);
-	transform: rotate(45deg);
-	margin-right: 9px;
-}
-.margin_top_9 {
-	margin-top: 9px;
-}
-.margin_bottom_9 {
-	margin-bottom: 9px;
-}
-</style>
-<style lang="less">
-// 活动1
-.actv_table {
-	border-bottom: 1px solid #e5c88b;
-	.row {
-		display: flex;
-		border-left: 1px solid #e5c88b;
-		border-top: 1px solid #e5c88b;
-	}
-	.col {
-		flex: 1;
-		font-size: 10px;
-		color: rgba(51, 51, 51, 1);
-		line-height: 14px;
-		min-width: 40px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-right: 1px solid #e5c88b;
-		padding: 5px 0;
-	}
-	.col.fb-5 {
-		flex-basis: 5em;
-	}
-}
-</style>
-<style lang="less">
-//活动2
-.actv_table2 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col1 {
-		flex: 1;
-	}
-	.col2 {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-</style>
-<style lang="less">
-//活动3
-.actv_table3 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col3_0 {
-		flex: 38%;
-	}
-	.col3_1 {
-		flex-basis: 30%;
-	}
-	.col2 {
-		flex-basis: 30%;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-</style>
-<style lang="less">
-// 活动4
-.actv_table4 {
-	border-bottom: 1px solid #e5c88b;
-	.row {
-		display: flex;
-		border-left: 1px solid #e5c88b;
-		border-top: 1px solid #e5c88b;
-	}
-	.col {
-		flex: 1;
-		font-size: 10px;
-		color: rgba(51, 51, 51, 1);
-		line-height: 14px;
-		min-width: 40px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-right: 1px solid #e5c88b;
-		padding: 5px 0;
-	}
-	.col.fb-5 {
-		flex-basis: 5em;
-	}
-}
-</style>
-<style lang="less">
-//活动5
-.actv_table5 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col3_0 {
-		flex: 38%;
-	}
-	.col3_1 {
-		flex-basis: 30%;
-	}
-	.col2 {
-		flex-basis: 30%;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-</style>
-<style lang="less">
-//活动6
-.actv_table6 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col1 {
-		flex: 1;
-	}
-	.col2 {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-</style>
-<style lang="less">
-//活动8
-.actv_table8 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col1 {
-		flex: 1;
-	}
-	.col2 {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-</style>
-<style lang="less">
-//活动9
-.actv_table9 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col1 {
-		flex: 1;
-	}
-	.col2 {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-</style>
-<style lang="less">
-//活动10
-.actv_table10 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col3_0 {
-		flex: 38%;
-	}
-	.col3_1 {
-		flex-basis: 30%;
-	}
-	.col2 {
-		flex-basis: 30%;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-</style>
-<style lang="less">
-//活动11
-.actv_table11 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col3_0 {
-		flex: 38%;
-	}
-	.col3_1 {
-		flex-basis: 30%;
-	}
-	.col2 {
-		flex-basis: 30%;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-</style>
-<style lang="less">
-//活动12
-.actv_table12 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col3_0 {
-		flex: 38%;
-	}
-	.col3_1 {
-		flex-basis: 30%;
-	}
-	.col2 {
-		flex-basis: 30%;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-</style>
-<style lang="less">
-//活动13
-.actv_table13 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col3_0 {
-		flex: 38%;
-	}
-	.col3_1 {
-		flex-basis: 30%;
-	}
-	.col2 {
-		flex-basis: 30%;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2_0 {
-		padding: 5px 0;
-	}
-	.row2_1 {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		justify-content: center;
-	}
-}
-.actv_table13_0 {
-	display: flex;
-	align-items: stretch;
-	border-top: 1px solid #e5c88b;
-	border-right: 1px solid #e5c88b;
-	font-size: 10px;
-	line-height: 14px;
-	text-align: center;
-	color: rgba(51, 51, 51, 1);
-	.col3_0 {
-		flex: 30%;
-	}
-	.col3_1 {
-		flex-basis: 38%;
-	}
-	.col2 {
-		flex-basis: 30%;
-		display: flex;
-		flex-direction: column;
-	}
-	.row1 {
-		padding: 5px 0;
-		height: 24px;
-		box-sizing: border-box;
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
-	}
-	.row2 {
-		border-left: 1px solid #e5c88b;
-		border-bottom: 1px solid #e5c88b;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
 	}
 	.row2_0 {
 		padding: 5px 0;

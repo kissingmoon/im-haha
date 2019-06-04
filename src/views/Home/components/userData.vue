@@ -23,9 +23,9 @@
 				<div class="icon icon2"></div>
 				<p>取款</p>
 			</div>
-			<div @click="gotoPage('/activity',false)" class="option">
+			<div @click="gotoPage('/customer-service',false)" class="option">
 				<div class="icon icon3"></div>
-				<p>优惠</p>
+				<p>客服</p>
 			</div>
 		</div>
 	</div>
@@ -170,7 +170,7 @@ export default {
 	width: 345px;
 	margin: 0 auto;
 	overflow: hidden;
-	border-radius: 10px;
+	border-radius: 5px;
 	box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.2);
 	background: rgba(255, 255, 255, 0.66);
 	.top {
@@ -187,13 +187,15 @@ export default {
 		position: relative;
 		.logo {
 			position: absolute;
-			width: 70px;
-			height: 20px;
-			right: 100px;
+			width: 75px;
+			height: 16px;
+			right: 90px;
 		}
 		.login {
 			line-height: 22px;
 			padding-left: 14px;
+			position: relative;
+			z-index: 1;
 		}
 		.data {
 			margin-right: 13px;

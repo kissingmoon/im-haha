@@ -1,12 +1,8 @@
 <template>
 	<div class="funds-wrapper display-flex flex-column">
-		<div class="header-container">
-			<div class="header-box">
-				<ims-header title="资金明细" @onRightClick="onRightClick" :rightIcon="true">
-					<!-- <div slot="right" class="header-cottage" @click="switchs.showPopup = true">筛选</div> -->
-				</ims-header>
-			</div>
-		</div>
+		<ims-header title="资金明细">
+			<div slot="right" class="header-cottage" @click="onRightClick"></div>
+		</ims-header>
 		<div class="tab-container">
 			<div class="tab-content display-flex">
 				<div
@@ -39,11 +35,10 @@
 </template>
 
 <script>
-import { setTimeout } from 'timers'
 import income from './subViews/income'
 import out from './subViews/out'
 import fundsComp from './subViews/fundsComp'
-import noData from "../../components/noData/noData"
+import noData from '../../components/noData/noData'
 
 export default {
 	data() {
@@ -117,26 +112,28 @@ export default {
 	left: 0;
 	right: 0;
 	background-color: @base_color;
-	.header-container {
-		.header-box {
-			height: 49px;
-			.header-cottage{
-			}
-		}
+	padding-top: @app_head_height;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+	.header-cottage {
+		width:100%;
+		height: @app_head_height;
+		background: url('../../assets/time-ico.png') no-repeat;
+		background-size: 22px;
+		background-position: center right;
 	}
 	.tab-container {
 		height: 64px;
 		.tab-content {
-			border-top: 1px solid rgba(222, 222, 222, 1);
 			padding: 10px 15px;
-			background-color: @base_color;
 			z-index: 888;
 			position: fixed;
 			left: 0;
 			right: 0;
 			.tab-item {
 				height: 44px;
-				background-color: #ffffff;
+				background-color: rgba(255,255,255,.5);
 				font-size: 15px;
 				color: #848484;
 				&:first-child {
@@ -146,13 +143,11 @@ export default {
 					border-radius: 0 5px 5px 0;
 				}
 				&.active {
-					background-color: @bg_color__yellow;
+					background: @btn_color;
 					color: #ffffff;
 				}
 			}
 		}
-	}
-	.main-container {
 	}
 	.bottom-popup-container {
 		.popup-item {

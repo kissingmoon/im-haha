@@ -164,20 +164,19 @@ export default {
 					padding: 1px;
 					margin: 0 auto 10px;
 					border-radius: 50%;
-					background: linear-gradient(0deg, rgba(167, 122, 58, 1), rgba(244, 210, 138, 1));
-					box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.3);
+					border: 1px solid @color_deep_blue;
 					span {
 						display: block;
 						font-size: 14px;
 						height: 100%;
-						color: #ab843f;
+						color: @color_deep_blue;
 						line-height: 1.25em;
 						border-radius: 50%;
 						background-color: #fff;
 					}
 				}
 				> p {
-					color: #ab843f;
+					color: @color_deep_blue;
 				}
 			}
 			.hdbar {
@@ -187,7 +186,7 @@ export default {
 				width: 100%;
 				height: 2px;
 				z-index: 1;
-				background: linear-gradient(0deg, rgba(167, 122, 58, 1), rgba(244, 210, 138, 1));
+				background: @btn_color;
 			}
 		}
 	}

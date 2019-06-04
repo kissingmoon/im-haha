@@ -211,18 +211,18 @@ export default {
 				.form-input-item {
 					margin-top: 14px;
 					.slot-icon--left {
-						width: 15px;
-						height: 18px;
+						width: 20px;
+						height: 20px;
 						background-size: 100% 100%;
 						background-repeat: no-repeat;
 						&.left-icon__userId {
-							.bg-image('./../img/dl_peo');
+							background-image: url('../img/dl_peo.png');
 						}
 						&.left-icon__pwd {
-							.bg-image('./../img/dl_password');
+							background-image: url('../img/dl_password.png');
 						}
 						&.left-icon__code {
-							.bg-image('./../img/yanzhengma');
+							background-image: url('../img/yanzhengma.png');
 						}
 					}
 					.slot-icon--right {
@@ -278,13 +278,12 @@ export default {
 		}
 		.submit-box {
 			width: 54px;
-			background: rgba(0, 0, 0, 1);
+			background: rgba(0, 0, 0, .4);
 			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.91);
-			opacity: 0.3;
 			.submit-box__btn--top {
 				width: 24px;
 				height: 24px;
-				.bg-image('./../img/ico_zhuce');
+				background: url('../img/ico_zhuce.png') no-repeat;
 				background-size: 100% 100%;
 				margin-bottom: 15px;
 			}

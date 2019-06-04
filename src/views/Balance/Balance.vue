@@ -253,8 +253,7 @@ export default {
 			padding-bottom: 30px;
 			padding: 11px 20px 64px 20px;
 			font-size: 13px;
-			font-family: 'PingFangSC-Regular';
-			color: rgba(160, 160, 160, 1);
+			color: #666;
 			& > div {
 				margin-top: 3px;
 			}

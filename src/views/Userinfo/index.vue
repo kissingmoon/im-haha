@@ -20,7 +20,7 @@
 				<span class="text">ID：</span>
 				<span class="name">{{account.userId}}</span>
 				<svg class="svg_right">
-					<use xlink:href="#right"></use>
+					<!-- <use xlink:href="#right"></use> -->
 				</svg>
 			</li>
 		</ul>

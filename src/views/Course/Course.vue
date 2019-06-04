@@ -33,7 +33,7 @@ export default {
 				{ img: require('./icon/techSupport.png'), title: '技术支持', desc: '提供全面技术支持', link: '/course/jszc' },
 				{ img: require('./icon/howtoplay.png'), title: '玩法教程', desc: '真人体育彩票玩法', link: '/course/wfjc' },
 				{ img: require('./icon/contactUs.png'), title: '联系我们', desc: '为您提供全天服务', link: '/course/contact' },
-				{ img: require('./icon/aboutUs.png'), title: '关于中博', desc: '责任隐私策略', link: '/course/privacy' }
+				{ img: require('./icon/aboutUs.png'), title: 'YG娱乐', desc: '责任隐私策略', link: '/course/privacy' }
 			]
 		}
 	},

@@ -2,17 +2,17 @@
 	<div class="app_head">
 		<div class="main">
 			<div class="left">
-				<span class="icon_left" @click="goBack">
-					<svg class="svg_left">
-						<use xlink:href="#left"></use>
-					</svg>
-				</span>
-				<slot v-if="leftShow" name="left"></slot>
+				<slot name="left">
+					<span class="icon_left" @click="goBack">
+						<svg class="svg_left">
+							<use xlink:href="#left"></use>
+						</svg>
+					</span>
+				</slot>
 			</div>
 			<div class="title">{{title}}</div>
-			<div class="right display-flex justify-end">
-				<slot v-if="rightShow" name="right"></slot>
-				<span v-if="!rightShow&&rightIcon" class="icon__right" @click="rightClick"></span>
+			<div class="right">
+				<slot name="right"></slot>
 			</div>
 		</div>
 	</div>
@@ -23,26 +23,15 @@ export default {
 		title: {
 			type: String,
 			default: ''
-		},
-		rightIcon: {
-			type: Boolean,
-			default: false
-		}
-	},
-	computed: {
-		leftShow() {
-			return this.$slots.left
-		},
-		rightShow() {
-			return this.$slots.right
 		}
 	},
 	methods: {
 		goBack() {
-			this.$router.go(-1)
-		},
-		rightClick() {
-			this.$emit('onRightClick')
+			if (history.length <= 1) {
+				this.$router.push('/')
+			} else {
+				this.$router.go(-1)
+			}
 		}
 	}
 }
@@ -93,12 +82,6 @@ export default {
 			padding-right: 14px;
 			font-size: 14px;
 			box-sizing: border-box;
-			.icon__right {
-				background: url('./time-ico.png') no-repeat;
-				background-size: cover;
-				width: 22px;
-				height: 22px;
-			}
 		}
 	}
 }

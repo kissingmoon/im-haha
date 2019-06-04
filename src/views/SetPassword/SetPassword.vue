@@ -2,7 +2,11 @@
 	<div class="loginPwd-wrapper">
 		<div class="header-container">
 			<ims-header :title="titleList[pointers.title]">
-				<span slot="left" class="icon" @click="back"></span>
+				<span slot="left" class="icon_left" @click="back">
+					<svg class="svg_left">
+						<use xlink:href="#left"></use>
+					</svg>
+				</span>
 			</ims-header>
 		</div>
 		<div class="main-container">
@@ -154,18 +158,47 @@ export default {
 					type: 'tel'
 				}
 			},
+			payHavePwdObj: {
+				oldPassword: {
+					model: '',
+					title: '原始密码',
+					placeholder: '请输入您的密码',
+					status: '',
+					maxlength: 6,
+					valueType: 'num',
+					type: 'password'
+				},
+				payPwd: {
+					model: '',
+					title: '设置新的支付密码',
+					placeholder: '请输入您的6位数密码',
+					status: '',
+					maxlength: 6,
+					valueType: 'num',
+					type: 'password'
+				},
+				confirmPwd: {
+					model: '',
+					title: '确认密码',
+					placeholder: '请再次输入您的提款密码',
+					status: '',
+					maxlength: 6,
+					valueType: 'num',
+					type: 'password'
+				}
+			},
 			bankList: [],
 			switchs: {
 				pickShow: false,
 				packLoading: false
 			},
-            inputLock: false,
+			inputLock: false,
 			pattern: {}
 		}
 	},
 
 	created() {
-		this.pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？0-9]");
+		this.pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？0-9]")
 		if (this.user_token) {
 			this.judgeType()
 		} else {
@@ -187,14 +220,14 @@ export default {
 						newVal[key].status = ''
 						allRight = false
 					}
-					if(newVal[key].valueType == "num"){
-						newVal[key].model = newVal[key].model.replace(/\D/g,'');
+					if (newVal[key].valueType == 'num') {
+						newVal[key].model = newVal[key].model.replace(/\D/g, '')
 					}
-					if(newVal[key].valueType == "lowLetterNum"){
-						newVal[key].model = newVal[key].model.replace(/[^a-z0-9]/g,'');
+					if (newVal[key].valueType == 'lowLetterNum') {
+						newVal[key].model = newVal[key].model.replace(/[^a-z0-9]/g, '')
 					}
-					if(newVal[key].valueType == "letterNum"){
-						newVal[key].model = newVal[key].model.replace(/[^\w_]/g,'');
+					if (newVal[key].valueType == 'letterNum') {
+						newVal[key].model = newVal[key].model.replace(/[^\w_]/g, '')
 					}
 				}
 				this.btnActive = allRight
@@ -204,13 +237,13 @@ export default {
 	},
 	methods: {
 		back() {
-			if(this.$route.query.from){
-                if(this.$route.query.from == "balance"){
-                    this.$router.replace("/user");
-                }
-            }else{
-                this.$router.go(-1);
-            }
+			if (this.$route.query.from) {
+				if (this.$route.query.from == 'balance') {
+					this.$router.replace('/user')
+				}
+			} else {
+				this.$router.go(-1)
+			}
 		},
 		judgeType() {
 			let type = this.$route.query.type
@@ -221,7 +254,7 @@ export default {
 					this.currentObj = this.loginPwdObj
 					break
 				case '2':
-					this.currentObj = this.payPwdObj
+					this.currentObj = this.account.bankPassword == 'true' ? this.payHavePwdObj : this.payPwdObj
 					break
 				case '3':
 					this.nickNameObj.userNickName.placeholder = this.account.userName
@@ -275,7 +308,7 @@ export default {
 		async setBalancePwd() {
 			if (!this.checkBalancePwd()) return
 			let param = {}
-			param.drawingPwd = this.currentObj.payPwd.model
+			param.oldPassword = this.account.bankPassword == 'true' ? this.currentObj.oldPassword.model : ''
 			let res = await net_setDrawPwd(param)
 			if (res.code == '200') {
 				toast('设置提款密码成功！')
@@ -326,7 +359,7 @@ export default {
 					toast('请填写完整信息!')
 					return false
 				}
-				if(key == 'realName'){
+				if (key == 'realName') {
 					if (this.pattern.test(obj[key].model)) {
 						toast('姓名输入格式不正确，请重新输入')
 						return false
@@ -340,7 +373,7 @@ export default {
 						obj[key].wrongTip = ''
 					}
 				}
-				if(key == 'bankBranchName'){
+				if (key == 'bankBranchName') {
 					if (this.pattern.test(obj[key].model)) {
 						toast('开户支行输入格式不正确，请重新输入')
 						return false
@@ -416,7 +449,22 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+.icon_left {
+	width: @app_head_height;
+	height: @app_head_height;
+	display: inline-block;
+}
+.svg_left {
+	width: 22px;
+	height: 22px;
+	fill: currentColor;
+	margin: 12.5px 0 0 15px;
+}
 .loginPwd-wrapper {
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	background: #e5e5e5;
 	.header-container {
 		height: 49px;
 	}

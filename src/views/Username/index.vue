@@ -66,6 +66,7 @@ export default {
 	box-sizing: border-box;
 	padding-top: @app_head_height;
 	background: #e5e5e5;
+
 	.btn {
 		width: 265px;
 		height: 44px;
@@ -93,9 +94,6 @@ export default {
 	}
 	.input {
 		-webkit-appearance: none;
-		font-family: 'Chinese Quote', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
-			'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-			'Segoe UI Symbol';
 		font-variant: tabular-nums;
 		box-sizing: border-box;
 		margin: 0;

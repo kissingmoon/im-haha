@@ -1,8 +1,8 @@
 <template>
 	<div class="home_wrapper">
 		<!-- <div class="head_title">
-			<p class="p"><img class="head_title_img" src="../../assets/zb.png" ></p>
-		</div> -->
+			<p class="p"><img class="head_title_img" src="../../assets/yg_logo@2x.png" ></p>
+		</div>-->
 		<div v-if="isShow" class="home">
 			<div class="top">
 				<swiper-top :lists="swiperTopData"/>
@@ -46,9 +46,13 @@ export default {
 		}
 	},
 	activated() {
-		if (!this.isShow) return
-		this.getHomeHeadData()
-		this.$api.getUserInfoNoWarn({ transferOut: '1' })
+		if (!this.isShow) {
+			this.getHomeHeadData()
+			this.getHomeGameData()
+		} else {
+			this.getHomeHeadData()
+			this.$api.getUserInfoNoWarn({ transferOut: '1' })
+		}
 	},
 	methods: {
 		getHomeHeadData() {
@@ -87,25 +91,26 @@ export default {
 		height: 50px;
 		line-height: 50px;
 		z-index: 1000;
-		background-color: @base_color;
+		background: url('../../assets/page_bg_default.jpg') no-repeat;
+		background-size: 100% auto;
 		text-align: center;
 	}
-	.head_title_img{
+	.head_title_img {
 		display: inline-block;
 		height: 24px;
 		margin-top: 13px;
 	}
 }
-.home_wrapper{
+.home_wrapper {
 	min-height: 100%;
 	box-sizing: border-box;
 	padding-bottom: @app_footer_height;
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	background-size:100% ;
+	background-size: 100%;
 	background-attachment: fixed;
 }
 .home {
-	padding-bottom: 20px;
+	padding-bottom: 12px;
 }
 .top {
 	padding-top: 12px;

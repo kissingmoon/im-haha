@@ -1,7 +1,9 @@
 <template>
 	<div class="bet-wrapper display-flex flex-column">
 		<div class="header-container">
-			<ims-header title="投注记录" @onRightClick="onRightClick" :rightIcon="true"></ims-header>
+			<ims-header title="投注记录">
+				<div slot="right" class="header-cottage" @click="onRightClick"></div>
+			</ims-header>
 		</div>
 		<div class="formTitle">
 			<div class="flexBox display-flex">
@@ -183,7 +185,13 @@ export default {
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
 	background-size: 100%;
 	background-attachment: fixed;
-
+	.header-cottage {
+		width: 100%;
+		height: @app_head_height;
+		background: url('../../assets/time-ico.png') no-repeat;
+		background-size: 22px;
+		background-position: center right;
+	}
 	.header-container {
 		height: @app_head_height;
 	}
@@ -196,7 +204,7 @@ export default {
 		color: #333;
 		line-height: 30px;
 		text-align: left;
-		background: #ffffff;
+		background: rgba(255, 255, 255, 0.5);
 		border-bottom: 1px solid #f2f2f2;
 		.flexBox {
 			padding: 0 12px;

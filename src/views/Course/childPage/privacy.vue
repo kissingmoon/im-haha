@@ -1,15 +1,11 @@
 <template>
-    <div class="privacy-wrapper">
-        <div class="header-container">
-            <ims-header title="中博隐私政策">
-                
-            </ims-header>
-        </div>
-        <div class="top-container">
-
-        </div>
-        <div class="main-container">
-            <pre class="item-txt__wrap">
+	<div class="privacy-wrapper">
+		<div class="header-container">
+			<ims-header title="中博隐私政策"></ims-header>
+		</div>
+		<div class="top-container"></div>
+		<div class="main-container">
+			<pre class="item-txt__wrap">
 1.在中博，我们一向采取最谨慎的态度及工作程序保护处理客户资料。这是一份法律文件，清楚说明中博是如何处理收集得来以及确认客户身份的数据。此隐私权政策是规则条例中的一部分，您应该将此政策和规则条款文件一起阅读。
 
 2.当您在中博注册账户时，即确认您已经浏览过我们的网站，能完全理解及接受此隐私条款规则与条件，并了解收集各项资料之目的及处理方式。
@@ -42,34 +38,35 @@
 
 16.此隐私权政策于2019年3月更新。
             </pre>
-        </div>
-    </div>
+		</div>
+	</div>
 </template>
 
 <script>
-export default {
-    
-}
+export default {}
 </script>
 
 <style lang="less" scoped>
-.privacy-wrapper{
-    background-color: #ffffff;
-    .top-container{
-        background: url("./../img/Rectangle.png") no-repeat;
-        height: 180px;
-    }
-    .main-container{
-        padding: 0 15px;
-        .item-txt__wrap{
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            margin: 8px 0 0 0;
-            color:#747474;
-            font-size: 13px;
-        }
-    }
-    
+.privacy-wrapper {
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+	.top-container {
+		background: url('./../img/Rectangle.png') no-repeat;
+		height: 180px;
+	}
+	.main-container {
+		padding: 0 15px;
+		.item-txt__wrap {
+			white-space: pre-wrap;
+			word-wrap: break-word;
+			margin: 8px 0 0 0;
+			color: #414141;
+			font-size: 13px;
+		}
+	}
 }
-
 </style>

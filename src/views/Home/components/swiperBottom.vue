@@ -174,7 +174,8 @@ export default {
 		}
 	}
 	.index.active {
-		background: url('../../../assets/tab_golden_active.png');
+		background: url('../../../assets/tab_golden_active.png') no-repeat;
+		background-size: 100%;
 		color: #fff;
 	}
 	.bottom_swiper {

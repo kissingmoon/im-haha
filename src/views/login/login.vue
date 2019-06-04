@@ -25,10 +25,7 @@
 		</div>
 		<div
 			class="main-container display-flex"
-			:class="{ 
-                'marquee-left': scrollTo == 'left',
-                'marquee-right': scrollTo == 'right'
-            }"
+			:class="{'marquee-left': scrollTo == 'left','marquee-right': scrollTo == 'right'}"
 		>
 			<login-component @goNext="goNextFun"></login-component>
 			<register-component @goBefore="goBeforeFun"></register-component>

@@ -20,6 +20,7 @@
 <script>
 import Lists from './components/Lists.vue'
 import Tabs from '../../components/tabs/tabs.vue'
+import { Promise } from 'q'
 
 export default {
 	components: {
@@ -42,6 +43,12 @@ export default {
 			loading.close()
 		} catch {
 			loading.close()
+		}
+	},
+	activated() {
+		if (!this.isShow) {
+			this.getData('')
+			this.getTab()
 		}
 	},
 	methods: {

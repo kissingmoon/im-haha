@@ -1,8 +1,10 @@
 <template>
 	<div class="wfjc display-flex flex-column">
 		<ims-header title="玩法教程"/>
+		<div class="wfjc_tabs">
+			<Tabs :tabs="tabs" @click="onClick"/>
+		</div>
 		<div class="main flex-1">
-			<Tabs class="wfjc_tabs" :tabs="tabs" @click="onClick"/>
 			<ty v-if="active == 0"/>
 			<zr v-if="active == 1"/>
 			<cp v-if="active == 2"/>
@@ -54,12 +56,18 @@ export default {
 	background: url('../../../assets/page_bg_default.jpg') no-repeat;
 	background-size: 100%;
 	background-attachment: fixed;
-	/deep/ .tabs_wrapper .tabs{
-		background: #eee;
+	.wfjc_tabs {
+		padding: 12px 0;
+		position: fixed;
+		left: 0;
+		width: 100%;
+		top: @app_head_height;
+		background: url('../../../assets/page_bg_default.jpg') no-repeat;
+		background-size: 100% auto;
+		z-index: 1;
 	}
 	.main {
-		padding: 20px 0;
-		background-color: #fff;
+		padding: 66px 0;
 		.van-tabs {
 			/deep/ .van-tabs__wrap {
 				margin-left: 36px;

@@ -86,6 +86,9 @@ export default {
 					z-index: 2;
 					transition: all 0.1s linear;
 				}
+				.active{
+					color:#fff;
+				}
 				.activeBg {
 					position: absolute;
 					top: 2px;
@@ -94,7 +97,7 @@ export default {
 					height: 36px;
 					z-index: 1;
 					border-radius: 18px;
-					background-color: #fff;
+					background: @btn_color;
 					transition: all 0.2s ease-in-out;
 				}
 			}

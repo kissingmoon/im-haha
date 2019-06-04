@@ -267,6 +267,10 @@ export default {
 	min-height: 100%;
 	box-sizing: border-box;
 	padding-top: @app_head_height;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+
 	.headBox {
 		position: relative;
 		.leftCorner {
@@ -287,7 +291,6 @@ export default {
 		}
 	}
 	.main {
-		background-color: #fff;
 		padding: 15px 15px;
 		.item-box {
 			margin-top: 10px;

@@ -40,6 +40,9 @@ export default {
 	min-height: 100%;
 	box-sizing: border-box;
 	padding-top: @app_head_height;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
 	.headBox {
 		position: relative;
 		.leftCorner {
@@ -61,16 +64,15 @@ export default {
 	}
 	.main {
 		padding: 0 15px;
-		background-color: #fff;
 		.logo {
-			width: 116px;
-			height: 41px;
+			width: 162px;
+			height: 36px;
 			margin: 31px auto 28px;
 			background: url('../img/logo.png') no-repeat;
 			background-size: cover;
 		}
 		.con {
-			background-color: #dfc388;
+			background-color: #8C6E64;
 			.pic {
 				height: 211px;
 				background: url('../img/contactPic.png') no-repeat;

@@ -71,8 +71,8 @@ export default {
 <style lang='less' scoped>
 .swiper-pagination {
 	/deep/ .swiper-pagination-bullet {
-		width: 3px;
-		height: 3px;
+		width: 5px;
+		height: 5px;
 		border: 1px solid #fff;
 		box-sizing: border-box;
 		background: transparent;

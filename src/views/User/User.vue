@@ -5,11 +5,15 @@
 				<img class="head_title_img" src="../../assets/grzx.png">
 			</p>
 		</div>-->
+		<div class="msg_box">
+			<div class="msg_icon"></div>
+		</div>
 		<div class="user">
 			<div class="top">
 				<div class="info">
 					<div @click="clickThis(13)" class="avator">
 						<ims-image class="img" lazy :src=" account.headPortrait || require('../../assets/user.png')"/>
+						<img v-if="isLogin" class="img_edit" src="./img/icon_mine_editor.png">
 					</div>
 					<div v-if="isLogin" class="name_id">
 						<p class="name">{{account.userName}}</p>
@@ -34,7 +38,7 @@
 						<!-- <div @click="clickThis(11)" class="opt">
 							<img class="img" src="./img/icon_new_mine_transfer.png">
 							<p class="p">转账</p>
-						</div> -->
+						</div>-->
 						<div @click="clickThis(11)" class="opt">
 							<img class="img" src="./img/icon_new_mine_withdraw.png">
 							<p class="p">取款</p>
@@ -238,11 +242,22 @@ export default {
 .user_wrapper {
 	background: url('../../assets/page_bg_default2.jpg') no-repeat center;
 	background-size: cover;
-	height: 100%;
+	min-height: 100%;
+	box-sizing: border-box;
+	.msg_box {
+		padding: 22px 13px 18px;
+		text-align: right;
+	}
+	.msg_icon {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		background: url('../../assets/icon_new_mine_message.png') no-repeat;
+		background-size: 100%;
+	}
 }
 
 .user {
-	padding-top: 50px;
 	.top {
 		width: 349px;
 		height: 160px;
@@ -294,7 +309,7 @@ export default {
 		justify-content: space-between;
 		align-items: center;
 		text-align: center;
-		.opt{
+		.opt {
 			padding: 0 10px;
 		}
 		.p {
@@ -317,13 +332,21 @@ export default {
 		height: 54px;
 		box-sizing: border-box;
 		border-radius: 50%;
-		overflow: hidden;
 		margin-right: 14px;
 		background: #fff;
 		border: 2px solid rgba(255, 255, 255, 0.6);
+		position: relative;
+		.img_edit {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 19px;
+			height: 19px;
+		}
 		.img {
 			display: block;
 			width: 100%;
+			border-radius: 50%;
 		}
 	}
 	.name_id {

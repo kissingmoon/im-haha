@@ -29,7 +29,7 @@
 	}
 	/deep/.app_head .main{
 		background: none;
-		color: @text_color;
+		// color: @text_color;
 	}
 	.boxs {
 		position: absolute;
