@@ -1,21 +1,27 @@
 <template>
-	<div>
-		<ims-header title="个人资料" />
+	<div class="userinfo_wrapper">
+		<ims-header title="个人资料"/>
 		<ul class="lists">
 			<li @click="mofifyAvator" class="list">
 				<span class="text">头像</span>
 				<img class="img" :src="account.headPortrait">
-				<span class="arrow_right"></span>
+				<svg class="svg_right">
+					<use xlink:href="#right"></use>
+				</svg>
 			</li>
 			<li @click="mofifyName" class="list">
 				<span class="text">昵称</span>
 				<span class="name">{{account.userName}}</span>
-				<span class="arrow_right"></span>
+				<svg class="svg_right">
+					<use xlink:href="#right"></use>
+				</svg>
 			</li>
 			<li class="list">
 				<span class="text">ID：</span>
 				<span class="name">{{account.userId}}</span>
-				<span class="arrow_right"></span>
+				<svg class="svg_right">
+					<use xlink:href="#right"></use>
+				</svg>
 			</li>
 		</ul>
 	</div>
@@ -42,11 +48,26 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.userinfo_wrapper {
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	background: url('../../assets/page_bg_default2.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+	/deep/.app_head {
+		background: none;
+	}
+	/deep/.app_head .main {
+		background: none;
+		color: #fff;
+	}
+}
 .lists {
 	width: 100%;
 	padding: 0 11px;
 	box-sizing: border-box;
-	background: #fff;
+	background-color: rgba(255, 255, 255, 0.5);
 	.list {
 		.border-bottom-1px();
 		position: relative;
@@ -66,16 +87,15 @@ export default {
 			border-radius: 50%;
 			overflow: hidden;
 		}
-		.arrow_right {
-			width: 8px;
-			height: 14px;
-			background: url('../../assets/img/arrow_right.png') no-repeat;
-			background-size: 8px 14px;
-			margin-left: 12px;
+		.svg_right {
+			width: 22px;
+			height: 22px;
+			fill: currentColor;
+			color: #7e7e7e;
 		}
 		.name {
 			font-size: 16px;
-			color: rgba(176, 176, 176, 1);
+			color: #7e7e7e;
 			line-height: 22px;
 		}
 	}

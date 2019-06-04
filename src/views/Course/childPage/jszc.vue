@@ -1,16 +1,15 @@
 <template>
-   <div class="jszc display-flex flex-column">
-      <div class="headBox">
-         <div class="leftCorner display-flex align-center justify-center" @click="goBack">
-               <van-icon name="arrow-left"/>
-         </div>
-         <p>技术支持</p>
-      </div>
-      <div class="main flex-1">
-         <div class="item-box">
-            <TitleBar content="如何避免账户被盗用"  @click="openDetail(0)" :upupShow="pointers.telCourseList == 0?true:false"/>
-            <div class="item-content__body" v-show="pointers.telCourseList == 0">
-               <pre class="item-txt__wrap">
+	<div class="jszc display-flex flex-column">
+		<ims-header title="技术支持"/>
+		<div class="main flex-1">
+			<div class="item-box">
+				<TitleBar
+					content="如何避免账户被盗用"
+					@click="openDetail(0)"
+					:upupShow="pointers.telCourseList == 0?true:false"
+				/>
+				<div class="item-content__body" v-show="pointers.telCourseList == 0">
+					<pre class="item-txt__wrap">
 1. 盗用者通常以一些所谓「紧急」的电子邮件作为吸引客户的手法来骗取账户资料。
 YG电竞不会要求客户在电邮上提供您的私人密码以及帐户资料，即使您认为是真的，请不要立即回复
 ——而是立即联系我们网站上的在线客服进行确认。
@@ -32,12 +31,16 @@ b) 另外，在浏览器上增加一些加密显示，这样能令您随时清�
 5. 经常提高警觉性
 如果当您怀疑一些电子邮件的可信性，或者收到一些电子邮件通知表明因为YG电竞网站被停用而建议使用的后备网址时，请通过我们的在线客服进行咨询。
                </pre>
-            </div>
-         </div>
-         <div class="item-box">
-            <TitleBar content="有关保护帐户资料的提示" @click="openDetail(1)" :upupShow="pointers.telCourseList == 1?true:false"/>
-            <div class="item-content__body" v-show="pointers.telCourseList == 1">
-               <pre class="item-txt__wrap">
+				</div>
+			</div>
+			<div class="item-box">
+				<TitleBar
+					content="有关保护帐户资料的提示"
+					@click="openDetail(1)"
+					:upupShow="pointers.telCourseList == 1?true:false"
+				/>
+				<div class="item-content__body" v-show="pointers.telCourseList == 1">
+					<pre class="item-txt__wrap">
 1. 小心处理电子邮件
 尽量避免打开或回复一些不明来历的电子邮件，因为当您回复时已经给他们确认这是真正的电邮地址。无论 如何，对于有怀疑的电子邮件时，都需要小心电邮的附件以及内容的文字链接。
 2. 小心留意个人资料
@@ -62,30 +65,44 @@ IE11或以上版本
 火狐Firefox
 我们最希望能令每位客户在最安全而且最有保障的平台下，尽情享受每一次在中博的投注经历。
                </pre>
-            </div>
-         </div>
-         <div class="item-box">
-            <TitleBar content="备用网址" :upupShow="pointers.telCourseList == 2?true:false" @click="openDetail(2)"/>
-            <div class="item-content__body"  v-show="pointers.telCourseList == 2">
-               <pre class="item-txt__wrap">
+				</div>
+			</div>
+			<div class="item-box">
+				<TitleBar
+					content="备用网址"
+					:upupShow="pointers.telCourseList == 2?true:false"
+					@click="openDetail(2)"
+				/>
+				<div class="item-content__body" v-show="pointers.telCourseList == 2">
+					<pre class="item-txt__wrap">
 如果您在浏览和体验中博过程中发现无法登陆我们的某个域名，请您尝试使用我们的备用域名进行登陆。我们强烈建议您使用“Ctrl+D”将中博保存至浏览器收藏夹，以便我们为您提供更加优质的服务。
 我们建议您关注我们的官方微博或公众微信，以便在网站登陆出现问题时第一时间收到我们最新的网址通知。
                </pre>
-            </div>
-         </div>
-         <div class="item-box">
-            <TitleBar content="为什么使用版本较低的浏览器会导致投注体验下降和 账号不安全"  font-size="fontSize13" @click="openDetail(3)" :upupShow="pointers.telCourseList == 3?true:false"/>
-            <div class="item-content__body" v-show="pointers.telCourseList == 3">
-               <pre class="item-txt__wrap">
+				</div>
+			</div>
+			<div class="item-box">
+				<TitleBar
+					content="为什么使用版本较低的浏览器会导致投注体验下降和 账号不安全"
+					font-size="fontSize13"
+					@click="openDetail(3)"
+					:upupShow="pointers.telCourseList == 3?true:false"
+				/>
+				<div class="item-content__body" v-show="pointers.telCourseList == 3">
+					<pre class="item-txt__wrap">
 首先 ，IE6或其他低版本浏览器效率极低，很多比较新颖和动画效果都无法实现加载，导致用户阅读和游戏时 效果极差；其次，低版本浏览器安全性较低，黑客很容易利用其进行病毒或木马植入，从而导致 你的投注体验和资金受到极大威胁。
 因此，我们强烈建议您将浏览器升级到最新版本，以此来获得中博带来最好的游戏体验和优质服务。
                </pre>
-            </div>
-         </div>
-         <div class="item-box">
-            <TitleBar content="选择什么样的浏览器才能获得中博最佳的投注体验" font-size="fontSize13" @click="openDetail(4)" :upupShow="pointers.telCourseList == 4?true:false" />
-            <div class="item-content__body" v-show="pointers.telCourseList == 4">
-               <pre class="item-txt__wrap">
+				</div>
+			</div>
+			<div class="item-box">
+				<TitleBar
+					content="选择什么样的浏览器才能获得中博最佳的投注体验"
+					font-size="fontSize13"
+					@click="openDetail(4)"
+					:upupShow="pointers.telCourseList == 4?true:false"
+				/>
+				<div class="item-content__body" v-show="pointers.telCourseList == 4">
+					<pre class="item-txt__wrap">
 360极速浏览器
 （使用Chrome内核，支持国内银行转账）
 IE11 或以上版本
@@ -94,12 +111,16 @@ IE11 或以上版本
 如果您使用的是手持移动设备，我们强烈建议您通过手机自带浏览器进行访问。
 如果您使用的并非以上浏览器且在访问中博遇到问题，我们建议您点击以上 链接安装最新版本的浏览器。如果还由于浏览器访问出现问题，请您联系我们24*7在线客服获取帮助。
                </pre>
-            </div>
-         </div>
-         <div class="item-box">
-            <TitleBar content="我是否需要更改任何浏览器配置"  @click="openDetail(5)" :upupShow="pointers.telCourseList == 5?true:false"/>
-            <div class="item-content__body" v-show="pointers.telCourseList == 5">
-               <pre class="item-txt__wrap">
+				</div>
+			</div>
+			<div class="item-box">
+				<TitleBar
+					content="我是否需要更改任何浏览器配置"
+					@click="openDetail(5)"
+					:upupShow="pointers.telCourseList == 5?true:false"
+				/>
+				<div class="item-content__body" v-show="pointers.telCourseList == 5">
+					<pre class="item-txt__wrap">
 为了访问我们网站的全部功能，您需要启用JavaScript和在您的浏览器设置接受Cookies。如果您已经禁用JavaScript和coo--kies，将会无法进行投注或受到严重限制。如果您的浏览器使用浏览器的默认设置，您应该是可以正常进行投注。
 
 Cookies是当你浏览某网站时 ，由网站服务器置于你硬盘上的一个非常小的文本文件，它可以记录你的网站设置、投注选项和浏览过的网页等信息。Cookies记录的只是关于您浏览器中的信息，并不是关于您个人的信息。
@@ -158,29 +179,43 @@ JavaScript使网站更具互动性的一种网页浏览器编程语言，几乎�
 5) 5) 确保您已经选择了“允许设 置本地数据（推荐）”。
 6) 6) 点击“关闭”进行应用您的设置。
                </pre>
-            </div>
-         </div>
-         <div class="item-box">
-            <TitleBar content="什么是推荐的显示分辨率"  @click="openDetail(6)" :upupShow="pointers.telCourseList == 6?true:false"/>
-            <div class="item-content__body" v-show="pointers.telCourseList == 6">
-               <pre class="item-txt__wrap">
+				</div>
+			</div>
+			<div class="item-box">
+				<TitleBar
+					content="什么是推荐的显示分辨率"
+					@click="openDetail(6)"
+					:upupShow="pointers.telCourseList == 6?true:false"
+				/>
+				<div class="item-content__body" v-show="pointers.telCourseList == 6">
+					<pre class="item-txt__wrap">
 对于一个良好的视觉体验，我们建议至少为1024x768像素的图像分辨率。同样 我们建议您使用最低的32位颜色深度。
                </pre>
-            </div>
-         </div>
-         <div class="item-box">
-            <TitleBar content="我是否需要任何程式或浏览器插件来运行网站" font-size="fontSize13" @click="openDetail(7)" :upupShow="pointers.telCourseList == 7?true:false"/>
-            <div class="item-content__body" v-show="pointers.telCourseList == 7">
-               <pre class="item-txt__wrap">
+				</div>
+			</div>
+			<div class="item-box">
+				<TitleBar
+					content="我是否需要任何程式或浏览器插件来运行网站"
+					font-size="fontSize13"
+					@click="openDetail(7)"
+					:upupShow="pointers.telCourseList == 7?true:false"
+				/>
+				<div class="item-content__body" v-show="pointers.telCourseList == 7">
+					<pre class="item-txt__wrap">
 我们网站是不需要通过额外插件进行浏览。不过，一些互动的信息和帮助，例如我们的 娱乐场和真人荷官可能需要Flash播放器才能正常显示。点击这里安装Flash播放器
 插件：浏览器插件是一个添加在浏览器中句有特定功能或服务的软件。一些常见的插件有 Java、Flash播放器、Adobe Acrobat、QuickTime和Microsoft Silverlight。
                </pre>
-            </div>
-         </div>
-         <div class="item-box">
-            <TitleBar content="如果我已经使用网站更新和正确配置网站浏览器，仍然遇到问题，我应该怎么做？" font-size="fontSize13" @click="openDetail(8)" :upupShow="pointers.telCourseList == 8?true:false"/>
-            <div class="item-content__body" v-show="pointers.telCourseList == 8">
-               <pre class="item-txt__wrap">
+				</div>
+			</div>
+			<div class="item-box">
+				<TitleBar
+					content="如果我已经使用网站更新和正确配置网站浏览器，仍然遇到问题，我应该怎么做？"
+					font-size="fontSize13"
+					@click="openDetail(8)"
+					:upupShow="pointers.telCourseList == 8?true:false"
+				/>
+				<div class="item-content__body" v-show="pointers.telCourseList == 8">
+					<pre class="item-txt__wrap">
 请您通过我们的在线客服反馈您的问题。提供您所使用的网页浏览器版本，以及您的操作系统，网络接入类型和其他相关信息，以便我们更快为您找出问题。
 例如:
 用哪种浏览器：微软IE9
@@ -188,91 +223,91 @@ JavaScript使网站更具互动性的一种网页浏览器编程语言，几乎�
 网络接入类 型：10M宽带
 所遇到的问题：登陆的时候网络延迟。
                </pre>
-            </div>
-         </div>
-      </div>
-   </div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-import TitleBar from "./components/titleBar"
-import jsjcComp from "./components/jsjc-comp"
+import TitleBar from './components/titleBar'
+import jsjcComp from './components/jsjc-comp'
 export default {
-   data() {
-      return {
-         telCourseList:[],
-         pointers:{
-            telCourseList: 0
-         }
-      }
-   },
-   created() {
-
-   },
-   methods: {
-      openDetail(k){
-         if(this.pointers.telCourseList == k){
-            this.pointers.telCourseList = -1;
-            return;
-         }
-         this.pointers.telCourseList = -1;
-         this.pointers.telCourseList = k;
-      },
-      goBack(){
-         this.$router.go(-1)
-      }
-   },
-   components: {
-      TitleBar,
-      jsjcComp
-   }
+	data() {
+		return {
+			telCourseList: [],
+			pointers: {
+				telCourseList: 0
+			}
+		}
+	},
+	created() {},
+	methods: {
+		openDetail(k) {
+			if (this.pointers.telCourseList == k) {
+				this.pointers.telCourseList = -1
+				return
+			}
+			this.pointers.telCourseList = -1
+			this.pointers.telCourseList = k
+		},
+		goBack() {
+			this.$router.go(-1)
+		}
+	},
+	components: {
+		TitleBar,
+		jsjcComp
+	}
 }
 </script>
 
 <style scoped lang="less">
-.jszc{
-   height: 100%;
-   .headBox{
-      position: relative;
-      .leftCorner{
-         position: absolute;
-         left: 15px;
-         top: 0;
-         bottom: 0;
-         padding-right: 50px;
-         .van-icon{
-               font-size: 20px;
-         }
-      }
-      p{
-         color: #000;
-         font-size: 18px;
-         line-height: 50px;
-         text-align: center;
-      }
-   }
-   .main{
-      background-color: #fff;
-      padding: 15px 15px;
-      .item-box{
-            margin-top: 10px;
-            margin-bottom: 10px;
-         .item-content__body{
-            border:1px solid;
-            border-image:linear-gradient(0deg, rgba(212,182,116,1), rgba(243,208,132,1)) 1 1;
-            font-size: 12px;
-            padding: 0 8px;
-            color: #6C6C6C;
-            line-height: 15px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            .item-txt__wrap{
-               white-space: pre-wrap;
-               word-wrap: break-word;
-               margin: 8px 0 0 0;
-            }
-         }
-      }
-   }
+.jszc {
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	.headBox {
+		position: relative;
+		.leftCorner {
+			position: absolute;
+			left: 15px;
+			top: 0;
+			bottom: 0;
+			padding-right: 50px;
+			.van-icon {
+				font-size: 20px;
+			}
+		}
+		p {
+			color: #000;
+			font-size: 18px;
+			line-height: 50px;
+			text-align: center;
+		}
+	}
+	.main {
+		background-color: #fff;
+		padding: 15px 15px;
+		.item-box {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			.item-content__body {
+				border: 1px solid;
+				border-image: linear-gradient(0deg, rgba(212, 182, 116, 1), rgba(243, 208, 132, 1)) 1 1;
+				font-size: 12px;
+				padding: 0 8px;
+				color: #6c6c6c;
+				line-height: 15px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				.item-txt__wrap {
+					white-space: pre-wrap;
+					word-wrap: break-word;
+					margin: 8px 0 0 0;
+				}
+			}
+		}
+	}
 }
 </style>

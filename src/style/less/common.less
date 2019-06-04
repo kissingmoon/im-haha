@@ -1,10 +1,8 @@
 html {
-  background-color: @base_color;
   font-family: 'Chinese Quote', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
     'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
-
 
 //文字超出省略、文字两端对齐
 .line-camp( @clamp:1 ) {
@@ -94,7 +92,7 @@ html {
 .normal-button {
   height: 44px;
   width: 265px;
-  background: rgba(178, 178, 178, 1);
+  background: @btn_color_disabled;
   border-radius: 21px;
   font-size: 18px;
   font-family: 'HiraginoSansGB-W3';
@@ -102,9 +100,9 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  &.active {
-    background: rgba(229, 200, 139, 1);
-  }
+}
+.normal-button.active {
+  background: @btn_color;
 }
 .ims-title--large {
   font-size: 18px;

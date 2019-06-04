@@ -1,10 +1,7 @@
 <template>
 	<div class="bet-wrapper display-flex flex-column">
 		<div class="header-container">
-			<div class="header-box">
-				<ims-header title="投注记录" @onRightClick="onRightClick" :rightIcon="true">
-				</ims-header>
-			</div>
+			<ims-header title="投注记录" @onRightClick="onRightClick" :rightIcon="true"></ims-header>
 		</div>
 		<div class="formTitle">
 			<div class="flexBox display-flex">
@@ -12,11 +9,17 @@
 					<div class="name flex-1">
 						<b>名称</b>
 					</div>
-					<div class="time flex-1"><b>时间</b></div>
+					<div class="time flex-1">
+						<b>时间</b>
+					</div>
 				</div>
 				<div class="right flex-1 display-flex">
-					<div class="tz flex-1"><b>投注</b></div>
-					<div class="profit flex-1"><b>盈亏</b></div>
+					<div class="tz flex-1">
+						<b>投注</b>
+					</div>
+					<div class="profit flex-1">
+						<b>盈亏</b>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -50,7 +53,12 @@
 		</div>
 		<div class="bottom-popup-container">
 			<van-popup v-model="switchs.showPopup" position="bottom">
-				<div v-for="(v,k) in popList" :key="k" class="popup-item ims--txt--midum" @click="searchData(v)">{{ v.date_text }}</div>
+				<div
+					v-for="(v,k) in popList"
+					:key="k"
+					class="popup-item ims--txt--midum"
+					@click="searchData(v)"
+				>{{ v.date_text }}</div>
 				<div class="popup-item cacle-txt" @click="switchs.showPopup = false">取消</div>
 			</van-popup>
 		</div>
@@ -59,7 +67,7 @@
 
 <script>
 import { findUserRecord } from '../../js/network'
-import noData from "../../components/noData/noData"
+import noData from '../../components/noData/noData'
 export default {
 	data() {
 		return {
@@ -157,7 +165,7 @@ export default {
 			this.switchs.showPopup = true
 		}
 	},
-	components:{
+	components: {
 		noData
 	}
 }
@@ -170,15 +178,18 @@ export default {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: @base_color;
+	padding-top: @app_head_height;
+	box-sizing: border-box;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+
 	.header-container {
-		.header-box {
-			height: 49px;
-		}
+		height: @app_head_height;
 	}
 	.formTitle {
 		position: fixed;
-		top: 50px;
+		top: @app_head_height;
 		left: 0;
 		right: 0;
 		z-index: 899;
@@ -197,7 +208,6 @@ export default {
 	}
 	.main {
 		padding-top: 30px;
-		background-color: #fff;
 		.van-pull-refresh {
 			border-top: 1px solid #f2f2f2;
 		}

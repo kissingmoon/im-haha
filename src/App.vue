@@ -52,7 +52,6 @@ export default {
 	},
 	created() {
 		this.checkUUID()
-		console.log(this.show8888, 111)
 		this.checkUTK()
 	},
 	methods: {

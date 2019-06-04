@@ -77,14 +77,14 @@ export default {
 			width: 22px;
 			height: 22px;
 			fill: currentColor;
-			margin: 12.5px 0 0 10px;
+			margin: 12.5px 0 0 15px;
 		}
 		.title {
 			.line-camp(1);
 			max-width: 225px;
 			flex: 1;
 			text-align: center;
-			font-size: 18px;
+			font-size: 17px;
 			font-weight: bold;
 		}
 		.right {

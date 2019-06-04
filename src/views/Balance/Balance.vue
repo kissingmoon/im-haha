@@ -1,7 +1,11 @@
 <template>
 	<div class="balance-wrapper">
 		<ims-header title="余额提现">
-			<span style="width:5em;display:block;text-align:right;" slot="right" @click="$router.push('/balanceRecord')">提现记录</span>
+			<span
+				style="width:5em;display:block;text-align:right;"
+				slot="right"
+				@click="$router.push('/balanceRecord')"
+			>提现记录</span>
 		</ims-header>
 		<div class="main-container">
 			<div class="title-box display-flex flex-center flex-column">
@@ -62,7 +66,6 @@ import { net_drawCash } from '@/js/network.js'
 export default {
 	data() {
 		return {
-			txtcontent: '您还未设置提现密码，为了您的账户安全请前往密码设置',
 			dialog: false,
 			btnActive: {},
 			balanceTip: '',
@@ -119,7 +122,7 @@ export default {
 						if (newVal[key].valueType == 'lowLetterNum') {
 							// newVal[key].model = newVal[key].model.replace(/[^a-z0-9]/g,'');
 						} else if (newVal[key].valueType == 'num') {
-							newVal[key].model = newVal[key].model.replace(/\D/g,'');
+							newVal[key].model = newVal[key].model.replace(/\D/g, '')
 						} else if (newVal[key].valueType == 'letterNum') {
 							// newVal[key].model = newVal[key].model.replace(/[^\w_]/g,'');
 						}
@@ -190,10 +193,10 @@ export default {
 			param.bankPassword = this.balanceObj.drawPwd.model
 			let res = await net_drawCash(param)
 			if (res.code == '200') {
-				toast("提现申请成功！")
+				toast('提现申请成功！')
 				this.$api.getUserInfo()
-				this.balanceObj.drawNum.model = "";
-				this.balanceObj.drawPwd.model = "";
+				this.balanceObj.drawNum.model = ''
+				this.balanceObj.drawPwd.model = ''
 			} else if (res.code == '201') {
 				this.balanceTip = res.msg
 			}
@@ -204,6 +207,12 @@ export default {
 
 <style lang="less" scoped>
 .balance-wrapper {
+	padding-top: @app_head_height;
+	min-height: 100%;
+	box-sizing: border-box;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
 	/deep/ .van-dialog__header {
 		padding-left: 10px;
 		padding-right: 10px;
@@ -216,45 +225,43 @@ export default {
 	.head-container {
 		height: 44px;
 	}
-	.main-container {
-		.title-box {
-			padding: 30px 0;
-			background-color: #ffffff;
-			.title-num {
-				color: @color_txt_yellow;
-				font-size: 35px;
-				line-height: 35px;
-				font-weight: bold;
-				margin-top: 12px;
-				em {
-					font-size: 24px;
-				}
+}
+.main-container {
+	.title-box {
+		padding: 30px 0;
+		.title-num {
+			color: #fff;
+			font-size: 35px;
+			line-height: 35px;
+			font-weight: bold;
+			margin-top: 12px;
+			em {
+				font-size: 24px;
 			}
 		}
-		.balance-box {
-			background-color: @base_color;
-			.item-content {
-				padding: 20px 20px 0 20px;
-				.item-body {
-					height: 44px;
-					padding-top: 8px;
-				}
-			}
-
-			.tip-content {
-				padding-bottom: 30px;
-				padding: 11px 20px 64px 20px;
-				font-size: 13px;
-				font-family: 'PingFangSC-Regular';
-				color: rgba(160, 160, 160, 1);
-				& > div {
-					margin-top: 3px;
-				}
-			}
-			.loginBtn-box {
-				padding: 0 55px 40px 55px;
+	}
+	.balance-box {
+		.item-content {
+			padding: 20px 20px 0 20px;
+			.item-body {
 				height: 44px;
+				padding-top: 8px;
 			}
+		}
+
+		.tip-content {
+			padding-bottom: 30px;
+			padding: 11px 20px 64px 20px;
+			font-size: 13px;
+			font-family: 'PingFangSC-Regular';
+			color: rgba(160, 160, 160, 1);
+			& > div {
+				margin-top: 3px;
+			}
+		}
+		.loginBtn-box {
+			padding: 0 55px 40px 55px;
+			height: 44px;
 		}
 	}
 }

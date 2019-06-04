@@ -21,7 +21,7 @@ export default {
 	components: {
 		ImsImage
 	},
-		computed:{
+	computed: {
 		...mapGetters(['footRedDot'])
 	},
 	props: {
@@ -50,7 +50,7 @@ export default {
 		margin-top: 10px;
 		position: relative;
 	}
-	.actv_8888{
+	.actv_8888 {
 		position: absolute;
 		right: 0;
 		top: 0;
@@ -77,7 +77,7 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 		padding-right: 8px;
-		background: #fff;
+		background: rgba(255, 255, 255, 0.5);
 	}
 	.p {
 		.line-camp(1);

@@ -3,7 +3,7 @@
 		<div class="top">
 			<div @click="userGreeting" class="login">{{greeting}}</div>
 			<div @click="gotoPage('/userinfo')" class="data">个人资料</div>
-			<img class="logo" src="../img/walletbar-pattern@2x.png">
+			<img class="logo" src="../img/yg_logo@2x.png">
 		</div>
 		<div class="bottom">
 			<div @click="userGreeting" class="user_center">
@@ -175,7 +175,7 @@ export default {
 	background: rgba(255, 255, 255, 0.66);
 	.top {
 		height: 22px;
-		background: url('../../../assets/bg_wallet_top.png') no-repeat;
+		background: url('../img/user_bg.png') no-repeat;
 		background-size: 100%;
 		display: flex;
 		align-items: center;

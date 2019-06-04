@@ -24,6 +24,13 @@
 	right: 0;
 	background: url('../../assets/service_bg.jpg') no-repeat;
 	background-size: 100%;
+	/deep/.app_head{
+		background: none;
+	}
+	/deep/.app_head .main{
+		background: none;
+		color: @text_color;
+	}
 	.boxs {
 		position: absolute;
 		top: 50%;
