@@ -1,10 +1,9 @@
 <template>
 	<div class="bet-wrapper display-flex flex-column">
-		<div class="header-container">
-			<ims-header title="投注记录">
-				<div slot="right" class="header-cottage" @click="onRightClick"></div>
-			</ims-header>
-		</div>
+		<ims-header title="投注记录">
+			<div slot="right" class="header-cottage" @click="onRightClick"></div>
+		</ims-header>
+
 		<div class="formTitle">
 			<div class="flexBox display-flex">
 				<div class="left flex-1 display-flex">
@@ -175,16 +174,16 @@ export default {
 
 <style lang="less" scoped>
 .bet-wrapper {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	position: relative;
+	min-height: 100%;
 	padding-top: @app_head_height;
 	box-sizing: border-box;
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
 	background-size: 100%;
 	background-attachment: fixed;
+	/deep/.van-pull-refresh {
+		min-height: 100%;
+	}
 	.header-cottage {
 		width: 100%;
 		height: @app_head_height;
@@ -192,9 +191,7 @@ export default {
 		background-size: 22px;
 		background-position: center right;
 	}
-	.header-container {
-		height: @app_head_height;
-	}
+
 	.formTitle {
 		position: fixed;
 		top: @app_head_height;

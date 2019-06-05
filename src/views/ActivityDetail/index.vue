@@ -937,16 +937,12 @@ export default {
 							if (this.id == list.id) {
 								this.list = list
 								let html = list.detailDemo
-								if (!html) {
-									toast('活动不存在')
+								if (list.id == '53') {
+									this.set_8888()
 								} else {
-									this.isShow = true
-									if (html == 'T01') {
-										this.set_8888()
-									} else {
-										this.html = html
-									}
+									this.html = html
 								}
+								this.isShow = true
 							}
 						})
 					} else {

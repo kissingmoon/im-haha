@@ -1,13 +1,13 @@
 <template>
 	<div class="about-wrapper">
 		<div class="header-container">
-			<ims-header title="关于中博"></ims-header>
+			<ims-header title="关于YG娱乐"></ims-header>
 		</div>
 		<div class="banner-container">
 			<img src="./img/title-bg.png" alt>
 		</div>
 		<div class="text-container">
-			<p>北京时间4月30日2:00，美东时间4月29日14:00，万众瞩目的博彩业巨头中博平台登上纽约时代广场纳斯达克大屏。</p>
+			<p>北京时间4月30日2:00，美东时间4月29日14:00，万众瞩目的博彩业巨头YG娱乐平台登上纽约时代广场纳斯达克大屏。</p>
 			<p>纽约，世界重要金融经济中心；“时代广场”，纽约市中心，融汇文化与金融的世界级地标，至今已有100多年历史，其地点位于纽约市曼哈顿，因其世界位置与著名程度，又被称为“世界的十字路口”纳斯达克大屏幕，纽约时代广场的标志性建筑物，其屏幕面积之大及世界影响之广泛，被舆论评为“世界第一屏”。</p>
 			<ul class="text-title">
 				<li>何为纳斯达克</li>
@@ -21,22 +21,27 @@
 			<div class="bottom-box grey-text">
 				<div class="bottom-title">
 					<span class="title-left">2019</span>
-					<span class="title-txt">中博 目光所及 更显专业</span>
+					<span class="title-txt">YG娱乐 目光所及 更显专业</span>
 				</div>
-				<p>中博经过20年沉淀，现拥有一流在线博彩技术及经验丰富的运营团队，并在全球范围内信誉卓著。</p>
-				<p>现中博致力于为亚洲用户提供更高品质的在线体育服务及真人娱乐平台，力求给不同地区的用户带来别样、缤纷的极致体验！</p>
+				<p>YG娱乐经过20年沉淀，现拥有一流在线博彩技术及经验丰富的运营团队，并在全球范围内信誉卓著。</p>
+				<p>现YG娱乐致力于为亚洲用户提供更高品质的在线体育服务及真人娱乐平台，力求给不同地区的用户带来别样、缤纷的极致体验！</p>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-export default {
-}
+export default {}
 </script>
 
 <style lang="less" scoped>
 .about-wrapper {
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
 	.grey-text {
 		color: #6c6c6c;
 	}
@@ -47,12 +52,11 @@ export default {
 	}
 	.text-container {
 		padding: 28px 15px;
-		background-color: #ffffff;
 		line-height: 16px;
 		.text-title {
 			padding: 10px 18px;
 			list-style-type: square;
-			color: #dfc388;
+			color: #0088FF;
 			font-size: 14px;
 			font-weight: bold;
 		}
@@ -66,12 +70,12 @@ export default {
 				font-weight: bold;
 				.title-left {
 					padding: 0 3px;
-					background-color: #dfc388;
+					background-color: #0088FF;
 					color: #ffffff;
 					border-bottom: 2px solid rgba(223, 195, 136, 1);
 				}
 				.title-txt {
-					color: #dfc388;
+					color: #0088FF;
 					padding-left: 8px;
 				}
 			}

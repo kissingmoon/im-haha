@@ -17,7 +17,7 @@ export default {
 	},
 	computed: {
 		disabled() {
-			if (this.name.length > 0 && this.name != this.account.userName) {
+			if (this.name.length > 0 && this.name.length < 12 && this.name != this.account.userName) {
 				return false
 			}
 			return true

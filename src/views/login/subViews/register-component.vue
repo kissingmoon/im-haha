@@ -143,6 +143,20 @@ export default {
 				this.formData.code.model = ''
 				this.setCode()
 			}
+			if (k == 'pwd') {
+				if (this.formData.pwd.rightIconClass == 'right-icon__eye') {
+					this.formData.pwd.rightIconClass = 'right-icon__eye0'
+				} else {
+					this.formData.pwd.rightIconClass = 'right-icon__eye'
+				}
+			}
+			if (k == 'confirmPwd') {
+				if (this.formData.confirmPwd.rightIconClass == 'right-icon__eye') {
+					this.formData.confirmPwd.rightIconClass = 'right-icon__eye0'
+				} else {
+					this.formData.confirmPwd.rightIconClass = 'right-icon__eye'
+				}
+			}
 		},
 		inputFocusFun(v, k) {
 			this.pointers.formData = k
@@ -223,10 +237,12 @@ export default {
 	box-sizing: border-box;
 	.main-container {
 		height: 100%;
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+			overflow: hidden;
 		.submit-box {
 			width: 54px;
-			background: rgba(0, 0, 0, .4);
-			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.91);
+			background: rgba(0, 0, 0, 0.4);
 			.submit-box__btn--top {
 				width: 24px;
 				height: 24px;
@@ -241,16 +257,16 @@ export default {
 			}
 		}
 		.form-box {
-			background: rgba(255, 255, 255, 0.1);
+			background: rgba(255, 255, 255, 0.4);
 			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.1);
 			padding: 0 15px 18px 15px;
 			.form-title {
 				padding: 20px 0;
 				text-align: center;
-				font-size: 15px;
+				font-size: 18px;
 				font-family: 'HiraginoSansGB-W3';
 				font-weight: normal;
-				color: rgba(229, 200, 139, 1);
+				color: #fff;
 			}
 			.form-input-content {
 				.form-input-item {
@@ -280,7 +296,12 @@ export default {
 						&.right-icon__eye {
 							width: 18px;
 							height: 12px;
-							.bg-image('./../img/yanjing');
+							background-image: url('../img/yanjing.png');
+						}
+						&.right-icon__eye0 {
+							width: 18px;
+							height: 12px;
+							background-image: url('../img/yanjing0.png');
 						}
 						&.right-icon__clear {
 							width: 17px;
@@ -304,7 +325,7 @@ export default {
 				color: rgba(255, 255, 255, 1);
 				background: rgba(155, 155, 155, 0.8);
 				&.active {
-					background: rgba(229, 200, 139, 1);
+					background: @btn_color;
 				}
 			}
 		}

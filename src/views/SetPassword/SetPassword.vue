@@ -308,6 +308,7 @@ export default {
 		async setBalancePwd() {
 			if (!this.checkBalancePwd()) return
 			let param = {}
+			param.drawingPwd = this.currentObj.payPwd.model
 			param.oldPassword = this.account.bankPassword == 'true' ? this.currentObj.oldPassword.model : ''
 			let res = await net_setDrawPwd(param)
 			if (res.code == '200') {

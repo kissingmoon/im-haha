@@ -141,13 +141,13 @@ export default {
 		line-height: 20px;
 		margin-top: 10px;
 		margin-bottom: 2px;
-		color: rgba(221, 186, 112, 1);
+		color: #0088FF;
 		span {
 			display: inline-block;
 			width: 8px;
 			height: 8px;
 			margin-right: 4px;
-			background-color: #dfc388;
+			background-color: #0088FF;
 			transform: rotate(45deg);
 		}
 	}
@@ -160,13 +160,13 @@ export default {
 		margin-top: 10px;
 		margin-bottom: 2px;
 		line-height: 20px;
-		color: rgba(221, 186, 112, 1);
+		color: #0088FF;
 		span {
 			flex: 8px 8px;
 			width: 8px;
 			height: 8px;
 			margin-right: 4px;
-			background-color: #dfc388;
+			background-color: #0088FF;
 			transform: rotate(45deg);
 		}
 	}

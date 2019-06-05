@@ -45,19 +45,19 @@ export default {
 			iconList: [
 				{
 					imgSrc: require('./img/dl1.png'),
-					name: '棋牌游戏'
+					name: '亚太体育'
 				},
 				{
 					imgSrc: require('./img/dl2.png'),
-					name: '彩票投注'
-				},
-				{
-					imgSrc: require('./img/dl3.png'),
 					name: '真人娱乐'
 				},
 				{
+					imgSrc: require('./img/dl3.png'),
+					name: '棋牌游戏'
+				},
+				{
 					imgSrc: require('./img/dl4.png'),
-					name: '亚太体育'
+					name: '彩票投注'
 				}
 			]
 		}
@@ -110,7 +110,7 @@ export default {
 	}
 	.top-container {
 		.up-content {
-			height: 110px;
+			height: 100px;
 			img {
 				height: 55px;
 				width: 154px;
@@ -120,15 +120,15 @@ export default {
 			margin-top: 25px;
 			font-size: 12px;
 			text-align: center;
-			color: @color_txt_yellow;
+			color: #fff;
 			.tip-line {
 				width: 73px;
 				height: 1px;
 				&.tip-line__left {
-					background: url('./img/left-line.png') no-repeat;
+					background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
 				}
 				&.tip-line__right {
-					background: url('./img/right-line.png') no-repeat;
+					background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
 				}
 			}
 		}
@@ -136,17 +136,17 @@ export default {
 			.item-content {
 				height: 110px;
 				font-size: 12px;
-				color: @color_txt_yellow;
+				color: #fff;
 				img {
 					height: 48px;
 					width: 48px;
-					margin-bottom: 10px;
+					margin-bottom: 9px;
 				}
 			}
 		}
 	}
 	.main-container {
-		// padding-bottom: 50px;
+		
 	}
 }
 .marquee-left {

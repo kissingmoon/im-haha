@@ -296,11 +296,10 @@ export default {
 			margin-top: 10px;
 			margin-bottom: 10px;
 			.item-content__body {
-				border: 1px solid;
-				border-image: linear-gradient(0deg, rgba(212, 182, 116, 1), rgba(243, 208, 132, 1)) 1 1;
+				border: 1px solid #E5E5E5;
 				font-size: 12px;
 				padding: 0 8px;
-				color: #6c6c6c;
+				color: #6C6C6C;
 				line-height: 15px;
 				margin-top: 10px;
 				margin-bottom: 10px;

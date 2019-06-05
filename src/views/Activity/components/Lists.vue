@@ -9,7 +9,7 @@
 					<p class="p">{{list.title}}</p>
 					<img class="icon" src="../../../assets/icon_right.png">
 				</div>
-				<div v-if="list.detailDemo == 'T01' && footRedDot" class="actv_8888"></div>
+				<div v-if="list.id == '53' && footRedDot" class="actv_8888"></div>
 			</li>
 		</transition-group>
 	</ul>

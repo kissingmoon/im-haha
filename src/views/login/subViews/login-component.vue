@@ -21,7 +21,7 @@
 					>
 						<div class="slot-icon--left" :class="v.leftIconClass" slot="leftIcon"></div>
 						<div class="slot-icon--right" :class="v.rightIconClass" slot="rightIcon">
-							<img v-if="v.imgSrc" :src="codeSrc" alt>
+							<img v-if="v.imgSrc" :src="codeSrc">
 						</div>
 					</ims-input>
 				</div>
@@ -54,6 +54,9 @@ import { randomWord } from '@/js/tools.js'
 import { net_login } from '@/js/network.js'
 
 export default {
+	components: {
+		imsInput
+	},
 	data() {
 		return {
 			formData: {
@@ -79,7 +82,6 @@ export default {
 					model: '',
 					placeholder: '验证码',
 					leftIconClass: 'left-icon__code',
-					rightIconClass: 'right-icon__code',
 					rightIconClass: '',
 					type: 'tel',
 					regTip: '',
@@ -93,9 +95,7 @@ export default {
 			codeSrc: ''
 		}
 	},
-	components: {
-		imsInput
-	},
+
 	computed: {
 		...mapGetters(['platformFlag'])
 	},
@@ -127,11 +127,17 @@ export default {
 		goNext() {
 			this.$emit('goNext')
 		},
-		leftClickFun() {},
 		rightClickFun(v, k) {
 			if (k == 'code') {
 				this.formData.code.model = ''
 				this.setCode()
+			}
+			if (k == 'pwd') {
+				if (this.formData.pwd.rightIconClass == 'right-icon__eye') {
+					this.formData.pwd.rightIconClass = 'right-icon__eye0'
+				} else {
+					this.formData.pwd.rightIconClass = 'right-icon__eye'
+				}
 			}
 		},
 		inputFocusFun(v, k) {},
@@ -195,6 +201,9 @@ export default {
 	box-sizing: border-box;
 	.main-container {
 		height: 100%;
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+		overflow: hidden;
 		.form-box {
 			background: rgba(255, 255, 255, 0.4);
 			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.1);
@@ -202,10 +211,10 @@ export default {
 			.form-title {
 				padding: 25px 0 20px 0;
 				text-align: center;
-				font-size: 15px;
+				font-size: 18px;
 				font-family: 'HiraginoSansGB-W3';
 				font-weight: normal;
-				color: rgba(229, 200, 139, 1);
+				color: #fff;
 			}
 			.form-input-content {
 				.form-input-item {
@@ -231,7 +240,12 @@ export default {
 						&.right-icon__eye {
 							width: 18px;
 							height: 12px;
-							.bg-image('./../img/yanjing');
+							background-image: url('../img/yanjing.png');
+						}
+						&.right-icon__eye0 {
+							width: 18px;
+							height: 12px;
+							background-image: url('../img/yanjing0.png');
 						}
 						&.right-icon__clear {
 							width: 17px;
@@ -252,7 +266,7 @@ export default {
 					font-size: 12px;
 					font-family: 'HiraginoSansGB-W3';
 					font-weight: normal;
-					color: rgba(229, 200, 139, 1);
+					color: #fff;
 				}
 			}
 			.form-submit-content {
@@ -262,9 +276,9 @@ export default {
 				font-family: 'HiraginoSansGB-W3';
 				font-weight: normal;
 				color: rgba(255, 255, 255, 1);
-				background: rgba(155, 155, 155, 0.8);
+				background: rgba(155, 155, 155, .8);
 				&.active {
-					background: rgba(229, 200, 139, 1);
+					background: @btn_color;
 				}
 			}
 			.submit-tip {
@@ -272,14 +286,13 @@ export default {
 				padding-top: 10px;
 				a {
 					text-decoration: underline;
-					color: rgba(229, 200, 139, 1);
+					color: #fff;
 				}
 			}
 		}
 		.submit-box {
 			width: 50px;
-			background: rgba(0, 0, 0, .4);
-			// box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.91);
+			background: rgba(0, 0, 0, 0.4);
 			.submit-box__btn--top {
 				width: 24px;
 				height: 24px;
