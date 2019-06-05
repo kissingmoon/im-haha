@@ -11,8 +11,8 @@
 				<div class="waysWrap display-flex">
 					<div class="phone"></div>
 					<div class="emails flex-1">
-						<p>客服邮箱：xxxxx@163.com</p>
-						<p>市场邮箱：xxxxx@163.com</p>
+						<p>QQ：6708899</p>
+						<p>邮箱：younggame999@gmail.com</p>
 					</div>
 				</div>
 			</div>
@@ -43,25 +43,6 @@ export default {
 	background: url('../../../assets/page_bg_default.jpg') no-repeat;
 	background-size: 100%;
 	background-attachment: fixed;
-	.headBox {
-		position: relative;
-		.leftCorner {
-			position: absolute;
-			left: 15px;
-			top: 0;
-			bottom: 0;
-			padding-right: 50px;
-			.van-icon {
-				font-size: 20px;
-			}
-		}
-		p {
-			color: #000;
-			font-size: 18px;
-			line-height: 50px;
-			text-align: center;
-		}
-	}
 	.main {
 		padding: 0 15px;
 		.logo {
@@ -69,7 +50,7 @@ export default {
 			height: 36px;
 			margin: 31px auto 28px;
 			background: url('../img/logo.png') no-repeat;
-			background-size: cover;
+			background-size: 162px 36px;
 		}
 		.con {
 			background-color: #8C6E64;
@@ -106,11 +87,12 @@ export default {
 				.emails {
 					padding-left: 16px;
 					p {
-						font-size: 18px;
+						font-size: 16px;
 						font-family: Adobe Heiti Std R;
 						font-weight: normal;
 						color: rgba(51, 51, 51, 1);
 						line-height: 17px;
+						text-align: left;
 						&:first-child {
 							margin-bottom: 9px;
 						}

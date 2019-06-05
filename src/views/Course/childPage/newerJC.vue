@@ -11,7 +11,7 @@
 			</div>
 			<div class="newerMain">
 				<div class="eduWrap" v-if="tabIndex == 0">
-					<p style="margin-bottom:0">账号余额有100元，玩游戏后，账号余额为0，为什么？</p>
+					<p style="margin-bottom:0;color:#8C6E64;">账号余额有100元，玩游戏后，账号余额为0，为什么？</p>
 					<p style="margin-top:6px">当您再次刷新余额，还是为0，请点击用户中心的额度转换功能。</p>
 					<div class="ed1"></div>
 					<p>查看您当前是否有开启自动转换功能，如未开启。</p>
@@ -107,7 +107,7 @@ export default {
 			padding: 60px 12px 20px;
 			> div > p {
 				margin: 10px 0 20px;
-				color: #ab843f;
+				color: #6A4E3D;
 			}
 			.hdWrap {
 				> div {

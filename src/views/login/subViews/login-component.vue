@@ -196,7 +196,7 @@ export default {
 	.main-container {
 		height: 100%;
 		.form-box {
-			background: rgba(255, 255, 255, 0.1);
+			background: rgba(255, 255, 255, 0.4);
 			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.1);
 			padding: 0 15px 18px 15px;
 			.form-title {
@@ -277,9 +277,9 @@ export default {
 			}
 		}
 		.submit-box {
-			width: 54px;
+			width: 50px;
 			background: rgba(0, 0, 0, .4);
-			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.91);
+			// box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.91);
 			.submit-box__btn--top {
 				width: 24px;
 				height: 24px;

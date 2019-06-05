@@ -1,61 +1,80 @@
 <template>
 	<div class="about-wrapper">
 		<div class="header-container">
-			<ims-header class="about_head" title="关于YG娱乐"></ims-header>
+			<ims-header title="关于中博"></ims-header>
 		</div>
-		<div class="main">
+		<div class="banner-container">
+			<img src="./img/title-bg.png" alt>
+		</div>
+		<div class="text-container">
+			<p>北京时间4月30日2:00，美东时间4月29日14:00，万众瞩目的博彩业巨头中博平台登上纽约时代广场纳斯达克大屏。</p>
+			<p>纽约，世界重要金融经济中心；“时代广场”，纽约市中心，融汇文化与金融的世界级地标，至今已有100多年历史，其地点位于纽约市曼哈顿，因其世界位置与著名程度，又被称为“世界的十字路口”纳斯达克大屏幕，纽约时代广场的标志性建筑物，其屏幕面积之大及世界影响之广泛，被舆论评为“世界第一屏”。</p>
+			<ul class="text-title">
+				<li>何为纳斯达克</li>
+			</ul>
 			<p
-				class="p"
-			>1. 在YG娱乐，我们一向采取最谨慎的态度及工作程序保护处理客户资料。这是一份法律文件，清楚说明YG娱乐是如何处理收集得来以及确认客户身份的数据。此隐私权政策是规则条例中的一部分，您应该将此政策和规则条款文件一起阅读。</p>
-			<p class="p">2. 当您在YG娱乐注册账户时，即确认您已经浏览过我们的网站，能完全理解及接受此隐私条款规则与条件，并了解收集各项资料之目的及处理方式。</p>
+				class="grey-text"
+			>纳斯达克 （英语： NASDAQ） 全称：美国全国证券交易商协会自动报价表，创立于1971年，迄今已成为全球第二大的证券交易市场，世界最大的股票市场之一。</p>
 			<p
-				class="p"
-			>3. 所有用户提供的个人信息，其传送都将通过安全端口（SSL 128 bit encryption Standard）并存放在公众无法进入的保密环境之下。所有数据的内部出入将受到严格限制和严密监控，这是我们一直遵循的隐私权政策宗旨。</p>
-			<p
-				class="p"
-			>4. YG娱乐团队不容许也绝不会随意向您发送未经您许可的垃圾电子邮件；当本网站推出新颖、好玩和有趣的活动时，您可能会收到一些定期有关更新YG娱乐产品资讯和服务的电子邮件，这些电子邮件能帮助您充分了解并享受本网站的服务。</p>
-			<p
-				class="p"
-			>5. 当您在浏览本网站时，YG娱乐会使用一种被称为“信息记录程序（cookies）”的小档案，为了使您浏览时更加轻松快捷，我们会使用一种临时“对话”的信息记录程序。但是当您退出浏览器时，这些“对话”信息记录程序也会随之自动删除。</p>
-			<p
-				class="p"
-			>6. 大多数互联网浏览器都会自动接收信息记录程序，您可以设定您的浏览器拒绝信息记录程序或要求浏览器显示信息记录程序建立的位置。本网站有些服务必须有信息记录程序才能使用，假如您拒绝信息记录程序，本网站可能无法给您提供某些服务项目。</p>
-			<p class="p">7. 我们亦会使用信息记录程序来编辑不记名的数据，用作了解客户如何使用YG娱乐旗下产品，并从中改进网页结构（我们并不能通过这种方式来识别您的身份）。</p>
-			<p class="p">8. 信息记录程序和嵌入代码能提供浏览本网站网页的一般站点和非个人的统计信息。YG娱乐会使用此类信息作改善客户服务之用。</p>
-			<p class="p">9. 我们可能会将您提供的（或向您收集的）数据，提供给YG娱乐或相关的联属公司，但仅作此政策所描述之用途。</p>
-			<p class="p">10. 如YG娱乐用于经营的所有资产（或大部分）被第三方收购，我们可能会将个人数据转移给收购者，以便收购者能继续提供相同的服务。</p>
-			<p
-				class="p"
-			>11. 我们有严格的安全措施来保护我们的客户数据库，仅限内部员工始可使用。但每位客户亦有责任防止任何未经授权的链接，以确保没有人能使用您的YG娱乐相关账户。当关闭YG娱乐网站时，谨记注销或退出YG娱乐网站，并保管好您的密码以免外泄。</p>
-			<p class="p">12. 当按法律规定或当YG娱乐所选的第三方支付公司和金融机构需要填写有关资料以验证您的交易，YG娱乐保留向外界提供有关资料的权利。</p>
-			<p class="p">13. 我们只会按照博彩执照的规定来保留您的个人数据。</p>
-			<p class="p">14. 如YG娱乐网站含有其他站点的链接，这只供作参考之用。我们不会对有关网站的隐私惯例或网址的内容承担责任。</p>
-			<p class="p">15. YG娱乐保留权利可自行对此隐私权政策作出任何更改。此政策如有任何更改均具有约束力，并立即生效。</p>
-			<p class="p">16. 此隐私权政策于2019年3月更新。</p>
+				class="grey-text"
+			>纳斯达克大屏于2000年1月揭幕启用，屏幕高达36.6米，该广告位花费纳斯达克每年至少200万美元，在广告市场纳斯达克大屏作为标杆和典范长期屹立在纽约时代广场。这块占地不到纽约市总面积0.1%的地方，创造了纽约10%的总产值，根据华尔街日报(wall street journal) 报道，时代广场的广告牌收入，甚至高出当地写字楼租金收入。</p>
+			<div class="bottom-box grey-text">
+				<div class="bottom-title">
+					<span class="title-left">2019</span>
+					<span class="title-txt">中博 目光所及 更显专业</span>
+				</div>
+				<p>中博经过20年沉淀，现拥有一流在线博彩技术及经验丰富的运营团队，并在全球范围内信誉卓著。</p>
+				<p>现中博致力于为亚洲用户提供更高品质的在线体育服务及真人娱乐平台，力求给不同地区的用户带来别样、缤纷的极致体验！</p>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-export default {}
+export default {
+}
 </script>
 
 <style lang="less" scoped>
 .about-wrapper {
-	min-height: 100%;
-	box-sizing: border-box;
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	background-size: 100%;
-	background-attachment: fixed;
-	padding-top: @app_head_height;
-
-	.main {
-		padding: 28px 18px;
-		.p{
-			font-size: 12px;
-			color:#333;
-			line-height: 18px;
-			margin-bottom: 10px;
+	.grey-text {
+		color: #6c6c6c;
+	}
+	.banner-container {
+		img {
+			width: 100%;
+		}
+	}
+	.text-container {
+		padding: 28px 15px;
+		background-color: #ffffff;
+		line-height: 16px;
+		.text-title {
+			padding: 10px 18px;
+			list-style-type: square;
+			color: #dfc388;
+			font-size: 14px;
+			font-weight: bold;
+		}
+		.bottom-box {
+			box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.23);
+			padding: 5px 2px;
+			margin-top: 20px;
+			.bottom-title {
+				font-size: 14px;
+				padding-bottom: 12px;
+				font-weight: bold;
+				.title-left {
+					padding: 0 3px;
+					background-color: #dfc388;
+					color: #ffffff;
+					border-bottom: 2px solid rgba(223, 195, 136, 1);
+				}
+				.title-txt {
+					color: #dfc388;
+					padding-left: 8px;
+				}
+			}
 		}
 	}
 }
