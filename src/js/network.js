@@ -23,3 +23,11 @@ export const updateAutoChange = (param ={}) => http.post("/thirdGames/updateAuto
 /* ------------------ 投注记录api ----------------- */
 export const findUserRecord = (param ={}) => http.post("/gameRecord/findUserRecord", param);
 /* ------------------ 投注记录api ----------------- */
+/* ------------------ 站内信api ----------------- */
+export const net_queryMsg = (param ={}) => http.post("/msg/queryMsg", param);
+export const net_insertRead = (param ={}) => http.post("/msg/insertRead", param);
+export const net_msgSave = (param ={}) => http.post("/msg/save", param);
+export const net_msgDelete = (param ={}) => http.post("/msg/deleteAll", param);
+/* ------------------ 公告消息弹窗 ----------------- */
+export const net_getAlert = (param ={}) => http.post("/home/alert/getAlert", param);
+export const net_alertRead = (param ={}) => http.post("/home/alert/insertRead", param);

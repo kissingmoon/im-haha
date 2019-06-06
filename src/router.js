@@ -148,6 +148,11 @@ export let needLoginRoutes = [
     path: '/chess-lists',
     name: 'ChessLists',
     component: () => import(/* webpackChunkName: "ChessLists" */ './views/ChessLists/index.vue')
+  },
+  {
+    path: '/siteMail',
+    name: 'SiteMail',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/SiteMail/SiteMail.vue')
   }
 ]
 let routes = [

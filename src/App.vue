@@ -27,6 +27,7 @@
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex'
 import { generateUUID } from '@/js/tools.js'
+import { net_getAlert, net_alertRead } from '@/js/network.js'
 export default {
 	data() {
 		return {
@@ -48,6 +49,11 @@ export default {
 				if (val != old && val) this.show8888 = true
 			},
 			immediate: true
+		},
+				user_token(val, old) {
+			if(val){
+				this.getAlert()
+			}
 		}
 	},
 	created() {
@@ -88,6 +94,23 @@ export default {
 				this.$api.getUserInfo()
 			} else {
 				this.setUserToken('')
+			}
+		},
+				async getAlert() {
+			let res = await net_getAlert();
+			if(res.code == "200"){
+				if(res.data.alert){
+					if(!this.isGetCJ){
+						Dialog.alert({
+							title: res.data.title,
+							message: res.data.content
+						}).then(() => {
+							if(res.data.msgType == "1"){
+								net_alertRead({id: res.data.id})
+							}
+						})
+					}
+				}
 			}
 		}
 	}

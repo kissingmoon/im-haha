@@ -32,6 +32,10 @@ export default {
 	mounted() {
 		this.title = this.$route.query.title || '游戏'
 		let id = this.$route.query.id
+		if(!id){
+			this.$router.replace('/')
+			return
+		}
 		this.$http.post('/home/getPtGamesList', { id: id }).then(res => {
 			if (res.code == '200') {
 				this.lists = res.data.ptGamesList

@@ -6,7 +6,7 @@
 			</p>
 		</div>-->
 		<div class="msg_box">
-			<div class="msg_icon"></div>
+			<div @click="clickThis(14)" class="msg_icon"></div>
 		</div>
 		<div class="user">
 			<div class="top">
@@ -184,6 +184,10 @@ export default {
 				}
 				case 13: {
 					this.$router.push('/userinfo')
+					break
+				}
+				case 14: {
+					this.$router.push('/siteMail')
 					break
 				}
 			}
