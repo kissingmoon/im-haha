@@ -31,21 +31,24 @@ export default {
 			duration: 0.2
 		}
 	},
-	mounted() {
-		this.setLine()
-	},
 	watch: {
 		curActive() {
 			this.scrollIntoView()
 			this.setLine()
 		}
 	},
+	mounted() {
+		this.setLine()
+	},
+	activated() {
+		this.scrollIntoView(true)
+	},
 	methods: {
 		onClick(index) {
 			this.curActive = index
 			this.$emit('click', index)
 		},
-		scrollIntoView() {
+		scrollIntoView(immediate) {
 			let tabs = this.$refs.tabs
 			let nav = this.$refs.nav
 			let scrollLeft = nav.scrollLeft,
@@ -53,7 +56,11 @@ export default {
 			let tab = tabs[this.curActive],
 				offsetLeft = tab.offsetLeft,
 				tabWidth = tab.offsetWidth
-			this.scrollTo(nav, scrollLeft, offsetLeft - (navWidth - tabWidth) / 2)
+			if (immediate) {
+				nav.scrollLeft = offsetLeft - (navWidth - tabWidth) / 2
+			} else {
+				this.scrollTo(nav, scrollLeft, offsetLeft - (navWidth - tabWidth) / 2)
+			}
 		},
 		scrollTo: function scrollTo(el, from, to) {
 			let count = 0

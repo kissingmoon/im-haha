@@ -51,7 +51,7 @@ export default {
 	methods: {
 		selectImg(index) {
 			this.active = index
-			this.btndisabled = false
+			this.disabled = false
 		},
 		submit() {
 			this.$http.post('/user/editUserImage', { imageId: this.lists[this.active].id }).then(res => {

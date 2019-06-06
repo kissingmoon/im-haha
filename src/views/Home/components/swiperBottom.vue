@@ -14,12 +14,14 @@
 		</ul>
 		<swiper class="bottom_swiper" @slideChange="slideChange" :options="swiper" ref="bottomSwiper">
 			<swiper-slide v-for="(item,i) in lists" :key="i" class="slide">
-				<img
+				<ims-image
 					v-if="item.platformInfos.length < 4 && item.platformInfos.length > 0"
-					:src="item.platformInfos[0].gameImageUrl"
-					@click="open(item.platformInfos[0],item )"
 					class="slide_1"
+					@click.native="open(item.platformInfos[0],item )"
+					:src="item.platformInfos[0].gameImageUrl"
 				>
+					<img class="slide_1" slot="placeholder" src="../../../assets/banner_load1.png">
+				</ims-image>
 				<div v-else class="slide_4">
 					<img
 						class="img img0"
@@ -50,7 +52,11 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import ImsImage from '@/components/ims-image.vue'
 export default {
+	components: {
+		ImsImage
+	},
 	props: {
 		lists: {
 			type: Array,
@@ -61,6 +67,7 @@ export default {
 		return {
 			activeIndex: 0,
 			swiper: {
+				lazy:true,
 				direction: 'vertical'
 			}
 		}
@@ -161,11 +168,11 @@ export default {
 		align-items: center;
 		justify-content: center;
 		height: 45px;
-		background: rgba(255, 255, 255, .66);
+		background: rgba(255, 255, 255, 0.66);
 		border-radius: 5px;
 		font-size: 12px;
 		font-weight: 500;
-		color: rgb(102, 102, 102);;
+		color: rgb(102, 102, 102);
 		transition: all 0.2s ease;
 		.img {
 			width: 22px;

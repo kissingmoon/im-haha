@@ -17,15 +17,15 @@ instance.interceptors.request.use(
     if (user_token) {
       config.headers.common['Authorization'] = 'Bearer_' + user_token
     }
-    config.headers.common['domain'] = 'fwnix.cn'
-    config.headers.common['template'] = 'fwnix.cn'
+    config.headers.common['domain'] = 'ui_zhongbo'
+    config.headers.common['template'] = 'ui_zhongbo'
     // 这里设置全局的参数格式，所有类型的请求都会走这个配置
     // 先对请求单独配置做判断，如果没有单独配置，就采用统一配置
     if (!config.headers['Content-Type']) {
       config.headers = {
         'Content-Type': 'application/json',
-        domain: 'fwnix.cn',
-        template: 'fwnix.cn'
+        domain: 'ui_zhongbo',
+        template: 'ui_zhongbo'
       }
     } else if (config.headers['Content-Type'] == 'application/x-www-form-urlencoded') {
       //if(config.data && Object.keys(config.data).length>0){

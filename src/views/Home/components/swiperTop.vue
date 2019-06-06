@@ -7,7 +7,9 @@
 		@progress="progress"
 	>
 		<swiper-slide v-for="(list,index) in lists" :key="index" class="swiper_slide">
-			<img @click="open(list)" class="img" :src="list.homeImageUrl">
+			<!-- <img class="img" :src="list.homeImageUrl"> -->
+			<img class="img swiper-lazy" :data-src="list.homeImageUrl">
+			<div class="swiper-lazy-preloader"></div>
 		</swiper-slide>
 		<div class="swiper-pagination" slot="pagination"></div>
 	</swiper>
@@ -27,22 +29,31 @@ export default {
 				pagination: {
 					el: '.swiper-pagination'
 				},
-				initialSlide: 1,
+				lazy: true,
 				loop: true,
 				autoplay: true,
-				slidesPerView: 1.07, //看到的滑块个数
+				initialSlide: 1,
 				spaceBetween: 5,
+				slidesPerView: 1.07, //看到的滑块个数
 				centeredSlides: true,
-				watchSlidesProgress: true
+				watchSlidesProgress: true,
+				on: {
+					click: () => {
+						let swiper = this.$refs.topSwiper.swiper
+						let realIndex = swiper.realIndex
+						this.open(this.lists[realIndex])
+					}
+				}
 			}
 		}
 	},
 	methods: {
 		open(list) {
-			//homeJumpType:  0|1  0:内部页面  1:外部页面
+			//homeJumpType:  [0,1]  0:内部页面  1:外部页面
 			if (list.homeJumpType == '0') {
 				this.$router.push(`/activity-detail?id=${list.activityId}`)
-			} else if (list.homeJumpType == '1') {
+			}
+			if (list.homeJumpType == '1') {
 				window.open(`/mpage?jumpLink=${list.homeJumpUrl}`)
 			}
 		},
@@ -82,7 +93,21 @@ export default {
 		background: #fff;
 	}
 }
-
+.swiper-lazy-preloader {
+	width: 100%;
+	height: 150px;
+	animation: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin-left: 0;
+	margin-top: 0;
+	background: url('../../../assets/banner_load.png') no-repeat;
+	background-size: 100%;
+}
+.swiper-lazy-preloader::after{
+	display: none;
+}
 .swiper {
 	width: 100%;
 }
@@ -92,7 +117,7 @@ export default {
 		display: block;
 		width: 100%;
 		border-radius: 7px;
-		max-height: 150px;
+		height: 150px;
 	}
 }
 </style>

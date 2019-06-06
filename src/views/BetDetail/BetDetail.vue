@@ -50,7 +50,7 @@
 					</div>
 				</van-list>
 			</van-pull-refresh>
-			<noData v-else></noData>
+			<noData class="no_data" v-else></noData>
 		</div>
 		<div class="bottom-popup-container">
 			<van-popup v-model="switchs.showPopup" position="bottom">
@@ -97,7 +97,6 @@ export default {
 	created() {
 		history.scrollRestoration = 'manual'
 		this.$emit('showChoose')
-
 		this.net_getData(0, this.pageData)
 	},
 	methods: {
@@ -173,6 +172,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.no_data {
+	margin-top: 20vh;
+}
 .bet-wrapper {
 	position: relative;
 	min-height: 100%;
@@ -181,9 +183,7 @@ export default {
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
 	background-size: 100%;
 	background-attachment: fixed;
-	/deep/.van-pull-refresh {
-		min-height: 100%;
-	}
+
 	.header-cottage {
 		width: 100%;
 		height: @app_head_height;
@@ -213,7 +213,12 @@ export default {
 	}
 	.main {
 		padding-top: 30px;
-		.van-pull-refresh {
+		display: flex;
+		flex-direction: column;
+		/deep/.van-pull-refresh {
+			flex: 1;
+			min-height: 100%;
+			height: 100%;
 			border-top: 1px solid #f2f2f2;
 		}
 		.itemWrap {

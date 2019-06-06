@@ -47,7 +47,6 @@ import mainOptions from '@/config/main-option.js'
 import { randomWord } from '@/js/tools.js'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { net_register } from '@/js/network.js'
-import { Promise } from 'q'
 
 export default {
 	data() {

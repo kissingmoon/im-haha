@@ -30,31 +30,36 @@ export default {
 	data() {
 		return {
 			isShow: false,
+			isError: false,
 			swiperTopData: [],
 			notice: [],
 			swiperBottomData: []
 		}
 	},
-	async mounted() {
-		let loading = this.$loading({ text: '正在加载…' })
-		try {
-			await Promise.all([this.getHomeHeadData(), this.getHomeGameData()])
-			loading.close()
-			this.isShow = true
-		} catch {
-			loading.close()
-		}
+	mounted() {
+		this.init()
 	},
 	activated() {
-		if (!this.isShow) {
-			this.getHomeHeadData()
-			this.getHomeGameData()
+		this.getHomeHeadData()
+		if (this.isError) {
+			this.init()
 		} else {
-			this.getHomeHeadData()
 			this.$api.getUserInfoNoWarn({ transferOut: '1' })
 		}
 	},
 	methods: {
+		async init() {
+			let loading = this.$loading({ text: '正在加载…' })
+			try {
+				await Promise.all([this.getHomeHeadData(), this.getHomeGameData()])
+				loading.close()
+				this.isShow = true
+				this.isError = false
+			} catch {
+				this.isError = true
+				loading.close()
+			}
+		},
 		getHomeHeadData() {
 			return this.$http.post('/home/getHomeHeadData').then(res => {
 				if (res.code == '200') {

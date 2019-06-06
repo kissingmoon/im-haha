@@ -20,7 +20,6 @@
 <script>
 import Lists from './components/Lists.vue'
 import Tabs from '../../components/tabs/tabs.vue'
-import { Promise } from 'q'
 
 export default {
 	components: {
