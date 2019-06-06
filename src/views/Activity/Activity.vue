@@ -104,7 +104,7 @@ export default {
 	box-sizing: border-box;
 	padding-bottom: @app_footer_height;
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	background-size: 100%;
+	background-size: cover;
 	background-attachment: fixed;
 	.empty {
 		padding-top: 100px;

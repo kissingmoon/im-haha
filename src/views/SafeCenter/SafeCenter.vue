@@ -122,13 +122,12 @@ export default {
 	box-sizing: border-box;
 	padding-top: @app_head_height;
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	background-size: 100%;
+	background-size: cover;
 	background-attachment: fixed;
 	.main-container {
 		.bank-box {
 			height: 220px;
 			.bank-content {
-				width: 300px;
 				height: 170px;
 				border-radius: 10px;
 				&.has-card {

@@ -1,5 +1,4 @@
 import http from "./http.js"
-export const getPtGamesList = (param, config) => http.post("/home/getPtGamesList", param);
 export const bankList = (param, config) => http.post("/withdrawCash/bankList", param);
 export const net_register = param => http.post("/user/register", param);
 export const net_login = param => http.post("/user/login", param);

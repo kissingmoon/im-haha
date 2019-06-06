@@ -181,7 +181,7 @@ export default {
 	padding-top: @app_head_height;
 	box-sizing: border-box;
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	background-size: 100%;
+	page_bg_default
 	background-attachment: fixed;
 
 	.header-cottage {

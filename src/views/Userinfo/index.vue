@@ -53,7 +53,7 @@ export default {
 	box-sizing: border-box;
 	padding-top: @app_head_height;
 	background: url('../../assets/page_bg_default2.jpg') no-repeat;
-	background-size: 100%;
+	background-size: cover;
 	background-attachment: fixed;
 	/deep/.app_head {
 		background: none;

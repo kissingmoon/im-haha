@@ -54,7 +54,7 @@ export default {
 	box-sizing: border-box;
 	padding-top: @app_head_height;
 	background: url('../../../assets/page_bg_default.jpg') no-repeat;
-	background-size: 100%;
+	background-size: cover;
 	background-attachment: fixed;
 	.wfjc_tabs {
 		padding: 12px 0;

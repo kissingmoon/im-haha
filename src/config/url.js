@@ -18,7 +18,6 @@ export default {
     getPayType: "/charge/getPayType",
     toChargeNew: "/charge/toChargeNew",
     comPaySubmit: "/charge/comPaySubmit",
-    getPtGamesList: "/home/getPtGamesList",
     forwardName: "/thirdGames/forwardName",
     freeGetMoneyStatus: "/user/freeGetMoneyStatus",
     freeGetMoney: "/user/freeGetMoney"

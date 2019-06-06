@@ -23,7 +23,7 @@
 	bottom: 0;
 	right: 0;
 	background: url('../../assets/service_bg.jpg') no-repeat;
-	background-size: 100%;
+	background-size: cover;
 	/deep/.app_head{
 		background: none;
 	}

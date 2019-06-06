@@ -40,7 +40,7 @@ export default {}
 	box-sizing: border-box;
 	padding-top: @app_head_height;
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	background-size: 100%;
+	background-size: cover;
 	background-attachment: fixed;
 	.grey-text {
 		color: #6c6c6c;
