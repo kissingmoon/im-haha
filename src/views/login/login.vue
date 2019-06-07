@@ -9,9 +9,12 @@
 			</div>
 			<div class="tip-content display-flex flex-center">
 				<span class="tip-line tip-line__left"></span>
-				&nbsp;&nbsp;热门游戏&nbsp;&nbsp;
+				&nbsp;&nbsp;
+					  权威机构认证  
+					&nbsp;&nbsp;
 				<span class="tip-line tip-line__right"></span>
 			</div>
+			<p class="tip_p">拥有多国官方监管机构颁发的合法执照</p>
 			<div class="down-content display-flex">
 				<div
 					class="item-content flex-1 display-flex flex-column flex-center"
@@ -19,7 +22,8 @@
 					:key="k"
 				>
 					<img :src="v.imgSrc" alt>
-					<div>{{ v.name }}</div>
+					<div class="item-content_p">{{ v.name }}</div>
+					<div class="item-content_p">{{v.dec}}</div>
 				</div>
 			</div>
 		</div>
@@ -45,19 +49,23 @@ export default {
 			iconList: [
 				{
 					imgSrc: require('./img/dl1.png'),
-					name: '亚太体育'
+					name: '马尔他博彩牌照',
+					dec: '(MGA)认证'
 				},
 				{
 					imgSrc: require('./img/dl2.png'),
-					name: '真人娱乐'
+					name: '英属维尔京群岛',
+					dec: '(BVI)认证'
 				},
 				{
 					imgSrc: require('./img/dl3.png'),
-					name: '电子游戏'
+					name: '菲律宾(PAGCOR)',
+					dec: '监督博彩牌照'
 				},
 				{
 					imgSrc: require('./img/dl4.png'),
-					name: '棋牌游戏'
+					name: '英国GC',
+					dec: '监督委员会'
 				}
 			]
 		}
@@ -114,17 +122,24 @@ export default {
 	}
 	.top-container {
 		.up-content {
-			height: 100px;
+			height: 90px;
 			img {
 				height: 55px;
 				width: 154px;
 			}
 		}
+		.tip_p{
+			color: #fff;
+			text-align: center;
+			margin-top:5px; 
+		}
 		.tip-content {
-			margin-top: 25px;
-			font-size: 12px;
+			margin-top: 20px;
+			font-size: 18px;
 			text-align: center;
 			color: #fff;
+			font-weight: bold;
+
 			.tip-line {
 				width: 73px;
 				height: 1px;
@@ -141,6 +156,10 @@ export default {
 				height: 110px;
 				font-size: 12px;
 				color: #fff;
+				.item-content_p{
+					font-size: 11px;
+					white-space:nowrap;
+				}
 				img {
 					height: 48px;
 					width: 48px;
