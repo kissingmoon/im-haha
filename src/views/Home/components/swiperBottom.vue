@@ -15,14 +15,14 @@
 		<swiper class="bottom_swiper" @slideChange="slideChange" :options="swiper" ref="bottomSwiper">
 			<swiper-slide v-for="(item,i) in lists" :key="i" class="slide">
 				<ims-image
-					v-if="item.platformInfos.length < 4"
+					v-if="item.platformInfos.length == 1"
 					class="slide_1"
 					@click.native="open(item.platformInfos[0],item )"
 					:src="item.platformInfos[0].gameImageUrl"
 				>
 					<img class="slide_1" slot="placeholder" src="../../../assets/banner_load1.png">
 				</ims-image>
-				<!-- <div v-if="item.platformInfos.length == 2" class="slide_2">
+				<div v-if="item.platformInfos.length == 2" class="slide_2">
 					<img
 						class="img img0"
 						:src="item.platformInfos[0].gameImageUrl"
@@ -33,7 +33,7 @@
 						:src="item.platformInfos[1].gameImageUrl"
 						@click="open(item.platformInfos[1],item)"
 					>
-				</div> -->
+				</div>
 				<div v-if="item.platformInfos.length == 4" class="slide_4">
 					<img
 						class="img img0"
