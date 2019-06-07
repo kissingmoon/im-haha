@@ -344,6 +344,7 @@ export default {
 				toast('设置登录密码成功,请重新登录')
 				setTimeout(() => {
 					this.$api.quitAccount()
+					this.$router.push('/login')
 				}, 1000)
 			}
 		},

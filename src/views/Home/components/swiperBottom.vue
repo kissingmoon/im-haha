@@ -15,14 +15,26 @@
 		<swiper class="bottom_swiper" @slideChange="slideChange" :options="swiper" ref="bottomSwiper">
 			<swiper-slide v-for="(item,i) in lists" :key="i" class="slide">
 				<ims-image
-					v-if="item.platformInfos.length < 4 && item.platformInfos.length > 0"
+					v-if="item.platformInfos.length < 4"
 					class="slide_1"
 					@click.native="open(item.platformInfos[0],item )"
 					:src="item.platformInfos[0].gameImageUrl"
 				>
 					<img class="slide_1" slot="placeholder" src="../../../assets/banner_load1.png">
 				</ims-image>
-				<div v-else class="slide_4">
+				<!-- <div v-if="item.platformInfos.length == 2" class="slide_2">
+					<img
+						class="img img0"
+						:src="item.platformInfos[0].gameImageUrl"
+						@click="open(item.platformInfos[0],item)"
+					>
+					<img
+						class="img img1"
+						:src="item.platformInfos[1].gameImageUrl"
+						@click="open(item.platformInfos[1],item)"
+					>
+				</div> -->
+				<div v-if="item.platformInfos.length == 4" class="slide_4">
 					<img
 						class="img img0"
 						:src="item.platformInfos[0].gameImageUrl"
@@ -101,7 +113,7 @@ export default {
 				return
 			}
 			if (!gameJumpUrl) {
-				this.$router.push(`/chess-lists?title=${item.gameTitleCn}&id=${item.id}`)
+				this.$router.push(`/chess-lists?title=${platformInfos.gameTitleCn}&id=${platformInfos.id}`)
 			} else {
 				if (ismjb == 'ios') {
 					this.$router.push(`/mpage?jumpLink=${gameJumpUrl}&goto=getThird`)
@@ -120,6 +132,21 @@ export default {
 }
 </script>
 <style lang='less' scoped>
+.slide_2{
+		.img {
+		display: block;
+		width: 100%;
+	}
+	.img0 {
+		height: 147px;
+		border-radius: 5px;
+		margin-bottom: 6px;
+	}
+	.img1 {
+		height: 147px;
+		border-radius: 5px;
+	}
+}
 .slide_4 {
 	.img {
 		display: block;

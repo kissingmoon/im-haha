@@ -3,9 +3,9 @@
 		<div class="header-container">
 			<ims-header title="关于YG娱乐"></ims-header>
 		</div>
-		<div class="banner-container">
+		<!-- <div class="banner-container">
 			<img src="./img/title-bg.png" alt>
-		</div>
+		</div> -->
 		<div class="text-container">
 			<p>北京时间4月30日2:00，美东时间4月29日14:00，万众瞩目的博彩业巨头YG娱乐平台登上纽约时代广场纳斯达克大屏。</p>
 			<p>纽约，世界重要金融经济中心；“时代广场”，纽约市中心，融汇文化与金融的世界级地标，至今已有100多年历史，其地点位于纽约市曼哈顿，因其世界位置与著名程度，又被称为“世界的十字路口”纳斯达克大屏幕，纽约时代广场的标志性建筑物，其屏幕面积之大及世界影响之广泛，被舆论评为“世界第一屏”。</p>

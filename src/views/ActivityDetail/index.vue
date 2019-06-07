@@ -4,6 +4,7 @@
 		<div v-if="isShow" class="actv_main">
 			<!-- 在这里绑定html -->
 			<div v-if="!is_8888" v-html="html">
+			<!-- <div v-if="true"> -->
 				<!-- 活动1  周周有礼，周周送 -->
 				<!-- <div style="padding-bottom:24px;">
 					<div class="actv_h">周周有礼，周周送</div>
@@ -549,7 +550,7 @@
 						<br>4.任何出现对打、对冲；任何低于欧洲盘1.7 赔率、香港与马来盘0.7赔率的所有投注，将不参与此优惠;
 						<br>5.参与该优惠，即表示您同意《活动条款》。
 					</p>
-				</div>-->
+				</div> -->
 				<!--活动 11 棋牌救援金   祝您扭转乾坤-->
 				<!-- <div style="padding-bottom:24px;">
 					<div class="actv_h">棋牌救援金   祝您扭转乾坤</div>
@@ -789,6 +790,105 @@
 						<br>5.YG娱乐保留对活动的最终解释权，以及在无通知的情况下修改、终止活动的权利，适用于所有优惠。
 					</p>
 				</div>-->
+
+				<!--活动 14 充值粽享55元彩金，端午节，一起来狂欢-->
+				<!-- <div style="padding-bottom:24px;">
+					<div class="actv_h">充值粽享55元彩金，端午节，一起来狂欢</div>
+					<p class="actv_p">
+						活动时间：即日起
+						<br>活动对象：YG娱乐全体会员
+						<br>活动内容：即日起【YG娱乐会员】每日充值金额达到550元以上，即可获得充值赠送彩金！
+					</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>奖励规则
+					</div>
+					<div class="actv_table14">
+						<div class="col3 col3_0">
+							<div class="row1">活动人员</div>
+							<div class="row1">YG娱乐会员</div>
+						</div>
+						<div class="col3 col3_0">
+							<div class="row1">充值金额</div>
+							<div class="row1">≧550元</div>
+						</div>
+						<div class="col3 col3_1">
+							<div class="row1">赠送金额</div>
+							<div class="row1">55元</div>
+						</div>
+						<div class="col3 col3_1">
+							<div class="row1">提现要求</div>
+							<div class="row1">一倍流水</div>
+						</div>
+					</div>
+					<p class="actv_p margin_top_9 margin_bottom_9">端午活动期间，充值金额较高者，更有神秘好礼等你哦！</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>优惠规则
+					</div>
+					<p class="actv_p">
+						请符合条件的会员点击申请，审核通过后活动部门会将相应的彩金添加到您的钱包余额，逾期视为自动弃权。
+					</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>申请方式
+					</div>
+					<p class="actv_p">
+						1.充值赠送彩金需一倍流水方可提款；
+						<br>2.活动期间每天每个会员只限领取一次；
+						<br>3.每位玩家、相同IP地址、相同银行户名/卡号、相同手机设备均视为同一个人，若会员有重复申请账号行为，公司保留取消或收回现金红包的权利；
+						<br>4.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利；
+						<br>5.公司规定无风险注单不计算有效投注额，无风险注单包括：游戏中同时投注黑白、龙虎、庄闲、投注直注胜率不可超过70%,任何非法套取优惠行为将扣除产生的盈利。
+					</p>
+				</div>-->
+
+				<!--活动 15 浓情端午节，温情相伴，投注送好礼-->
+				<!-- <div style="padding-bottom:24px;">
+					<div class="actv_h">浓情端午节，温情相伴，投注送好礼</div>
+					<p class="actv_p">
+						活动时间：2019年6月7日-2019年6月9日
+						<br>活动对象：YG娱乐全体会员
+						<br>活动内容：即日起【YG娱乐会员】每日有效投注金额达到对应条件，即可获得充值好礼，一倍流水即可提现！赠送人数无上限！
+					</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>奖励规则
+					</div>
+					<div class="actv_table15">
+						<div class="col2">
+							<div class="row2 row2_0">活动人员</div>
+							<div class="row2 row2_1">YG娱乐会员</div>
+						</div>
+						<div class="col3 col3_0">
+							<div class="row1">日有效投注量</div>
+							<div class="row1">1000</div>
+							<div class="row1">5000</div>
+							<div class="row1">10000</div>
+						</div>
+						<div class="col3 col3_1">
+							<div class="row1">赠送金额</div>
+							<div class="row1">18</div>
+							<div class="row1">38</div>
+							<div class="row1">58</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">提现要求</div>
+							<div class="row2 row2_1">一倍流水</div>
+						</div>
+						
+					</div>
+					<p class="actv_p margin_top_9 margin_bottom_9">端午活动期间，累积有效投注38888元以上，立即赠送1000元现金，无流水要求即可提现。</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>优惠规则
+					</div>
+					<p class="actv_p">请符合条件的会员点击申请，审核通过后活动部门会将相应的彩金添加到您的钱包余额，逾期视为自动弃权。</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>申请方式
+					</div>
+					<p class="actv_p">
+						1.有效投注量赠送彩金需一倍流水方可提款；
+						<br>2.活动期间累积赠送彩金和日投注量赠送彩金不可叠加享受该优惠；
+						<br>3.每位玩家、相同IP地址、相同银行户名/卡号、相同手机设备均视为同一个人，若会员有重复申请账号行为，公司保留取消或收回现金红包的权利；
+						<br>4.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利；
+						<br>5.公司规定无风险注单不计算有效投注额，无风险注单包括：游戏中同时投注黑白、龙虎、庄闲、投注直注胜率不可超过70%,任何非法套取优惠行为将扣除产生的盈利。
+					</p>
+				</div> -->
 			</div>
 			<div v-else>
 				<!--活动 12 初次相遇 豪礼相赠   注册免费送88元彩金-->
@@ -845,12 +945,12 @@
 							<div class="flex_40">25元</div>
 							<div class="flex_30">35元</div>
 						</div>
-						<div class="actv_8888_t actv_font_0 margin_bottom_4">
+						<img class="actv_8888_img" src="../../assets/actv_0.png">
+						<div class="actv_8888_t actv_font_0 margin_bottom_8">
 							<div class="flex_30">第三天登录</div>
 							<div class="flex_40">第四天登录</div>
 							<div class="flex_30">第五天登录</div>
 						</div>
-						<img class="actv_8888_img" src="../../assets/actv_0.png">
 						<div class="actv_8888_t">
 							<div v-for="(btn,index) in btns_8888" :key="index" class="flex_30">
 								<button
@@ -1657,6 +1757,9 @@ export default {
 .margin_bottom_4 {
 	margin-bottom: 4px;
 }
+.margin_bottom_8 {
+	margin-bottom: 8px;
+}
 .actv_8888 {
 	.actv_8888_t {
 		display: flex;
@@ -1664,7 +1767,7 @@ export default {
 		justify-content: space-between;
 		font-size: 16px;
 		font-weight: bold;
-		color: rgba(255, 94, 80, 1);
+		color: #ff50a0;
 		line-height: 22px;
 		text-align: center;
 	}
@@ -1677,7 +1780,7 @@ export default {
 		display: block;
 		width: 72px;
 		height: 24px;
-		background: linear-gradient(180deg, rgba(230, 187, 115, 1) 0%, rgba(221, 159, 86, 1) 100%);
+		background: linear-gradient(180deg, @color_shallow_blue 0%, @color_deep_blue 100%);
 		box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.5), 0px 2px 0px 0px rgba(97, 51, 34, 1),
 			0px 1px 0px 0px rgba(255, 234, 152, 1);
 		font-size: 12px;
@@ -1747,5 +1850,135 @@ export default {
 	}
 }
 </style>
-
-
+<style lang="less">
+//活动14
+.actv_table14 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col3_0 {
+		flex: 38%;
+	}
+	.col3_1 {
+		flex-basis: 30%;
+	}
+	.col2 {
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+.actv_table13_0 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col3_0 {
+		flex: 30%;
+	}
+	.col3_1 {
+		flex-basis: 38%;
+	}
+	.col2 {
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>
+<style lang="less">
+//活动15
+.actv_table15 {
+	display: flex;
+	align-items: stretch;
+	border-top: 1px solid @actv_table_border_color;
+	border-right: 1px solid @actv_table_border_color;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: center;
+	color: rgba(51, 51, 51, 1);
+	.col3_0 {
+		flex: 38%;
+	}
+	.col3_1 {
+		flex-basis: 30%;
+	}
+	.col2 {
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+	}
+	.row1 {
+		padding: 5px 0;
+		height: 24px;
+		box-sizing: border-box;
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2 {
+		border-left: 1px solid @actv_table_border_color;
+		border-bottom: 1px solid @actv_table_border_color;
+	}
+	.row2_0 {
+		padding: 5px 0;
+	}
+	.row2_1 {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		justify-content: center;
+	}
+}
+</style>

@@ -53,11 +53,11 @@ export default {
 				},
 				{
 					imgSrc: require('./img/dl3.png'),
-					name: '棋牌游戏'
+					name: '电子游戏'
 				},
 				{
 					imgSrc: require('./img/dl4.png'),
-					name: '彩票投注'
+					name: '棋牌游戏'
 				}
 			]
 		}

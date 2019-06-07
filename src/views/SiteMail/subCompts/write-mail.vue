@@ -110,7 +110,7 @@ export default {
         }
         .form-btn{
             height: 40px;
-            background: linear-gradient(-90deg, #e4aa60 0%, #e5c88b 100%);
+            background: @btn_color;
             color: #ffffff;
             font-size: 14px;
             border-radius: 10px;

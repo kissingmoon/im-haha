@@ -5,7 +5,7 @@
 		</div>
 		<div class="main-container flex-1 display-flex flex-column">
 			<div class="main-header">
-				<Tabs @click="tabClick" color="#e5c88b">
+				<Tabs @click="tabClick" color="#46a8fe">
 					<Tab :title="'收件箱'"></Tab>
 					<Tab :title="'写站内信'"></Tab>
 				</Tabs>

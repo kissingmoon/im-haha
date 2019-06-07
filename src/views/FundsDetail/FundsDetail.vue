@@ -111,11 +111,12 @@ export default {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: @base_color;
 	padding-top: @app_head_height;
+	box-sizing: border-box;
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
+	
 	.header-cottage {
 		width:100%;
 		height: @app_head_height;

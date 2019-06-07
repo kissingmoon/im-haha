@@ -159,6 +159,9 @@ let routes = [
   {
     path: '/',
     component: Index,
+    meta: {
+      keepAlive: true
+    },
     children: [
       {
         path: '',

@@ -91,7 +91,7 @@ export default {
 			}
 			/deep/ .van-tabs__line {
 				height: 40px;
-				background: #e5c88b;
+				background: @color_deep_blue;
 				z-index: 0;
 				border-radius: 20px;
 				top: 0;

@@ -128,7 +128,9 @@ export default {
 		.bank-box {
 			height: 220px;
 			.bank-content {
+				width: 317px;
 				height: 170px;
+				box-sizing: border-box;
 				border-radius: 10px;
 				&.has-card {
 					background: url('../../assets/bank_bg.png') no-repeat;

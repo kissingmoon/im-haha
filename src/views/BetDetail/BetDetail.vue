@@ -76,7 +76,7 @@ export default {
 				showPopup: false
 			},
 			popList: [
-				{ date_text: '全部', data_type: '' },
+				{ date_text: '全部', data_type: '5' },
 				{ date_text: '最近三天', data_type: '2' },
 				{ date_text: '最近一周', data_type: '3' },
 				{ date_text: '最近一月', data_type: '4' }
@@ -172,16 +172,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.no_data {
-	margin-top: 20vh;
-}
 .bet-wrapper {
-	position: relative;
-	min-height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	padding-top: @app_head_height;
 	box-sizing: border-box;
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	page_bg_default
+	background-size: cover;
 	background-attachment: fixed;
 
 	.header-cottage {
@@ -213,12 +213,10 @@ export default {
 	}
 	.main {
 		padding-top: 30px;
-		display: flex;
-		flex-direction: column;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
 		/deep/.van-pull-refresh {
-			flex: 1;
 			min-height: 100%;
-			height: 100%;
 			border-top: 1px solid #f2f2f2;
 		}
 		.itemWrap {
