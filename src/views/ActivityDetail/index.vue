@@ -4,7 +4,7 @@
 		<div v-if="isShow" class="actv_main">
 			<!-- 在这里绑定html -->
 			<div v-if="!is_8888" v-html="html">
-			<!-- <div v-if="true"> -->
+				<!-- <div v-if="true"> -->
 				<!-- 活动1  周周有礼，周周送 -->
 				<!-- <div style="padding-bottom:24px;">
 					<div class="actv_h">周周有礼，周周送</div>
@@ -550,7 +550,7 @@
 						<br>4.任何出现对打、对冲；任何低于欧洲盘1.7 赔率、香港与马来盘0.7赔率的所有投注，将不参与此优惠;
 						<br>5.参与该优惠，即表示您同意《活动条款》。
 					</p>
-				</div> -->
+				</div>-->
 				<!--活动 11 棋牌救援金   祝您扭转乾坤-->
 				<!-- <div style="padding-bottom:24px;">
 					<div class="actv_h">棋牌救援金   祝您扭转乾坤</div>
@@ -857,21 +857,34 @@
 						</div>
 						<div class="col3 col3_0">
 							<div class="row1">日有效投注量</div>
-							<div class="row1">1000</div>
-							<div class="row1">5000</div>
-							<div class="row1">10000</div>
+							<div class="row1">1千+</div>
+							<div class="row1">5千+</div>
+							<div class="row1">1万+</div>
+							<div class="row1">10万+</div>
+							<div class="row1">50万+</div>
+							<div class="row1">100万+</div>
+							<div class="row1">500万+</div>
+							<div class="row1">1000万+</div>
+							<div class="row1">5000万+</div>
+							<div class="row1">1亿+</div>
 						</div>
 						<div class="col3 col3_1">
 							<div class="row1">赠送金额</div>
-							<div class="row1">18</div>
-							<div class="row1">38</div>
-							<div class="row1">58</div>
+							<div class="row1">18元</div>
+							<div class="row1">38元</div>
+							<div class="row1">58元</div>
+							<div class="row1">88元</div>
+							<div class="row1">128元</div>
+							<div class="row1">888元</div>
+							<div class="row1">1688元</div>
+							<div class="row1">2888元</div>
+							<div class="row1">6888元</div>
+							<div class="row1">8888元</div>
 						</div>
 						<div class="col2">
 							<div class="row2 row2_0">提现要求</div>
 							<div class="row2 row2_1">一倍流水</div>
 						</div>
-						
 					</div>
 					<p class="actv_p margin_top_9 margin_bottom_9">端午活动期间，累积有效投注38888元以上，立即赠送1000元现金，无流水要求即可提现。</p>
 					<div class="actv_h5">
@@ -1057,6 +1070,7 @@ export default {
 		getBonus(btn) {
 			if (!this.account.userId) {
 				toast('暂未登录，请先登录')
+				this.$router.push('/login')
 				return
 			}
 			this.$http.post('/user/freeGetMoney', {}).then(res => {

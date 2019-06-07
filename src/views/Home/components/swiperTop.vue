@@ -32,7 +32,7 @@ export default {
 				lazy: true,
 				loop: true,
 				autoplay: true,
-				initialSlide: 1,
+				initialSlide: 0,
 				spaceBetween: 5,
 				slidesPerView: 1.07, //看到的滑块个数
 				centeredSlides: true,

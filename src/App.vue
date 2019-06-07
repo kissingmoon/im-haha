@@ -1,11 +1,18 @@
 <template>
 	<div id="app">
-		<keep-alive>
+		<!-- <keep-alive>
 			<router-view v-if="$route.meta.keepAlive"/>
 		</keep-alive>
 		<transition name="fade">
 			<router-view v-if="!$route.meta.keepAlive"/>
+		</transition>-->
+		
+		<transition name="fade">
+			<keep-alive :include="keepALivePages">
+				<router-view/>
+			</keep-alive>
 		</transition>
+
 		<van-dialog class="actv_8888_dialog" :show-confirm-button="false" v-model="show8888">
 			<div class="actv_8888">
 				<div class="actv_8888_t">
@@ -31,6 +38,7 @@ import { net_getAlert, net_alertRead } from '@/js/network.js'
 export default {
 	data() {
 		return {
+			keepALivePages: ['index'],
 			show8888: false
 		}
 	},
@@ -50,8 +58,8 @@ export default {
 			},
 			immediate: true
 		},
-				user_token(val, old) {
-			if(val){
+		user_token(val, old) {
+			if (val) {
 				this.getAlert()
 			}
 		}
@@ -96,17 +104,17 @@ export default {
 				this.setUserToken('')
 			}
 		},
-				async getAlert() {
-			let res = await net_getAlert();
-			if(res.code == "200"){
-				if(res.data.alert){
-					if(!this.isGetCJ){
+		async getAlert() {
+			let res = await net_getAlert()
+			if (res.code == '200') {
+				if (res.data.alert) {
+					if (!this.isGetCJ) {
 						Dialog.alert({
 							title: res.data.title,
 							message: res.data.content
 						}).then(() => {
-							if(res.data.msgType == "1"){
-								net_alertRead({id: res.data.id})
+							if (res.data.msgType == '1') {
+								net_alertRead({ id: res.data.id })
 							}
 						})
 					}

@@ -79,7 +79,11 @@ export default {
 			this.scrollTo = 'right'
 		},
 		goBack() {
-			this.$router.go(-1)
+			if (history.length <= 1) {
+				this.$router.push('/')
+			} else {
+				this.$router.go(-1)
+			}
 		}
 	}
 }
@@ -146,7 +150,6 @@ export default {
 		}
 	}
 	.main-container {
-		
 	}
 }
 .marquee-left {

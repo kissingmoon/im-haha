@@ -186,7 +186,6 @@ export default {
 		},
 		goHome() {
 			this.$router.push('/')
-			return false
 		}
 	}
 }

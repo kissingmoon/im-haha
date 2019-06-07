@@ -5,7 +5,6 @@ import Home from './views/Home/Home.vue'
 import Course from './views/Course/Course.vue'
 import Activity from './views/Activity/Activity.vue'
 import User from './views/User/User.vue'
-import store from './store'
 Vue.use(Router)
 
 let course_router = [
@@ -157,8 +156,13 @@ export let needLoginRoutes = [
 ]
 let routes = [
   {
+    path: '*',
+    redirect: '/'
+  },
+  {
     path: '/',
     component: Index,
+    name:'index',
     meta: {
       keepAlive: true
     },
@@ -173,7 +177,7 @@ let routes = [
       },
       {
         path: '/course',
-        name: 'Course',
+        name: 'course',
         component: Course,
         meta: {
           keepAlive: true
@@ -181,7 +185,7 @@ let routes = [
       },
       {
         path: '/activity',
-        name: 'Activity',
+        name: 'activity',
         component: Activity,
         meta: {
           keepAlive: true
@@ -189,7 +193,7 @@ let routes = [
       },
       {
         path: '/user',
-        name: 'User',
+        name: 'user',
         component: User,
         meta: {
           keepAlive: true

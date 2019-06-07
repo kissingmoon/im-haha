@@ -1,8 +1,6 @@
 <template>
 	<div class="siteMail-wrapper display-flex flex-column">
-		<div class="header-container">
-			<ims-header title="站内消息"></ims-header>
-		</div>
+		<ims-header title="站内消息"></ims-header>
 		<div class="main-container flex-1 display-flex flex-column">
 			<div class="main-header">
 				<Tabs @click="tabClick" color="#46a8fe">
@@ -93,9 +91,15 @@ export default {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: #e5e5e5;
-	.header-container {
-		height: 50px;
+	background: url('../../assets/page_bg_default2.jpg') no-repeat;
+	background-size: cover;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	/deep/.van-tabs__nav {
+		background-color: rgba(255, 255, 255, 0.5);
+	}
+	/deep/.van-hairline--top-bottom::after{
+		border: none;
 	}
 	.main-container {
 		.main-header {
@@ -107,7 +111,7 @@ export default {
 	}
 	.footer-container {
 		height: 50px;
-		background-color: #ffffff;
+		background-color: rgba(255, 255, 255, 0.5);
 		border-top: 1px solid #d7e2e9;
 		color: #7e7e7e;
 		.footer-item {

@@ -22,6 +22,7 @@ import Lists from './components/Lists.vue'
 import Tabs from '../../components/tabs/tabs.vue'
 
 export default {
+	name:'activity',
 	components: {
 		Lists,
 		Tabs
