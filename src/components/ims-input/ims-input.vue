@@ -156,6 +156,7 @@ export default {
 			background-color: transparent;
 			color: aliceblue;
 			transition: all 0.3s ease-in-out;
+			max-width: 222px;
 		}
 		.right-content {
 			padding: 0 10px 0 15px;

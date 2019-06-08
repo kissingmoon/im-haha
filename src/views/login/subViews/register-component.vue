@@ -238,7 +238,7 @@ export default {
 		height: 100%;
 		border-top-right-radius: 5px;
 		border-bottom-right-radius: 5px;
-			overflow: hidden;
+		box-sizing: border-box;
 		.submit-box {
 			width: 54px;
 			background: rgba(0, 0, 0, 0.4);

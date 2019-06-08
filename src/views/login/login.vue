@@ -169,6 +169,7 @@ export default {
 		}
 	}
 	.main-container {
+		
 	}
 }
 .marquee-left {
