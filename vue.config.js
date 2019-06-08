@@ -21,6 +21,7 @@ module.exports = {
     }
   },
   devServer: {
+    port: 8082,
     proxy: {
       '/api': {
         //target: 'http://192.168.27.27:8199',//代理接口   lem111
