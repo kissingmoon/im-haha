@@ -216,7 +216,7 @@ export default {
 				this.setUserToken(res.data.token)
 				localStorage.setItem('U_TK', res.data.token)
 				this.$api.getUserInfo()
-				this.$router.go(-1)
+				this.$router.push('/user')
 			} else {
 				this.formData.code.model = ''
 				this.setCode()

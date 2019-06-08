@@ -173,7 +173,11 @@ export default {
 				localStorage.setItem('U_TK', res.data.token)
 				this.setPlatformFlag(res.data.platformFlag)
 				this.$api.getUserInfo()
-				this.$router.go(-1)
+				if (history.length <= 1) {
+					this.$router.push('/')
+				} else {
+					this.$router.go(-1)
+				}
 			} else {
 				this.formData.code.model = ''
 				this.setCode()
