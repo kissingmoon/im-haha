@@ -28,7 +28,7 @@ module.exports = {
         //target: 'http://192.168.27.142:8199', //代理接口   frank
         target: 'http://47.52.16.236:8199',//代理接口   test
         //target: 'http://sport989.com/prod',//代理接口
-        //target: 'http://dianjing.kpkqin.com/', //中博测试API地址
+        //target: 'http://dianjing.kpkqin.com/', //YG娱乐测试API地址
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api' //代理的路径
