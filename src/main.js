@@ -38,15 +38,15 @@ Vue.use(List)
   .use(Dialog)
   .use(PullRefresh)
   .use(VueAwesomeSwiper)
-  
+
+Vue.component('ims-header', ImsHeader)
+
 Vue.config.productionTip = false
 
 Vue.prototype.interfaces = interfaces
 Vue.prototype.$loading = loading
 Vue.prototype.$http = $http
 Vue.prototype.$api = api
-
-Vue.component('ims-header', ImsHeader)
 
 fastclick.attach(document.body)
 fastclick.prototype.focus = function(targetElement) {
