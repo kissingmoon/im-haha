@@ -3,8 +3,8 @@
 		<ims-header title="活动详情"/>
 		<div v-if="isShow" class="actv_main">
 			<!-- 在这里绑定html -->
-			<!-- <div v-if="!is_8888" v-html="html"> -->
-			<div v-if="true">
+			<div v-if="!is_8888" v-html="html">
+			<!-- <div v-if="true"> -->
 				<!-- 活动1  周周有礼，周周送 -->
 				<!-- <div style="padding-bottom:24px;">
 					<div class="actv_h">周周有礼，周周送</div>
@@ -1322,7 +1322,7 @@ import { mapGetters } from 'vuex'
 export default {
 	data() {
 		return {
-			isShow: true,
+			isShow: false,
 			id: '',
 			html: '',
 			is_8888: false,
