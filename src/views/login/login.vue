@@ -29,10 +29,15 @@
 		</div>
 		<div
 			class="main-container display-flex"
-			:class="{'marquee-left': scrollTo == 'left','marquee-right': scrollTo == 'right'}"
 		>
-			<login-component @goNext="goNextFun"></login-component>
-			<register-component @goBefore="goBeforeFun"></register-component>
+		<swiper :options="swiperOption" ref="swp">
+			<swiper-slide>
+				<login-component @goNext="goNextFun"></login-component>
+			</swiper-slide>
+			<swiper-slide>
+				<register-component @goBefore="goBeforeFun"></register-component>
+			</swiper-slide>
+		</swiper>
 		</div>
 	</div>
 </template>
@@ -46,6 +51,7 @@ export default {
 	data() {
 		return {
 			scrollTo: '',
+			swiperOption: {},
 			iconList: [
 				{
 					imgSrc: require('./img/dl1.png'),
@@ -81,10 +87,10 @@ export default {
 			setAccount: 'SET_ACCOUNT'
 		}),
 		goNextFun() {
-			this.scrollTo = 'left'
+			this.$refs.swp.swiper.slideTo(1);
 		},
 		goBeforeFun() {
-			this.scrollTo = 'right'
+			this.$refs.swp.swiper.slideTo(0);
 		},
 		goBack() {
 			if (history.length <= 1) {
@@ -169,30 +175,7 @@ export default {
 		}
 	}
 	.main-container {
-	}
-}
-.marquee-left {
-	transform: translate3d(-100%, 0, 0);
-	animation: marquee-left 0.2s linear;
-}
-@keyframes marquee-left {
-	0% {
-		transform: translate3d(0, 0, 0);
-	}
-	100% {
-		transform: translate3d(-100%, 0, 0);
-	}
-}
-.marquee-right {
-	transform: translate3d(0, 0, 0);
-	animation: marquee-right 0.2s linear;
-}
-@keyframes marquee-right {
-	0% {
-		transform: translate3d(-100%, 0, 0);
-	}
-	100% {
-		transform: translate3d(0, 0, 0);
+		
 	}
 }
 </style>

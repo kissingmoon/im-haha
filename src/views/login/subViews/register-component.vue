@@ -216,7 +216,7 @@ export default {
 				this.setUserToken(res.data.token)
 				localStorage.setItem('U_TK', res.data.token)
 				this.$api.getUserInfo()
-				this.$router.go(-1)
+				this.$router.push('/user')
 			} else {
 				this.formData.code.model = ''
 				this.setCode()
@@ -238,7 +238,7 @@ export default {
 		height: 100%;
 		border-top-right-radius: 5px;
 		border-bottom-right-radius: 5px;
-			overflow: hidden;
+		box-sizing: border-box;
 		.submit-box {
 			width: 54px;
 			background: rgba(0, 0, 0, 0.4);

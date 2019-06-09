@@ -173,7 +173,11 @@ export default {
 				localStorage.setItem('U_TK', res.data.token)
 				this.setPlatformFlag(res.data.platformFlag)
 				this.$api.getUserInfo()
-				this.$router.go(-1)
+				if (history.length <= 1) {
+					this.$router.push('/')
+				} else {
+					this.$router.go(-1)
+				}
 			} else {
 				this.formData.code.model = ''
 				this.setCode()
@@ -200,9 +204,10 @@ export default {
 	box-sizing: border-box;
 	.main-container {
 		height: 100%;
+		width: 100%;
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
-		overflow: hidden;
+		box-sizing: border-box;
 		.form-box {
 			background: rgba(255, 255, 255, 0.4);
 			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.1);
@@ -216,6 +221,7 @@ export default {
 				color: #fff;
 			}
 			.form-input-content {
+				width: 100%;
 				.form-input-item {
 					margin-top: 14px;
 					.slot-icon--left {
@@ -290,8 +296,9 @@ export default {
 			}
 		}
 		.submit-box {
-			width: 50px;
+			width: 54px;
 			background: rgba(0, 0, 0, 0.4);
+			flex-shrink: 0;
 			.submit-box__btn--top {
 				width: 24px;
 				height: 24px;
