@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { Tab, Tabs, List } from 'vant'
+import { Tab, Tabs } from 'vant'
 import dataList from './subCompts/data-list'
 import writeMail from './subCompts/write-mail'
 import { net_insertRead, net_msgDelete } from '@/js/network.js'
@@ -47,7 +47,6 @@ export default {
 	components: {
 		Tab,
 		Tabs,
-		List,
 		dataList,
 		writeMail
 	},
