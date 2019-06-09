@@ -100,7 +100,7 @@ export default {
 <style lang="less" scoped>
 .login-wrapper {
 	background: url('./img/login-bg.jpg') no-repeat;
-	background-size: 100% auto;
+	background-size: cover;
 	position: absolute;
 	top: 0;
 	bottom: 0;
