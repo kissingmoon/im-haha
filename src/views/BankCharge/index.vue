@@ -201,7 +201,7 @@ export default {
 		background: url('../../assets/img/icon.png') no-repeat;
 		background-position: right 0 bottom 0;
 		background-size: 25px;
-		border-color: #e5c88b;
+		border-color: @color_deep_blue;
 	}
 	.bank_text {
 		display: flex;
@@ -235,7 +235,7 @@ export default {
 	display: block;
 	width: 265px;
 	height: 44px;
-	background: rgba(229, 200, 139, 1);
+	background: @btn_color;
 	border-radius: 22px;
 	border: none;
 	outline: none;
@@ -246,7 +246,7 @@ export default {
 	transition: all 0.1s linear;
 }
 .submit:active {
-	background: rgb(221, 186, 111);
+	opacity: .8;
 }
 .submit:disabled {
 	background-color: #b2b2b2;

@@ -35,7 +35,7 @@
 					@click="login"
 				>登录</div>
 				<div class="submit-tip">
-					<a href @click="goHome">先去逛逛</a>
+					<div href @click="goHome">先去逛逛</div>
 				</div>
 			</div>
 			<div class="submit-box display-flex flex-center flex-column" @click="goNext">
@@ -289,7 +289,7 @@ export default {
 			.submit-tip {
 				text-align: center;
 				padding-top: 10px;
-				a {
+				div {
 					text-decoration: underline;
 					color: #fff;
 				}
