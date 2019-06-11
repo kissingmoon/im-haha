@@ -22,7 +22,6 @@ class Device {
     return /micromessenger/gi.test(this.ua)
   }
   get isQQ() {
-    //QQ
     return /Mqqbrowser/gi.test(this.ua)
   }
   get isApp() {
@@ -33,7 +32,6 @@ class Device {
     return false
   }
   get isQQbrowser() {
-    //QQ浏览器APP
     return /MQQbrowser/gi.test(this.ua)
   }
 }
