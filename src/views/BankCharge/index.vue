@@ -14,10 +14,11 @@
 						@click="selectThis(index)"
 						:key="index"
 						class="bank"
+						style="cursor: pointer;"
 					>
 						<div class="bank_text">
 							<div class="left">
-								<div>银行：</div>
+								<div class="left_0">银行：</div>
 								<div>{{item.account_kh_address}}</div>
 							</div>
 							<div class="right"></div>
@@ -27,14 +28,14 @@
 								<div class="left_0">名称：</div>
 								<div class="left_1">{{item.sk_people}}</div>
 							</div>
-							<div style="cursor: pointer;" onclick="void(0)" :data-clipboard-text="item.sk_people" class="right copy">复制</div>
+							<div style="cursor: pointer;" onclick="void(0)" :data-clipboard-text="item.sk_people" class="right copy needsclick">复制</div>
 						</div>
 						<div class="bank_text">
 							<div class="left">
-								<div>账户：</div>
+								<div class="left_0">账户：</div>
 								<div>{{item.account_no}}</div>
 							</div>
-							<div style="cursor: pointer;" onclick="void(0)" :data-clipboard-text="item.account_no" class="right copy">复制</div>
+							<div style="cursor: pointer;" onclick="void(0)" :data-clipboard-text="item.account_no" class="right copy needsclick">复制</div>
 						</div>
 					</li>
 				</ul>
@@ -217,7 +218,7 @@ export default {
 		color: rgba(0, 0, 0, 1);
 		line-height: 22px;
 		.left_0 {
-			width: 3em;
+			width: 4em;
 		}
 		.left_1 {
 			flex: 1;

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import fastclick from 'fastclick'
+import fastclick from './js/fastclick.js'
 import { PullRefresh, List, Icon, Popup, Dialog, Toast } from 'vant'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import store from './store'
