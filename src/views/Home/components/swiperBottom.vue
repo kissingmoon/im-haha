@@ -34,6 +34,23 @@
 						@click="open(item.platformInfos[1],item)"
 					>
 				</div>
+				<div v-if="item.platformInfos.length == 3" class="slide_3">
+					<img
+						class="img img0"
+						:src="item.platformInfos[0].gameImageUrl"
+						@click="open(item.platformInfos[0],item)"
+					>
+					<img
+						class="img img1"
+						:src="item.platformInfos[1].gameImageUrl"
+						@click="open(item.platformInfos[1],item)"
+					>
+					<img
+						class="img img2"
+						:src="item.platformInfos[2].gameImageUrl"
+						@click="open(item.platformInfos[2],item)"
+					>
+				</div>
 				<div v-if="item.platformInfos.length == 4" class="slide_4">
 					<img
 						class="img img0"
@@ -79,7 +96,7 @@ export default {
 		return {
 			activeIndex: 0,
 			swiper: {
-				lazy:true,
+				lazy: true,
 				direction: 'vertical'
 			}
 		}
@@ -132,8 +149,8 @@ export default {
 }
 </script>
 <style lang='less' scoped>
-.slide_2{
-		.img {
+.slide_2 {
+	.img {
 		display: block;
 		width: 100%;
 	}
@@ -145,6 +162,19 @@ export default {
 	.img1 {
 		height: 147px;
 		border-radius: 5px;
+	}
+}
+.slide_3 {
+	.img {
+		display: block;
+		width: 100%;
+		height: 95px;
+		border-radius: 5px;
+		margin-bottom: 6px;
+	}
+
+	.img_2 {
+		margin-bottom: 0;
 	}
 }
 .slide_4 {

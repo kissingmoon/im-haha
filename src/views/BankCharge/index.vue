@@ -27,14 +27,14 @@
 								<div class="left_0">名称：</div>
 								<div class="left_1">{{item.sk_people}}</div>
 							</div>
-							<div :data-clipboard-text="item.sk_people" class="right copy">复制</div>
+							<div style="cursor: pointer;" onclick="void(0)" :data-clipboard-text="item.sk_people" class="right copy">复制</div>
 						</div>
 						<div class="bank_text">
 							<div class="left">
 								<div>账户：</div>
 								<div>{{item.account_no}}</div>
 							</div>
-							<div :data-clipboard-text="item.account_no" class="right copy">复制</div>
+							<div style="cursor: pointer;" onclick="void(0)" :data-clipboard-text="item.account_no" class="right copy">复制</div>
 						</div>
 					</li>
 				</ul>
