@@ -80,14 +80,14 @@
 					<div class="img_box2">
 						<div class="img_box2_box img_box2_box0">
 							<img
-								class="img img2"
+								class="img"
 								:src="item.platformInfos[2].gameImageUrl"
 								@click="open(item.platformInfos[2],item)"
 							>
 						</div>
 						<div class="img_box2_box img_box2_box1">
 							<img
-								class="img img3"
+								class="img"
 								:src="item.platformInfos[3].gameImageUrl"
 								@click="open(item.platformInfos[3],item)"
 							>
@@ -313,16 +313,6 @@ export default {
 		.img_box2_box1 {
 			margin-right: 0;
 		}
-	}
-	.img2 {
-		width: 116px;
-		height: 95px;
-		border-radius: 5px;
-	}
-	.img3 {
-		width: 116px;
-		height: 95px;
-		border-radius: 5px;
 	}
 	.img {
 		display: block;
