@@ -13,6 +13,7 @@
 					v-for="(text,index) in texts"
 					:style="{paddingRight:(index != texts.length-1) ? wrapWidth+'px' : '0px'}"
 					:key="index"
+					@click="diolag(text)"
 					class="text"
 				>{{text}}</span>
 			</div>
@@ -61,7 +62,7 @@ export default {
 							return
 						}
 						const offsetWidth = content.getBoundingClientRect().width
-						if (true ) {
+						if (true) {
 							this.offsetWidth = offsetWidth
 							this.duration = offsetWidth / this.speed
 							this.contentStyle = {
@@ -81,6 +82,14 @@ export default {
 	},
 
 	methods: {
+		diolag(text) {
+			if (text) {
+				Dialog.alert({
+					message: text,
+					confirmButtonText: '好的'
+				})
+			}
+		},
 		onAnimationEnd() {
 			this.firstRound = false
 			this.$nextTick(() => {
