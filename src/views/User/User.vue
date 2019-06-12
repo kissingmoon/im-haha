@@ -245,8 +245,6 @@ export default {
 }
 .user_wrapper {
 	min-height: 100%;
-	background: url('../../assets/page_bg_default.jpg') no-repeat center;
-	background-size: cover;
 	box-sizing: border-box;
 	.msg_box {
 		padding: 22px 13px 18px;

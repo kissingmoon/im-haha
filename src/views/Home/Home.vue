@@ -110,9 +110,6 @@ export default {
 	min-height: 100%;
 	box-sizing: border-box;
 	padding-bottom: @app_footer_height;
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
 }
 .home {
 	padding-bottom: 12px;
