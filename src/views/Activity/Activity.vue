@@ -22,7 +22,7 @@ import Lists from './components/Lists.vue'
 import Tabs from '../../components/tabs/tabs.vue'
 
 export default {
-	name:'activity',
+	name: 'activity',
 	components: {
 		Lists,
 		Tabs
@@ -104,6 +104,9 @@ export default {
 	min-height: 100%;
 	box-sizing: border-box;
 	padding-bottom: @app_footer_height;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
 	.empty {
 		padding-top: 100px;
 		.img {

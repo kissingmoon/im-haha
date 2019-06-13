@@ -22,10 +22,10 @@ export default {
 }
 </script>
 <style lang='less' scoped>
-.index_wrapper{
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	background-size: cover;
-}
+// .index_wrapper{
+// 	background: url('../../assets/page_bg_default.jpg') no-repeat;
+// 	background-size: cover;
+// }
 </style>
 
 
