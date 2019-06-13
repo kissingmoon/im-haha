@@ -40,7 +40,7 @@
 								</div>
 							</div>
 							<div class="right flex-1 display-flex">
-								<div class="status flex-1 display-flex">- {{item.betNumber}}</div>
+								<div class="status flex-1 display-flex">{{item.betNumber}}</div>
 								<div
 									class="money flex-1 display-flex"
 									:style="{color: item.netNumber >= 0 ? '#89C5A6' : '#E0877F'}"

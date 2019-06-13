@@ -84,7 +84,7 @@
 		<div class="title">
 			<span style="position:relative;top:0px"></span>如何区分主队和客队，让球球队和受让球队？
 		</div>
-		<p>如何区分主队和客队，让球球队和受让球队？</p>
+		<p>赛事栏中通常上方显示的球队为主队，强队（让球队）名称显示的字体颜色为橘色，同时盘口旁边会显示让球的数量。</p>
 		<div class="title">
 			<span></span>什么是并列名次规则（冠军）？
 		</div>

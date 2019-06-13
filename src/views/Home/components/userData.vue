@@ -167,7 +167,7 @@ export default {
 	}
 }
 .user {
-	width: 345px;
+	width: 94.666%;
 	margin: 0 auto;
 	overflow: hidden;
 	border-radius: 5px;
@@ -188,7 +188,7 @@ export default {
 		.logo {
 			position: absolute;
 			width: 75px;
-			height: 16px;
+			height: 22px;
 			right: 90px;
 		}
 		.login {

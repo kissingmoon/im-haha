@@ -1,5 +1,5 @@
 <template>
-	<div style="height:100%">
+	<div class="index_wrapper" style="height:100%">
 		<keep-alive :include="keepALivePages">
 			<router-view/>
 		</keep-alive>
@@ -21,5 +21,12 @@ export default {
 	}
 }
 </script>
+<style lang='less' scoped>
+// .index_wrapper{
+// 	background: url('../../assets/page_bg_default.jpg') no-repeat;
+// 	background-size: cover;
+// }
+</style>
+
 
 

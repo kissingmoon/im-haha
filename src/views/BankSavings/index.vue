@@ -47,7 +47,7 @@
 		<van-number-keyboard
 			:show="showKeyboard"
 			:close-button-text="'完成'"
-			extra-key="."
+			extra-key=""
 			safe-area-inset-bottom
 			@blur="closeKeyboard"
 			@input="onInput"
