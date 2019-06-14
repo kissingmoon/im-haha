@@ -37,7 +37,7 @@ export default {
 			return
 		}
 		this.$http.post('/home/getPtGamesList', { id: id }).then(res => {
-			if (res.code == '200') {
+			if (res.code == '200') {				
 				this.lists = res.data.ptGamesList
 			}
 		})

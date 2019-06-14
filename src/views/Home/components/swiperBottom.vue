@@ -6,7 +6,7 @@
 				:key="index"
 				class="index"
 				:class="{active:activeIndex==index}"
-				@click="changeSwiper(index)"
+				@click="changeSwiper(list,index)"
 			>
 				<img class="img" :src="activeIndex==index ? list.iconImgOffUrl :list.iconImgOnUrl">
 				<span class="text">{{list.gameTitleCn}}</span>
@@ -32,6 +32,23 @@
 						class="img img1"
 						:src="item.platformInfos[1].gameImageUrl"
 						@click="open(item.platformInfos[1],item)"
+					>
+				</div>
+				<div v-if="item.platformInfos.length == 3" class="slide_3">
+					<img
+						class="img img0"
+						:src="item.platformInfos[0].gameImageUrl"
+						@click="open(item.platformInfos[0],item)"
+					>
+					<img
+						class="img img1"
+						:src="item.platformInfos[1].gameImageUrl"
+						@click="open(item.platformInfos[1],item)"
+					>
+					<img
+						class="img img2"
+						:src="item.platformInfos[2].gameImageUrl"
+						@click="open(item.platformInfos[2],item)"
 					>
 				</div>
 				<div v-if="item.platformInfos.length == 4" class="slide_4">
@@ -95,7 +112,10 @@ export default {
 			let gameJumpUrl = platformInfos.gameJumpUrl
 
 			const ismjb = this.ismjb || localStorage.getItem('ismjb')
-
+			if(platformInfos.gameStatus==2){
+				this.$toast(platformInfos.alertMsg)
+				return
+			}
 			if (!this.isLogin) {
 				if (platformInfos.noLoginJumpUrl) {
 					gameJumpUrl = platformInfos.noLoginJumpUrl
@@ -125,7 +145,8 @@ export default {
 		slideChange() {
 			this.activeIndex = this.$refs.bottomSwiper.swiper.activeIndex
 		},
-		changeSwiper(index) {
+		changeSwiper(list,index) {
+			console.log(list,index)
 			this.$refs.bottomSwiper.swiper.slideTo(index)
 		}
 	}
@@ -144,6 +165,25 @@ export default {
 	}
 	.img1 {
 		height: 147px;
+		border-radius: 5px;
+	}
+}
+.slide_3{
+	.img {
+		display: block;
+		width: 100%;
+	}
+	.img0 {
+		height: 95px;
+		border-radius: 5px;
+		margin-bottom: 6px;
+	}
+	.img1 {
+		height: 95px;
+		border-radius: 5px;
+	}
+	.img2 {
+		height: 95px;
 		border-radius: 5px;
 	}
 }
