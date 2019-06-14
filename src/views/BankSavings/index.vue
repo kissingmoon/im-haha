@@ -1,5 +1,5 @@
 <template>
-	<div class="bank_savings_wrapper">
+	<div class="bank_savings_wrapper headview_wrapper">
 		<ims-header title="存款"/>
 		<div v-if="isShow" class="bank_savings">
 			<section class="section">
@@ -47,7 +47,7 @@
 		<van-number-keyboard
 			:show="showKeyboard"
 			:close-button-text="'完成'"
-			extra-key=""
+			extra-key
 			safe-area-inset-bottom
 			@blur="closeKeyboard"
 			@input="onInput"
@@ -181,175 +181,176 @@ export default {
 	background-size: cover;
 	background-attachment: fixed;
 	padding-top: @app_head_height;
-}
-.error {
-	width: 100%;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.submit {
-	display: block;
-	width: 265px;
-	height: 44px;
-	background: linear-gradient(to right, #60e6ff, #46a8fe);
-	border-radius: 22px;
-	border: none;
-	outline: none;
-	font-size: 18px;
-	font-weight: 500;
-	color: rgba(255, 255, 255, 1);
-	margin: 70px auto 0;
-	transition: all 0.1s linear;
-}
-.submit:active {
-	background: rgb(221, 186, 111);
-}
-.submit:disabled {
-	background: rgba(139, 139, 139, .5);
-	color: #fff;
-}
-.money_input {
-	width: 345px;
-	height: 51px;
-	background: rgba(255, 255, 255, .5);
-	border-radius: 4px;
-	margin: 0 auto;
-	display: flex;
-	align-items: center;
-	.money_word {
-		font-size: 29px;
+	.error {
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.submit {
+		display: block;
+		width: 265px;
+		height: 44px;
+		background: linear-gradient(to right, #60e6ff, #46a8fe);
+		border-radius: 22px;
+		border: none;
+		outline: none;
+		font-size: 18px;
 		font-weight: 500;
-		color: rgba(51, 51, 51, 1);
-		line-height: 51px;
-		padding: 0 2px 0 10px;
+		color: rgba(255, 255, 255, 1);
+		margin: 70px auto 0;
+		transition: all 0.1s linear;
 	}
-	.input_box {
-		flex: 1;
-		font-size: 26px;
-		position: relative;
+	.submit:active {
+		background: rgb(221, 186, 111);
 	}
-	.fake_placehold {
-		position: relative;
+	.submit:disabled {
+		background: rgba(139, 139, 139, 0.5);
+		color: #fff;
 	}
-	.placehold {
-		font-size: 12px;
-		font-weight: 500;
-		color: rgba(82, 82, 82, 0.29);
-		display: inline-block;
-	}
-	.placehold_active::before {
-		content: ' ';
-		position: relative;
-		right: 0;
-		height: 80%;
-		border-right: 2px solid #108ee9;
-		animation: keyboard-cursor infinite 1s step-start;
-	}
-	.fake_input {
-		position: relative;
-	}
-	.text_active::after {
-		content: ' ';
-		position: relative;
-		right: 0;
-		height: 80%;
-		border-right: 2px solid #108ee9;
-		animation: keyboard-cursor infinite 1s step-start;
-	}
-	.fake_text {
-		display: inline-block;
-	}
-	.input_clear {
-		width: 51px;
+	.money_input {
+		width: 345px;
 		height: 51px;
-		background-color: red;
-		background: url('./img/clear.png') no-repeat;
-		background-size: 16px;
-		background-position: center;
-	}
-}
-.bank_savings {
-	.money {
-		padding: 14px 9px;
-		.li {
-			display: inline-block;
-			width: 76px;
-			height: 41px;
-			border-radius: 5px;
-			font-size: 13px;
-			font-weight: 500;
-			color: #4a4a4a;
-			box-shadow: 0 0.02rem 0.04rem 0 rgba(0, 0, 0, 0.1);
-			background: rgba(255, 255, 255, 0.5);
-			line-height: 41px;
-			text-align: center;
-			margin: 0 6.5px;
-			border: 1px solid transparent;
-			box-sizing: border-box;
-		}
-		.li.active {
-			border: 1px solid #019cfd;
-			background: rgba(229, 200, 139, 1);
-			background: url('./img/depnav_active.png') no-repeat;
-			background-size: 17px;
-			background-position: top right;
-		}
-	}
-	.pay_ways {
-		padding: 0 9px 0 9px;
-		.icon {
-			width: 25px;
-			height: 25px;
-			margin-top: 3px;
-		}
-		.li {
-			display: inline-block;
-			width: 80px;
-			height: 68px;
-			background: rgba(255, 255, 255, 0.5);
-			box-shadow: 0px 0.02rem 0.04rem 0px rgba(0, 0, 0, 0.1);
-			border-radius: 5px;
-			text-align: center;
-			font-size: 11px;
+		background: rgba(255, 255, 255, 0.5);
+		border-radius: 4px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		.money_word {
+			font-size: 29px;
 			font-weight: 500;
 			color: rgba(51, 51, 51, 1);
-			margin: 0 4px 13px;
-			position: relative;
-			box-sizing: border-box;
-			border: 1px solid transparent;
-			position: relative;
-			vertical-align: top;
-			.pp {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				padding: 0 4px;
-				height: 34px;
-			}
+			line-height: 51px;
+			padding: 0 2px 0 10px;
 		}
-		.li.active {
-			border: 1px solid #019cfd;
+		.input_box {
+			flex: 1;
+			font-size: 26px;
+			position: relative;
 		}
-		.active .bg {
-			position: absolute;
+		.fake_placehold {
+			position: relative;
+		}
+		.placehold {
+			font-size: 12px;
+			font-weight: 500;
+			color: rgba(82, 82, 82, 0.29);
+			display: inline-block;
+		}
+		.placehold_active::before {
+			content: ' ';
+			position: relative;
 			right: 0;
-			top: 0;
-			width: 17px;
-			height: 17px;
-			background: url('./img/depnav_active.png') no-repeat;
-			background-size: 17px;
-			background-position: top right;
+			height: 80%;
+			border-right: 2px solid #108ee9;
+			animation: keyboard-cursor infinite 1s step-start;
+		}
+		.fake_input {
+			position: relative;
+		}
+		.text_active::after {
+			content: ' ';
+			position: relative;
+			right: 0;
+			height: 80%;
+			border-right: 2px solid #108ee9;
+			animation: keyboard-cursor infinite 1s step-start;
+		}
+		.fake_text {
+			display: inline-block;
+		}
+		.input_clear {
+			width: 51px;
+			height: 51px;
+			background-color: red;
+			background: url('./img/clear.png') no-repeat;
+			background-size: 16px;
+			background-position: center;
 		}
 	}
+	.bank_savings {
+		.money {
+			padding: 14px 9px;
+			.li {
+				display: inline-block;
+				width: 76px;
+				height: 41px;
+				border-radius: 5px;
+				font-size: 13px;
+				font-weight: 500;
+				color: #4a4a4a;
+				box-shadow: 0 0.02rem 0.04rem 0 rgba(0, 0, 0, 0.1);
+				background: rgba(255, 255, 255, 0.5);
+				line-height: 41px;
+				text-align: center;
+				margin: 0 6.5px;
+				border: 1px solid transparent;
+				box-sizing: border-box;
+			}
+			.li.active {
+				border: 1px solid #019cfd;
+				background: rgba(229, 200, 139, 1);
+				background: url('./img/depnav_active.png') no-repeat;
+				background-size: 17px;
+				background-position: top right;
+			}
+		}
+		.pay_ways {
+			padding: 0 9px 0 9px;
+			.icon {
+				width: 25px;
+				height: 25px;
+				margin-top: 3px;
+			}
+			.li {
+				display: inline-block;
+				width: 80px;
+				height: 68px;
+				background: rgba(255, 255, 255, 0.5);
+				box-shadow: 0px 0.02rem 0.04rem 0px rgba(0, 0, 0, 0.1);
+				border-radius: 5px;
+				text-align: center;
+				font-size: 11px;
+				font-weight: 500;
+				color: rgba(51, 51, 51, 1);
+				margin: 0 4px 13px;
+				position: relative;
+				box-sizing: border-box;
+				border: 1px solid transparent;
+				position: relative;
+				vertical-align: top;
+				.pp {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					padding: 0 4px;
+					height: 34px;
+				}
+			}
+			.li.active {
+				border: 1px solid #019cfd;
+			}
+			.active .bg {
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 17px;
+				height: 17px;
+				background: url('./img/depnav_active.png') no-repeat;
+				background-size: 17px;
+				background-position: top right;
+			}
+		}
+	}
+	.title {
+		font-size: 13px;
+		font-weight: 500;
+		color: rgba(51, 51, 51, 1);
+		padding: 20px 18px 11px;
+	}
 }
-.title {
-	font-size: 13px;
-	font-weight: 500;
-	color: rgba(51, 51, 51, 1);
-	padding: 20px 18px 11px;
-}
+
 @keyframes keyboard-cursor {
 	0% {
 		opacity: 1;

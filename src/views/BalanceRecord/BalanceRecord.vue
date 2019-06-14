@@ -1,5 +1,5 @@
 <template>
-	<div class="bet-wrapper display-flex flex-column">
+	<div class="bet-wrapper display-flex flex-column headview_wrapper">
 		<ims-header title="提现记录"/>
 		<div class="main-container">
 			<no-data v-if="initFinish && drawRecList.length==0"></no-data>

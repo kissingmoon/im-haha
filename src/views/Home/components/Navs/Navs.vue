@@ -96,7 +96,6 @@ export default {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		z-index: 99;
 		height: @app_footer_height;
 		background-color: rgba(255, 255, 255, 0.8);
 		z-index: 999;

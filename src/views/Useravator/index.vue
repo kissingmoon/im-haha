@@ -1,5 +1,5 @@
 <template>
-	<div class="useravator_wrapper">
+	<div class="useravator_wrapper headview_wrapper">
 		<ims-header title="头像修改"/>
 		<div v-show="isShow" class="avator">
 			<div class="imgs">

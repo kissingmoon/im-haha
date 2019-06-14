@@ -14,7 +14,7 @@
 		</transition>
 
 		<van-dialog class="actv_8888_dialog" :show-confirm-button="false" v-model="show8888">
-			<div class="actv_8888">
+			<div class="actv_88">
 				<div class="actv_8888_t">
 					<img class="actv_8888_img" src="./assets/88@2x.png">
 					<div class="actv_8888_text">
@@ -125,11 +125,11 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .actv_8888_dialog {
 	width: 84%;
 }
-.actv_8888 {
+.actv_88 {
 	width: 100%;
 	.actv_8888_t {
 		height: 244px;

@@ -1,5 +1,5 @@
 <template>
-	<div class="balance-wrapper">
+	<div class="balance-wrapper headview_wrapper">
 		<ims-header title="安全中心"/>
 		<div class="main-container">
 			<div class="bank-box display-flex flex-center">

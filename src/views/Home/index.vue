@@ -18,14 +18,20 @@ export default {
 		return {
 			keepALivePages: ['home', 'course', 'activity', 'user']
 		}
-	}
+	},
 }
 </script>
 <style lang='less' scoped>
-.index_wrapper{
-	position: relative;
+.index_wrapper {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
-.index_wrapper:before{
+.index_wrapper:before {
 	position: fixed;
 	content: '';
 	top: 0;

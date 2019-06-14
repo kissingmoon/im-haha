@@ -1,5 +1,5 @@
 <template>
-	<div class="userinfo_wrapper">
+	<div class="userinfo_wrapper headview_wrapper">
 		<ims-header title="个人资料"/>
 		<ul class="lists">
 			<li @click="mofifyAvator" class="list">

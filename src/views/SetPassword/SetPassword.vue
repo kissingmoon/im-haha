@@ -1,5 +1,5 @@
 <template>
-	<div class="loginPwd-wrapper">
+	<div class="loginPwd-wrapper headview_wrapper">
 		<div class="header-container">
 			<ims-header :title="titleList[pointers.title]">
 				<span slot="left" class="icon_left" @click="back">

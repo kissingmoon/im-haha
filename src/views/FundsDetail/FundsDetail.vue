@@ -1,5 +1,5 @@
 <template>
-	<div class="funds-wrapper display-flex flex-column">
+	<div class="funds-wrapper display-flex flex-column headview_wrapper">
 		<ims-header title="资金明细">
 			<div slot="right" class="header-cottage" @click="onRightClick"></div>
 		</ims-header>
