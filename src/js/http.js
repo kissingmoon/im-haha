@@ -83,7 +83,12 @@ instance.interceptors.response.use(
           break
         case '10086':
           //您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码
-          // toast('您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码');
+          Dialog.alert({
+						message: '您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码',
+						confirmButtonText: '好的'
+					}).then(() => {
+            router.push('/login')
+          });
           $api.clearLocal()
           break
         case '200':

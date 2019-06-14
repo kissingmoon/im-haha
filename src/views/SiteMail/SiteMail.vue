@@ -63,6 +63,9 @@ export default {
 			})
 		},
 		allDelete() {
+			if (this.$refs.dataList.msgList.length <= 0) {
+				return
+			}
 			Dialog.confirm({
 				title: '确认删除',
 				message: '此操作将永久删除您的信件是否继续？'
@@ -97,7 +100,7 @@ export default {
 	/deep/.van-tabs__nav {
 		background-color: rgba(255, 255, 255, 0.5);
 	}
-	/deep/.van-hairline--top-bottom::after{
+	/deep/.van-hairline--top-bottom::after {
 		border: none;
 	}
 	.main-container {

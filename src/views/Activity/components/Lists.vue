@@ -1,8 +1,8 @@
 <template>
 	<ul v-if="lists.length>0" class="activities">
 		<transition-group tag="ul" name="fade">
-			<li v-for="(list,index) in lists" :key="index" @click="openActivity(list)" class="activity">
-				<ims-image class="img" lazy :src="list.imageUrl">
+			<li v-for="(list,index) in lists" :key="index" @click="openActivity(list)" src="../121212.png" class="activity">
+				<ims-image class="img" lazy :src="list.id=='53' ? 'http://www.tryingdan.com/tupian/photo_2019-06-13_20-08-43909.jpg' : list.imageUrl ">
 					<div class="img_placeholder" slot="placeholder"></div>
 				</ims-image>
 				<div class="title">

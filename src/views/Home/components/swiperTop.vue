@@ -95,7 +95,7 @@ export default {
 }
 .swiper-lazy-preloader {
 	width: 100%;
-	height: 150px;
+	height: 170px;
 	animation: none;
 	position: absolute;
 	left: 0;
@@ -116,8 +116,8 @@ export default {
 	.img {
 		display: block;
 		width: 100%;
-		border-radius: 7px;
-		height: 150px;
+		border-radius: 5px;
+		height: 170px;
 	}
 }
 </style>
