@@ -22,8 +22,10 @@
 							@onrightClick="rightClickFun(v, k)"
 						>
 							<div class="slot-icon--left" :class="v.leftIconClass" slot="leftIcon"></div>
-							<div class="slot-icon--right" :class="v.rightIconClass" slot="rightIcon">
-								<img v-if="v.imgSrc" :src="codeSrc" alt>
+							<div class="slot-icon--right"  slot="rightIcon">
+								<img v-if="v.rightIconClass == 'right-icon__code'" :src="codeSrc" alt>
+								<span :class="v.rightIconClass" class="display-flex flex-center" v-if="v.rightIconClass == 'right-icon__simcode'" @click="sendSIMCode(k)">获取</span>
+								<span class="display-flex flex-center right-icon__simcode" v-if="v.rightIconClass == 'right-icon__waiting'">{{ countZero }}s</span>
 							</div>
 						</ims-input>
 						<div class="input-tip">
@@ -46,12 +48,35 @@ import imsInput from '@/components/ims-input/ims-input'
 import mainOptions from '@/config/main-option.js'
 import { randomWord } from '@/js/tools.js'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
-import { net_register } from '@/js/network.js'
+import { net_register, net_sendSmsMsg } from '@/js/network.js'
 
 export default {
 	data() {
 		return {
 			formData: {
+				phone: {
+					model: '',
+					placeholder: '手机号',
+					leftIconClass: 'left-icon__code',
+					rightIconClass: '',
+					rightIconClass: '',
+					type: '',
+					regTip: '',
+					imgSrc: true,
+					valueType: 'num',
+					maxlength: 11
+				},
+				code: {
+					model: '',
+					placeholder: '验证码',
+					leftIconClass: 'left-icon__code',
+					rightIconClass: 'right-icon__simcode',
+					type: '',
+					regTip: '',
+					imgSrc: true,
+					valueType: 'num',
+					maxlength: 6
+				},
 				userId: {
 					model: '',
 					placeholder: '请输入用户名',
@@ -82,25 +107,27 @@ export default {
 					valueType: 'letterNum',
 					maxlength: 16
 				},
-				code: {
-					model: '',
-					placeholder: '验证码',
-					leftIconClass: 'left-icon__code',
-					rightIconClass: 'right-icon__code',
-					rightIconClass: '',
-					type: '',
-					regTip: '',
-					imgSrc: true,
-					valueType: 'num',
-					maxlength: 4
-				}
+				// code: {
+				// 	model: '',
+				// 	placeholder: '验证码',
+				// 	leftIconClass: 'left-icon__code',
+				// 	rightIconClass: 'right-icon__code',
+				// 	rightIconClass: '',
+				// 	type: '',
+				// 	regTip: '',
+				// 	imgSrc: true,
+				// 	valueType: 'num',
+				// 	maxlength: 4
+				// }
 			},
 			pointers: {
 				formData: -1
 			},
 			btnActive: false,
 			code_id: '',
-			codeSrc: ''
+			codeSrc: '',
+			timer: {},
+         	countZero: 60
 		}
 	},
 	components: {
@@ -135,6 +162,30 @@ export default {
 		}),
 		goBefore() {
 			this.$emit('goBefore')
+		},
+		sendSIMCode(index){
+			let param = {};
+			param.phone = this.formData.phone.model;
+			this.formData[index].rightIconClass = "right-icon__waiting";
+			this.countTimer(this.countZero);
+			net_sendSmsMsg(param).then(res => {
+				if(res.code == "200"){
+
+				}
+			})
+		},
+		countTimer(num) {
+			if (this.countZero == 0) {		
+				this.formData.code.rightIconClass = "right-icon__simcode";
+				this.countZero = 60;
+				this.timer = null;
+			} else {
+				this.countZero--;
+				this.timer = setTimeout(() => {
+				this.countTimer(this.countZero)
+				},
+				1000)
+			}
 		},
 		leftClickFun() {},
 		rightClickFun(v, k) {
@@ -190,8 +241,8 @@ export default {
 					}
 				}
 				if (item == 'code') {
-					if (param[item].model.length != 4) {
-						this.$toast('请输入4位数字验证码')
+					if (param[item].model.length != 6) {
+						this.$toast('请输入6位数字验证码')
 						return false
 					}
 				}
@@ -203,6 +254,7 @@ export default {
 			let result = this.checkForm(this.formData)
 			if (!result) return
 			let param = {}
+			param.phone = this.formData.phone.model
 			param.code = this.formData.code.model
 			param.inviteCode = ''
 			param.codeId = this.code_id
@@ -210,6 +262,9 @@ export default {
 			param.pwd = this.formData.pwd.model
 			param.platformFlag = this.platformFlag
 			param.agentUrl = location.host
+			param.webUmidToken = sessionStorage.getItem("webUmidToken");
+			param.uaToken = sessionStorage.getItem("uaToken");
+			debugger
 			let res = await net_register(param)
 			if (res.code == '200') {
 				toast('注册成功！')
@@ -231,7 +286,7 @@ export default {
 .reg-wrapper {
 	width: 100%;
 	height: 100%;
-	padding: 0 12px;
+	padding: 0 12px 20px 0;
 	flex-shrink: 0;
 	box-sizing: border-box;
 	.main-container {
@@ -311,6 +366,12 @@ export default {
 							display: flex;
 							width: 80px;
 							height: 35px;
+						}
+						.right-icon__simcode{
+							width:46px;
+							height:29px;
+							background:rgba(255,255,255,0.7);
+							border-radius:4px;
 						}
 					}
 				}

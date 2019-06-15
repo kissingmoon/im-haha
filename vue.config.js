@@ -21,10 +21,10 @@ module.exports = {
     }
   },
   devServer: {
-    port: 8080,
+    port: 8082,
     proxy: {
       '/api': {
-        //target: 'http://192.168.27.27:8199',//代理接口   lem
+        // target: 'http://192.168.27.27:8199',//代理接口   lem
         target: 'http://192.168.27.142:8199', //代理接口   frank
         //target: 'http://47.52.16.236:8199',//代理接口   test
         //target: 'http://sport989.com/prod',//代理接口

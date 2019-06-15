@@ -65,8 +65,9 @@ export default {
 		}
 	},
 	created() {
-		this.checkUUID()
+		// this.checkUUID()
 		this.checkUTK()
+		this.setAliToken();
 	},
 	methods: {
 		...mapMutations({
@@ -103,6 +104,33 @@ export default {
 			} else {
 				this.setUserToken('')
 			}
+		},
+		setAliToken(){
+			var uabModule;
+			var webUmidToken;
+			var uaToken;
+			//人机识别模块，只需初始化一次
+			AWSC.use("uab", function (state, uab) {
+				if(state === "loaded") {
+					uabModule = uab;  
+					uaToken = uabModule.getUA();
+					sessionStorage.setItem("uaToken", uaToken);
+				}
+			});
+			//设备指纹模块，得到设备token，只需初始化一次
+			AWSC.use("um", function (state, um) {
+				if(state === "loaded") {
+					um.init({
+						//appName请直接使用'saf-aliyun-com'
+						appName: 'saf-aliyun-com',
+					}, function (initState, result) {
+						if(initState === 'success') {
+							webUmidToken = result.tn;
+							sessionStorage.setItem("webUmidToken", webUmidToken);
+						}
+					});
+				}
+			});
 		},
 		async getAlert() {
 			let res = await net_getAlert()
