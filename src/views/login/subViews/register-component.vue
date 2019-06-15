@@ -134,7 +134,7 @@ export default {
 		imsInput
 	},
 	computed: {
-		...mapGetters(['net_btn_click', 'platformFlag'])
+		...mapGetters(['net_btn_click', 'platformFlag', 'invite_code'])
 	},
 	watch: {
 		formData: {
@@ -153,15 +153,26 @@ export default {
 		}
 	},
 	created() {
-		this.setCode()
+		// this.setCode()
+		this.checkInvite()
 	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
-			setAccount: 'SET_ACCOUNT'
+			setAccount: 'SET_ACCOUNT',
+         	setInviteCode: 'SET_INVITE_CODE'
 		}),
 		goBefore() {
 			this.$emit('goBefore')
+		},
+		checkInvite() {
+			let inviteCode = this.$route.query.inviteCode;
+			if(!this.invite_code && inviteCode){
+				this.setInviteCode(inviteCode)
+			}
+			if(this.invite_code){
+				this.registList.inviteCode.model = this.invite_code;
+			}
 		},
 		sendSIMCode(index){
 			let param = {};
