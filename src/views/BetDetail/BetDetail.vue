@@ -24,7 +24,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="main flex-1">
+		<div class="main_main flex-1">
 			<van-pull-refresh v-if="details.length > 0" v-model="isLoading" @refresh="onRefresh">
 				<van-list v-model="Listloading" :finished="finished" finished-text="没有更多了" @load="loadMore">
 					<div class="itemWrap">
@@ -171,7 +171,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .bet-wrapper {
 	position: absolute;
 	top: 0;
@@ -183,7 +183,9 @@ export default {
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
-
+	.van-pull-refresh__track {
+		height: 100%;
+	}
 	.header-cottage {
 		width: 100%;
 		height: @app_head_height;
@@ -211,7 +213,7 @@ export default {
 			}
 		}
 	}
-	.main {
+	.main_main {
 		padding-top: 30px;
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
@@ -269,11 +271,5 @@ export default {
 	}
 }
 </style>
-<style lang="less">
-.bet-wrapper {
-	.van-pull-refresh__track {
-		height: 100%;
-	}
-}
-</style>
+
 

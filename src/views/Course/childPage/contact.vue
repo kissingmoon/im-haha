@@ -1,5 +1,5 @@
 <template>
-	<div class="contact display-flex flex-column">
+	<div class="contact display-flex flex-column headview_wrapper">
 		<ims-header title="联系我们"/>
 		<div class="main flex-1">
 			<div class="logo"></div>

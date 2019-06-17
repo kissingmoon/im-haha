@@ -1,5 +1,5 @@
 <template>
-	<div class="chess_wrapper">
+	<div class="chess_wrapper headview_wrapper">
 		<ims-header :title="title"/>
 		<ul class="lists">
 			<li

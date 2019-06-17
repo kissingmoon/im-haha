@@ -1,5 +1,5 @@
 <template>
-	<div class="balance-wrapper">
+	<div class="balance-wrapper headview_wrapper">
 		<ims-header title="余额提现">
 			<span
 				style="width:5em;display:block;text-align:right;"
@@ -205,7 +205,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .balance-wrapper {
 	padding-top: @app_head_height;
 	min-height: 100%;
@@ -225,42 +225,42 @@ export default {
 	.head-container {
 		height: 44px;
 	}
-}
-.main-container {
-	.title-box {
-		padding: 30px 0;
-		.title-num {
-			color: #fff;
-			font-size: 35px;
-			line-height: 35px;
-			font-weight: bold;
-			margin-top: 12px;
-			em {
-				font-size: 24px;
+	.main-container {
+		.title-box {
+			padding: 30px 0;
+			.title-num {
+				color: #fff;
+				font-size: 35px;
+				line-height: 35px;
+				font-weight: bold;
+				margin-top: 12px;
+				em {
+					font-size: 24px;
+				}
 			}
 		}
-	}
-	.balance-box {
-		.item-content {
-			padding: 20px 20px 0 20px;
-			.item-body {
-				height: 44px;
-				padding-top: 8px;
+		.balance-box {
+			.item-content {
+				padding: 20px 20px 0 20px;
+				.item-body {
+					height: 44px;
+					padding-top: 8px;
+				}
 			}
-		}
 
-		.tip-content {
-			padding-bottom: 30px;
-			padding: 11px 20px 64px 20px;
-			font-size: 13px;
-			color: #666;
-			& > div {
-				margin-top: 3px;
+			.tip-content {
+				padding-bottom: 30px;
+				padding: 11px 20px 64px 20px;
+				font-size: 13px;
+				color: #666;
+				& > div {
+					margin-top: 3px;
+				}
 			}
-		}
-		.loginBtn-box {
-			padding: 0 55px 40px 55px;
-			height: 44px;
+			.loginBtn-box {
+				padding: 0 55px 40px 55px;
+				height: 44px;
+			}
 		}
 	}
 }

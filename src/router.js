@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from './views/Home/index.vue'
 import Home from './views/Home/Home.vue'
 import Course from './views/Course/Course.vue'
+import Share from './views/Share/index.vue'
 import Activity from './views/Activity/Activity.vue'
 import User from './views/User/User.vue'
 Vue.use(Router)
@@ -162,7 +163,7 @@ let routes = [
   {
     path: '/',
     component: Index,
-    name:'index',
+    name: 'index',
     meta: {
       keepAlive: true
     },
@@ -183,6 +184,14 @@ let routes = [
           keepAlive: true
         }
       },
+      // {
+      //   path: '/share',
+      //   name: 'share',
+      //   component: Share,
+      //   meta: {
+      //     keepAlive: true
+      //   }
+      // },
       {
         path: '/activity',
         name: 'activity',

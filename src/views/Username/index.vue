@@ -1,5 +1,5 @@
 <template>
-	<div class="username_wrapper">
+	<div class="username_wrapper headview_wrapper">
 		<ims-header title="昵称修改"/>
 		<div class="name">
 			<input v-model="name" class="input" type="text" placeholder="起个好的名字让人更容易记住">

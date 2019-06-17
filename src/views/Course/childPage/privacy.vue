@@ -1,5 +1,5 @@
 <template>
-	<div class="about-wrapper">
+	<div class="about-wrapper headview_wrapper">
 		<div class="header-container">
 			<ims-header class="about_head" title="关于YG娱乐"></ims-header>
 		</div>
