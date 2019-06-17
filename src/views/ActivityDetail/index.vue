@@ -1,5 +1,5 @@
 <template>
-	<div class="actv_detail">
+	<div class="actv_detail headview_wrapper">
 		<ims-header title="活动详情"/>
 		<div v-if="isShow" class="actv_main">
 			<!-- 在这里绑定html -->
@@ -1462,6 +1462,7 @@ export default {
 			})
 		},
 		set_8888() {
+			this.btns_8888 = []
 			let account = this.account
 			let day3 = {
 				disabled: true,
@@ -1525,6 +1526,7 @@ export default {
 </script>
 <style lang="less">
 @table_border_color: #333;
+<<<<<<< HEAD
 
 .lunbo{
 	width:100%;
@@ -1563,6 +1565,15 @@ export default {
 	}
 	}
 
+=======
+.actv_detail {
+	background: #fff;
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	width: 100%;
+}
+>>>>>>> 9097f4361fd241251698989cc96fe3a266351b31
 .van-dialog {
 	width: 76%;
 	border-radius: 6px;
@@ -1591,13 +1602,6 @@ export default {
 .actv_btn:active {
 	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px rgba(97, 51, 34, 1),
 		0px 1px 0px 0px rgba(255, 234, 152, 1);
-}
-.actv_detail {
-	background: #fff;
-	min-height: 100%;
-	box-sizing: border-box;
-	padding-top: @app_head_height;
-	width: 100%;
 }
 .actv_main {
 	padding: 0 13px 60px;

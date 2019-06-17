@@ -1,5 +1,5 @@
 <template>
-	<div class="edu">
+	<div class="edu headview_wrapper">
 		<ims-header class="about_head" title="额度转换"></ims-header>
 		<div class="autoChange">
 			<switch-cell
@@ -284,9 +284,9 @@ export default {
 
 <style scoped lang="less">
 .van-cell {
-			background: none !important;
-			border-bottom:1px solid rgba(255,255,255,.3);
-		}
+	background: none !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
 .edu {
 	min-height: 100%;
 	box-sizing: border-box;
@@ -307,7 +307,7 @@ export default {
 	.balance {
 		/deep/.van-cell {
 			background: none !important;
-			border-bottom:1px solid rgba(255,255,255,.3);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 		}
 		.money {
 			color: #fff;
@@ -352,7 +352,7 @@ export default {
 			padding: 0 10px;
 			margin-bottom: 10px;
 			border-radius: 6px;
-			background: rgba(229, 229, 229, .5);
+			background: rgba(229, 229, 229, 0.5);
 			.rightCorner {
 				width: 16px;
 				height: 16px;
@@ -482,12 +482,12 @@ export default {
 		.van-collapse {
 			.van-collapse-item {
 				.van-cell {
-					border-bottom: 1px solid rgba(255,255,255,.3);
+					border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 				}
 			}
 		}
 		.van-collapse-item__wrapper {
-			background-color: rgba(255,255,255,.3);
+			background-color: rgba(255, 255, 255, 0.3);
 			.van-collapse-item__content {
 				background: transparent;
 			}

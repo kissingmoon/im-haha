@@ -1,5 +1,5 @@
 <template>
-	<div class="jszc display-flex flex-column">
+	<div class="jszc display-flex flex-column headview_wrapper">
 		<ims-header title="技术支持"/>
 		<div class="main flex-1">
 			<div class="item-box">
