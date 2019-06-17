@@ -4,7 +4,7 @@
 		<div v-if="isShow" class="actv_main">
 			<!-- 在这里绑定html -->
 			<div v-if="!is_8888" v-html="html">
-			<!-- <div v-if="true"> -->
+				<!-- <div v-if="true"> -->
 				<!-- 活动1  周周有礼，周周送 -->
 				<!-- <div style="padding-bottom:24px;">
 					<div class="actv_h">周周有礼，周周送</div>
@@ -1226,7 +1226,7 @@
 						<br>4．投注在体育赛事，对冲或对打投注不计，未接受注单/赛果为平时的注单不计。在真人娱乐/电子游艺/对战/彩票游戏投注，无风险投注不计。无风险投注包括在百家乐同时下注庄家、闲家，轮盘同时下注黑色、红色，单、双。大、小，任何取消注单赛事或局数不计。
 						<br>5．『中博』保留对活动最终解释权；以及在无通知的情况下修改，终止活动的权利，适用于所有优惠。
 					</p>
-				</div> -->
+				</div>-->
 			</div>
 			<div v-else>
 				<!--活动 12 初次相遇 豪礼相赠   注册免费送88元彩金-->
@@ -1311,7 +1311,7 @@
 					</p>
 				</div>
 			</div>
-			
+
 			<div v-if="id==98">
 				<div class="actv_h">首次使用云闪付App入款，额外赠送10%，限时优惠</div>
 				<p class="actv_p">
@@ -1331,34 +1331,52 @@
 				</div>
 				<p class="actv_p">
 					1. 首次赠送彩金需进行活动申请，会员账号绑定的手机号需要与银联云闪付的账号一致，方可申请成功；
-					<br>2. 使用银联云闪付第二次往后充值赠送1%的彩金优惠，入款成功立即赠送，无需审核； 
-					<br>3.彩金赠送10%只限当天领取有效，当天24:00后将不再享受赠送彩金，如账号没有领取过该彩金，再次充值后即可申请享受首次10%的赠送彩金； 
-					<br>4. 所赠送的彩金需达到一倍流水即可申请出款，且与其他优惠共享； 
-						5. 所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利。
+					<br>2. 使用银联云闪付第二次往后充值赠送1%的彩金优惠，入款成功立即赠送，无需审核；
+					<br>3.彩金赠送10%只限当天领取有效，当天24:00后将不再享受赠送彩金，如账号没有领取过该彩金，再次充值后即可申请享受首次10%的赠送彩金；
+					<br>4. 所赠送的彩金需达到一倍流水即可申请出款，且与其他优惠共享；
+					<br>5. 所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利。
 				</p>
 				<div style="width:100%;height:40px;margin:30px 0;display: flex;justify-content:space-around;">
-					<a target="_blank" style="display:block;width:132px;height:36px;" href="https://apps.apple.com/cn/app/%E4%BA%91%E9%97%AA%E4%BB%98-%E9%93%B6%E8%A1%8C%E4%B8%9A%E7%BB%9F%E4%B8%80%E7%A7%BB%E5%8A%A8%E6%94%AF%E4%BB%98app/id600273928">
-						<img style="width:100%;height:100%" src="./img/pingguo.png" alt="">
+					<a
+						target="_blank"
+						style="display:block;width:132px;height:36px;"
+						href="https://apps.apple.com/cn/app/%E4%BA%91%E9%97%AA%E4%BB%98-%E9%93%B6%E8%A1%8C%E4%B8%9A%E7%BB%9F%E4%B8%80%E7%A7%BB%E5%8A%A8%E6%94%AF%E4%BB%98app/id600273928"
+					>
+						<img style="width:100%;height:100%" src="./img/pingguo.png" alt>
 					</a>
-					<a target="_blank" style="display:block;width:132px;height:36px;" href="https://sj.qq.com/myapp/detail.htm?apkName=com.unionpay">
-						<img style="width:100%;height:100%" src="./img/anzuo.png" alt="">
+					<a
+						target="_blank"
+						style="display:block;width:132px;height:36px;"
+						href="https://sj.qq.com/myapp/detail.htm?apkName=com.unionpay"
+					>
+						<img style="width:100%;height:100%" src="./img/anzuo.png" alt>
 					</a>
 				</div>
 				<div class="lunbo">
-					<van-swipe :show-indicators="flag" :autoplay="1800"  indicator-color="#8A75FF">
-						<van-swipe-item><img src="./img/one.png" alt=""></van-swipe-item>
-						<van-swipe-item><img src="./img/two.png" alt=""></van-swipe-item>
-						<van-swipe-item><img src="./img/three.png" alt=""></van-swipe-item>
-						<van-swipe-item><img src="./img/si.png" alt=""></van-swipe-item>
-						<van-swipe-item><img src="./img/wu.png" alt=""></van-swipe-item>
-						<van-swipe-item><img src="./img/liu.png" alt=""></van-swipe-item>
+					<van-swipe :show-indicators="flag" :autoplay="1800" indicator-color="#8A75FF">
+						<van-swipe-item>
+							<img src="./img/one.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/two.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/three.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/si.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/wu.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/liu.png" alt>
+						</van-swipe-item>
 					</van-swipe>
 					<div class="left"></div>
 					<div class="right"></div>
 				</div>
 			</div>
-
-
 
 			<div v-show="!is_8888" class="actv_btn_box">
 				<button class="actv_btn" @click="submit">立即申请</button>
@@ -1376,7 +1394,7 @@ export default {
 			html: '',
 			is_8888: false,
 			btns_8888: [],
-			flag:false
+			flag: false
 		}
 	},
 	computed: {
@@ -1428,8 +1446,8 @@ export default {
 								if (list.id == '53') {
 									this.set_8888()
 								} else {
-									if(list.isShowApply == 0){
-										this.flag=false
+									if (list.isShowApply == 0) {
+										this.flag = false
 									}
 									this.html = html
 								}
@@ -1529,46 +1547,46 @@ export default {
 <style lang="less">
 @table_border_color: #333;
 
-.lunbo{
-	width:100%;
-	height:380px;
+.lunbo {
+	width: 100%;
+	height: 380px;
 	position: relative;
-	.van-swipe{
-		width:171px;
-		height:346px;
-		margin:auto;
-		.van-swipe-item{
-		width:100%;
-		height:100%;
-		img{
-			width:100%;
-			height:100%
-		}
+	.van-swipe {
+		width: 171px;
+		height: 346px;
+		margin: auto;
+		.van-swipe-item {
+			width: 100%;
+			height: 100%;
+			img {
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 	// .van-swipe__indicators{
 	// 	position: absolute;
 	// 	bottom:-5px
 	// }
-	.left{
-	  width:20px;
-	  height:58px;
-	  position: absolute;
-	  top:163px;
-	  left:0;
-	  background: url('./img/zuo.png') no-repeat;
-	  background-size: 100% 100%
+	.left {
+		width: 20px;
+		height: 58px;
+		position: absolute;
+		top: 163px;
+		left: 0;
+		background: url('./img/zuo.png') no-repeat;
+		background-size: 100% 100%;
 	}
-	.right{
-	  width:20px;
-	  height:58px;
-	  position: absolute;
-	  top:163px;
-	  right:0;
-	  background: url('./img/you.png') no-repeat;
-	  background-size: 100% 100%
+	.right {
+		width: 20px;
+		height: 58px;
+		position: absolute;
+		top: 163px;
+		right: 0;
+		background: url('./img/you.png') no-repeat;
+		background-size: 100% 100%;
 	}
-	}
+}
 
 .actv_detail {
 	background: #fff;
