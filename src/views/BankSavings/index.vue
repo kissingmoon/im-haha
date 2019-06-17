@@ -13,7 +13,8 @@
 						class="li"
 					>
 						<img :src="list.gate_img" class="icon">
-						<div class="pp">{{list.gate_name}}</div>
+						<div class="pp" :class="[list.gate_name.includes('云闪付') ? 'margin_4' : 'height_34'] ">{{list.gate_name}}</div>
+						<div v-if="list.gate_name.includes('云闪付')" class="ppp">首次使用送10%</div>
 						<div class="bg"></div>
 					</li>
 				</ul>
@@ -325,7 +326,17 @@ export default {
 					align-items: center;
 					justify-content: center;
 					padding: 0 4px;
+				}
+				.height_34{
 					height: 34px;
+				}
+				.margin_4{
+					margin-top: 4px;
+				}
+				.ppp {
+					font-size: 10px;
+					color: #FF6700;
+					margin-top: 4px;
 				}
 			}
 			.li.active {

@@ -1,12 +1,6 @@
 <template>
-	<div id="app">
-		<!-- <keep-alive>
-			<router-view v-if="$route.meta.keepAlive"/>
-		</keep-alive>
-		<transition name="fade">
-			<router-view v-if="!$route.meta.keepAlive"/>
-		</transition>-->
-		
+	<div id="app" :class="{'mjb_ios':mjb_ios}">
+
 		<transition name="fade">
 			<keep-alive :include="keepALivePages">
 				<router-view/>
@@ -30,16 +24,15 @@
 		</van-dialog>
 	</div>
 </template>
-
 <script>
-import { mapActions, mapGetters, mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 import { generateUUID } from '@/js/tools.js'
-import { net_getAlert, net_alertRead } from '@/js/network.js'
 export default {
 	data() {
 		return {
 			keepALivePages: ['index'],
-			show8888: false
+			show8888: false,
+			mjb_ios: false
 		}
 	},
 	computed: {
@@ -48,8 +41,7 @@ export default {
 				return this.$store.state.isGetCJ
 			},
 			set: function() {}
-		},
-		...mapGetters(['user_token'])
+		}
 	},
 	watch: {
 		isGetCJ: {
@@ -57,16 +49,12 @@ export default {
 				if (val != old && val) this.show8888 = true
 			},
 			immediate: true
-		},
-		user_token(val, old) {
-			if (val) {
-				this.getAlert()
-			}
 		}
 	},
 	created() {
 		this.checkUUID()
 		this.checkUTK()
+		this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
 	},
 	methods: {
 		...mapMutations({
@@ -103,28 +91,10 @@ export default {
 			} else {
 				this.setUserToken('')
 			}
-		},
-		async getAlert() {
-			let res = await net_getAlert()
-			if (res.code == '200') {
-				if (res.data.alert) {
-					if (!this.isGetCJ) {
-						Dialog.alert({
-							title: res.data.title,
-							message: res.data.content
-						}).then(() => {
-							if (res.data.msgType == '1') {
-								net_alertRead({ id: res.data.id })
-							}
-						})
-					}
-				}
-			}
 		}
 	}
 }
 </script>
-
 <style lang="less">
 .actv_8888_dialog {
 	width: 84%;

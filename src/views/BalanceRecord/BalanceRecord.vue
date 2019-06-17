@@ -165,7 +165,7 @@ export default {
 					font-size: 14px;
 					.col--num {
 						font-size: 15px;
-						color: @color_txt_yellow;
+						color: #e5c88b;
 					}
 				}
 			}

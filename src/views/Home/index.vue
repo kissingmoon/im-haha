@@ -8,7 +8,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Navs from './components/Navs/Navs.vue'
+import { net_getAlert, net_alertRead } from '@/js/network.js'
 export default {
 	name: 'index',
 	components: {
@@ -19,6 +21,35 @@ export default {
 			keepALivePages: ['home', 'course', 'activity', 'user']
 		}
 	},
+	computed: {
+		...mapGetters(['user_token'])
+	},
+	watch: {
+		user_token(val, old) {
+			if (val) {
+				this.getAlert()
+			}
+		}
+	},
+	methods: {
+		async getAlert() {
+			let res = await net_getAlert()
+			if (res.code == '200') {
+				if (res.data.alert) {
+					if (!this.isGetCJ) {
+						Dialog.alert({
+							title: res.data.title,
+							message: res.data.content
+						}).then(() => {
+							if (res.data.msgType == '1') {
+								net_alertRead({ id: res.data.id })
+							}
+						})
+					}
+				}
+			}
+		}
+	}
 }
 </script>
 <style lang='less' scoped>
@@ -43,6 +74,3 @@ export default {
 	background-size: cover;
 }
 </style>
-
-
-

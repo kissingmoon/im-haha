@@ -1,5 +1,5 @@
 <template>
-	<div class="activity_wrapper">
+	<div class="activity_wrapper view_wrapper">
 		<div v-if="isShow">
 			<div class="tabs_com">
 				<Tabs class="actv_tabs" :tabs="tabs" @click="clickTab"/>
@@ -75,7 +75,7 @@ export default {
 <style lang="less">
 .activity_wrapper {
 	position: absolute;
-	top: 40px;
+	top: 0;
 	bottom: @app_footer_height;
 	left: 0;
 	right: 0;

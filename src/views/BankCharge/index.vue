@@ -157,7 +157,6 @@ export default {
 	}
 }
 </script>
-
 <style lang="less" scoped>
 .b_charge_wrapper {
 	height: 100vh;
@@ -264,7 +263,7 @@ export default {
 		opacity: 0.8;
 	}
 	.submit:disabled {
-		background-color: #b2b2b2;
+		background: @btn_color_disabled;
 		color: #fff;
 	}
 }
