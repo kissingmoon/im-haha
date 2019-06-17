@@ -1316,8 +1316,8 @@
 				<div class="actv_h">首次使用云闪付App入款，额外赠送10%，限时优惠</div>
 				<p class="actv_p">
 					活动时间：即日起
-					<br>活动对象：中博全体人员
-					<br>活动内容：即日起 活动对象：中博全体人员 活动内容：即日起中博超级返水火热进行中，投注1元起，不计输赢，天天洗码返水，高达1.5%无上限。无需申请，系统自动派发。
+					<br>活动对象：YG娱乐全体人员
+					<br>活动内容：即日起YG娱乐会员首次使用银联云闪付入款成功，即可申请赠送10%的彩金，仅限银联云闪付首次入款优惠。
 				</p>
 				<div class="actv_h5">
 					<span class="actv_reat"></span>银联云闪付入款奖励规则
@@ -1345,11 +1345,13 @@
 					</a>
 				</div>
 				<div class="lunbo">
-					<van-swipe :loop="loop"  indicator-color="#8A75FF">
+					<van-swipe :show-indicators="flag" :autoplay="1800"  indicator-color="#8A75FF">
 						<van-swipe-item><img src="./img/one.png" alt=""></van-swipe-item>
 						<van-swipe-item><img src="./img/two.png" alt=""></van-swipe-item>
 						<van-swipe-item><img src="./img/three.png" alt=""></van-swipe-item>
 						<van-swipe-item><img src="./img/si.png" alt=""></van-swipe-item>
+						<van-swipe-item><img src="./img/wu.png" alt=""></van-swipe-item>
+						<van-swipe-item><img src="./img/liu.png" alt=""></van-swipe-item>
 					</van-swipe>
 					<div class="left"></div>
 					<div class="right"></div>
@@ -1374,7 +1376,7 @@ export default {
 			html: '',
 			is_8888: false,
 			btns_8888: [],
-			loop:false
+			flag:false
 		}
 	},
 	computed: {
@@ -1543,6 +1545,10 @@ export default {
 		}
 		}
 	}
+	// .van-swipe__indicators{
+	// 	position: absolute;
+	// 	bottom:-5px
+	// }
 	.left{
 	  width:20px;
 	  height:58px;
