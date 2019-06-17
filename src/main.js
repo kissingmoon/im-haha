@@ -31,6 +31,7 @@ import loading from './components/loading/loading.js'
 import interfaces from './config/url.js'
 import $http from './js/http.js'
 import api from './js/api.js'
+import { Swipe, SwipeItem} from 'vant';
 
 Vue.use(List)
   .use(Icon)
@@ -38,6 +39,8 @@ Vue.use(List)
   .use(Dialog)
   .use(PullRefresh)
   .use(VueAwesomeSwiper)
+  .use(Swipe)
+  .use(SwipeItem)
 
 Vue.component('ims-header', ImsHeader)
 
