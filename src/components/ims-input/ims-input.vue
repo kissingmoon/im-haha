@@ -59,6 +59,13 @@ export default {
 			default: ''
 		}
 	},
+	created(){
+		console.log(this.value)
+		if(this.value){
+			this.showInput = true
+			this.smallTXT = true
+		}
+	},
 	methods: {
 		enter() {
 			this.$nextTick(() => {
