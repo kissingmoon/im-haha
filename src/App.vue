@@ -1,6 +1,5 @@
 <template>
 	<div id="app" :class="{'mjb_ios':mjb_ios}">
-
 		<transition name="fade">
 			<keep-alive :include="keepALivePages">
 				<router-view/>
@@ -52,8 +51,9 @@ export default {
 		}
 	},
 	created() {
-		this.checkUUID()
+		// this.checkUUID()
 		this.checkUTK()
+		this.setAliToken()
 		this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
 	},
 	methods: {
@@ -90,6 +90,53 @@ export default {
 				this.$api.getUserInfo()
 			} else {
 				this.setUserToken('')
+			}
+		},
+		setAliToken() {
+			var uabModule
+			var webUmidToken
+			var uaToken
+			//人机识别模块，只需初始化一次
+			AWSC.use('uab', function(state, uab) {
+				if (state === 'loaded') {
+					uabModule = uab
+					uaToken = uabModule.getUA()
+					sessionStorage.setItem('uaToken', uaToken)
+				}
+			})
+			//设备指纹模块，得到设备token，只需初始化一次
+			AWSC.use('um', function(state, um) {
+				if (state === 'loaded') {
+					um.init(
+						{
+							//appName请直接使用'saf-aliyun-com'
+							appName: 'saf-aliyun-com'
+						},
+						function(initState, result) {
+							if (initState === 'success') {
+								webUmidToken = result.tn
+								sessionStorage.setItem('webUmidToken', webUmidToken)
+							}
+						}
+					)
+				}
+			})
+		},
+		async getAlert() {
+			let res = await net_getAlert()
+			if (res.code == '200') {
+				if (res.data.alert) {
+					if (!this.isGetCJ) {
+						Dialog.alert({
+							title: res.data.title,
+							message: res.data.content
+						}).then(() => {
+							if (res.data.msgType == '1') {
+								net_alertRead({ id: res.data.id })
+							}
+						})
+					}
+				}
 			}
 		}
 	}

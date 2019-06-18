@@ -30,7 +30,7 @@
 					<div class="itemWrap">
 						<div class="listItem display-flex" v-for="(item,index) in details" :key="index">
 							<div class="left flex-1 display-flex">
-								<div class="cp_type flex-1">
+								<div class="cp_type" style="max-width:60%;word-break: break-word;flex-basis:50%;padding-right:5px;">
 									<p>{{ item.platform }}</p>
 									<p style="font-size:12px;">{{ item.gameName }}</p>
 								</div>

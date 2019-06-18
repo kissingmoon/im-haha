@@ -20,4 +20,7 @@ export default {
     SET_FOOTREDDOT(state, param) {
         state.footRedDot = param;
     },
+    SET_INVITE_CODE(state, param) {
+        state.inviteCode = param;
+    },
 }
