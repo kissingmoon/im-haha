@@ -197,7 +197,7 @@ export default {
 		},
 		sendSIMCode(index){
 			let val = this.formData.phone.model;
-			if(!/^1[3|4|5|7|8][0-9]{9}$/.test(val)){
+			if(!/^1[1-9][0-9]{9}$/.test(val)){
 				this.$toast("手机号格式错误")
 				return
 			}
@@ -263,7 +263,7 @@ export default {
 			for (let item of keys) {
 				if (item == 'phone') {
 					let val = param[item].model;
-					if(!/^1[3|4|5|7|8][0-9]{9}$/.test(val)){
+					if(!/^1[1-9][0-9]{9}$/.test(val)){
 						this.$toast('手机号格式错误')
 						return false
 					}
