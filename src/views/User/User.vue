@@ -68,9 +68,9 @@
 					<p class="p">额度转换</p>
 				</div>
 				<div class="linear"></div>
-				<div @click="clickThis(4)" class="btn">
-					<img class="img" src="./img/icon_new_mine_vip.png">
-					<p class="p">VIP详情</p>
+				<div @click="clickThis(4,false)" class="btn">
+					<img class="img" src="./img/guide.png">
+					<p class="p">教程</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(5,false)" class="btn">
@@ -146,7 +146,7 @@ export default {
 					break
 				}
 				case 4: {
-					toast('正在升级中，敬请期待')
+					this.$router.push('/course')
 					break
 				}
 				case 5: {

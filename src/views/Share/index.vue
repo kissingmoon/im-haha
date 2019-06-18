@@ -126,8 +126,8 @@
 	background: rgba(0, 0, 0, 0.7);
 	display: flex;
 	align-items: center;
-  justify-content: center;
-  z-index: 1000;
+	justify-content: center;
+	z-index: 1000;
 	.mask_main {
 		width: 230px;
 	}
@@ -264,7 +264,11 @@ export default {
 	mounted() {
 		this.getData()
 	},
-	activated() {},
+	activated() {
+		if (this.isLogin) {
+			this.getData()
+		}
+	},
 	methods: {
 		copy(text) {
 			if (!this.isLogin) {

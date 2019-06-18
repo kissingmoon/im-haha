@@ -10,6 +10,14 @@ Vue.use(Router)
 
 let course_router = [
   {
+    path: '/course',
+    name: 'course',
+    component: Course,
+    meta: {
+      keepAlive: true
+    }
+  },
+  {
     path: '/',
     name: 'jc',
     component: () => import(/* webpackChunkName: "jc" */ './views/Course/Course.vue'),
@@ -177,21 +185,13 @@ let routes = [
         }
       },
       {
-        path: '/course',
-        name: 'course',
-        component: Course,
+        path: '/share',
+        name: 'share',
+        component: Share,
         meta: {
           keepAlive: true
         }
       },
-      // {
-      //   path: '/share',
-      //   name: 'share',
-      //   component: Share,
-      //   meta: {
-      //     keepAlive: true
-      //   }
-      // },
       {
         path: '/activity',
         name: 'activity',

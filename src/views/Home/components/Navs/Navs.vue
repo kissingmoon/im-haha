@@ -42,11 +42,11 @@ export default {
 					path: '/activity'
 				},
 				{
-					name: '教程',
+					name: '分享',
 					active: false,
-					icon: require('./img/guide.png'),
-					activeIcon: require('./img/guide_active.png'),
-					path: '/course'
+					icon: require('./img/share.png'),
+					activeIcon: require('./img/share_active.png'),
+					path: '/share'
 				},
 				{
 					name: '我的',
