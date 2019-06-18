@@ -1528,7 +1528,6 @@ export default {
 </script>
 <style lang="less">
 @table_border_color: #333;
-<<<<<<< HEAD
 
 .lunbo{
 	width:100%;
@@ -1571,7 +1570,6 @@ export default {
 	}
 	}
 
-=======
 .actv_detail {
 	background: #fff;
 	min-height: 100%;
@@ -1579,7 +1577,6 @@ export default {
 	padding-top: @app_head_height;
 	width: 100%;
 }
->>>>>>> 9097f4361fd241251698989cc96fe3a266351b31
 .van-dialog {
 	width: 76%;
 	border-radius: 6px;
