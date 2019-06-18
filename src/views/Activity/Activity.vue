@@ -1,10 +1,5 @@
 <template>
-	<div class="activity_wrapper">
-		<!-- <div class="head_title">
-			<p class="p">
-				<img class="head_title_img" src="../../assets/hd.png">
-			</p>
-		</div>-->
+	<div class="activity_wrapper view_wrapper">
 		<div v-if="isShow">
 			<div class="tabs_com">
 				<Tabs class="actv_tabs" :tabs="tabs" @click="clickTab"/>
@@ -22,7 +17,7 @@ import Lists from './components/Lists.vue'
 import Tabs from '../../components/tabs/tabs.vue'
 
 export default {
-	name:'activity',
+	name: 'activity',
 	components: {
 		Lists,
 		Tabs
@@ -77,36 +72,14 @@ export default {
 	}
 }
 </script>
-
-<style lang="less" scoped>
-.head_title {
-	height: 50px;
-	.p {
-		position: fixed;
-		left: 0;
-		right: 0;
-		top: 0;
-		font-size: 0;
-		color: rgba(51, 51, 51, 1);
-		height: 50px;
-		line-height: 50px;
-		z-index: 1000;
-		background-color: @base_color;
-		text-align: center;
-	}
-	.head_title_img {
-		display: inline-block;
-		height: 24px;
-		margin-top: 13px;
-	}
-}
+<style lang="less">
 .activity_wrapper {
-	min-height: 100%;
-	box-sizing: border-box;
-	padding-bottom: @app_footer_height;
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
+	position: absolute;
+	top: 0;
+	bottom: @app_footer_height;
+	left: 0;
+	right: 0;
+	overflow-y: hidden;
 	.empty {
 		padding-top: 100px;
 		.img {
@@ -122,18 +95,17 @@ export default {
 		}
 	}
 	.tabs_com {
-		position: fixed;
+		position: absolute;
 		left: 0;
-		// top: 50px;
 		top: 12px;
 		width: 100%;
 		height: 40px;
 		z-index: 1000;
 	}
-}
-.actv_tabs {
-	/deep/ .tabs {
-		background: rgba(255, 255, 255, 0.8);
+	.actv_tabs {
+		/deep/ .tabs {
+			background: rgba(255, 255, 255, 0.8);
+		}
 	}
 }
 </style>

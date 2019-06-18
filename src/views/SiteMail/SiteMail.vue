@@ -1,5 +1,5 @@
 <template>
-	<div class="siteMail-wrapper display-flex flex-column">
+	<div class="siteMail-wrapper display-flex flex-column headview_wrapper">
 		<ims-header title="站内消息"></ims-header>
 		<div class="main-container flex-1 display-flex flex-column">
 			<div class="main-header">

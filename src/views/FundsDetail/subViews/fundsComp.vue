@@ -25,7 +25,7 @@
 						<div class="data-item display-flex align-center" v-for="(v,k) in recList" :key="k">
 							<div class="item-col__left">
 								<div>{{ v.type }}</div>
-								<div v-if="v.type != '活动奖励'">{{v.source }}</div>
+								<div style="word-break: break-word;" v-if="v.type != '活动奖励'">{{v.source }}</div>
 							</div>
 							<div class="item-col__middle">
 								<div>{{ v.time.split(' ')[0] }}</div>

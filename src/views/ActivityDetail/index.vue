@@ -1,5 +1,5 @@
 <template>
-	<div class="actv_detail">
+	<div class="actv_detail headview_wrapper">
 		<ims-header title="活动详情"/>
 		<div v-if="isShow" class="actv_main">
 			<!-- 在这里绑定html -->
@@ -901,7 +901,332 @@
 						<br>4.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利；
 						<br>5.公司规定无风险注单不计算有效投注额，无风险注单包括：游戏中同时投注黑白、龙虎、庄闲、投注直注胜率不可超过70%,任何非法套取优惠行为将扣除产生的盈利。
 					</p>
-				</div> -->
+				</div>-->
+
+				<!--活动 16 公司入款三大豪礼-->
+				<!-- <div style="padding-bottom:24px;">
+					<div class="actv_h">公司入款三大豪礼</div>
+					<p class="actv_p">
+						一．公司入款即送1%存款额。
+						<br>二．公司入款单笔10000元以上加赠0.2%存款额，即单笔入款10000元以上赠送1.2%存款额。
+						<br>三．公司入款单笔50000元以上加赠0.5%存款额，即单笔入款50000元以上赠送1.5%存款额。
+						限！
+					</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>活动细则
+					</div>
+					<p class="actv_p">
+						1. 无游戏类型限制，按照北京时间计算。
+						<br>2. 如出现恶意套利等违规现象，『YG娱乐』有权取消该会员优惠资格。
+						<br>3. 『YG娱乐』保留对活动的最终解释权，以及在无通知的情况下修改，终止活动的权力，适用于所以优惠。
+					</p>
+				</div>-->
+				<!--活动 16 越挫越勇-->
+				<!-- <div style="padding-bottom:24px;">
+					<div class="actv_h">越挫越勇</div>
+					<p class="actv_p">活一时的失败，不是永远的失败，『中博体育』助力彩金，助您强力翻本。</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>奖励规则
+					</div>
+					<div class="actv_table15">
+						<div class="col3 col3_0">
+							<div class="row1">当日实际负盈利</div>
+							<div class="row1">1000元+</div>
+							<div class="row1">5000元+</div>
+							<div class="row1">1万元+</div>
+							<div class="row1">5万元+</div>
+							<div class="row1">10万元+</div>
+							<div class="row1">20万元+</div>
+							<div class="row1">50万元+</div>
+							<div class="row1">100万元+</div>
+						</div>
+						<div class="col3 col3_0">
+							<div class="row1">助力彩金</div>
+							<div class="row1">58元</div>
+							<div class="row1">288元</div>
+							<div class="row1">588元</div>
+							<div class="row1">1888元</div>
+							<div class="row1">3888元</div>
+							<div class="row1">8888元</div>
+							<div class="row1">18888元</div>
+							<div class="row1">负盈利总额5%</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">负盈利区间</div>
+							<div class="row2 row2_1">以美东时间计算（北京时间中午12时至次日中午12时）</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">提款要求</div>
+							<div class="row2 row2_1">一倍打码即可提款</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">申请时间</div>
+							<div class="row2 row2_1">以每日中午12时至18时，如无申请视为自动放弃</div>
+						</div>
+					</div>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>活动细则
+					</div>
+					<p class="actv_p">
+						1. 本活动只针对体育板块，其他游戏 不参与负盈利计算。
+						<br>2. 本活动所得助力彩金可在所有游戏板块完成一倍打码即可提款。
+						<br>3. 『中博体育』保留对活动的最终解释权，以及在无通知的情况下修改，终止活动的权力，适用于所以优惠。
+					</p>
+				</div>-->
+				<!--活动 17 进球盛宴-->
+				<!-- <div style="padding-bottom:24px;">
+					<div class="actv_h">进球盛宴</div>
+					<p class="actv_p">进球盛宴让您享受视觉的冲击，心灵的满足，『中博体育』为您添能加油，最高奖励可领3888元！</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>奖励规则
+					</div>
+					<div class="actv_table15">
+						<div class="col3 col3_0">
+							<div class="row1">最低下注金额</div>
+							<div class="row1">100元</div>
+							<div class="row1">100元</div>
+							<div class="row1">100元</div>
+							<div class="row1">100元</div>
+						</div>
+						<div class="col2" style="flex-basis:25%;">
+							<div class="row1">赢球数</div>
+							<div class="row1">3个</div>
+							<div class="row1">5个</div>
+							<div class="row1">6个</div>
+							<div class="row1">7个</div>
+						</div>
+						<div class="col2">
+							<div class="row1">奖励比例</div>
+							<div class="row1">10%</div>
+							<div class="row1">20%</div>
+							<div class="row1">30%</div>
+							<div class="row1">50%</div>
+						</div>
+						<div class="col2">
+							<div class="row1">最高奖励</div>
+							<div class="row1">3888元</div>
+							<div class="row1">3888元</div>
+							<div class="row1">3888元</div>
+							<div class="row1">3888元</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">申请方式</div>
+							<div class="row2 row2_1">联系在线客服</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">提款要求</div>
+							<div class="row2 row2_1">一倍打码即可提款</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">申请时间</div>
+							<div class="row2 row2_1">以每日中午12时至18时，如无申请视为自动放弃</div>
+						</div>
+					</div>
+					<p
+						class="actv_p margin_top_9"
+					>例：在赛事开赛前投注100元主队独赢，最终赛事比分为主队4：1客队，那么主队赢客队3个球（投注的球队进球数减去对方的进球数）则可获得100*10%=10元的额外奖励</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>活动细则
+					</div>
+					<p class="actv_p">
+						1. 凡是投注娱乐体育赛事，以美洲杯，欧洲杯，亚洲杯，五大联赛“英超，西甲，德甲，法甲，意甲”及欧冠等足球赛事，只要全额盈利并达到以下的活动要求即可获得由『中博体育』赠送的额外奖励。
+						<br>2. 本活动每天每位会员仅限申请一次，活动按照北京时间计算，当赛事完赛后于当日凭赛事单号或者局号联系24小时在线客服申请当日中奖赛事，逾期视为自动放弃。
+						<br>3. 『中博体育』保留对活动最终解释权；以及在无通知的情况下修改，终止活动的权利，适用于所有优惠。
+					</p>
+				</div>-->
+				<!--活动 18 玩转棋牌 加持奖励 让您大杀四方-->
+				<!-- <div style="padding-bottom:24px;">
+					<div class="actv_h">玩转棋牌 加持奖励 让您大杀四方</div>
+					<p class="actv_p">凡是投注VG、KY、FG、LY棋牌类游戏隔天即可获得8元加持奖励！（如只用加持奖励的彩金投注则次日不再派送加持奖励）</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>奖励规则
+					</div>
+					<div class="actv_table15">
+						<div class="col2">
+							<div class="row2 row2_0">指定游戏</div>
+							<div class="row2 row2_1">
+								VG 棋牌
+								<br>KY 棋牌
+								<br>FG 棋牌
+								<br>LY 棋牌
+							</div>
+						</div>
+						<div class="col3 col3_0">
+							<div class="row1">总有效投注</div>
+							<div class="row1">2000+</div>
+							<div class="row1">5000+</div>
+							<div class="row1">1万+</div>
+							<div class="row1">5万+</div>
+							<div class="row1">10万+</div>
+							<div class="row1">50万+</div>
+							<div class="row1">100万+</div>
+							<div class="row1">200万+</div>
+							<div class="row1">500万+</div>
+							<div class="row1">1千万+</div>
+						</div>
+						<div class="col2" style="flex-basis:25%;">
+							<div class="row1">加持奖励</div>
+							<div class="row1">18元</div>
+							<div class="row1">38元</div>
+							<div class="row1">88元</div>
+							<div class="row1">188元</div>
+							<div class="row1">388元</div>
+							<div class="row1">888元</div>
+							<div class="row1">3888元</div>
+							<div class="row1">5888元</div>
+							<div class="row1">8888元</div>
+							<div class="row1">18888元</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">申请方式</div>
+							<div class="row2 row2_1">无需申请，次日自动派送</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">打码截止时间</div>
+							<div class="row2 row2_1">当日中午12时至次日中午12时</div>
+						</div>
+					</div>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>活动细则
+					</div>
+					<p class="actv_p">
+						1. 本活动只针对棋牌板块，其他游戏板块不参与有效投注计算！
+						<br>2. 本活动以美东时间计算（北京时间：中午12时至次日中午12时）
+						<br>3. 『中博』保留对活动最终解释权；以及在无通知的情况下修改，终止活动的权利，适用于所有优惠。
+					</p>
+				</div>-->
+				<!--活动 19 玩转棋牌 助力彩金-->
+				<!-- <div style="padding-bottom:24px;">
+					<div class="actv_h">玩转棋牌 助力彩金</div>
+					<p class="actv_p">凡是投注VG、KY、FG、LY棋牌类游戏当日实际负盈利1000+即可获得助力彩金。</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>奖励规则
+					</div>
+					<div class="actv_table15">
+						<div class="col2">
+							<div class="row2 row2_0">指定游戏</div>
+							<div class="row2 row2_1">
+								VG 棋牌
+								<br>KY 棋牌
+								<br>FG 棋牌
+								<br>LY 棋牌
+							</div>
+						</div>
+						<div class="col3 col3_0">
+							<div class="row1">当日实际负盈利</div>
+							<div class="row1">1000+</div>
+							<div class="row1">5000+</div>
+							<div class="row1">1万+</div>
+							<div class="row1">5万+</div>
+							<div class="row1">10万+</div>
+							<div class="row1">20万+</div>
+							<div class="row1">50万+</div>
+							<div class="row1">100万+</div>
+						</div>
+						<div class="col2">
+							<div class="row1">助力彩金</div>
+							<div class="row1">88元</div>
+							<div class="row1">288元</div>
+							<div class="row1">588元</div>
+							<div class="row1">1888元</div>
+							<div class="row1">3888元</div>
+							<div class="row1">8888元</div>
+							<div class="row1">18888元</div>
+							<div class="row1">负盈利总额5%</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">申请方式</div>
+							<div class="row2 row2_1">联系在线客服</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">提款要求</div>
+							<div class="row2 row2_1">所有板块游戏完成一倍打码即可</div>
+						</div>
+					</div>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>活动细则
+					</div>
+					<p class="actv_p">
+						1. 本活动只针对棋牌板块，其他游戏板块不参与负盈利计算！
+						<br>2. 本活动以美东时间计算（北京时间：中午12时至次日中午12时）
+						<br>3. 本活动由每日中午12时至18时期间进行申请，如无申请视为会员自动放弃。
+						<br>4. 『中博』保留对活动最终解释权；以及在无通知的情况下修改，终止活动的权利，适用于所有优惠。
+					</p>
+				</div>-->
+				<!--活动 20 投注一元起， 即享1.0%无限返水，高达1.7%无上限-->
+				<!-- <div style="padding-bottom:24px;">
+					<div class="actv_h">投注一元起， 即享1.0%无限返水，高达1.7%无上限</div>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>活动详情
+					</div>
+					<p class="actv_p margin_bottom_9 margin_top_9">『中博』超级返水火热进行中，投注1元起，不计输赢，天天洗码返水，无上限。</p>
+					<div class="actv_table15">
+						<div class="col3_0">
+							<div class="row1">有效投注</div>
+							<div class="row1">1元以上</div>
+							<div class="row1">200万元以上</div>
+							<div class="row1">800万元以上</div>
+						</div>
+						<div class="col2">
+							<div class="row1">电竞</div>
+							<div class="row1">0.5%</div>
+							<div class="row1">0.8%</div>
+							<div class="row1">1.0%</div>
+						</div>
+						<div class="col2">
+							<div class="row1">体育投注</div>
+							<div class="row1">1.0%</div>
+							<div class="row1">1.1%</div>
+							<div class="row1">1.2%</div>
+						</div>
+						<div class="col2">
+							<div class="row1">真人娱乐</div>
+							<div class="row1">0.6%</div>
+							<div class="row1">0.7%</div>
+							<div class="row1">0.8%</div>
+						</div>
+						<div class="col2">
+							<div class="row1">电子游艺</div>
+							<div class="row1">1.0%</div>
+							<div class="row1">1.5%</div>
+							<div class="row1">1.7%</div>
+						</div>
+						<div class="col2">
+							<div class="row1">棋牌</div>
+							<div class="row1">0.8%</div>
+							<div class="row1">1.0%</div>
+							<div class="row1">1.2%</div>
+						</div>
+					</div>
+					<p class="actv_p margin_bottom_9 margin_top_9">返水优惠无需申请，结算和发放时间如下</p>
+					<div class="actv_table15">
+						<div class="col2">
+							<div class="row1"></div>
+							<div class="row1">返水结算时间</div>
+							<div class="row1">返水发放时间</div>
+						</div>
+						<div class="col2" style="flex-basis:40%;">
+							<div class="row1">美东时间</div>
+							<div class="row1">当日00：00-23：59</div>
+							<div class="row1">次日04：00-06：00</div>
+						</div>
+						<div class="col2" style="flex-basis:40%;">
+							<div class="row1">北京时间</div>
+							<div class="row1">当日12：00-次日11：59</div>
+							<div class="row1">次日16：00-18：00</div>
+						</div>
+					</div>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>活动细则
+					</div>
+					<p class="actv_p">
+						1．所有返水优惠，一倍打码即可提出。
+						<br>2．会员无须提出申请，优惠额度将在北京时间每日下午18:00左右自动加入会员账号。
+						<br>3．新老会员日投注1元起，皆可享受：体育赛事，视讯直播，电子游艺最高无上限返水回馈。
+						<br>4．投注在体育赛事，对冲或对打投注不计，未接受注单/赛果为平时的注单不计。在真人娱乐/电子游艺/对战/彩票游戏投注，无风险投注不计。无风险投注包括在百家乐同时下注庄家、闲家，轮盘同时下注黑色、红色，单、双。大、小，任何取消注单赛事或局数不计。
+						<br>5．『中博』保留对活动最终解释权；以及在无通知的情况下修改，终止活动的权利，适用于所有优惠。
+					</p>
+				</div>-->
 			</div>
 			<div v-else>
 				<!--活动 12 初次相遇 豪礼相赠   注册免费送88元彩金-->
@@ -986,6 +1311,73 @@
 					</p>
 				</div>
 			</div>
+
+			<div v-if="id==98">
+				<div class="actv_h">首次使用云闪付App入款，额外赠送10%，限时优惠</div>
+				<p class="actv_p">
+					活动时间：即日起
+					<br>活动对象：YG娱乐全体人员
+					<br>活动内容：即日起YG娱乐会员首次使用银联云闪付入款成功，即可申请赠送10%的彩金，仅限银联云闪付首次入款优惠。
+				</p>
+				<div class="actv_h5">
+					<span class="actv_reat"></span>银联云闪付入款奖励规则
+				</div>
+				<p class="actv_p">
+					1.首次使用银联云闪付入款，额外赠送10%，需手动申请；
+					<br>2.二次往后充值，每次都可享受充值优惠1%的赠送彩金。
+				</p>
+				<div class="actv_h5">
+					<span class="actv_reat"></span>活动细则
+				</div>
+				<p class="actv_p">
+					1. 首次赠送彩金需进行活动申请，会员账号绑定的手机号需要与银联云闪付的账号一致，方可申请成功；
+					<br>2. 使用银联云闪付第二次往后充值赠送1%的彩金优惠，入款成功立即赠送，无需审核；
+					<br>3.彩金赠送10%只限当天领取有效，当天24:00后将不再享受赠送彩金，如账号没有领取过该彩金，再次充值后即可申请享受首次10%的赠送彩金；
+					<br>4. 所赠送的彩金需达到一倍流水即可申请出款，且与其他优惠共享；
+					<br>5. 所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利。
+				</p>
+				<div style="width:100%;height:40px;margin:30px 0;display: flex;justify-content:space-around;">
+					<a
+						target="_blank"
+						style="display:block;width:132px;height:36px;"
+						href="https://apps.apple.com/cn/app/%E4%BA%91%E9%97%AA%E4%BB%98-%E9%93%B6%E8%A1%8C%E4%B8%9A%E7%BB%9F%E4%B8%80%E7%A7%BB%E5%8A%A8%E6%94%AF%E4%BB%98app/id600273928"
+					>
+						<img style="width:100%;height:100%" src="./img/pingguo.png" alt>
+					</a>
+					<a
+						target="_blank"
+						style="display:block;width:132px;height:36px;"
+						href="https://sj.qq.com/myapp/detail.htm?apkName=com.unionpay"
+					>
+						<img style="width:100%;height:100%" src="./img/anzuo.png" alt>
+					</a>
+				</div>
+				<div class="lunbo">
+					<van-swipe :show-indicators="flag" :autoplay="1800" indicator-color="#8A75FF">
+						<van-swipe-item>
+							<img src="./img/one.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/two.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/three.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/si.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/wu.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/liu.png" alt>
+						</van-swipe-item>
+					</van-swipe>
+					<div class="left"></div>
+					<div class="right"></div>
+				</div>
+			</div>
+
 			<div v-show="!is_8888" class="actv_btn_box">
 				<button class="actv_btn" @click="submit">立即申请</button>
 			</div>
@@ -1001,7 +1393,8 @@ export default {
 			id: '',
 			html: '',
 			is_8888: false,
-			btns_8888: []
+			btns_8888: [],
+			flag: false
 		}
 	},
 	computed: {
@@ -1053,6 +1446,9 @@ export default {
 								if (list.id == '53') {
 									this.set_8888()
 								} else {
+									if (list.isShowApply == 0) {
+										this.flag = false
+									}
 									this.html = html
 								}
 								this.isShow = true
@@ -1086,6 +1482,7 @@ export default {
 			})
 		},
 		set_8888() {
+			this.btns_8888 = []
 			let account = this.account
 			let day3 = {
 				disabled: true,
@@ -1149,6 +1546,55 @@ export default {
 </script>
 <style lang="less">
 @table_border_color: #333;
+
+.lunbo {
+	width: 100%;
+	height: 380px;
+	position: relative;
+	.van-swipe {
+		width: 171px;
+		height: 346px;
+		margin: auto;
+		.van-swipe-item {
+			width: 100%;
+			height: 100%;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	// .van-swipe__indicators{
+	// 	position: absolute;
+	// 	bottom:-5px
+	// }
+	.left {
+		width: 20px;
+		height: 58px;
+		position: absolute;
+		top: 163px;
+		left: 0;
+		background: url('./img/zuo.png') no-repeat;
+		background-size: 100% 100%;
+	}
+	.right {
+		width: 20px;
+		height: 58px;
+		position: absolute;
+		top: 163px;
+		right: 0;
+		background: url('./img/you.png') no-repeat;
+		background-size: 100% 100%;
+	}
+}
+
+.actv_detail {
+	background: #fff;
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	width: 100%;
+}
 .van-dialog {
 	width: 76%;
 	border-radius: 6px;
@@ -1178,15 +1624,8 @@ export default {
 	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px rgba(97, 51, 34, 1),
 		0px 1px 0px 0px rgba(255, 234, 152, 1);
 }
-.actv_detail {
-	background: #fff;
-	min-height: 100%;
-	box-sizing: border-box;
-	padding-top: @app_head_height;
-	width: 100%;
-}
 .actv_main {
-	padding: 0 15px 60px;
+	padding: 0 13px 60px;
 	background: #fff;
 }
 .actv_h {

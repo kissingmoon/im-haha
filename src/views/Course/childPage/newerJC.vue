@@ -1,5 +1,5 @@
 <template>
-	<div class="newerJC display-flex flex-column">
+	<div class="newerJC display-flex flex-column headview_wrapper">
 		<ims-header title="新手教程"/>
 		<div class="main flex-1">
 			<div class="tabsWrap">

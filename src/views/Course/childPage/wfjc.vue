@@ -1,10 +1,10 @@
 <template>
-	<div class="wfjc display-flex flex-column">
+	<div class="wfjc display-flex flex-column headview_wrapper">
 		<ims-header title="玩法教程"/>
 		<div class="wfjc_tabs">
 			<Tabs :tabs="tabs" @click="onClick"/>
 		</div>
-		<div class="main flex-1">
+		<div class="wfjc_main flex-1">
 			<ty v-if="active == 0"/>
 			<zr v-if="active == 1"/>
 			<cp v-if="active == 2"/>
@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .wfjc {
 	min-height: 100%;
 	box-sizing: border-box;
@@ -66,7 +66,7 @@ export default {
 		background-size: 100% auto;
 		z-index: 1;
 	}
-	.main {
+	.wfjc_main {
 		padding: 66px 0;
 		.van-tabs {
 			/deep/ .van-tabs__wrap {

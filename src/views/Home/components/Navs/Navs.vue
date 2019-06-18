@@ -42,11 +42,11 @@ export default {
 					path: '/activity'
 				},
 				{
-					name: '教程',
+					name: '分享',
 					active: false,
-					icon: require('./img/guide.png'),
-					activeIcon: require('./img/guide_active.png'),
-					path: '/course'
+					icon: require('./img/share.png'),
+					activeIcon: require('./img/share_active.png'),
+					path: '/share'
 				},
 				{
 					name: '我的',
@@ -96,7 +96,6 @@ export default {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		z-index: 99;
 		height: @app_footer_height;
 		background-color: rgba(255, 255, 255, 0.8);
 		z-index: 999;

@@ -1,10 +1,5 @@
 <template>
-	<div class="user_wrapper">
-		<!-- <div class="head_title">
-			<p class="p">
-				<img class="head_title_img" src="../../assets/grzx.png">
-			</p>
-		</div>-->
+	<div class="user_wrapper view_wrapper">
 		<div class="msg_box">
 			<div @click="clickThis(14)" class="msg_icon"></div>
 		</div>
@@ -73,9 +68,9 @@
 					<p class="p">额度转换</p>
 				</div>
 				<div class="linear"></div>
-				<div @click="clickThis(4)" class="btn">
-					<img class="img" src="./img/icon_new_mine_vip.png">
-					<p class="p">VIP详情</p>
+				<div @click="clickThis(4,false)" class="btn">
+					<img class="img" src="./img/guide.png">
+					<p class="p">教程</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(5,false)" class="btn">
@@ -151,7 +146,7 @@ export default {
 					break
 				}
 				case 4: {
-					toast('正在升级中，敬请期待')
+					this.$router.push('/course')
 					break
 				}
 				case 5: {
@@ -221,33 +216,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-@top_height: 50px;
-.head_title {
-	// height: @top_height;
-	.p {
-		position: fixed;
-		left: 0;
-		right: 0;
-		top: 0;
-		font-size: 0;
-		color: rgba(51, 51, 51, 1);
-		height: @top_height;
-		line-height: @top_height;
-		z-index: 1000;
-		background-color: @base_color;
-		text-align: center;
-	}
-	.head_title_img {
-		display: inline-block;
-		height: 24px;
-		margin-top: 13px;
-	}
-}
 .user_wrapper {
-	min-height: 100%;
-	background: url('../../assets/page_bg_default.jpg') no-repeat center;
-	background-size: cover;
-	box-sizing: border-box;
 	.msg_box {
 		padding: 22px 13px 18px;
 		text-align: right;
@@ -259,154 +228,153 @@ export default {
 		background: url('../../assets/icon_new_mine_message.png') no-repeat;
 		background-size: 100%;
 	}
-}
-
-.user {
-	.top {
-		width: 349px;
-		height: 160px;
-		background-color: rgba(255, 255, 255, 0.5);
-		box-shadow: 0 0.02rem 0.04rem 0 rgba(0, 0, 0, 0.1);
-		border-radius: 5px;
-		padding: 14px 15px;
-		margin: 0 auto 21px;
-		box-sizing: border-box;
+	.user {
+		.top {
+			width: 349px;
+			height: 160px;
+			background-color: rgba(255, 255, 255, 0.5);
+			box-shadow: 0 0.02rem 0.04rem 0 rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+			padding: 14px 15px;
+			margin: 0 auto 21px;
+			box-sizing: border-box;
+			color: @text_color;
+		}
+	}
+	.options {
 		color: @text_color;
-	}
-}
-.options {
-	color: @text_color;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	.account {
-		text-align: center;
-		flex: 1;
-		.p1 {
-			font-size: 16px;
-			font-weight: 500;
-			color: #0076ff;
-			margin-bottom: 4px;
-			.p1_0 {
-				font-weight: 600;
-				font-family: 'PingFangSC-Regular', sans-serif;
-			}
-			.p1_1 {
-				font-weight: 600;
-				font-family: 'fontLibrary', 'sans-serif';
-			}
-		}
-		.p2 {
-			font-size: 11px;
-			color: #1e1e1e;
-		}
-	}
-	.linear {
-		width: 1px;
-		height: 30px;
-		background: rgba(0, 0, 0, 0.2);
-		margin: 0 10px 0 5px;
-	}
-	.opts {
 		display: flex;
-		flex: 1;
-		justify-content: space-between;
 		align-items: center;
-		text-align: center;
-		.opt {
-			padding: 0 10px;
+		justify-content: space-between;
+		.account {
+			text-align: center;
+			flex: 1;
+			.p1 {
+				font-size: 16px;
+				font-weight: 500;
+				color: #0076ff;
+				margin-bottom: 4px;
+				.p1_0 {
+					font-weight: 600;
+					font-family: 'PingFangSC-Regular', sans-serif;
+				}
+				.p1_1 {
+					font-weight: 600;
+					font-family: 'fontLibrary', 'sans-serif';
+				}
+			}
+			.p2 {
+				font-size: 11px;
+				color: #1e1e1e;
+			}
+		}
+		.linear {
+			width: 1px;
+			height: 30px;
+			background: rgba(0, 0, 0, 0.2);
+			margin: 0 10px 0 5px;
+		}
+		.opts {
+			display: flex;
+			flex: 1;
+			justify-content: space-between;
+			align-items: center;
+			text-align: center;
+			.opt {
+				padding: 0 10px;
+			}
+			.p {
+				font-size: 13px;
+			}
+			.img {
+				width: 46px;
+				height: 46px;
+				display: block;
+			}
+		}
+	}
+	.info {
+		display: flex;
+		align-items: center;
+		margin-bottom: 16px;
+		padding-left: 8px;
+		.avator {
+			width: 54px;
+			height: 54px;
+			box-sizing: border-box;
+			border-radius: 50%;
+			margin-right: 14px;
+			background: #fff;
+			border: 2px solid rgba(255, 255, 255, 0.6);
+			position: relative;
+			.img_edit {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				width: 19px;
+				height: 19px;
+			}
+			.img {
+				display: block;
+				width: 100%;
+				border-radius: 50%;
+			}
+		}
+		.name_id {
+			font-size: 13px;
+			color: rgba(255, 255, 255, 1);
+		}
+		.name {
+			margin-bottom: 6px;
+			font-size: 19px;
+			color: #fff;
+		}
+		.id {
+			font-size: 10px;
+			color: rgba(255, 255, 255, 0.8);
+		}
+		.login {
+			width: 70px;
+			height: 26px;
+			border: 1px solid rgba(255, 255, 255, 1);
+			border-radius: 13px;
+			font-weight: 500;
+			color: rgba(255, 255, 255, 1);
+			line-height: 26px;
+			text-align: center;
+			font-size: 12px;
+			letter-spacing: 1px;
+		}
+	}
+	.btns {
+		width: 349px;
+		height: 73px;
+		box-shadow: 0 0.02rem 0.04rem rgba(0, 0, 0, 0.1);
+		background: rgba(255, 255, 255, 0.5);
+		border-radius: 5px;
+		margin: 0 auto 21px;
+		display: flex;
+		align-items: center;
+		.linear {
+			width: 1px;
+			height: 23px;
+			background: #c1cdd2;
+		}
+		.btn {
+			flex: 1;
+			text-align: center;
+		}
+		.img {
+			width: 29px;
+			height: 29px;
+			display: block;
+			margin: 0 auto;
 		}
 		.p {
-			font-size: 13px;
+			font-size: 12px;
+			line-height: 17px;
+			color: @text_color;
 		}
-		.img {
-			width: 46px;
-			height: 46px;
-			display: block;
-		}
-	}
-}
-.info {
-	display: flex;
-	align-items: center;
-	margin-bottom: 16px;
-	padding-left: 8px;
-	.avator {
-		width: 54px;
-		height: 54px;
-		box-sizing: border-box;
-		border-radius: 50%;
-		margin-right: 14px;
-		background: #fff;
-		border: 2px solid rgba(255, 255, 255, 0.6);
-		position: relative;
-		.img_edit {
-			position: absolute;
-			right: 0;
-			bottom: 0;
-			width: 19px;
-			height: 19px;
-		}
-		.img {
-			display: block;
-			width: 100%;
-			border-radius: 50%;
-		}
-	}
-	.name_id {
-		font-size: 13px;
-		color: rgba(255, 255, 255, 1);
-	}
-	.name {
-		margin-bottom: 6px;
-		font-size: 19px;
-		color: #fff;
-	}
-	.id {
-		font-size: 10px;
-		color: rgba(255, 255, 255, 0.8);
-	}
-	.login {
-		width: 70px;
-		height: 26px;
-		border: 1px solid rgba(255, 255, 255, 1);
-		border-radius: 13px;
-		font-weight: 500;
-		color: rgba(255, 255, 255, 1);
-		line-height: 26px;
-		text-align: center;
-		font-size: 12px;
-		letter-spacing: 1px;
-	}
-}
-.btns {
-	width: 349px;
-	height: 73px;
-	box-shadow: 0 0.02rem 0.04rem rgba(0, 0, 0, 0.1);
-	background: rgba(255, 255, 255, 0.5);
-	border-radius: 5px;
-	margin: 0 auto 21px;
-	display: flex;
-	align-items: center;
-	.linear {
-		width: 1px;
-		height: 23px;
-		background: #c1cdd2;
-	}
-	.btn {
-		flex: 1;
-		text-align: center;
-	}
-	.img {
-		width: 29px;
-		height: 29px;
-		display: block;
-		margin: 0 auto;
-	}
-	.p {
-		font-size: 12px;
-		line-height: 17px;
-		color: @text_color;
 	}
 }
 </style>

@@ -30,11 +30,10 @@
 		</div>
 	</div>
 </template>
-
 <script>
 import { mapState } from 'vuex'
+import { getGreeting } from '@/js/tools.js'
 export default {
-	components: {},
 	data() {
 		return {}
 	},
@@ -44,19 +43,7 @@ export default {
 			return !!this.account.userId
 		},
 		greeting() {
-			let hour = new Date().getHours()
-			var str = ''
-			if (hour < 6) {
-				str = '早晨好'
-			} else if (hour < 11) {
-				str = '上午好'
-			} else if (hour < 13) {
-				str = '中午好'
-			} else if (hour < 18) {
-				str = '下午好'
-			} else if (hour < 24) {
-				str = '晚上好'
-			}
+			let str = getGreeting()
 			let name = this.account.userName ? this.account.userName : '请登录'
 			return `${str}，${name}`
 		}
@@ -167,7 +154,7 @@ export default {
 	}
 }
 .user {
-	width: 345px;
+	width: 94.666%;
 	margin: 0 auto;
 	overflow: hidden;
 	border-radius: 5px;
@@ -188,7 +175,7 @@ export default {
 		.logo {
 			position: absolute;
 			width: 75px;
-			height: 16px;
+			height: 22px;
 			right: 90px;
 		}
 		.login {
