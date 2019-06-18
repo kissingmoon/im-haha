@@ -955,8 +955,7 @@ var QRCode = (function() {
   var Drawing = (function() {
     // Drawing in Canvas
     function _onMakeImage() {
-      this._elImage.src = this._elCanvas.toDataURL('image/png')
-      this._elImage.style.display = 'block'
+      this.srcData = this._elCanvas.toDataURL('image/png')
       this._elCanvas.style.display = 'none'
     }
 
@@ -989,12 +988,13 @@ var QRCode = (function() {
             self._fSuccess.call(self)
           }
         }
-
-        el.onabort = fOnError
-        el.onerror = fOnError
-        el.onload = fOnSuccess
-        el.src =
-          'data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==' // the Image contains 1px data.
+        fOnSuccess()
+        //  ??  为啥要加后面注释这些?  看上去没什么用啊
+        // el.onabort = fOnError
+        // el.onerror = fOnError
+        // el.onload = fOnSuccess
+        // el.src =
+        //   'data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==' // the Image contains 1px data.
         return
       } else if (self._bSupportDataURI === true && self._fSuccess) {
         self._fSuccess.call(self)
@@ -1022,9 +1022,6 @@ var QRCode = (function() {
       this._el = el
       this._oContext = this._elCanvas.getContext('2d')
       this._bIsPainted = false
-      this._elImage = document.createElement('img')
-      this._elImage.style.display = 'none'
-      this._el.appendChild(this._elImage)
       this._bSupportDataURI = null
     }
 
@@ -1034,7 +1031,6 @@ var QRCode = (function() {
      * @param {QRCode} oQRCode
      */
     Drawing.prototype.draw = function(oQRCode) {
-      var _elImage = this._elImage
       var _oContext = this._oContext
       var _htOption = this._htOption
 
@@ -1044,7 +1040,6 @@ var QRCode = (function() {
       var nRoundedWidth = Math.round(nWidth)
       var nRoundedHeight = Math.round(nHeight)
 
-      _elImage.style.display = 'none'
       this.clear()
 
       if (_htOption.useLinearGradient) {
@@ -1103,15 +1098,6 @@ var QRCode = (function() {
       if (this._bIsPainted) {
         _safeSetDataURI.call(this, _onMakeImage)
       }
-    }
-
-    /**
-     * Return whether the QRCode is painted or not
-     *
-     * @return {Boolean}
-     */
-    Drawing.prototype.isPainted = function() {
-      return this._bIsPainted
     }
 
     /**
@@ -1244,7 +1230,6 @@ var QRCode = (function() {
     this._el = el
     this._oQRCode = null
     this._oDrawing = new Drawing(this._el, this._htOption)
-
     if (this._htOption.text) {
       this.makeCode(this._htOption.text)
     }
@@ -1264,21 +1249,7 @@ var QRCode = (function() {
     this._oQRCode.make()
     this._el.title = sText
     this._oDrawing.draw(this._oQRCode)
-    this.makeImage()
-  }
-
-  /**
-   * Make the Image from Canvas element
-   * - It occurs automatically
-   * - Android below 3 doesn't support Data-URI spec.
-   *
-   * @private
-   */
-  QRCode.prototype.makeImage = function() {
-    if (typeof this._oDrawing.makeImage == 'function') {
-      this._oDrawing.makeImage()
-      // return this._oDrawing._elImage.src
-    }
+    this._oDrawing.makeImage()
   }
 
   /**

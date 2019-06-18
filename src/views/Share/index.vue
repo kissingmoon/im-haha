@@ -191,7 +191,9 @@
 						<div v-if="!isLogin" class="qr_img">
 							<img class="img" src="../../assets/qr.png">
 						</div>
-						<div v-else ref="qrcode" @click="openQr" class="qr_img"></div>
+						<div v-else ref="qrcode" @click="openQr" class="qr_img">
+							<img :src="qrSrc">
+						</div>
 					</div>
 					<div class="qr_r" style="cursor: pointer;">
 						<p v-if="isLogin" class="invite">邀请码：{{result.inviteCode}}</p>
@@ -244,7 +246,7 @@ export default {
 			isShow: false,
 			isInit: false, //是否登入初始化
 			isShowMask: false,
-			qrSrc: '',
+			qrSrc: null,
 			result: {
 				peopleNum: '0',
 				inviteMoney: '0.00'
@@ -269,7 +271,6 @@ export default {
 		if (this.isLogin && !this.isInit) {
 			this.getData()
 		}
-		
 	},
 	methods: {
 		copy(text) {
@@ -286,19 +287,24 @@ export default {
 				this.isShow = true
 				return
 			}
-			this.$http.post('/user/getUserPromotion', {}, { loginoutWarn: true }).then(res => {
-				if (res.code == '200') {
-					this.result = res.data
+			this.$http
+				.post('/user/getUserPromotion', {}, { loginoutWarn: true })
+				.then(res => {
 					this.isShow = true
-					this.$nextTick(() => {
-						this.setQrcode(res.data.url)
-						new clipboard('.copy').on('success', () => {
-							this.$toast('复制成功')
+					if (res.code == '200') {
+						this.result = res.data
+						this.$nextTick(() => {
+							this.setQrcode(res.data.url)
+							new clipboard('.copy').on('success', () => {
+								this.$toast('复制成功')
+							})
+							this.isInit = true
 						})
-						this.isInit = true
-					})
-				}
-			})
+					}
+				})
+				.catch(err => {
+					this.isShow = true
+				})
 		},
 		login() {
 			this.$router.push('/login')
@@ -316,8 +322,8 @@ export default {
 				height: h,
 				correctLevel: QRCode.CorrectLevel.L
 			})
-			let qrcodeSrc = qr._oDrawing._elImage.src
-			
+			let qrcodeSrc = qr._oDrawing.srcData
+			this.qrSrc = qrcodeSrc
 		},
 		openQr() {
 			this.isShowMask = true

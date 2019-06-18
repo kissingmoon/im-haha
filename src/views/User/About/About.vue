@@ -39,7 +39,7 @@ export default {}
 	min-height: 100%;
 	box-sizing: border-box;
 	padding-top: @app_head_height;
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	.grey-text {

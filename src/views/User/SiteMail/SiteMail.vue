@@ -29,7 +29,6 @@
 		</div>
 	</div>
 </template>
-
 <script>
 import { Tab, Tabs } from 'vant'
 import dataList from './subCompts/data-list'
@@ -85,7 +84,6 @@ export default {
 	}
 }
 </script>
-
 <style lang="less" scoped>
 .siteMail-wrapper {
 	position: absolute;
@@ -93,7 +91,7 @@ export default {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
 	background-size: cover;
 	box-sizing: border-box;
 	padding-top: @app_head_height;

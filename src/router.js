@@ -88,17 +88,17 @@ export let needLoginRoutes = [
   {
     path: '/userinfo',
     name: 'Userinfo',
-    component: () => import(/* webpackChunkName: "Userinfo" */ './views/Userinfo/index.vue')
+    component: () => import(/* webpackChunkName: "Userinfo" */ './views/User/Userinfo/index.vue')
   },
   {
     path: '/username',
     name: 'Username',
-    component: () => import(/* webpackChunkName: "Username" */ './views/Username/index.vue')
+    component: () => import(/* webpackChunkName: "Username" */ './views/User/Username/index.vue')
   },
   {
     path: '/useravator',
     name: 'Useravator',
-    component: () => import(/* webpackChunkName: "Useravator" */ './views/Useravator/index.vue')
+    component: () => import(/* webpackChunkName: "Useravator" */ './views/User/Useravator/index.vue')
   },
   {
     path: '/bank-charge',
@@ -160,7 +160,7 @@ export let needLoginRoutes = [
   {
     path: '/siteMail',
     name: 'SiteMail',
-    component: () => import(/* webpackChunkName: "SiteMail" */ './views/SiteMail/SiteMail.vue')
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/User/SiteMail/SiteMail.vue')
   }
 ]
 let routes = [
@@ -239,7 +239,7 @@ let routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ './views/About/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ './views/User/About/About.vue')
   },
   ...needLoginRoutes,
   ...course_router
