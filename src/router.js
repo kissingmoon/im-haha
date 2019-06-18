@@ -211,6 +211,10 @@ let routes = [
     ]
   },
   {
+    path: '/regist',
+    redirect: '/login'
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "Login" */ './views/login/login.vue')

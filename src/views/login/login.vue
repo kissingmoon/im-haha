@@ -80,7 +80,6 @@ export default {
 		loginComponent,
 		registerComponent
 	},
-	computed: {},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
