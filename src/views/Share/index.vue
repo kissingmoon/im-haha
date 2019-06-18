@@ -18,7 +18,7 @@
 }
 .dash {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	text-align: center;
 	width: 355px;
@@ -28,20 +28,11 @@
 	.dash_l {
 		flex-basis: 50%;
 	}
-	.dash_r {
-		flex-basis: 50%;
-	}
 	.p0 {
-		margin-bottom: 6px;
 		font-size: 16px;
 		font-weight: 500;
 		color: rgba(68, 68, 68, 1);
 		line-height: 22px;
-	}
-	.p1 {
-		font-size: 14px;
-		color: rgba(68, 68, 68, 1);
-		line-height: 20px;
 	}
 }
 .qr_box {
@@ -177,12 +168,7 @@
 			</div>
 			<div class="dash">
 				<div class="dash_l">
-					<p class="p0">{{result.peopleNum}}人</p>
-					<p class="p1">微信推荐人数总计</p>
-				</div>
-				<div class="dash_r">
-					<p class="p0">¥{{result.inviteMoney}}</p>
-					<p class="p1">推荐佣金总计</p>
+					<p class="p0">微信推荐人数总计 {{result.peopleNum}}人</p>
 				</div>
 			</div>
 			<div class="qr_box">
