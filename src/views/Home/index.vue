@@ -18,7 +18,7 @@ export default {
 	},
 	data() {
 		return {
-			keepALivePages: ['home', 'course', 'activity', 'user']
+			keepALivePages: ['home', 'share', 'activity', 'user']
 		}
 	},
 	computed: {

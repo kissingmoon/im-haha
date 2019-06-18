@@ -242,6 +242,7 @@ export default {
 	data() {
 		return {
 			isShow: false,
+			isInit: false, //是否登入初始化
 			isShowMask: false,
 			qrSrc: '',
 			result: {
@@ -265,9 +266,10 @@ export default {
 		this.getData()
 	},
 	activated() {
-		if (this.isLogin) {
+		if (this.isLogin && !this.isInit) {
 			this.getData()
 		}
+		
 	},
 	methods: {
 		copy(text) {
@@ -293,6 +295,7 @@ export default {
 						new clipboard('.copy').on('success', () => {
 							this.$toast('复制成功')
 						})
+						this.isInit = true
 					})
 				}
 			})
@@ -307,12 +310,14 @@ export default {
 			let qrcodeEl = this.$refs.qrcode
 			let w = qrcodeEl.offsetWidth
 			let h = qrcodeEl.offsetHeight
-			new QRCode(qrcodeEl, {
+			let qr = new QRCode(qrcodeEl, {
 				text: url,
 				width: w,
 				height: h,
 				correctLevel: QRCode.CorrectLevel.L
 			})
+			let qrcodeSrc = qr._oDrawing._elImage.src
+			
 		},
 		openQr() {
 			this.isShowMask = true
