@@ -55,31 +55,6 @@ export default {
 	data() {
 		return {
 			formData: {
-				phone: {
-					model: '',
-					placeholder: '手机号',
-					leftIconClass: 'left-icon__phone',
-					rightIconClass: '',
-					rightIconClass: '',
-					type: 'tel',
-					regTip: '',
-					imgSrc: true,
-					valueType: 'num',
-					maxlength: 11,
-					extra: false
-				},
-				code: {
-					model: '',
-					placeholder: '验证码',
-					leftIconClass: 'left-icon__simcode',
-					rightIconClass: 'right-icon__simcode',
-					type: '',
-					regTip: '',
-					imgSrc: true,
-					valueType: 'num',
-					maxlength: 6,
-					extra: true
-				},
 				userId: {
 					model: '',
 					placeholder: '请输入用户名',
@@ -112,6 +87,31 @@ export default {
 					valueType: 'letterNum',
 					maxlength: 16,
 					extra: false
+				},
+								phone: {
+					model: '',
+					placeholder: '手机号',
+					leftIconClass: 'left-icon__phone',
+					rightIconClass: '',
+					rightIconClass: '',
+					type: 'tel',
+					regTip: '',
+					imgSrc: true,
+					valueType: 'num',
+					maxlength: 11,
+					extra: false
+				},
+				code: {
+					model: '',
+					placeholder: '验证码',
+					leftIconClass: 'left-icon__simcode',
+					rightIconClass: 'right-icon__simcode',
+					type: '',
+					regTip: '',
+					imgSrc: true,
+					valueType: 'num',
+					maxlength: 6,
+					extra: true
 				},
 				inviteCode:{
 					name:'inviteCode',
