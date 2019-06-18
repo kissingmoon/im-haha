@@ -133,6 +133,10 @@
 			display: block;
 			width: 100%;
 			height: 100%;
+			.img {
+				display: block;
+				width: 100%;
+			}
 		}
 	}
 	.mask_p0 {
@@ -178,7 +182,7 @@
 							<img class="img" src="../../assets/qr.png">
 						</div>
 						<div v-else ref="qrcode" @click="openQr" class="qr_img">
-							<img :src="qrSrc">
+							<img class="img" :src="qrSrc">
 						</div>
 					</div>
 					<div class="qr_r" style="cursor: pointer;">
@@ -206,10 +210,12 @@
 			</div>
 		</div>
 		<transition name="fade">
-			<div v-show="isShowMask" class="mask">
-				<div class="mask_main">
+			<div v-show="isShowMask" @click="isShowMask = false" class="mask">
+				<div @click.stop="" class="mask_main">
 					<div class="mask_qr">
-						<div ref="mask_qr_img" class="mask_qr_img"></div>
+						<div ref="mask_qr_img" class="mask_qr_img">
+							<img class="img" :src="qrSrc">
+						</div>
 					</div>
 					<p class="mask_p0">长按二维码点击进行保存</p>
 					<p class="mask_p">保存后点击微信发送图片，小伙伴通过扫描二维码注册成功，立享佣金</p>
@@ -313,21 +319,18 @@ export default {
 		},
 		openQr() {
 			this.isShowMask = true
-			if (this.$refs.mask_qr_img.querySelector('img')) {
-				return
-			}
-			this.$nextTick(() => {
-				let qrcodeEl = this.$refs.mask_qr_img
-				let w = qrcodeEl.offsetWidth
-				let h = qrcodeEl.offsetHeight
-				new QRCode(qrcodeEl, {
-					text: this.result.url,
-					width: w,
-					height: h,
-					colorLight: '#fff',
-					correctLevel: QRCode.CorrectLevel.L
-				})
-			})
+			// this.$nextTick(() => {
+			// 	let qrcodeEl = this.$refs.mask_qr_img
+			// 	let w = qrcodeEl.offsetWidth
+			// 	let h = qrcodeEl.offsetHeight
+			// 	new QRCode(qrcodeEl, {
+			// 		text: this.result.url,
+			// 		width: w,
+			// 		height: h,
+			// 		colorLight: '#fff',
+			// 		correctLevel: QRCode.CorrectLevel.L
+			// 	})
+			// })
 		}
 	}
 }
