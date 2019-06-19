@@ -112,7 +112,7 @@ export default {
 	watch: {
 		formData: {
 			handler(newVal, oldVal) {
-				var allRight = true
+				var allRight = true;
 				for (let key in newVal) {
 					if (!newVal[key].model) {
 						allRight = false
