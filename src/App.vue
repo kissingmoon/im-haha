@@ -1,13 +1,14 @@
 <template>
-	<div id="app">
-		<keep-alive>
-			<router-view v-if="$route.meta.keepAlive"/>
-		</keep-alive>
+	<div id="app" :class="{'mjb_ios':mjb_ios}">
+
 		<transition name="fade">
-			<router-view v-if="!$route.meta.keepAlive"/>
+			<keep-alive :include="keepALivePages">
+				<router-view/>
+			</keep-alive>
 		</transition>
+
 		<van-dialog class="actv_8888_dialog" :show-confirm-button="false" v-model="show8888">
-			<div class="actv_8888">
+			<div class="actv_88">
 				<div class="actv_8888_t">
 					<img class="actv_8888_img" src="./assets/88@2x.png">
 					<div class="actv_8888_text">
@@ -23,14 +24,15 @@
 		</van-dialog>
 	</div>
 </template>
-
 <script>
-import { mapActions, mapGetters, mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 import { generateUUID } from '@/js/tools.js'
 export default {
 	data() {
 		return {
-			show8888: false
+			keepALivePages: ['index'],
+			show8888: false,
+			mjb_ios: false
 		}
 	},
 	computed: {
@@ -39,8 +41,7 @@ export default {
 				return this.$store.state.isGetCJ
 			},
 			set: function() {}
-		},
-		...mapGetters(['user_token'])
+		}
 	},
 	watch: {
 		isGetCJ: {
@@ -52,8 +53,8 @@ export default {
 	},
 	created() {
 		this.checkUUID()
-		console.log(this.show8888, 111)
 		this.checkUTK()
+		this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
 	},
 	methods: {
 		...mapMutations({
@@ -94,12 +95,11 @@ export default {
 	}
 }
 </script>
-
-<style lang="less" scoped>
+<style lang="less">
 .actv_8888_dialog {
 	width: 84%;
 }
-.actv_8888 {
+.actv_88 {
 	width: 100%;
 	.actv_8888_t {
 		height: 244px;

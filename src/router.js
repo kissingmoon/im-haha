@@ -2,7 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from './views/Home/index.vue'
 import Home from './views/Home/Home.vue'
-import store from './store'
+import Course from './views/Course/Course.vue'
+import Share from './views/Share/index.vue'
+import Activity from './views/Activity/Activity.vue'
+import User from './views/User/User.vue'
 Vue.use(Router)
 
 let course_router = [
@@ -145,12 +148,25 @@ export let needLoginRoutes = [
     path: '/chess-lists',
     name: 'ChessLists',
     component: () => import(/* webpackChunkName: "ChessLists" */ './views/ChessLists/index.vue')
+  },
+  {
+    path: '/siteMail',
+    name: 'SiteMail',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/SiteMail/SiteMail.vue')
   }
 ]
 let routes = [
   {
+    path: '*',
+    redirect: '/'
+  },
+  {
     path: '/',
     component: Index,
+    name: 'index',
+    meta: {
+      keepAlive: true
+    },
     children: [
       {
         path: '',
@@ -162,24 +178,32 @@ let routes = [
       },
       {
         path: '/course',
-        name: 'Course',
-        component: () => import(/* webpackChunkName: "Course" */ './views/Course/Course.vue'),
+        name: 'course',
+        component: Course,
         meta: {
           keepAlive: true
         }
       },
+      // {
+      //   path: '/share',
+      //   name: 'share',
+      //   component: Share,
+      //   meta: {
+      //     keepAlive: true
+      //   }
+      // },
       {
         path: '/activity',
-        name: 'Activity',
-        component: () => import(/* webpackChunkName: "Activity" */ './views/Activity/Activity.vue'),
+        name: 'activity',
+        component: Activity,
         meta: {
           keepAlive: true
         }
       },
       {
         path: '/user',
-        component: () => import(/* webpackChunkName: "user" */ './views/User/User.vue'),
         name: 'user',
+        component: User,
         meta: {
           keepAlive: true
         }
@@ -228,12 +252,12 @@ let router = new Router({
 
 router.beforeEach((to, from, next) => {
   let U_TK = localStorage.getItem('U_TK')
-  if(!U_TK){
+  if (!U_TK) {
     //如果没有token 而且访问的路由需要登入那就到首页
-    let needLogin = needLoginRoutes.some((item)=>{
+    let needLogin = needLoginRoutes.some(item => {
       return to.path == item.path
     })
-    if(needLogin){
+    if (needLogin) {
       next('/')
     }
   }

@@ -1,8 +1,5 @@
 <template>
-	<div>
-		<div class="head_title">
-			<p class="p"><img class="head_title_img" src="../../assets/zb.png" ></p>
-		</div>
+	<div class="home_wrapper view_wrapper">
 		<div v-if="isShow" class="home">
 			<div class="top">
 				<swiper-top :lists="swiperTopData"/>
@@ -30,27 +27,36 @@ export default {
 	data() {
 		return {
 			isShow: false,
+			isError: false,
 			swiperTopData: [],
 			notice: [],
 			swiperBottomData: []
 		}
 	},
-	async mounted() {
-		let loading = this.$loading({ text: '正在加载…' })
-		try {
-			await Promise.all([this.getHomeHeadData(), this.getHomeGameData()])
-			loading.close()
-			this.isShow = true
-		} catch {
-			loading.close()
-		}
+	mounted() {
+		this.init()
 	},
 	activated() {
-		if (!this.isShow) return
 		this.getHomeHeadData()
-		this.$api.getUserInfoNoWarn({ transferOut: '1' })
+		if (this.isError) {
+			this.init()
+		} else {
+			this.$api.getUserInfoNoWarn({ transferOut: '1' })
+		}
 	},
 	methods: {
+		async init() {
+			let loading = this.$loading({ text: '正在加载…' })
+			try {
+				await Promise.all([this.getHomeHeadData(), this.getHomeGameData()])
+				loading.close()
+				this.isShow = true
+				this.isError = false
+			} catch {
+				this.isError = true
+				loading.close()
+			}
+		},
 		getHomeHeadData() {
 			return this.$http.post('/home/getHomeHeadData').then(res => {
 				if (res.code == '200') {
@@ -74,33 +80,13 @@ export default {
 	}
 }
 </script>
-<style lang='less' scoped>
-.head_title {
-	height: 50px;
-	.p {
-		position: fixed;
-		left: 0;
-		right: 0;
-		top: 0;
-		font-size: 0;
-		color: rgba(51, 51, 51, 1);
-		height: 50px;
-		line-height: 50px;
-		z-index: 1000;
-		background-color: @base_color;
-		text-align: center;
+<style lang='less'>
+.home_wrapper {
+	.top{
+		margin-bottom: 12px;
 	}
-	.head_title_img{
-		display: inline-block;
-		height: 24px;
-		margin-top: 13px;
+	.home {
+		padding: 12px 0;
 	}
-}
-.home {
-	background: #e5e5e5;
-	padding-bottom: 20px;
-}
-.top {
-	margin-bottom: 12px;
 }
 </style>
