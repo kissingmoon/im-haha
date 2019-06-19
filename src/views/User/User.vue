@@ -70,7 +70,7 @@
 				<div class="linear"></div>
 				<div @click="clickThis(4,false)" class="btn">
 					<img class="img" src="./img/guide.png">
-					<p class="p">教程</p>
+					<p class="p">新手教程</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(5,false)" class="btn">

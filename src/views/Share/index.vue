@@ -172,7 +172,7 @@
 			</div>
 			<div class="dash">
 				<div class="dash_l">
-					<p class="p0">推荐人数总计 {{result.peopleNum}}人</p>
+					<p class="p0">推荐人数总计： {{result.peopleNum}}人</p>
 				</div>
 			</div>
 			<div class="qr_box">
