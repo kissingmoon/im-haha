@@ -22,10 +22,10 @@
 			</div>
 			<div class="input-box">
 				<textarea
-					maxlength="200"
+					maxlength="100"
 					v-model="msgParam.content"
 					class="text-area display-flex"
-					placeholder="请输入内容(10-200字之间)"
+					placeholder="请输入内容(10-100字之间)"
 				></textarea>
 			</div>
 		</div>
