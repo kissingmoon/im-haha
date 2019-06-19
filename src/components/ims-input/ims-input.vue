@@ -91,7 +91,7 @@ export default {
 		},
 		onInput(e) {
 			if (!this.inputLock) {
-				this.regInput(e.target)
+				// this.regInput(e.target)
 				e.returnValue = false
 				this.$emit('input', e.target.value)
 			}
