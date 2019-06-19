@@ -1,0 +1,116 @@
+@color_txt_lightRed: #e0877f;
+@base_color: #e5e5e5;
+@color_txt_blue: #1182fd;
+
+@color_shallow_blue: #60e6ff;
+@color_deep_blue: #46a8fe;
+@btn_color: linear-gradient(to right, @color_shallow_blue, @color_deep_blue);
+@btn_color_disabled: rgba(139, 139, 139, 0.5);
+@app_head_height: 45px; //头部高度
+@app_footer_height: 50px; //底部栏高度
+@text_color: #4a4a4a;
+@text_color_navs: #6c4932;
+@actv_table_border_color: #333;
+@iphone_xr: 40px;
+
+.view_wrapper {
+  position: absolute;
+  top: 0;
+  bottom: @app_footer_height;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.headview_wrapper {
+  padding-top: @app_head_height;
+}
+.app_head {
+  .main {
+    top: 0;
+  }
+}
+//iPhone X   iPhone XS
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .mjb_ios {
+    .view_wrapper {
+      top: @iphone_xr !important;
+    }
+    .app_head {
+      .main {
+        top: @iphone_xr !important;
+      }
+    }
+    .headview_wrapper {
+      padding-top: @app_head_height + @iphone_xr !important;
+    }
+    .bet-wrapper {
+      top: @app_head_height + @iphone_xr !important;
+      .formTitle {
+        top: @app_head_height + @iphone_xr !important;
+      }
+    }
+    .login_back {
+      top: @iphone_xr !important;
+    }
+    .wfjc .wfjc_tabs {
+      top: @app_head_height + @iphone_xr !important;
+    }
+  }
+}
+//iPhone XR
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  .mjb_ios {
+    .view_wrapper {
+      top: @iphone_xr !important;
+    }
+    .app_head {
+      .main {
+        top: @iphone_xr !important;
+      }
+    }
+    .headview_wrapper {
+      padding-top: @app_head_height + @iphone_xr !important;
+    }
+    .bet-wrapper {
+      top: @app_head_height + @iphone_xr !important;
+      .formTitle {
+        top: @app_head_height + @iphone_xr !important;
+      }
+    }
+    .login_back {
+      top: @iphone_xr !important;
+    }
+    .wfjc .wfjc_tabs {
+      top: @app_head_height + @iphone_xr !important;
+    }
+  }
+}
+//iPhone XS Max
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
+  .mjb_ios {
+    .view_wrapper {
+      top: @iphone_xr !important;
+    }
+    .app_head {
+      .main {
+        top: @iphone_xr !important;
+      }
+    }
+    .headview_wrapper {
+      padding-top: @app_head_height + @iphone_xr !important;
+    }
+    .bet-wrapper {
+      top: @app_head_height + @iphone_xr !important;
+      .formTitle {
+        top: @app_head_height + @iphone_xr !important;
+      }
+    }
+    .login_back {
+      top: @iphone_xr !important;
+    }
+    .wfjc .wfjc_tabs {
+      top: @app_head_height + @iphone_xr !important;
+    }
+  }
+}
