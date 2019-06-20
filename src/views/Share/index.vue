@@ -186,7 +186,7 @@
 			<div class="dash">
 				<div class="dash_l">
 					<p class="p0">{{result.peopleNum}}人</p>
-					<p class="p0">微信推荐人数总计</p>
+					<p class="p0">推荐人数总计</p>
 				</div>
 				<div @click="gopage('/commissionAll')" class="dash_l">
 					<p class="p0">￥{{result.inviteMoney}}</p>
@@ -225,7 +225,7 @@
 					</div>
 				</div>
 				<div v-if="!user_token" class="tip">通过分享邀请好友一起游戏，您将获得推荐和红利佣金，越分享越多金。</div>
-				<div v-else class="tip">您已成功通过推荐{{shareobj.userNum}}个好友，累计获得了￥{{shareobj.userMoney==null?0:shareobj.userMoney}}佣金，快去召唤小伙伴吧</div>
+				<div v-else class="tip">您已成功通过推荐{{shareobj.userNum}}个好友，累计获得了 <span style="color:#E65858">￥{{shareobj.userMoney==null?0:shareobj.userMoney}}</span> 佣金，快去召唤小伙伴吧</div>
 			</div>
 		</div>
 		<transition name="fade">
@@ -313,7 +313,7 @@ export default {
 								if(this.txt=='复制链接'){
 
 								}else{
-									this.$toast('复制成功')
+									this.$toast('邀请码复制成功，快去通知好友吧')
 								}
 							})
 							this.isInit = true

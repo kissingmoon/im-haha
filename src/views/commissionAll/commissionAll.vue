@@ -1,7 +1,7 @@
 <template>
     <div class="agent">
         <div class="header-container">
-			<ims-header title="我的代理">
+			<ims-header title="佣金总计">
                 <!-- <div slot="right" >说明</div> -->
             </ims-header> 
 		</div>
@@ -10,11 +10,11 @@
                 <div class="contribution">
                     <div class="left">
                         <p class="contribution_p p1">{{totalPro.peopleNum}}人</p>
-                        <p class="contribution_p p3">贡献人数总计</p>
+                        <p class="contribution_p p3">推荐人数总计</p>
                     </div>
                     <div class="right">
                         <p class="contribution_p p2">￥{{totalPro.inviteMoney}}</p>
-                        <p class="contribution_p">贡献业绩总计备份</p>
+                        <p class="contribution_p">推荐佣金总计</p>
                     </div>
                 </div>
                 <div class="drop_down">
@@ -184,9 +184,9 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                 }
                 .right{
                     width:47%;
-                    height:40px;
+                    height:48px;
                     background: #262626;
-                    padding: 18px 0;
+                    padding: 14px 0;
                     float: right;
                     margin-right:3%;
                     background:rgba(255,255,255,0.5);
