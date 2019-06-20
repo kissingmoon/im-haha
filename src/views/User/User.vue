@@ -167,7 +167,7 @@ export default {
 					break
 				}
 				case 8: {
-					this.$router.push('/commissionAll')
+					this.$toast('暂无代理')
 					break
 				}
 				case 10: {

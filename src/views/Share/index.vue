@@ -185,7 +185,12 @@
 			</div>
 			<div class="dash">
 				<div class="dash_l">
-					<p class="p0">推荐人数总计： {{result.peopleNum}}人</p>
+					<p class="p0">{{result.peopleNum}}人</p>
+					<p class="p0">微信推荐人数总计</p>
+				</div>
+				<div @click="gopage('/commissionAll')" class="dash_l">
+					<p class="p0">￥{{result.inviteMoney}}</p>
+					<p class="p0">推荐佣金总计</p>
 				</div>
 			</div>
 			<div class="qr_box">
@@ -336,6 +341,13 @@ export default {
 		},
 		tipone(txt){
 			this.txt=txt
+		},
+		gopage(path){
+			if(this.user_token){
+				this.$router.push(path)
+			}else{
+				this.$router.push("/login")
+			}
 		},
 		login() {
 			this.$router.push('/login')
