@@ -6,7 +6,7 @@
             </ims-header> 
 		</div>
         <div class="centent">
-            <van-list v-model="moreLoading" :finished="finished" finished-text="没有更多了" @load="onLoad" :offset="30">
+            <van-list v-model="moreLoading" :finished="finished" :finished-text="finishedText" @load="onLoad" :offset="30">
                 <div class="contribution">
                     <div class="left">
                         <p class="contribution_p p1">{{totalPro.peopleNum}}人</p>
@@ -18,6 +18,7 @@
                     </div>
                 </div>
                 <div class="drop_down">
+                        <div v-if="initFinish && recList.length<1" class="no-data-box display-flex justify-center align-end">暂无数据，快去推广赚佣金吧！</div>
                         <div class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
                                 <p class="left_p">结算时间:{{v.createTime}}</p>
@@ -28,7 +29,6 @@
                                 <div class="right">{{v.money}}</div>
                             </div>   
                         </div>
-
                 </div>
             </van-list>
         </div>
@@ -58,20 +58,17 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                 initFinish: false,
                 recList:[],
                 totalPro:{},
-                recListTotal: 0
+                recListTotal: 0,
+                finishedText: ""
                 // agentList:[0]
             }
         },
         created(){
-            this.setFooterStatus(false);
         },
         mounted(){
             this.init()
         },
         methods:{
-            ...mapMutations({
-                setFooterStatus:'SET_FOOTER_STATUS'
-            }),
             init(){
                 let queryParam = {
                     "page_no": "1"
@@ -112,6 +109,7 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                         this.moreLoading = false;
                         if(this.recList.length >= this.recListTotal){
                             this.finished = true;
+                            this.finishedText = "没有更多了"
                         }
                     }
                 }else if(type == "init"){
@@ -209,6 +207,13 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
             .drop_down{
                 width:100%;
                 min-height:60px;
+                .no-data-box{
+                    height: 300px;
+                    width: 200px;
+                    margin: auto;
+                    background: url('./img/no-data.png') no-repeat;
+                    background-position: center;
+                }
                 .lists{
                     height:55px;
                     width: 94%;
