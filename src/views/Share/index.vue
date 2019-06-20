@@ -11,6 +11,16 @@
 	overflow: hidden;
 	border-radius: 6px;
 	padding-top: 12px;
+	position: relative;
+	.instructions{
+		position: absolute;
+		width:92%;
+		min-height:50px;
+		bottom: 0;
+		line-height: 20px;
+		color:#f0f0f0;
+		padding:0 4% 
+	}
 	.img {
 		display: block;
 		width: 100%;
@@ -169,6 +179,9 @@
 		<div v-if="isShow">
 			<div class="banner">
 				<img class="img" src="../../assets/banner.png">
+				<div class="instructions">
+					说明：推荐佣金，您分享给小伙伴，小伙伴通过您的链接或者是邀请码注册成功后，游戏在线5分钟，您获得2元佣金，小伙伴获得1元佣金，以此类推，分享越多佣金越多！
+				</div>
 			</div>
 			<div class="dash">
 				<div class="dash_l">
@@ -192,7 +205,7 @@
 						<div
 							v-else
 							class="copy"
-							onclick="void(0)"
+							@click="tipone('复制邀请码')"
 							style="cursor: pointer;"
 							:data-clipboard-text="result.inviteCode"
 						>复制邀请码</div>
@@ -200,13 +213,14 @@
 						<div
 							v-else
 							class="copy"
-							onclick="void(0)"
+							@click="tip('复制链接')"
 							style="cursor: pointer;"
 							:data-clipboard-text="result.url"
 						>复制链接</div>
 					</div>
 				</div>
-				<div class="tip">说明：通过扫描二维码或者复制链接注册成功的用户即可成为您的下线</div>
+				<div v-if="!user_token" class="tip">通过分享邀请好友一起游戏，您将获得推荐和红利佣金，越分享越多金。</div>
+				<div v-else class="tip">您已成功通过推荐{{shareobj.userNum}}个好友，累计获得了￥{{shareobj.userMoney==null?0:shareobj.userMoney}}佣金，快去召唤小伙伴吧</div>
 			</div>
 		</div>
 		<transition name="fade">
@@ -230,7 +244,7 @@ import { mapGetters } from 'vuex'
 import clipboard from 'clipboard'
 import QRCode from '@/js/qrcode.js'
 import { getGreeting } from '@/js/tools.js'
-
+import { Dialog } from 'vant';
 export default {
 	name: 'share',
 	data() {
@@ -242,7 +256,10 @@ export default {
 			result: {
 				peopleNum: '0',
 				inviteMoney: '0.00'
-			}
+			},
+			shareobj:{},
+			link:'',
+			txt:''
 		}
 	},
 	computed: {
@@ -288,15 +305,37 @@ export default {
 						this.$nextTick(() => {
 							this.setQrcode(res.data.url)
 							new clipboard('.copy').on('success', () => {
-								this.$toast('复制成功')
+								if(this.txt=='复制链接'){
+
+								}else{
+									this.$toast('复制成功')
+								}
 							})
 							this.isInit = true
 						})
 					}
+					this.sharethat()
 				})
 				.catch(err => {
 					this.isShow = true
 				})
+		},
+		sharethat(){
+			this.$http
+				.post('/user/getUserShareMoney')
+				.then(res=>{
+					this.shareobj=res.data
+				})
+		},
+		tip(txt){
+			this.txt=txt
+			Dialog.alert({
+				message: '赶快跟好友分享吧，分享人数越多，获得的佣金越多'
+			}).then(() => {
+			});
+		},
+		tipone(txt){
+			this.txt=txt
 		},
 		login() {
 			this.$router.push('/login')
