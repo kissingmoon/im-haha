@@ -229,7 +229,7 @@
 			</div>
 		</div>
 		<transition name="fade">
-			<div v-show="isShowMask" class="mask">
+			<div @click.stop="isShowMask = false" v-show="isShowMask" class="mask">
 				<div class="mask_main">
 					<div class="mask_qr">
 						<div ref="mask_qr_img" class="mask_qr_img">
