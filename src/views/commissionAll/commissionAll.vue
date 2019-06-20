@@ -13,7 +13,7 @@
                         <p class="contribution_p p3">推荐人数总计</p>
                     </div>
                     <div class="right">
-                        <p class="contribution_p p2">￥{{totalPro.inviteMoney}}</p>
+                        <p class="contribution_p p2">￥{{totalPro.inviteMoney=='null'?0:totalPro.inviteMoney}}</p>
                         <p class="contribution_p">推荐佣金总计</p>
                     </div>
                 </div>
