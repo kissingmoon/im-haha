@@ -238,7 +238,6 @@ export default {
 			let [res1, res2] = await Promise.all([this.getInfo(), this.getLists()])
 			loading.close()
 			if (res1.code == '200' && res2.code == '200') {
-				res2.data.result = res2.data.result.concat(res2.data.result)
 				if (res2.data.result.length < this.page_size) {
 					this.hasgetAll = true
 					this.loadMoreText = '没有更多了'
