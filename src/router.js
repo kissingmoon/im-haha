@@ -166,6 +166,16 @@ export let needLoginRoutes = [
     path: '/commissionAll',
     name: 'commissionAll',
     component: () => import(/* webpackChunkName: "SiteMail" */ './views/commissionAll/commissionAll.vue')
+  },
+  {
+    path: '/teamMember',
+    name: 'teamMember',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/teamMember/teamMember.vue')
+  },
+  {
+    path: '/team',
+    name: 'team',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/team/team.vue')
   }
 ]
 let routes = [

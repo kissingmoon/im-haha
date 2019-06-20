@@ -1,7 +1,7 @@
 <template>
     <div class="agent">
         <div class="header-container">
-			<ims-header title="佣金总计">
+			<ims-header title="我的代理">
                 <!-- <div slot="right" >说明</div> -->
             </ims-header> 
 		</div>
@@ -10,15 +10,20 @@
                 <div class="contribution">
                     <div class="left">
                         <p class="contribution_p p1">{{totalPro.peopleNum}}人</p>
-                        <p class="contribution_p p3">推荐人数总计</p>
+                        <p class="contribution_p p3">团队成员总计</p>
                     </div>
                     <div class="right">
-                        <p class="contribution_p p2">￥{{totalPro.inviteMoney=='null'?0:totalPro.inviteMoney}}</p>
+                        <p class="contribution_p p2">￥{{totalPro.inviteMoney}}</p>
                         <p class="contribution_p">推荐佣金总计</p>
                     </div>
                 </div>
                 <div class="drop_down">
-                        <div v-if="initFinish && recList.length<1" class="no-data-box display-flex justify-center align-end">暂无数据，快去推广赚佣金吧！</div>
+                        <div class="list-head display-flex">
+                            <div class="flex-1">旗下成员账号</div>
+                            <div class="flex-1">用户等级</div>
+                            <div class="flex-1">用户总业绩</div>
+                        </div>
+                        <div v-if="initFinish && recList.length<1" class="no-data-box display-flex justify-center align-end">暂无数据，快去召唤小伙伴吧！</div>
                         <div class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
                                 <p class="left_p">结算时间:{{v.createTime}}</p>
@@ -109,7 +114,7 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                         this.moreLoading = false;
                         if(this.recList.length >= this.recListTotal){
                             this.finished = true;
-                            this.finishedText = "没有更多了"
+                            this.finishedText = "没有更多了~"
                         }
                     }
                 }else if(type == "init"){
@@ -120,7 +125,6 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                     if(this.recList.length < parseInt(this.queryParam.page_size)){
                         this.moreLoading = false;
                         this.finished = true;
-                        this.finishedText = "没有更多了"
                     }
                 }
             },
@@ -161,17 +165,21 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
         .centent{
             flex:1;
             overflow-y:scroll;
+            padding: 0 18px;
+            box-sizing: border-box;
             .contribution{
                 width:100%;
                 height:76px;
-                margin: 17px 0;               
+                margin: 17px 0; 
+                display: flex;              
                 .left{
-                    width:47%;
+                    // width:47%;
                     height:48px;
                     background: #262626;
                     padding: 14px 0;
                     float: left;
-                    margin-left:3%;
+                    // margin-left:3%;
+                    flex:1;
                     background:rgba(255,255,255,0.5);
                     border-radius: 5px 0 0 5px;
                     .p1{
@@ -184,12 +192,13 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                     }
                 }
                 .right{
-                    width:47%;
-                    height:48px;
+                    // width:47%;
+                    flex:1;
+                    height:40px;
                     background: #262626;
-                    padding: 14px 0;
+                    padding: 18px 0;
                     float: right;
-                    margin-right:3%;
+                    // margin-right:3%;
                     background:rgba(255,255,255,0.5);
                     border-radius:0 5px 5px 0;
                     .p2{
@@ -208,6 +217,16 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
             .drop_down{
                 width:100%;
                 min-height:60px;
+                height: 120vh;
+                background:rgba(255,255,255,0.5);
+                margin-bottom: 20px;
+                .list-head{
+                    z-index: 1000;
+                    position: sticky;
+                    top: 0;
+                    height: 30px;
+                    background: red;
+                }
                 .no-data-box{
                     height: 300px;
                     width: 200px;

@@ -184,7 +184,7 @@
 				</div>
 			</div>
 			<div class="dash">
-				<div class="dash_l">
+				<div @click="gopage('/team')" class="dash_l">
 					<p class="p0">{{result.peopleNum}}人</p>
 					<p class="p0">推荐人数总计</p>
 				</div>
@@ -229,8 +229,8 @@
 			</div>
 		</div>
 		<transition name="fade">
-			<div v-show="isShowMask" @click="isShowMask = false" class="mask">
-				<div @click.stop="" class="mask_main">
+			<div v-show="isShowMask" class="mask">
+				<div class="mask_main">
 					<div class="mask_qr">
 						<div ref="mask_qr_img" class="mask_qr_img">
 							<img class="img" :src="qrSrc">
@@ -351,6 +351,7 @@ export default {
 			if(this.user_token){
 				this.$router.push(path)
 			}else{
+				
 				this.$router.push("/login")
 			}
 		},
