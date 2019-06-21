@@ -122,7 +122,7 @@ export default {
 		},
 		endType(e) {
 			this.inputLock = false
-			this.regInput(e.target)
+			this.onInput(e)
 		}
 	}
 }

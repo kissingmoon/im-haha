@@ -207,7 +207,7 @@ export default {
 			this.countTimer(this.countZero);
 			net_sendSmsMsg(param).then(res => {
 				if(res.code == "200"){
-
+					this.$toast("验证码已发送")
 				}
 			})
 		},
@@ -219,7 +219,7 @@ export default {
 			} else {
 				this.countZero--;
 				this.timer = setTimeout(() => {
-				this.countTimer(this.countZero)
+					this.countTimer(this.countZero)
 				},
 				1000)
 			}
