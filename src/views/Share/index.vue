@@ -268,7 +268,7 @@ export default {
 			qrSrc: null,
 			result: {
 				peopleNum: '0',
-				inviteMoney: '0.00'
+				inviteMoney: '0'
 			},
 			shareobj: {},
 			link: '',
