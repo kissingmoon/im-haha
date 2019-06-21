@@ -119,7 +119,10 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                     if(this.recList.length < parseInt(this.queryParam.page_size)){
                         this.moreLoading = false;
                         this.finished = true;
-                        this.finishedText = "没有更多了~"
+                        if(this.recList.length > 0){
+                            this.finishedText = "没有更多了~"
+                        }
+                        
                     }
                 }
             },

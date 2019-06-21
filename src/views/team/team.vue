@@ -172,7 +172,7 @@
 				</div>
 				<div class="team_dash_l flex-1">
 					<div class="team_dash--box">
-						<p class="p0">¥{{info.inviteMoney=='null' ? '0' : info.inviteMoney}}</p>
+						<p class="p0">¥{{info.inviteMoney=='null' ? '0' : info.inviteMoney}}.00</p>
 						<p class="p1">推荐佣金总计</p>
 					</div>
 				</div>
