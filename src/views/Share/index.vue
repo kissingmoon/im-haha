@@ -16,10 +16,12 @@
 		position: absolute;
 		width: 92%;
 		min-height: 50px;
-		bottom: 0;
+		bottom: 10px;
 		line-height: 20px;
-		color: #f0f0f0;
+		color: rgba(255, 255, 255, 0.9);
 		padding: 0 4%;
+		letter-spacing:1px;
+		font-size: 14px;
 	}
 	.img {
 		display: block;
@@ -43,6 +45,9 @@
 		font-weight: 500;
 		color: rgba(68, 68, 68, 1);
 		line-height: 22px;
+	}
+	.p1{
+		border-right:1px solid #ccc
 	}
 }
 .qr_box {
@@ -185,11 +190,11 @@
 			</div>
 			<div class="dash">
 				<div @click="gopage('/team')" class="dash_l">
-					<p class="p0">{{result.peopleNum}}人</p>
-					<p class="p0">推荐人数总计</p>
+					<p class="p0 p1">{{result.peopleNum}}人</p>
+					<p class="p0 p1">推荐人数总计</p>
 				</div>
 				<div @click="gopage('/commissionAll')" class="dash_l">
-					<p class="p0">￥{{result.inviteMoney=='null'?0:result.inviteMoney}}</p>
+					<p class="p0">￥{{result.inviteMoney=='null'?0:result.inviteMoney}}.00</p>
 					<p class="p0">推荐佣金总计</p>
 				</div>
 			</div>
@@ -229,7 +234,7 @@
 					您已成功通过推荐{{shareobj.userNum}}个好友，累计获得了
 					<span
 						style="color:#E65858"
-					>￥{{shareobj.userMoney==null?0:shareobj.userMoney}}</span> 佣金，快去召唤小伙伴吧
+					>￥{{shareobj.userMoney==null?0:shareobj.userMoney}}.00</span> 佣金，快去召唤小伙伴吧
 				</div>
 			</div>
 		</div>
@@ -242,7 +247,7 @@
 						</div>
 					</div>
 					<p class="mask_p0">长按二维码点击进行保存</p>
-					<p class="mask_p">保存后点击微信发送图片，小伙伴通过扫描二维码注册成功，立享佣金</p>
+					<p class="mask_p">保存后点击发送图片，小伙伴通过扫描二维码注册成功，立享佣金</p>
 					<div @click="isShowMask = false" class="mask_close"></div>
 				</div>
 			</div>
@@ -315,7 +320,7 @@ export default {
 						} else {
 							this.result.url =
 								this.result.url +
-								`&我已在YG娱乐平台赚到￥${this.result.inviteMoney}，想邀请你来跟我一起免费赚佣金，快点来吧`
+								`&我已在YG娱乐平台赚到￥${this.result.inviteMoney}.00，想邀请你来跟我一起免费赚佣金，快点来吧`
 						}
 						this.$nextTick(() => {
 							this.setQrcode(res.data.url)

@@ -13,7 +13,7 @@
                         <p class="contribution_p p3">推荐人数总计</p>
                     </div>
                     <div class="right">
-                        <p class="contribution_p p2">￥{{totalPro.inviteMoney=='null'?0:totalPro.inviteMoney}}</p>
+                        <p class="contribution_p p2">￥{{totalPro.inviteMoney=='null'?0:totalPro.inviteMoney}}.00</p>
                         <p class="contribution_p">推荐佣金总计</p>
                     </div>
                 </div>
@@ -22,11 +22,11 @@
                         <div class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
                                 <p class="left_p">结算时间:{{v.createTime}}</p>
-                                <p class="left_p p1">推荐用户ID：{{v.fromUserId}}</p>
+                                <p class="left_p p1">{{v.money==1?'上级用户ID':'推荐用户ID'}}：{{v.fromUserId}}</p>
                             </div>
                             <div class="lists_right">
                                 <div class="mid">{{v.status=='1'?'已奖励':'未领取'}}</div>
-                                <div class="right">{{v.money}}</div>
+                                <div class="right">￥{{v.money}}.00</div>
                             </div>   
                         </div>
                 </div>
