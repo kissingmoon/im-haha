@@ -78,14 +78,14 @@
 				font-weight: 500;
 				color: #4a4a4a;
 				line-height: 17px;
-				margin-top:15px
+				margin-top: 15px;
 			}
 		}
 	}
 	.lists_top {
 		z-index: 1000;
 		position: sticky;
-		top: 40px;
+		top: 45px;
 		height: 40px;
 		display: flex;
 		align-items: center;
@@ -241,7 +241,7 @@ export default {
 			if (res1.code == '200' && res2.code == '200') {
 				if (res2.data.result.length < this.page_size) {
 					this.hasgetAll = true
-					this.loadMoreText = '没有更多了'
+					this.loadMoreText = '没有更多了~'
 				}
 				this.info = res1.data
 				this.lists = res2.data.result
@@ -268,7 +268,7 @@ export default {
 				return
 			}
 			this.lastscrollTop = scrollTop
-			if (document.body.offsetHeight - scrollTop - window.innerHeight <= 40) {
+			if (document.body.scrollHeight - scrollTop - window.innerHeight <= 40) {
 				this.getMore()
 			}
 		},
@@ -294,7 +294,7 @@ export default {
 						this.lists = this.lists.concat(res.data.result)
 						if (res.data.result.length < this.page_size) {
 							this.hasgetAll = true
-							this.loadMoreText = '没有更多了'
+							this.loadMoreText = '已经到底了~'
 						}
 					} else {
 						this.loadMoreText = res.msg

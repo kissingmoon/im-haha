@@ -98,7 +98,8 @@ export let needLoginRoutes = [
   {
     path: '/useravator',
     name: 'Useravator',
-    component: () => import(/* webpackChunkName: "Useravator" */ './views/User/Useravator/index.vue')
+    component: () =>
+      import(/* webpackChunkName: "Useravator" */ './views/User/Useravator/index.vue')
   },
   {
     path: '/bank-charge',
@@ -165,7 +166,8 @@ export let needLoginRoutes = [
   {
     path: '/commissionAll',
     name: 'commissionAll',
-    component: () => import(/* webpackChunkName: "SiteMail" */ './views/commissionAll/commissionAll.vue')
+    component: () =>
+      import(/* webpackChunkName: "SiteMail" */ './views/commissionAll/commissionAll.vue')
   },
   {
     path: '/teamMember',
@@ -292,6 +294,10 @@ router.beforeEach((to, from, next) => {
       return to.path == item.path
     })
     if (needLogin) {
+      next('/')
+    }
+  } else {
+    if (to.path == '/login') {
       next('/')
     }
   }
