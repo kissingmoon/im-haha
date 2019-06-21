@@ -54,7 +54,7 @@
 				<div class="linear"></div>
 				<div @click="clickThis(1)" class="btn">
 					<img class="img" src="./img/icon_new_mine_deal.png">
-					<p class="p">交易记录</p>
+					<p class="p">资金明细</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(2)" class="btn">
@@ -167,7 +167,7 @@ export default {
 					break
 				}
 				case 8: {
-					this.$toast('暂无代理功能')
+					this.$toast('正在升级中，敬请期待')
 					// this.$router.push('/agent')
 					break
 				}

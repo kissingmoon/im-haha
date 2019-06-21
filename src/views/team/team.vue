@@ -172,7 +172,7 @@
 				</div>
 				<div class="team_dash_l flex-1">
 					<div class="team_dash--box">
-						<p class="p0">¥{{info.inviteMoney=='null' ? '0' : info.inviteMoney}}</p>
+						<p class="p0">¥{{info.inviteMoney=='null' ? '0' : info.inviteMoney}}.00</p>
 						<p class="p1">推荐佣金总计</p>
 					</div>
 				</div>
@@ -186,9 +186,9 @@
 				<div v-if="lists.length>0" class="lists">
 					<div v-for="(list,index) in lists" :key="index" class="list">
 						<div class="list_l">
-							<span class="list_l_img">
+							<!-- <span class="list_l_img">
 								<img class="img" src>
-							</span>
+							</span> -->
 							<span class="list_l_name">{{list.userId}}</span>
 						</div>
 						<div class="list_m">会员级</div>
