@@ -167,7 +167,7 @@ export default {
 					break
 				}
 				case 8: {
-					this.$toast('暂无代理')
+					this.$toast('暂无代理功能')
 					// this.$router.push('/agent')
 					break
 				}

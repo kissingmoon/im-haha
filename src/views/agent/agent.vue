@@ -45,7 +45,7 @@
             历史佣金业绩：10000
             <div class="goto"></div>
         </div>
-        <div class="promote">
+        <div @click="goto('/ptp')" class="promote">
             <p class="promote_p">推广赚钱</p>
             <p class="promote_p">分享累计已赚3000.00</p>
             <div class="promote_div">

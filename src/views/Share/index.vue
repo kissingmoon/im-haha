@@ -316,8 +316,9 @@ export default {
 							this.setQrcode(res.data.url)
 							new clipboard('.copy').on('success', () => {
 								if(this.txt=='复制链接'){
-
-								}else{
+									return
+								}
+								if(this.txt=='复制邀请码'){
 									this.$toast('邀请码复制成功，快去通知好友吧')
 								}
 							})
@@ -338,10 +339,12 @@ export default {
 				})
 		},
 		tip(txt){
+			this.txt=txt
 			Dialog.alert({
-				message: '赶快跟好友分享吧，分享人数越多，获得的佣金越多'
+				confirmButtonText:'好的',
+				message: '推荐链接与文案复制成功，赶快跟好友分享吧，分享人数越多，获得的佣金越多。'
 			}).then(() => {
-				this.txt=txt
+				
 			});
 		},
 		tipone(txt){
