@@ -78,6 +78,7 @@
 				font-weight: 500;
 				color: #4a4a4a;
 				line-height: 17px;
+				margin-top:15px
 			}
 		}
 	}
@@ -160,7 +161,7 @@
 </style>
 <template>
 	<div class="team_wrapper headview_wrapper">
-		<ims-header title="我的代理"/>
+		<ims-header title="团队成员"/>
 		<div v-if="isShow" class="team_main">
 			<div class="team_dash display-flex">
 				<div class="team_dash_l flex-1">

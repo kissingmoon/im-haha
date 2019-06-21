@@ -2,7 +2,7 @@
     <div class="agent">
         <div class="header-container">
 			<ims-header title="我的代理">
-                <div slot="right" >说明</div>
+                <div slot="right" @click="goto('/agentInstructions')" >说明</div>
             </ims-header> 
 		</div>
         <div class="Yesterday">
@@ -57,7 +57,16 @@
 
 <script>
     export default {
-        
+       data(){
+           return{
+
+           }
+       } ,
+       methods:{
+           goto(path){
+               this.$router.push(path)
+           }
+       }
     }
 </script>
 

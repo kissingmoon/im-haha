@@ -94,7 +94,7 @@
 					<p class="p">安全中心</p>
 				</div>
 				<div class="linear"></div>
-				<!-- <div @click="clickThis(8)" class="btn">
+				<!-- <div @click="clickThis(8)" >
 					<img class="img" src="./img/icon_new_mine_loginout.png">
 					<p class="p">账号退出</p>
 				</div> -->
@@ -168,6 +168,7 @@ export default {
 				}
 				case 8: {
 					this.$toast('暂无代理')
+					// this.$router.push('/agent')
 					break
 				}
 				case 10: {

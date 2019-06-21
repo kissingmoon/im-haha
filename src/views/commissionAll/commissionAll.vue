@@ -37,7 +37,7 @@
 
 
 <script>
-    import {mapActions,mapGetters,mapMutations} from 'vuex';
+import {mapActions,mapGetters,mapMutations} from 'vuex';
 import { net_getUserProList, net_getUserPro } from '@/js/network.js'
 
     export default {
