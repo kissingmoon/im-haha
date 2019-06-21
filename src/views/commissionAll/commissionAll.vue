@@ -108,7 +108,7 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                         this.moreLoading = false;
                         if(this.recList.length >= this.recListTotal){
                             this.finished = true;
-                            this.finishedText = "没有更多了"
+                            this.finishedText = "已经到底了~"
                         }
                     }
                 }else if(type == "init"){
@@ -119,7 +119,7 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                     if(this.recList.length < parseInt(this.queryParam.page_size)){
                         this.moreLoading = false;
                         this.finished = true;
-                        this.finishedText = "没有更多了"
+                        this.finishedText = "没有更多了~"
                     }
                 }
             },

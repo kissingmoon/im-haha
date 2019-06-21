@@ -209,7 +209,7 @@
 						<div v-if="!isLogin" class="copy" @click="login">复制邀请码</div>
 						<div
 							v-else
-							class="copy"
+							class="copy needsclick"
 							@click="tipone('复制邀请码')"
 							style="cursor: pointer;"
 							:data-clipboard-text="result.inviteCode"
@@ -217,7 +217,7 @@
 						<div v-if="!isLogin" class="copy" @click="login">复制链接</div>
 						<div
 							v-else
-							class="copy"
+							class="copy needsclick"
 							@click="tip('复制链接')"
 							style="cursor: pointer;"
 							:data-clipboard-text="result.url"
@@ -338,11 +338,12 @@ export default {
 				this.shareobj = res.data
 			})
 		},
-		tip(txt) {
-			this.txt = txt
+		tip(txt){
 			Dialog.alert({
 				message: '赶快跟好友分享吧，分享人数越多，获得的佣金越多'
-			}).then(() => {})
+			}).then(() => {
+				this.txt=txt
+			});
 		},
 		tipone(txt) {
 			this.txt = txt

@@ -204,10 +204,10 @@ export default {
 			let param = {};
 			param.phone = this.formData.phone.model;
 			this.formData[index].rightIconClass = "right-icon__waiting";
-			this.countTimer(this.countZero);
 			net_sendSmsMsg(param).then(res => {
 				if(res.code == "200"){
 					this.$toast("验证码已发送")
+					this.countTimer(this.countZero);
 				}
 			})
 		},

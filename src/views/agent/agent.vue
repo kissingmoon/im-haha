@@ -34,6 +34,10 @@
             </div>
         </div>
         <div class="getCommission">
+            分享推荐佣金：10000
+            <div class="receive">转账余额</div>
+        </div>
+        <div class="getCommission">
             业绩红利佣金：10000
             <div class="receive">立即领取</div>
         </div>
