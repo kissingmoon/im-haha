@@ -1,0 +1,28 @@
+{
+  "editor.tabSize": 2,
+  "vetur.format.defaultFormatter.js": "prettier",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vetur.format.defaultFormatterOptions": {
+    "js": {
+      "singleQuote": true
+    },
+    //在这里配置.vue文件规则
+    "prettier": {
+      "semi": false,
+      "singleQuote": true,
+      "printWidth": 120
+    },
+    "prettyhtml": {
+      "singleQuote": false
+    }
+  },
+  "vetur.completion.autoImport": false
+}

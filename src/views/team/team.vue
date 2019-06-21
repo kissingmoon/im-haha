@@ -1,69 +1,67 @@
 <style lang="less" scoped>
 .team_wrapper {
-	// position: absolute;
-	// top: 0;
-	// left: 0;
-	// right: 0;
-	// bottom: 0;
-	// height: calc(100vh - 50px);
-    // overflow-y: auto;
-    background: url('../../assets/page_bg_default.jpg') no-repeat;
+	min-height: 100%;
+	box-sizing: border-box;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	padding-top: @app_head_height;
 	.team_main {
 		height: 100%;
 		display: flex;
-        flex-direction: column;
-        padding: 20px 11px;
+		flex-direction: column;
+		padding: 0 11px;
 	}
 	.team_dash {
-		padding: 30px 0;
+		padding: 12px 0;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		height: 136px;
+		height: 104px;
 		box-sizing: border-box;
 		.team_dash_l {
 			// width: 162px;
 			height: 76px;
-			background: rgba(255,255,255,0.5);
+			background: rgba(255, 255, 255, 0.5);
 			// box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.6);
 			display: flex;
 			align-items: center;
 			justify-content: center;
-            flex-direction: column;
-            &:first-child{
-                border-radius: 5px 0 0 5px;
-            }
-            &:last-child{
-                border-radius: 0 5px 5px 0;
-            }
-            .team_dash--box{
-                width: 100%;
-                &:first-child{
-                    border-right:1px solid #BABABA;
-                }
-            }
+			flex-direction: column;
+			&:first-child {
+				border-radius: 5px 0 0 5px;
+			}
+			&:last-child {
+				border-radius: 0 5px 5px 0;
+			}
+			.team_dash--box {
+				width: 100%;
+				&:first-child {
+					border-right: 1px solid #bababa;
+				}
+			}
 			.p0 {
 				font-size: 17px;
 				font-weight: bold;
-				color: #0077FF;
+				color: #0077ff;
 				line-height: 24px;
-                margin-bottom: 5px;
-                text-align: center;
+				margin-bottom: 5px;
+				text-align: center;
 			}
 			.p1 {
 				font-size: 12px;
 				font-weight: bold;
-				color: #4A4A4A;
-                line-height: 17px;
-                text-align: center;
+				color: #4a4a4a;
+				line-height: 17px;
+				text-align: center;
 			}
 		}
 	}
 	.lists_box {
 		flex: 1;
-		background: rgba(255,255,255,0.5);
-        min-height: calc(100vh - 260px);
-        border-radius: 5px;
+		background: rgba(255, 255, 255, 0.5);
+		min-height: calc(100vh - 104px - @app_head_height);
+		border-radius: 5px;
 		.lists_null {
 			min-height: calc(100vh - 300px);
 			display: flex;
@@ -78,7 +76,7 @@
 			.p {
 				font-size: 12px;
 				font-weight: 500;
-				color: #4A4A4A;
+				color: #4a4a4a;
 				line-height: 17px;
 			}
 		}
@@ -90,14 +88,14 @@
 		height: 40px;
 		display: flex;
 		align-items: center;
-        justify-content: center;
-        background: rgba(255,255,255,0.5);
-        border-bottom: 1px solid rgba(190,184,181,1);
-        border-radius: 5px 5px 0 0;
-        padding: 0 12px;
+		justify-content: center;
+		background: rgba(255, 255, 255, 0.5);
+		border-bottom: 1px solid rgba(190, 184, 181, 1);
+		border-radius: 5px 5px 0 0;
+		padding: 0 12px;
 		.lists_t {
 			flex: 1;
-            font-size: 14px;
+			font-size: 14px;
 			font-weight: 500;
 			color: rgba(108, 108, 108, 1);
 			line-height: 30px;
@@ -106,16 +104,16 @@
 	}
 	.lists {
 		padding: 0 12px;
-        background: rgba(255,255,255,0.5);
-        border-radius: 0 0 5px 5px;
+		background: rgba(255, 255, 255, 0.5);
+		border-radius: 0 0 5px 5px;
 		.list {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			height: 50px;
 			text-align: center;
-			color: #4A4A4A;
-			border-bottom: 1px dashed rgba(190,184,181,1);
+			color: #4a4a4a;
+			border-bottom: 1px dashed rgba(190, 184, 181, 1);
 			.list_l {
 				flex-basis: 33.33%;
 				display: flex;
@@ -158,65 +156,24 @@
 			text-align: center;
 		}
 	}
-	.headBox {
-		height: 44px;
-		padding: 0 12px;
-		.back {
-			width: 18px;
-			height: 18px;
-			margin-top: 13px;
-			// background: url('../PersonalCenter/img/btn_back.png') no-repeat;
-			background-size: cover;
-		}
-		.title {
-			font-family: PingFangHK-Medium;
-			font-size: 18px;
-		}
-		.date {
-			width: 28px;
-			height: 28px;
-			// background: url('../PersonalCenter/img/date.png') no-repeat;
-			background-size: cover;
-		}
-	}
-	.dateWrap {
-		background-color: #262626;
-		> p {
-			color: #6c6c6c;
-			font-size: 15px;
-			text-align: center;
-			line-height: 40px;
-			border-bottom: 1px solid #000;
-			&.on {
-				color: #4A4A4A;
-			}
-		}
-	}
 }
 </style>
 <template>
-	<div v-if="isShow" class="team_wrapper">
-		<div class="headBox">
-			<ims-header title="我的代理">
-				<div class="back" slot="left" @click="goBack"></div>
-				<div class="title" slot="title">团队成员</div>
-				<!-- <div class="date" slot="right" @click="showPopup"></div> -->
-			</ims-header>
-		</div>
-		<div class="team_main">
-			<!-- <team-serach/> -->
+	<div class="team_wrapper headview_wrapper">
+		<ims-header title="我的代理"/>
+		<div v-if="isShow" class="team_main">
 			<div class="team_dash display-flex">
 				<div class="team_dash_l flex-1">
-                    <div class="team_dash--box">
-                        <p class="p0">{{info.peopleNum}}人</p>
-                        <p class="p1">团队成员总计</p>
-                    </div>
+					<div class="team_dash--box">
+						<p class="p0">{{info.peopleNum}}人</p>
+						<p class="p1">团队成员总计</p>
+					</div>
 				</div>
 				<div class="team_dash_l flex-1">
-                    <div class="team_dash--box">
-                        <p class="p0">¥{{info.inviteMoney}}</p>
-                        <p class="p1">推荐佣金总计</p>
-                    </div>
+					<div class="team_dash--box">
+						<p class="p0">¥{{info.inviteMoney=='null' ? '0' : info.inviteMoney}}</p>
+						<p class="p1">推荐佣金总计</p>
+					</div>
 				</div>
 			</div>
 			<div class="lists_box">
@@ -228,13 +185,13 @@
 				<div v-if="lists.length>0" class="lists">
 					<div v-for="(list,index) in lists" :key="index" class="list">
 						<div class="list_l">
-							<!-- <span class="list_l_img">
+							<span class="list_l_img">
 								<img class="img" src>
-							</span> -->
-							<span class="list_l_name">zaq123456</span>
+							</span>
+							<span class="list_l_name">{{list.userId}}</span>
 						</div>
 						<div class="list_m">会员级</div>
-						<div class="list_m">2019-09-08</div>
+						<div class="list_m">{{list.createDate.slice(0,10)}}</div>
 					</div>
 					<p class="list_more">{{loadMoreText}}</p>
 				</div>
@@ -246,34 +203,20 @@
 				</div>
 			</div>
 		</div>
-		<!-- 日期 popup -->
-		<!-- <popup v-model="isDateShow" position="bottom" class="popup">
-			<div class="dateWrap">
-				<p
-					:class="{'on': item.data_type == date_type_now}"
-					v-for="item in datePopup"
-					:key="item.data_type"
-					@click="searchData(item)"
-				>{{item.date_text}}</p>
-			</div>
-		</popup>-->
 	</div>
 </template>
 <script>
-import { Popup } from 'vant'
 import { throttle } from 'lodash'
-// import TeamSerach from './components/TeamSerach.vue'
 export default {
-	components: { Popup },
 	data() {
 		this.lastscrollTop = 0
 		this.isgetMore = false
 		this.hasgetAll = false
-		this.page_size = 20
+		this.page_size = 10
 		this.page = 1
 		this.scrollFn = null
 		return {
-			isShow: true,
+			isShow: false,
 			info: {},
 			lists: [],
 			loadMoreText: '加载中...',
@@ -290,15 +233,24 @@ export default {
 		}
 	},
 	async mounted() {
-		let [res1, res2] = await Promise.all([this.getInfo(), this.getLists()])
-		if (res1.code == '200' && res2.code == '200') {
-			this.info = res1.data
-			this.lists = res2.data.result
-			this.lists = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
-			this.isShow = true
-			this.scrollFn = throttle(this.scroll, 300)
-			window.addEventListener('scroll', this.scrollFn)
-		} else {
+		let loading = this.$loading({ text: '正在加载…' })
+		try {
+			let [res1, res2] = await Promise.all([this.getInfo(), this.getLists()])
+			loading.close()
+			if (res1.code == '200' && res2.code == '200') {
+				if (res2.data.result.length < this.page_size) {
+					this.hasgetAll = true
+					this.loadMoreText = '没有更多了'
+				}
+				this.info = res1.data
+				this.lists = res2.data.result
+				this.isShow = true
+				this.scrollFn = throttle(this.scroll, 300)
+				window.addEventListener('scroll', this.scrollFn)
+			} else {
+			}
+		} catch {
+			loading.close()
 		}
 	},
 	destroyed() {
@@ -320,7 +272,7 @@ export default {
 			}
 		},
 		getInfo() {
-			return this.$http.post('/user/getUserShareMoney', {})
+			return this.$http.post('/user/getUserPromotion', {})
 		},
 		getLists() {
 			return this.$http.post('user/getTeamMembersList', {
@@ -337,10 +289,11 @@ export default {
 					page_size: this.page_size
 				})
 				.then(res => {
-					if (res1.code == '200') {
+					if (res.code == '200') {
 						this.lists = this.lists.concat(res.data.result)
 						if (res.data.result.length < this.page_size) {
 							this.hasgetAll = true
+							this.loadMoreText = '没有更多了'
 						}
 					} else {
 						this.loadMoreText = res.msg

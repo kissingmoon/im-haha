@@ -102,6 +102,7 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                 if(type == "ref"){
                     if(res.code == "200"){
                         this.recList = res.data.data;
+                        console.log(this.recList)
                         this.refLoading = false;
                         if(this.recList.length < this.queryParam.page_size){
                             this.moreLoading = false;

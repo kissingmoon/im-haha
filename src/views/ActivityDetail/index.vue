@@ -1310,6 +1310,57 @@
 						<br>5.公司规定无风险注单不计算有效投注额，无风险注单包括：游戏中同时投注黑白、龙虎、庄闲、投注直注胜率不可超过70%,任何非法套取优惠行为将扣除产生的盈利。
 					</p>
 				</div>
+				<!-- <div >
+					<div class="actv_h">云闪付充值优惠3天乐，极速入款，秒到账</div>
+					<p class="actv_p">
+						活动时间：2019年06月21日至2019年06月23日<br>
+						活动对象：YG娱乐全体会员<br>
+						活动内容：今日起YG娱乐会员凡是在活动期间使用云闪付充值入款，充值金额达到指定条件，即可申请云闪付充值奖励。
+					</p>
+					<p  style="height:15px"></p>
+					<p class="actv_p ">
+						云闪付活动期间充值奖励与每笔充值<sapn style="color:#333">赠送1%的彩金可共享</sapn>，活动期间充值越多优惠越多哦！
+					</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>奖励规则
+					</div>
+					<div class="actv_table12">
+						<div class="col3 col3_0">
+							<div class="row1">云闪付入款金额</div>
+							<div class="row1">500元+</div>
+							<div class="row1">1000元+</div>
+							<div class="row1">3000元+</div>
+							<div class="row1">4999元+</div>
+						</div>
+						<div class="col2 ">
+							<div class="row2 row2_1">赠送彩金</div>
+							<div class="row2 row2_1">15元</div>
+							<div class="row2 row2_1">35元</div>
+							<div class="row2 row2_1">55元</div>
+							<div class="row2 row2_1">68元</div>
+						</div>
+
+						<div class="col2">
+							<div class="row2 row2_0">流水要求</div>
+							<div class="row2 row2_1">一倍流水</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">游戏限制</div>
+							<div class="row2 row2_1">不限</div>
+
+						</div>
+					</div>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>活动细则
+					</div>
+					<p class="actv_p">
+						1.活动期间充值奖励与首次使用云闪付赠送10%彩金不可共享；
+						<br>如：A用户使用云闪付充值入款一笔后，在首次使用云闪付活动里进行申请并获得了10%的首次使用赠送彩金，再次点击该充值赠送彩金活动的申请，则无效。
+						<br>2.活动期间的充值奖励与云闪付每笔充值赠送1%的彩金可共享；
+						<br>3.所赠送的彩金需达到一倍流水即可申请出款，不再与其他优惠共享；
+						<br>4.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利。
+					</p>
+				</div> -->
 			</div>
 
 			<div v-if="id==98">
@@ -1639,6 +1690,9 @@ export default {
 	font-size: 13px;
 	color: rgba(116, 116, 116, 1);
 	line-height: 19px;
+}
+.p1{
+	margin-top:15px
 }
 .actv_h5 {
 	padding: 24px 0 10px;

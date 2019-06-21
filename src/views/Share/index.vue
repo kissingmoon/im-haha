@@ -184,12 +184,12 @@
 				</div>
 			</div>
 			<div class="dash">
-				<div class="dash_l">
+				<div @click="gopage('/team')" class="dash_l">
 					<p class="p0">{{result.peopleNum}}人</p>
 					<p class="p0">推荐人数总计</p>
 				</div>
 				<div @click="gopage('/commissionAll')" class="dash_l">
-					<p class="p0">￥{{result.inviteMoney}}</p>
+					<p class="p0">￥{{result.inviteMoney=='null'?0:result.inviteMoney}}</p>
 					<p class="p0">推荐佣金总计</p>
 				</div>
 			</div>
@@ -229,8 +229,8 @@
 			</div>
 		</div>
 		<transition name="fade">
-			<div v-show="isShowMask" @click="isShowMask = false" class="mask">
-				<div @click.stop="" class="mask_main">
+			<div @click.stop="isShowMask = false" v-show="isShowMask" class="mask">
+				<div class="mask_main">
 					<div class="mask_qr">
 						<div ref="mask_qr_img" class="mask_qr_img">
 							<img class="img" :src="qrSrc">
@@ -307,6 +307,11 @@ export default {
 					this.isShow = true
 					if (res.code == '200') {
 						this.result = res.data
+						if(this.result.inviteMoney<=0||this.result.inviteMoney=='null'){
+							this.result.url=this.result.url+'&我已经入驻YG娱乐平台，想邀请你来跟我一起免费赚佣金，快点来吧'
+						}else{
+							this.result.url=this.result.url+`&我已在YG娱乐平台赚到￥${this.result.inviteMoney}，想邀请你来跟我一起免费赚佣金，快点来吧`
+						}
 						this.$nextTick(() => {
 							this.setQrcode(res.data.url)
 							new clipboard('.copy').on('success', () => {
@@ -346,6 +351,7 @@ export default {
 			if(this.user_token){
 				this.$router.push(path)
 			}else{
+				
 				this.$router.push("/login")
 			}
 		},
