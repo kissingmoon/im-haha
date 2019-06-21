@@ -338,10 +338,10 @@ export default {
 				})
 		},
 		tip(txt){
-			this.txt=txt
 			Dialog.alert({
 				message: '赶快跟好友分享吧，分享人数越多，获得的佣金越多'
 			}).then(() => {
+				this.txt=txt
 			});
 		},
 		tipone(txt){
