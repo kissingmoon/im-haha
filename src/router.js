@@ -176,7 +176,17 @@ export let needLoginRoutes = [
     path: '/team',
     name: 'team',
     component: () => import(/* webpackChunkName: "SiteMail" */ './views/team/team.vue')
-  }
+  },
+  {
+    path: '/agent',
+    name: 'agent',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/agent/agent.vue')
+  },
+  {
+    path: '/agentInstructions',
+    name: 'agentInstructions',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/agent/agentInstructions.vue')
+  },
 ]
 let routes = [
   {
