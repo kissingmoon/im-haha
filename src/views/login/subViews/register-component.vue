@@ -180,7 +180,8 @@ export default {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
 			setAccount: 'SET_ACCOUNT',
-         	setInviteCode: 'SET_INVITE_CODE'
+			setInviteCode: 'SET_INVITE_CODE',
+			setNetBtnclick: 'SET_NET_BTNCLICK'
 		}),
 		goBefore() {
 			this.$emit('goBefore')
@@ -201,8 +202,12 @@ export default {
 				this.$toast("手机号格式错误")
 				return
 			}
+			if(!this.net_btn_click){
+				return
+			}
 			let param = {};
 			param.phone = this.formData.phone.model;
+			this.setNetBtnclick(false);
 			net_sendSmsMsg(param).then(res => {
 				if(res.code == "200"){
 					this.$toast("验证码已发送")
