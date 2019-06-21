@@ -12,14 +12,14 @@
 	border-radius: 6px;
 	padding-top: 12px;
 	position: relative;
-	.instructions{
+	.instructions {
 		position: absolute;
-		width:92%;
-		min-height:50px;
+		width: 92%;
+		min-height: 50px;
 		bottom: 0;
 		line-height: 20px;
-		color:#f0f0f0;
-		padding:0 4% 
+		color: #f0f0f0;
+		padding: 0 4%;
 	}
 	.img {
 		display: block;
@@ -179,9 +179,9 @@
 		<div v-if="isShow">
 			<div class="banner">
 				<img class="img" src="../../assets/banner.png">
-				<div class="instructions">
-					说明：推荐佣金，您分享给小伙伴，小伙伴通过您的链接或者是邀请码注册成功后，游戏在线5分钟，您获得2元佣金，小伙伴获得1元佣金，以此类推，分享越多佣金越多！
-				</div>
+				<div
+					class="instructions"
+				>说明：推荐佣金，您分享给小伙伴，小伙伴通过您的链接或者是邀请码注册成功后，游戏在线5分钟，您获得2元佣金，小伙伴获得1元佣金，以此类推，分享越多佣金越多！</div>
 			</div>
 			<div class="dash">
 				<div @click="gopage('/team')" class="dash_l">
@@ -225,7 +225,12 @@
 					</div>
 				</div>
 				<div v-if="!user_token" class="tip">通过分享邀请好友一起游戏，您将获得推荐和红利佣金，越分享越多金。</div>
-				<div v-else class="tip">您已成功通过推荐{{shareobj.userNum}}个好友，累计获得了 <span style="color:#E65858">￥{{shareobj.userMoney==null?0:shareobj.userMoney}}</span> 佣金，快去召唤小伙伴吧</div>
+				<div v-else class="tip">
+					您已成功通过推荐{{shareobj.userNum}}个好友，累计获得了
+					<span
+						style="color:#E65858"
+					>￥{{shareobj.userMoney==null?0:shareobj.userMoney}}</span> 佣金，快去召唤小伙伴吧
+				</div>
 			</div>
 		</div>
 		<transition name="fade">
@@ -249,22 +254,20 @@ import { mapGetters } from 'vuex'
 import clipboard from 'clipboard'
 import QRCode from '@/js/qrcode.js'
 import { getGreeting } from '@/js/tools.js'
-import { Dialog } from 'vant';
 export default {
 	name: 'share',
 	data() {
 		return {
 			isShow: false,
-			isInit: false, //是否登入初始化
 			isShowMask: false,
 			qrSrc: null,
 			result: {
 				peopleNum: '0',
 				inviteMoney: '0.00'
 			},
-			shareobj:{},
-			link:'',
-			txt:''
+			shareobj: {},
+			link: '',
+			txt: ''
 		}
 	},
 	computed: {
@@ -282,7 +285,7 @@ export default {
 		this.getData()
 	},
 	activated() {
-		if (this.isLogin && !this.isInit) {
+		if (this.isShow) {
 			this.getData()
 		}
 	},
@@ -307,21 +310,21 @@ export default {
 					this.isShow = true
 					if (res.code == '200') {
 						this.result = res.data
-						if(this.result.inviteMoney<=0||this.result.inviteMoney=='null'){
-							this.result.url=this.result.url+'&我已经入驻YG娱乐平台，想邀请你来跟我一起免费赚佣金，快点来吧'
-						}else{
-							this.result.url=this.result.url+`&我已在YG娱乐平台赚到￥${this.result.inviteMoney}，想邀请你来跟我一起免费赚佣金，快点来吧`
+						if (this.result.inviteMoney <= 0 || this.result.inviteMoney == 'null') {
+							this.result.url = this.result.url + '&我已经入驻YG娱乐平台，想邀请你来跟我一起免费赚佣金，快点来吧'
+						} else {
+							this.result.url =
+								this.result.url +
+								`&我已在YG娱乐平台赚到￥${this.result.inviteMoney}，想邀请你来跟我一起免费赚佣金，快点来吧`
 						}
 						this.$nextTick(() => {
 							this.setQrcode(res.data.url)
 							new clipboard('.copy').on('success', () => {
-								if(this.txt=='复制链接'){
-
-								}else{
+								if (this.txt == '复制链接') {
+								} else {
 									this.$toast('邀请码复制成功，快去通知好友吧')
 								}
 							})
-							this.isInit = true
 						})
 					}
 					this.sharethat()
@@ -330,12 +333,10 @@ export default {
 					this.isShow = true
 				})
 		},
-		sharethat(){
-			this.$http
-				.post('/user/getUserShareMoney')
-				.then(res=>{
-					this.shareobj=res.data
-				})
+		sharethat() {
+			this.$http.post('/user/getUserShareMoney').then(res => {
+				this.shareobj = res.data
+			})
 		},
 		tip(txt){
 			Dialog.alert({
@@ -344,15 +345,14 @@ export default {
 				this.txt=txt
 			});
 		},
-		tipone(txt){
-			this.txt=txt
+		tipone(txt) {
+			this.txt = txt
 		},
-		gopage(path){
-			if(this.user_token){
+		gopage(path) {
+			if (this.user_token) {
 				this.$router.push(path)
-			}else{
-				
-				this.$router.push("/login")
+			} else {
+				this.$router.push('/login')
 			}
 		},
 		login() {
@@ -363,12 +363,10 @@ export default {
 				return
 			}
 			let qrcodeEl = this.$refs.qrcode
-			let w = qrcodeEl.offsetWidth
-			let h = qrcodeEl.offsetHeight
 			let qr = new QRCode(qrcodeEl, {
 				text: url,
-				width: w,
-				height: h,
+				width: qrcodeEl.offsetWidth,
+				height: qrcodeEl.offsetHeight,
 				correctLevel: QRCode.CorrectLevel.L
 			})
 			let qrcodeSrc = qr._oDrawing.srcData
@@ -376,18 +374,6 @@ export default {
 		},
 		openQr() {
 			this.isShowMask = true
-			// this.$nextTick(() => {
-			// 	let qrcodeEl = this.$refs.mask_qr_img
-			// 	let w = qrcodeEl.offsetWidth
-			// 	let h = qrcodeEl.offsetHeight
-			// 	new QRCode(qrcodeEl, {
-			// 		text: this.result.url,
-			// 		width: w,
-			// 		height: h,
-			// 		colorLight: '#fff',
-			// 		correctLevel: QRCode.CorrectLevel.L
-			// 	})
-			// })
 		}
 	}
 }
