@@ -78,14 +78,14 @@
 				font-weight: 500;
 				color: #4a4a4a;
 				line-height: 17px;
-				margin-top:15px
+				margin-top: 15px;
 			}
 		}
 	}
 	.lists_top {
 		z-index: 1000;
 		position: sticky;
-		top: 40px;
+		top: 45px;
 		height: 40px;
 		display: flex;
 		align-items: center;
@@ -268,7 +268,7 @@ export default {
 				return
 			}
 			this.lastscrollTop = scrollTop
-			if (document.body.offsetHeight - scrollTop - window.innerHeight <= 40) {
+			if (document.body.scrollHeight - scrollTop - window.innerHeight <= 40) {
 				this.getMore()
 			}
 		},
