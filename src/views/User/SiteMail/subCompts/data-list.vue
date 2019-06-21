@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { setTimeout } from 'timers'
 import { net_queryMsg, net_insertRead } from '@/js/network.js'
 
 export default {

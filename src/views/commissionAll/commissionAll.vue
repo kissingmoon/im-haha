@@ -38,7 +38,6 @@
 
 <script>
     import {mapActions,mapGetters,mapMutations} from 'vuex';
-import { setTimeout } from 'timers';
 import { net_getUserProList, net_getUserPro } from '@/js/network.js'
 
     export default {
