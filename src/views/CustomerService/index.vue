@@ -1,20 +1,57 @@
 <template>
-	<div class="service">
+	<div v-if="isShow" class="service">
 		<ims-header title="客服"/>
 		<div class="boxs">
-			<a
-				href="https://messenger.providesupport.com/messenger/0ow24uftvtlip18whh7utq6518.html"
-			>
+			<a :href="serviceUrl">
 				<div class="box">主线客服</div>
 			</a>
-			<a
-				href="https://messenger.providesupport.com/messenger/0ow24uftvtlip18whh7utq6518.html"
-			>
+			<a :href="serviceUrl">
 				<div class="box">次线客服</div>
 			</a>
 		</div>
 	</div>
 </template>
+<script>
+import { mapGetters, mapMutations } from 'vuex'
+export default {
+	data() {
+		return {
+			isShow: false
+		}
+	},
+	mounted() {
+		this.serviceUrl = this.$store.state.serviceUrl
+		if (this.serviceUrl) {
+			this.isShow = true
+		} else {
+			let loading = this.$loading({ text: '正在加载…' })
+			this.$http
+				.post('/home/getServiceUrl')
+				.then(res => {
+					if (res.code == '200') {
+						let serviceUrl = res.data.serviceUrl
+						this.serviceUrl = res.data.serviceUrl
+						this.setServiceUrl(serviceUrl)
+						this.isShow = true
+					} else {
+						toast('获取客服链接失败')
+					}
+					loading.close()
+				})
+				.catch(err => {
+					loading.close()
+					toast('获取客服链接失败')
+				})
+		}
+	},
+	methods: {
+		...mapMutations({
+			setServiceUrl: 'SET_SERVICE_URL'
+		})
+	}
+}
+</script>
+
 <style lang="less" scoped>
 .service {
 	position: absolute;
@@ -24,10 +61,10 @@
 	right: 0;
 	background: url('../../assets/page_bg_default.jpg') no-repeat;
 	background-size: cover;
-	/deep/.app_head{
+	/deep/.app_head {
 		background: none;
 	}
-	/deep/.app_head .main{
+	/deep/.app_head .main {
 		background: none;
 		// color: @text_color;
 	}

@@ -55,14 +55,22 @@ export default {
 		this.checkUTK()
 		this.setAliToken()
 		this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
+		this.getServiceUrl()
 	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
 			setMjb: 'SET_MJB',
 			setPlatformFlag: 'SET_PLATFORM_FLAG',
-			setIsgetcj: 'SET_ISGETCJ'
+			setServiceUrl: 'SET_SERVICE_URL'
 		}),
+		getServiceUrl() {
+			this.$http.post('/home/getServiceUrl').then(res => {
+				if (res.code == '200') {
+					this.setServiceUrl(res.data.serviceUrl)
+				}
+			})
+		},
 		closeDialog() {
 			this.show8888 = false
 		},

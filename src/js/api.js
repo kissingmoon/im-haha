@@ -26,7 +26,7 @@ export default {
         })
         .catch(() => {
           toast('获取用户信息失败！')
-          this.clearLocal()
+          //this.clearLocal()
           router.replace('/login')
         })
     }
@@ -41,11 +41,11 @@ export default {
         if (res.code == '200') {
           this.handleUserinfo(res)
         } else {
-          this.clearLocal()
+          //this.clearLocal()
         }
       })
       .catch(() => {
-        this.clearLocal()
+        //this.clearLocal()
       })
   },
   handleUserinfo(res) {
