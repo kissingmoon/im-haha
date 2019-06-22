@@ -101,7 +101,6 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                 if(type == "ref"){
                     if(res.code == "200"){
                         this.recList = res.data.data;
-                        console.log(this.recList)
                         this.refLoading = false;
                         if(this.recList.length < this.queryParam.page_size){
                             this.moreLoading = false;
@@ -129,9 +128,7 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                 }
             },
             onLoad(){
-                console.log("触发了加载")
                 if(this.initFinish){
-                    console.log("触发了请求")
                     if(this.recList.length >= this.recListTotal){
                         this.moreLoading = false;
                         this.finished = true;

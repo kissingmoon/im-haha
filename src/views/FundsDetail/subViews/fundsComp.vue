@@ -149,7 +149,6 @@ export default {
 			}
 		},
 		onRefresh() {
-			console.log('开始刷新')
 			this.queryParam.page_no = '1'
 			this.finished = false
 			this.getRecList(this.queryParam, 'ref')

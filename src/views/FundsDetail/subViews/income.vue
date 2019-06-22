@@ -34,12 +34,9 @@ export default {
             finished: false
         }
     },
-    created () {
-        console.log("进入了收入")
-    },
+
     methods: {
         onLoad(){
-            console.log("触发底部加载")
             setTimeout(()=>{
                 // this.loading = false;
             },3000)

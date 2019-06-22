@@ -186,7 +186,7 @@ export default {
 		},
 		goToKefu() {
 			location.href =
-				'https://e19.entrychat.com/chat/chatClient/chatbox.jsp?companyID=1146765&configID=2564&jid=6346431126&s=1'
+				'https://messenger.providesupport.com/messenger/0ow24uftvtlip18whh7utq6518.html'
 		},
 		goHome() {
 			this.$router.push('/')
