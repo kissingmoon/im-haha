@@ -79,8 +79,6 @@ export default {
 			}
 		},
 		onMsgClick(v, k) {
-			console.log(v)
-
 			let param = {}
 			param.id = v.id
 			param.type = 0

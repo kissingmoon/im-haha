@@ -87,7 +87,6 @@ export default {
 			}
 			if (U_TK) {
 				this.setUserToken(U_TK)
-				this.$api.getUserInfo()
 			} else {
 				this.setUserToken('')
 			}
@@ -121,23 +120,6 @@ export default {
 					)
 				}
 			})
-		},
-		async getAlert() {
-			let res = await net_getAlert()
-			if (res.code == '200') {
-				if (res.data.alert) {
-					if (!this.isGetCJ) {
-						Dialog.alert({
-							title: res.data.title,
-							message: res.data.content
-						}).then(() => {
-							if (res.data.msgType == '1') {
-								net_alertRead({ id: res.data.id })
-							}
-						})
-					}
-				}
-			}
 		}
 	}
 }

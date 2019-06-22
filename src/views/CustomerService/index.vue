@@ -3,12 +3,12 @@
 		<ims-header title="客服"/>
 		<div class="boxs">
 			<a
-				href="https://e19.entrychat.com/chat/chatClient/chatbox.jsp?companyID=1146765&configID=2564&jid=6346431126&s=1"
+				href="https://messenger.providesupport.com/messenger/0ow24uftvtlip18whh7utq6518.html"
 			>
 				<div class="box">主线客服</div>
 			</a>
 			<a
-				href="https://e19.entrychat.com/chat/chatClient/chatbox.jsp?companyID=1146765&configID=2564&jid=6346431126&s=1"
+				href="https://messenger.providesupport.com/messenger/0ow24uftvtlip18whh7utq6518.html"
 			>
 				<div class="box">次线客服</div>
 			</a>
