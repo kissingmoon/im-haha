@@ -16,7 +16,8 @@ import { mapGetters, mapMutations } from 'vuex'
 export default {
 	data() {
 		return {
-			isShow: false
+			isShow: false,
+			serviceUrl: ''
 		}
 	},
 	mounted() {
