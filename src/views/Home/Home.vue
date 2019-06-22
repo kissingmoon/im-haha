@@ -82,7 +82,7 @@ export default {
 </script>
 <style lang='less'>
 .home_wrapper {
-	.top{
+	.top {
 		margin-bottom: 12px;
 	}
 	.home {

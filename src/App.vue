@@ -1,5 +1,5 @@
 <template>
-	<div id="app" :class="{'mjb_ios':mjb_ios}">
+	<div id="app" :class="[mjb_ios ? 'mjb_ios' : '', appWeb ? 'appWeb': '']">
 		<transition name="fade">
 			<keep-alive :include="keepALivePages">
 				<router-view/>
@@ -31,7 +31,8 @@ export default {
 		return {
 			keepALivePages: ['index'],
 			show8888: false,
-			mjb_ios: false
+			mjb_ios: false,
+			appWeb: false
 		}
 	},
 	computed: {
@@ -48,13 +49,23 @@ export default {
 				if (val != old && val) this.show8888 = true
 			},
 			immediate: true
+		},
+		$route: {
+			handler(val, oldVal) {
+				let query = this.$route.query
+				this.appWeb = query.appWeb == 'true' ? true : false //rn写的app内会用到h5页面
+			},
+			immediate: true
 		}
 	},
 	created() {
 		// this.checkUUID()
 		this.checkUTK()
 		this.setAliToken()
-		this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
+	},
+	mounted() {
+		let query = this.$route.query
+		this.mjb_ios = query.ismjb == 'ios' ? true : false //马甲包适配  进入页面的时候初始化一次就行 不用实时变化
 	},
 	methods: {
 		...mapMutations({
