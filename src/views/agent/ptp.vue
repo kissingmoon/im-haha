@@ -7,8 +7,8 @@
     <div class="ptpCentent">
         <img style="width:100%;height:100%" src="./img/ptp.png" alt="">
         <div class="bottom">
-            <div class="qrcode">
-
+            <div ref="qrcode" class="qrcode">
+              <img class="img" :src="qrSrc">
             </div>
             <div class="inviteCode">
               <div class="inviteCode_left">邀请码：zaq123456</div>
@@ -26,8 +26,32 @@
 </template>
 
 <script>
+import QRCode from '@/js/qrcode.js'
 export default {
-  
+  data(){
+    return{
+      qrSrc:''
+    }
+  },
+  mounted(){
+
+  },
+  methods:{
+    setQrcode(url) {
+			if (!url) {
+				return
+			}
+			let qrcodeEl = this.$refs.qrcode
+			let qr = new QRCode(qrcodeEl, {
+				text: url,
+				width: qrcodeEl.offsetWidth,
+				height: qrcodeEl.offsetHeight,
+				correctLevel: QRCode.CorrectLevel.L
+			})
+			let qrcodeSrc = qr._oDrawing.srcData
+			this.qrSrc = qrcodeSrc
+		},
+  }
 }
 </script>
 
@@ -54,7 +78,11 @@ export default {
         .qrcode{
           width:130px;
           height:130px;
-          margin: 0 auto
+          margin: 0 auto;
+          .img{
+            width:100%;
+            height:100%
+          }
         }
         .inviteCode{
           height:28px;
