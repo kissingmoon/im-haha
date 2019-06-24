@@ -24,9 +24,9 @@ module.exports = {
     port: 8080,
     proxy: {
       '/api': {
-        target: 'http://192.168.27.142:8199', //参考   https://cli.vuejs.org/zh/guide/mode-and-env.html
+        target: 'http://192.168.12.31:8199', //参考   https://cli.vuejs.org/zh/guide/mode-and-env.html
         // target: 'http://47.52.16.236:8199',
-        // target: 'http://192.168.14.86:8199',//lanjie
+        //target: 'http://192.168.27.245:8199',//lanjie
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api' //代理的路径

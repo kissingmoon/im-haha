@@ -49,12 +49,18 @@ export default {
 	},
 	methods: {
 		open(list) {
+			const ismjb = this.ismjb || localStorage.getItem('ismjb'); 
 			//homeJumpType:  [0,1]  0:内部页面  1:外部页面
 			if (list.homeJumpType == '0') {
 				this.$router.push(`/activity-detail?id=${list.activityId}`)
-			}
-			if (list.homeJumpType == '1') {
-				window.open(`/mpage?jumpLink=${list.homeJumpUrl}`)
+			}else if(list.homeJumpType == '1'){  //  如果homeJumpType为1   表示跳外部页面
+				if(ismjb == "ios"){
+					this.$router.push(`/mpage?jumpLink=${list.homeJumpUrl}`);
+				}else{
+					window.open(`/mpage?jumpLink=${list.homeJumpUrl}`);
+				}
+			}else{  //  如果homeJumpType为2   表示不做任何处理
+				return
 			}
 		},
 		progress: function() {

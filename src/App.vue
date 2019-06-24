@@ -55,14 +55,22 @@ export default {
 		this.checkUTK()
 		this.setAliToken()
 		this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
+		this.getServiceUrl()
 	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
 			setMjb: 'SET_MJB',
 			setPlatformFlag: 'SET_PLATFORM_FLAG',
-			setIsgetcj: 'SET_ISGETCJ'
+			setServiceUrl: 'SET_SERVICE_URL'
 		}),
+		getServiceUrl() {
+			this.$http.post('/home/getServiceUrl').then(res => {
+				if (res.code == '200') {
+					this.setServiceUrl(res.data.serviceUrl)
+				}
+			})
+		},
 		closeDialog() {
 			this.show8888 = false
 		},
@@ -87,7 +95,6 @@ export default {
 			}
 			if (U_TK) {
 				this.setUserToken(U_TK)
-				this.$api.getUserInfo()
 			} else {
 				this.setUserToken('')
 			}
@@ -121,23 +128,6 @@ export default {
 					)
 				}
 			})
-		},
-		async getAlert() {
-			let res = await net_getAlert()
-			if (res.code == '200') {
-				if (res.data.alert) {
-					if (!this.isGetCJ) {
-						Dialog.alert({
-							title: res.data.title,
-							message: res.data.content
-						}).then(() => {
-							if (res.data.msgType == '1') {
-								net_alertRead({ id: res.data.id })
-							}
-						})
-					}
-				}
-			}
 		}
 	}
 }

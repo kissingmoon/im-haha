@@ -127,9 +127,7 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                 }
             },
             onLoad(){
-                console.log("触发了加载")
                 if(this.initFinish){
-                    console.log("触发了请求")
                     if(this.recList.length >= this.recListTotal){
                         this.moreLoading = false;
                         this.finished = true;
