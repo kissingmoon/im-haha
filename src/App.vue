@@ -10,11 +10,6 @@
 			<div class="actv_88">
 				<div class="actv_8888_t">
 					<img class="actv_8888_img" src="./assets/88@2x.png">
-					<div class="actv_8888_text">
-						<p>登录签到彩金，已经派发到您的账户</p>
-						<p>登录5天即可获得全部彩金</p>
-						<p>¥88.00元哦！</p>
-					</div>
 				</div>
 				<div class="actv_8888_b">
 					<div class="actv_8888_btn" @click="closeDialog">好的</div>
@@ -126,7 +121,8 @@ export default {
 </script>
 <style lang="less">
 .actv_8888_dialog {
-	width: 84%;
+	width: 285px;
+	background: transparent;
 }
 .actv_88 {
 	width: 100%;
@@ -138,32 +134,21 @@ export default {
 		width: 100%;
 		display: block;
 	}
-	.actv_8888_text {
-		position: absolute;
-		color: #fff;
-		top: 18px;
-		text-align: center;
-		width: 100%;
-		font-size: 15px;
-		line-height: 23px;
-	}
 	.actv_8888_b {
-		height: 92px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		margin-top: -36px;
+		position: relative;
 	}
 	.actv_8888_btn {
-		width: 265px;
+		width: 134px;
 		height: 44px;
 		margin: 0 auto;
 		text-align: center;
-		background: linear-gradient(90deg, rgba(232, 200, 132, 1) 0%, rgba(226, 147, 82, 1) 100%);
-		border-radius: 22px;
 		box-shadow: none;
-		font-size: 18px;
-		color: rgba(255, 255, 255, 1);
+		font-size: 16px;
+		color: #6e3be9;
 		line-height: 44px;
+		background: linear-gradient(0deg, rgba(208, 192, 255, 1) 1%, rgba(255, 255, 255, 1) 100%);
+		border-radius: 22px;
 	}
 }
 #app {
