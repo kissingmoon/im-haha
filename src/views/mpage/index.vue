@@ -7,6 +7,7 @@ export default {
 		const gameJumpUrl = this.$route.query.jumpLink
 		const goto = this.$route.query.goto
 		const gameType = this.$route.query.gameType
+		if(!gameJumpUrl) return
 		if (goto == 'pay') {
 			let loading = this.$loading({ text: '正在跳转…' })
 			this.$http

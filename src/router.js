@@ -3,11 +3,20 @@ import Router from 'vue-router'
 import Index from './views/Home/index.vue'
 import Home from './views/Home/Home.vue'
 import Course from './views/Course/Course.vue'
+import Share from './views/Share/index.vue'
 import Activity from './views/Activity/Activity.vue'
 import User from './views/User/User.vue'
 Vue.use(Router)
 
 let course_router = [
+  {
+    path: '/course',
+    name: 'course',
+    component: Course,
+    meta: {
+      keepAlive: true
+    }
+  },
   {
     path: '/',
     name: 'jc',
@@ -79,17 +88,18 @@ export let needLoginRoutes = [
   {
     path: '/userinfo',
     name: 'Userinfo',
-    component: () => import(/* webpackChunkName: "Userinfo" */ './views/Userinfo/index.vue')
+    component: () => import(/* webpackChunkName: "Userinfo" */ './views/User/Userinfo/index.vue')
   },
   {
     path: '/username',
     name: 'Username',
-    component: () => import(/* webpackChunkName: "Username" */ './views/Username/index.vue')
+    component: () => import(/* webpackChunkName: "Username" */ './views/User/Username/index.vue')
   },
   {
     path: '/useravator',
     name: 'Useravator',
-    component: () => import(/* webpackChunkName: "Useravator" */ './views/Useravator/index.vue')
+    component: () =>
+      import(/* webpackChunkName: "Useravator" */ './views/User/Useravator/index.vue')
   },
   {
     path: '/bank-charge',
@@ -151,8 +161,39 @@ export let needLoginRoutes = [
   {
     path: '/siteMail',
     name: 'SiteMail',
-    component: () => import(/* webpackChunkName: "SiteMail" */ './views/SiteMail/SiteMail.vue')
-  }
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/User/SiteMail/SiteMail.vue')
+  },
+  {
+    path: '/commissionAll',
+    name: 'commissionAll',
+    component: () =>
+      import(/* webpackChunkName: "SiteMail" */ './views/commissionAll/commissionAll.vue')
+  },
+  {
+    path: '/teamMember',
+    name: 'teamMember',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/teamMember/teamMember.vue')
+  },
+  {
+    path: '/team',
+    name: 'team',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/team/team.vue')
+  },
+  {
+    path: '/agent',
+    name: 'agent',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/agent/agent.vue')
+  },
+  {
+    path: '/agentInstructions',
+    name: 'agentInstructions',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/agent/agentInstructions.vue')
+  },
+  {
+    path: '/ptp',
+    name: 'ptp',
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/agent/ptp.vue')
+  },
 ]
 let routes = [
   {
@@ -162,7 +203,7 @@ let routes = [
   {
     path: '/',
     component: Index,
-    name:'index',
+    name: 'index',
     meta: {
       keepAlive: true
     },
@@ -176,9 +217,9 @@ let routes = [
         }
       },
       {
-        path: '/course',
-        name: 'course',
-        component: Course,
+        path: '/share',
+        name: 'share',
+        component: Share,
         meta: {
           keepAlive: true
         }
@@ -200,6 +241,10 @@ let routes = [
         }
       }
     ]
+  },
+  {
+    path: '/regist',
+    redirect: '/login'
   },
   {
     path: '/login',
@@ -226,7 +271,7 @@ let routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ './views/About/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ './views/User/About/About.vue')
   },
   ...needLoginRoutes,
   ...course_router
@@ -249,6 +294,10 @@ router.beforeEach((to, from, next) => {
       return to.path == item.path
     })
     if (needLogin) {
+      next('/')
+    }
+  } else {
+    if (to.path == '/login') {
       next('/')
     }
   }

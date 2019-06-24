@@ -1,5 +1,5 @@
 <template>
-	<div class="ck">
+	<div class="ck headview_wrapper">
 		<ims-header title="存款教程"/>
 		<Tabs class="ck_tabs" :tabs="tabs" @click="clickTabs"/>
 		<swiper :options="swiperOption">

@@ -26,8 +26,8 @@ export default {
         })
         .catch(() => {
           toast('获取用户信息失败！')
-          this.clearLocal()
-          this.goLogin()
+          //this.clearLocal()
+          router.replace('/login')
         })
     }
   },
@@ -41,17 +41,14 @@ export default {
         if (res.code == '200') {
           this.handleUserinfo(res)
         } else {
-          this.clearLocal()
+          //this.clearLocal()
         }
       })
       .catch(() => {
-        this.clearLocal()
+        //this.clearLocal()
       })
   },
   handleUserinfo(res) {
-    // res.data.isReceive = '0'
-    // res.data.dayNum = 4
-    // res.data.threeReceive = '0'
     store.commit('SET_ACCOUNT', res.data)
     if (res.data.isReceive == '0') {
       store.commit('SET_ISGETCJ', true)
@@ -67,18 +64,11 @@ export default {
     }
   },
   clearLocal() {
+
     localStorage.removeItem('U_TK')
     store.commit('SET_USER_TOKEN', '')
     store.commit('SET_ACCOUNT', {})
     // store.commit('SET_Query_Third', false);
-  },
-  goLogin() {
-    router.replace('/login')
-  },
-  getUserStatus() {
-    if (store.getters.user_status.freeGetMoney != '1') {
-      store.dispatch('getMoneyStatus')
-    }
   },
   quitAccount(msg) {
     $http

@@ -113,3 +113,26 @@ export function generateUUID() {
   })
   return uuid
 }
+export function getGreeting() {
+  let hour = new Date().getHours()
+  let str = ''
+  if (hour < 6) {
+    str = '早晨好'
+  } else if (hour < 11) {
+    str = '上午好'
+  } else if (hour < 13) {
+    str = '中午好'
+  } else if (hour < 18) {
+    str = '下午好'
+  } else if (hour < 24) {
+    str = '晚上好'
+  }
+  return str
+}
+export function openLink(url, deviceType){
+  if(deviceType == "ios"){
+      router.push(`/mpage?jumpLink=${url}`);
+  }else{
+      window.open(url);
+  }
+}

@@ -49,14 +49,14 @@
 					</div>
 					<div class="img_box img_box1">
 						<img
-							class="img img1"
+							class="img"
 							:src="item.platformInfos[1].gameImageUrl"
 							@click="open(item.platformInfos[1],item)"
 						>
 					</div>
 					<div class="img_box img_box2">
 						<img
-							class="img img2"
+							class="img"
 							:src="item.platformInfos[2].gameImageUrl"
 							@click="open(item.platformInfos[2],item)"
 						>
@@ -72,7 +72,7 @@
 					</div>
 					<div class="img_box img_box1">
 						<img
-							class="img img1"
+							class="img"
 							:src="item.platformInfos[1].gameImageUrl"
 							@click="open(item.platformInfos[1],item)"
 						>
@@ -185,7 +185,6 @@ export default {
 			this.activeIndex = this.$refs.bottomSwiper.swiper.activeIndex
 		},
 		changeSwiper(list,index) {
-			console.log(list,index)
 			this.$refs.bottomSwiper.swiper.slideTo(index)
 		}
 	}

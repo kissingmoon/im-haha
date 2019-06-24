@@ -1,5 +1,5 @@
 <template>
-	<div class="balance-wrapper">
+	<div class="balance-wrapper headview_wrapper">
 		<ims-header title="安全中心"/>
 		<div class="main-container">
 			<div class="bank-box display-flex flex-center">
@@ -54,7 +54,7 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
-
+import { net_signOut } from '@/js/network.js'
 export default {
 	data() {
 		return {
@@ -73,6 +73,10 @@ export default {
 					title: '提款密码',
 					className: 'icon-bg__pay',
 					iconName: 'drawPwd'
+				},
+				{
+					title: '退出登录',
+					className: 'icon-login__out',
 				}
 			]
 		}
@@ -107,9 +111,36 @@ export default {
 				case 1:
 					this.$router.push({ path: 'setPassword?type=2' })
 					break
-
+				case 2:
+					this.quitClick()
+					break
 				default:
 					break
+			}
+		},
+		quitClick() {
+			Dialog.confirm({
+				title: '确定要退出登录账户吗？'
+			})
+				.then(() => {
+					this.quitAccount()
+				})
+				.catch(() => {})
+		},
+		async quitAccount(action, done) {
+			// if (action === 'confirm') {
+			// let res = await net_signOut();
+			// if(res.code == "200"){
+			// 	this.$api.clearLocal ();
+			// 	done();
+			// }
+			// } else {
+			// 	done();
+			// }
+			let res = await net_signOut()
+			if (res.code == '200') {
+				this.$api.clearLocal()
+				toast('成功退出登录！')
 			}
 		}
 	}
@@ -210,6 +241,10 @@ export default {
 				}
 				.icon-bg__pay {
 					background: url('./img/ico_pay_pwd.png') no-repeat;
+					background-size: cover;
+				}
+				.icon-login__out {
+					background: url('./img/icon_new_mine_loginout.png') no-repeat;
 					background-size: cover;
 				}
 			}

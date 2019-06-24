@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { setTimeout } from 'timers'
 import { net_queryMsg, net_insertRead } from '@/js/network.js'
 
 export default {
@@ -80,8 +79,6 @@ export default {
 			}
 		},
 		onMsgClick(v, k) {
-			console.log(v)
-
 			let param = {}
 			param.id = v.id
 			param.type = 0

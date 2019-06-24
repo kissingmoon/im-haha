@@ -1,12 +1,5 @@
 <template>
-	<div id="app">
-		<!-- <keep-alive>
-			<router-view v-if="$route.meta.keepAlive"/>
-		</keep-alive>
-		<transition name="fade">
-			<router-view v-if="!$route.meta.keepAlive"/>
-		</transition>-->
-		
+	<div id="app" :class="{'mjb_ios':mjb_ios}">
 		<transition name="fade">
 			<keep-alive :include="keepALivePages">
 				<router-view/>
@@ -14,7 +7,7 @@
 		</transition>
 
 		<van-dialog class="actv_8888_dialog" :show-confirm-button="false" v-model="show8888">
-			<div class="actv_8888">
+			<div class="actv_88">
 				<div class="actv_8888_t">
 					<img class="actv_8888_img" src="./assets/88@2x.png">
 					<div class="actv_8888_text">
@@ -30,16 +23,15 @@
 		</van-dialog>
 	</div>
 </template>
-
 <script>
-import { mapActions, mapGetters, mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 import { generateUUID } from '@/js/tools.js'
-import { net_getAlert, net_alertRead } from '@/js/network.js'
 export default {
 	data() {
 		return {
 			keepALivePages: ['index'],
-			show8888: false
+			show8888: false,
+			mjb_ios: false
 		}
 	},
 	computed: {
@@ -48,8 +40,7 @@ export default {
 				return this.$store.state.isGetCJ
 			},
 			set: function() {}
-		},
-		...mapGetters(['user_token'])
+		}
 	},
 	watch: {
 		isGetCJ: {
@@ -57,34 +48,31 @@ export default {
 				if (val != old && val) this.show8888 = true
 			},
 			immediate: true
-		},
-		user_token(val, old) {
-			if (val) {
-				this.getAlert()
-			}
 		}
 	},
 	created() {
-		this.checkUUID()
+		// this.checkUUID()
 		this.checkUTK()
+		this.setAliToken()
+		this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
+		this.getServiceUrl()
 	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
 			setMjb: 'SET_MJB',
 			setPlatformFlag: 'SET_PLATFORM_FLAG',
-			setIsgetcj: 'SET_ISGETCJ'
+			setServiceUrl: 'SET_SERVICE_URL'
 		}),
+		getServiceUrl() {
+			this.$http.post('/home/getServiceUrl').then(res => {
+				if (res.code == '200') {
+					this.setServiceUrl(res.data.serviceUrl)
+				}
+			})
+		},
 		closeDialog() {
 			this.show8888 = false
-		},
-		checkUUID() {
-			let U_IDK = localStorage.getItem('U_IDK')
-			if (!U_IDK) {
-				U_IDK = generateUUID()
-				localStorage.setItem('U_IDK', U_IDK)
-			}
-			this.setPlatformFlag(U_IDK)
 		},
 		checkUTK() {
 			let U_TK = localStorage.getItem('U_TK')
@@ -99,37 +87,48 @@ export default {
 			}
 			if (U_TK) {
 				this.setUserToken(U_TK)
-				this.$api.getUserInfo()
 			} else {
 				this.setUserToken('')
 			}
 		},
-		async getAlert() {
-			let res = await net_getAlert()
-			if (res.code == '200') {
-				if (res.data.alert) {
-					if (!this.isGetCJ) {
-						Dialog.alert({
-							title: res.data.title,
-							message: res.data.content
-						}).then(() => {
-							if (res.data.msgType == '1') {
-								net_alertRead({ id: res.data.id })
-							}
-						})
-					}
+		setAliToken() {
+			var uabModule
+			var webUmidToken
+			var uaToken
+			//人机识别模块，只需初始化一次
+			AWSC.use('uab', function(state, uab) {
+				if (state === 'loaded') {
+					uabModule = uab
+					uaToken = uabModule.getUA()
+					sessionStorage.setItem('uaToken', uaToken)
 				}
-			}
+			})
+			//设备指纹模块，得到设备token，只需初始化一次
+			AWSC.use('um', function(state, um) {
+				if (state === 'loaded') {
+					um.init(
+						{
+							//appName请直接使用'saf-aliyun-com'
+							appName: 'saf-aliyun-com'
+						},
+						function(initState, result) {
+							if (initState === 'success') {
+								webUmidToken = result.tn
+								sessionStorage.setItem('webUmidToken', webUmidToken)
+							}
+						}
+					)
+				}
+			})
 		}
 	}
 }
 </script>
-
-<style lang="less" scoped>
+<style lang="less">
 .actv_8888_dialog {
 	width: 84%;
 }
-.actv_8888 {
+.actv_88 {
 	width: 100%;
 	.actv_8888_t {
 		height: 244px;

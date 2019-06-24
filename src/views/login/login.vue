@@ -1,6 +1,6 @@
 <template>
-	<div class="login-wrapper">
-		<div class="header-container display-flex flex-center" @click="goBack">
+	<div class="login-wrapper headview_wrapper">
+		<div class="header-container display-flex flex-center login_back" @click="goBack">
 			<div class="back-content"></div>
 		</div>
 		<div class="top-container">
@@ -80,7 +80,11 @@ export default {
 		loginComponent,
 		registerComponent
 	},
-	computed: {},
+	mounted(){
+		if(this.$route.query.inviteCode){
+			this.goNextFun()
+		}
+	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',

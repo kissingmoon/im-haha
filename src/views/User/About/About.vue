@@ -1,5 +1,5 @@
 <template>
-	<div class="about-wrapper">
+	<div class="about-wrapper headview_wrapper">
 		<div class="header-container">
 			<ims-header title="关于YG娱乐"></ims-header>
 		</div>
@@ -34,12 +34,12 @@
 export default {}
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .about-wrapper {
 	min-height: 100%;
 	box-sizing: border-box;
 	padding-top: @app_head_height;
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	.grey-text {

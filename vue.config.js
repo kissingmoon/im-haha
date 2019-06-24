@@ -24,11 +24,10 @@ module.exports = {
     port: 8080,
     proxy: {
       '/api': {
-        //target: 'http://192.168.27.27:8199',//代理接口   lem
-        //target: 'http://192.168.27.142:8199', //代理接口   frank
-        target: 'http://47.52.16.236:8199',//代理接口   test
-        //target: 'http://sport989.com/prod',//代理接口
-        //target: 'http://dianjing.kpkqin.com/', //YG娱乐测试API地址
+        // target: 'http://192.168.12.31:8199', //参考   https://cli.vuejs.org/zh/guide/mode-and-env.html
+        // target: 'http://47.52.16.236:8199',
+        // target: 'http://192.168.27.245:8199',//lanjie
+        target: 'http://sport989.com/prod',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api' //代理的路径

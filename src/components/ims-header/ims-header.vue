@@ -40,10 +40,8 @@ export default {
 <style lang="less">
 .app_head {
 	.main {
-		background: linear-gradient(to right, rgb(0, 213, 253), rgb(2, 136, 254)) 100% / 100%;
 		color: rgb(255, 255, 255);
 		position: fixed;
-		top: 0;
 		left: 0;
 		right: 0;
 		z-index: 888;
@@ -52,6 +50,7 @@ export default {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		background: linear-gradient(to right, rgb(0, 213, 253), rgb(2, 136, 254)) 100% / 100%;
 		.left {
 			flex-basis: 6em;
 			font-size: 14px;

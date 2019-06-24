@@ -1,5 +1,5 @@
 <template>
-	<div class="funds-wrapper display-flex flex-column">
+	<div class="funds-wrapper display-flex flex-column headview_wrapper">
 		<ims-header title="资金明细">
 			<div slot="right" class="header-cottage" @click="onRightClick"></div>
 		</ims-header>
@@ -87,7 +87,6 @@ export default {
 			}
 		},
 		onLoad() {
-			console.log('触发底部加载')
 			setTimeout(() => {
 				// this.loading = false;
 			}, 3000)

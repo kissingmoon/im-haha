@@ -1,8 +1,5 @@
 <template>
-	<div class="home_wrapper">
-		<!-- <div class="head_title">
-			<p class="p"><img class="head_title_img" src="../../assets/yg_logo@2x.png" ></p>
-		</div>-->
+	<div class="home_wrapper view_wrapper">
 		<div v-if="isShow" class="home">
 			<div class="top">
 				<swiper-top :lists="swiperTopData"/>
@@ -40,7 +37,6 @@ export default {
 		this.init()
 	},
 	activated() {
-		this.getHomeHeadData()
 		if (this.isError) {
 			this.init()
 		} else {
@@ -83,42 +79,13 @@ export default {
 	}
 }
 </script>
-<style lang='less' scoped>
-.head_title {
-	height: 50px;
-	.p {
-		position: fixed;
-		left: 0;
-		right: 0;
-		top: 0;
-		font-size: 0;
-		color: rgba(51, 51, 51, 1);
-		height: 50px;
-		line-height: 50px;
-		z-index: 1000;
-		background: url('../../assets/page_bg_default.jpg') no-repeat;
-		background-size: 100% auto;
-		text-align: center;
-	}
-	.head_title_img {
-		display: inline-block;
-		height: 24px;
-		margin-top: 13px;
-	}
-}
+<style lang='less'>
 .home_wrapper {
-	min-height: 100%;
-	box-sizing: border-box;
-	padding-bottom: @app_footer_height;
-	// background: url('../../assets/page_bg_default.jpg') no-repeat;
-	// background-size: cover;
-	// background-attachment: fixed;
-}
-.home {
-	padding-bottom: 12px;
-}
-.top {
-	padding-top: 12px;
-	margin-bottom: 12px;
+	.top{
+		margin-bottom: 12px;
+	}
+	.home {
+		padding: 12px 0;
+	}
 }
 </style>

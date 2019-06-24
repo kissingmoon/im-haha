@@ -1,8 +1,18 @@
 <template>
 	<ul v-if="lists.length>0" class="activities">
 		<transition-group tag="ul" name="fade">
-			<li v-for="(list,index) in lists" :key="index" @click="openActivity(list)" src="../121212.png" class="activity">
-				<ims-image class="img" lazy :src="list.id=='53' ? 'http://www.tryingdan.com/tupian/photo_2019-06-13_20-08-43909.jpg' : list.imageUrl ">
+			<li
+				v-for="(list) in lists"
+				:key="list.id"
+				@click="openActivity(list)"
+				src="../121212.png"
+				class="activity"
+			>
+				<ims-image
+					class="img"
+					lazy
+					:src="list.id=='53' ? 'http://www.tryingdan.com/tupian/photo_2019-06-13_20-08-43909.jpg' : list.imageUrl "
+				>
 					<div class="img_placeholder" slot="placeholder"></div>
 				</ims-image>
 				<div class="title">
@@ -40,15 +50,25 @@ export default {
 </script>
 <style lang="less" scoped>
 .activities {
+	position: absolute;
+	top: 52px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 	width: 100%;
-	padding: 52px 15px 30px 15px;
+	padding: 0 15px;
 	box-sizing: border-box;
 	.activity {
 		background: transparent;
 		border-radius: 5px;
 		overflow: hidden;
-		margin-top: 10px;
+		margin-bottom: 10px;
 		position: relative;
+	}
+	.activity:first-child {
+		margin-top: 10px;
 	}
 	.actv_8888 {
 		position: absolute;

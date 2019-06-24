@@ -1,10 +1,10 @@
 <template>
-	<div class="actv_detail">
+	<div class="actv_detail headview_wrapper">
 		<ims-header title="活动详情"/>
 		<div v-if="isShow" class="actv_main">
 			<!-- 在这里绑定html -->
 			<div v-if="!is_8888" v-html="html">
-			<!-- <div v-if="true"> -->
+				<!-- <div v-if="true"> -->
 				<!-- 活动1  周周有礼，周周送 -->
 				<!-- <div style="padding-bottom:24px;">
 					<div class="actv_h">周周有礼，周周送</div>
@@ -1226,7 +1226,7 @@
 						<br>4．投注在体育赛事，对冲或对打投注不计，未接受注单/赛果为平时的注单不计。在真人娱乐/电子游艺/对战/彩票游戏投注，无风险投注不计。无风险投注包括在百家乐同时下注庄家、闲家，轮盘同时下注黑色、红色，单、双。大、小，任何取消注单赛事或局数不计。
 						<br>5．『中博』保留对活动最终解释权；以及在无通知的情况下修改，终止活动的权利，适用于所有优惠。
 					</p>
-				</div> -->
+				</div>-->
 			</div>
 			<div v-else>
 				<!--活动 12 初次相遇 豪礼相赠   注册免费送88元彩金-->
@@ -1310,7 +1310,125 @@
 						<br>5.公司规定无风险注单不计算有效投注额，无风险注单包括：游戏中同时投注黑白、龙虎、庄闲、投注直注胜率不可超过70%,任何非法套取优惠行为将扣除产生的盈利。
 					</p>
 				</div>
+				<!-- <div >
+					<div class="actv_h">云闪付充值优惠3天乐，极速入款，秒到账</div>
+					<p class="actv_p">
+						活动时间：2019年06月21日至2019年06月23日<br>
+						活动对象：YG娱乐全体会员<br>
+						活动内容：今日起YG娱乐会员凡是在活动期间使用云闪付充值入款，充值金额达到指定条件，即可申请云闪付充值奖励。
+					</p>
+					<p  style="height:15px"></p>
+					<p class="actv_p ">
+						云闪付活动期间充值奖励与每笔充值<sapn style="color:#333">赠送1%的彩金可共享</sapn>，活动期间充值越多优惠越多哦！
+					</p>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>奖励规则
+					</div>
+					<div class="actv_table12">
+						<div class="col3 col3_0">
+							<div class="row1">云闪付入款金额</div>
+							<div class="row1">500元+</div>
+							<div class="row1">1000元+</div>
+							<div class="row1">3000元+</div>
+							<div class="row1">4999元+</div>
+						</div>
+						<div class="col2 ">
+							<div class="row2 row2_1">赠送彩金</div>
+							<div class="row2 row2_1">15元</div>
+							<div class="row2 row2_1">35元</div>
+							<div class="row2 row2_1">55元</div>
+							<div class="row2 row2_1">68元</div>
+						</div>
+
+						<div class="col2">
+							<div class="row2 row2_0">流水要求</div>
+							<div class="row2 row2_1">一倍流水</div>
+						</div>
+						<div class="col2">
+							<div class="row2 row2_0">游戏限制</div>
+							<div class="row2 row2_1">不限</div>
+
+						</div>
+					</div>
+					<div class="actv_h5">
+						<span class="actv_reat"></span>活动细则
+					</div>
+					<p class="actv_p">
+						1.活动期间充值奖励与首次使用云闪付赠送10%彩金不可共享；
+						<br>如：A用户使用云闪付充值入款一笔后，在首次使用云闪付活动里进行申请并获得了10%的首次使用赠送彩金，再次点击该充值赠送彩金活动的申请，则无效。
+						<br>2.活动期间的充值奖励与云闪付每笔充值赠送1%的彩金可共享；
+						<br>3.所赠送的彩金需达到一倍流水即可申请出款，不再与其他优惠共享；
+						<br>4.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利。
+					</p>
+				</div> -->
 			</div>
+
+			<div v-if="id==98">
+				<div class="actv_h">首次使用云闪付App入款，额外赠送10%，限时优惠</div>
+				<p class="actv_p">
+					活动时间：即日起
+					<br>活动对象：YG娱乐全体人员
+					<br>活动内容：即日起YG娱乐会员首次使用银联云闪付入款成功，即可申请赠送10%的彩金，仅限银联云闪付首次入款优惠。
+				</p>
+				<div class="actv_h5">
+					<span class="actv_reat"></span>银联云闪付入款奖励规则
+				</div>
+				<p class="actv_p">
+					1.首次使用银联云闪付入款，额外赠送10%，需手动申请；
+					<br>2.二次往后充值，每次都可享受充值优惠1%的赠送彩金。
+				</p>
+				<div class="actv_h5">
+					<span class="actv_reat"></span>活动细则
+				</div>
+				<p class="actv_p">
+					1. 首次赠送彩金需进行活动申请，会员账号绑定的手机号需要与银联云闪付的账号一致，方可申请成功；
+					<br>2. 使用银联云闪付第二次往后充值赠送1%的彩金优惠，入款成功立即赠送，无需审核；
+					<br>3.彩金赠送10%只限当天领取有效，当天24:00后将不再享受赠送彩金，如账号没有领取过该彩金，再次充值后即可申请享受首次10%的赠送彩金；
+					<br>4. 所赠送的彩金需达到一倍流水即可申请出款，且与其他优惠共享；
+					<br>5. 所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利。
+				</p>
+				<div style="width:100%;height:40px;margin:30px 0;display: flex;justify-content:space-around;">
+					<a
+						target="_blank"
+						style="display:block;width:132px;height:36px;"
+						href="https://apps.apple.com/cn/app/%E4%BA%91%E9%97%AA%E4%BB%98-%E9%93%B6%E8%A1%8C%E4%B8%9A%E7%BB%9F%E4%B8%80%E7%A7%BB%E5%8A%A8%E6%94%AF%E4%BB%98app/id600273928"
+					>
+						<img style="width:100%;height:100%" src="./img/pingguo.png" alt>
+					</a>
+					<a
+						target="_blank"
+						style="display:block;width:132px;height:36px;"
+						href="https://sj.qq.com/myapp/detail.htm?apkName=com.unionpay"
+					>
+						<img style="width:100%;height:100%" src="./img/anzuo.png" alt>
+					</a>
+				</div>
+				<div class="lunbo">
+					<van-swipe :show-indicators="flag" :autoplay="1800" indicator-color="#8A75FF">
+						<van-swipe-item>
+							<img src="./img/one.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/two.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/three.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/si.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/wu.png" alt>
+						</van-swipe-item>
+						<van-swipe-item>
+							<img src="./img/liu.png" alt>
+						</van-swipe-item>
+					</van-swipe>
+					<div class="left"></div>
+					<div class="right"></div>
+				</div>
+			</div>
+
 			<div v-show="!is_8888" class="actv_btn_box">
 				<button class="actv_btn" @click="submit">立即申请</button>
 			</div>
@@ -1326,7 +1444,8 @@ export default {
 			id: '',
 			html: '',
 			is_8888: false,
-			btns_8888: []
+			btns_8888: [],
+			flag: false
 		}
 	},
 	computed: {
@@ -1378,6 +1497,9 @@ export default {
 								if (list.id == '53') {
 									this.set_8888()
 								} else {
+									if (list.isShowApply == 0) {
+										this.flag = false
+									}
 									this.html = html
 								}
 								this.isShow = true
@@ -1411,6 +1533,7 @@ export default {
 			})
 		},
 		set_8888() {
+			this.btns_8888 = []
 			let account = this.account
 			let day3 = {
 				disabled: true,
@@ -1474,6 +1597,55 @@ export default {
 </script>
 <style lang="less">
 @table_border_color: #333;
+
+.lunbo {
+	width: 100%;
+	height: 380px;
+	position: relative;
+	.van-swipe {
+		width: 171px;
+		height: 346px;
+		margin: auto;
+		.van-swipe-item {
+			width: 100%;
+			height: 100%;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	// .van-swipe__indicators{
+	// 	position: absolute;
+	// 	bottom:-5px
+	// }
+	.left {
+		width: 20px;
+		height: 58px;
+		position: absolute;
+		top: 163px;
+		left: 0;
+		background: url('./img/zuo.png') no-repeat;
+		background-size: 100% 100%;
+	}
+	.right {
+		width: 20px;
+		height: 58px;
+		position: absolute;
+		top: 163px;
+		right: 0;
+		background: url('./img/you.png') no-repeat;
+		background-size: 100% 100%;
+	}
+}
+
+.actv_detail {
+	background: #fff;
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	width: 100%;
+}
 .van-dialog {
 	width: 76%;
 	border-radius: 6px;
@@ -1503,13 +1675,6 @@ export default {
 	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5), 0px 1px 0px 0px rgba(97, 51, 34, 1),
 		0px 1px 0px 0px rgba(255, 234, 152, 1);
 }
-.actv_detail {
-	background: #fff;
-	min-height: 100%;
-	box-sizing: border-box;
-	padding-top: @app_head_height;
-	width: 100%;
-}
 .actv_main {
 	padding: 0 13px 60px;
 	background: #fff;
@@ -1525,6 +1690,9 @@ export default {
 	font-size: 13px;
 	color: rgba(116, 116, 116, 1);
 	line-height: 19px;
+}
+.p1{
+	margin-top:15px
 }
 .actv_h5 {
 	padding: 24px 0 10px;

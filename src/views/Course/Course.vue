@@ -1,10 +1,6 @@
 <template>
-	<div class="course_wrapper">
-		<!-- <div class="head_title">
-			<p class="p">
-				<img class="head_title_img" src="../../assets/jc.png">
-			</p>
-		</div>-->
+	<div class="course_wrapper headview_wrapper">
+		<ims-header class="about_head" title="教程"></ims-header>
 		<div class="courses">
 			<div v-for="(list,i) in lists" @click="openLink(list)" :key="i" class="course">
 				<div class="c_l">
@@ -47,73 +43,56 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.head_title {
-	height: 50px;
-	.p {
-		position: fixed;
-		left: 0;
-		right: 0;
-		top: 0;
-		font-size: 0;
-		color: rgba(51, 51, 51, 1);
-		height: 50px;
-		line-height: 50px;
-		z-index: 1000;
-		background-color: @base_color;
-		text-align: center;
-	}
-	.head_title_img {
-		display: inline-block;
-		height: 24px;
-		margin-top: 13px;
-	}
-}
 .course_wrapper {
-	min-height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding-top: @app_head_height;
 	box-sizing: border-box;
-	padding-bottom: @app_footer_height;
-	// background: url('../../assets/page_bg_default.jpg') no-repeat;
-	// background-size: cover;
-	// background-attachment: fixed;
-}
-.courses {
-	padding: 21px 10px;
-}
-.course {
-	width: 100%;
-	height: 60px;
-	box-sizing: border-box;
-	border-radius: 5px;
-	background: rgba(255, 255, 255, 0.3);
-	margin-bottom: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0 15px;
-	.c_l {
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	.courses {
+		padding: 21px 10px;
+	}
+	.course {
+		width: 100%;
+		height: 60px;
+		box-sizing: border-box;
+		border-radius: 5px;
+		background: rgba(255, 255, 255, 0.3);
+		margin-bottom: 10px;
 		display: flex;
 		align-items: center;
-		.c_p_0 {
-			font-size: 18px;
-			color: #444;
-			padding: 0 10px;
-			font-weight: bold;
+		justify-content: space-between;
+		padding: 0 15px;
+		.c_l {
+			display: flex;
+			align-items: center;
+			.c_p_0 {
+				font-size: 18px;
+				color: #444;
+				padding: 0 10px;
+				font-weight: bold;
+			}
+			.c_p_1 {
+				font-size: 12px;
+				color: #666;
+			}
+			.c_img0 {
+				width: 36px;
+				height: 36px;
+			}
 		}
-		.c_p_1 {
-			font-size: 12px;
-			color: #666;
-		}
-		.c_img0 {
+		.c_r {
 			width: 36px;
 			height: 36px;
-		}
-	}
-	.c_r {
-		width: 36px;
-		height: 36px;
-		.c_img1 {
-			width: 100%;
-			display: block;
+			.c_img1 {
+				width: 100%;
+				display: block;
+			}
 		}
 	}
 }
