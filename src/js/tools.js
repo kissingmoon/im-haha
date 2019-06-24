@@ -129,3 +129,10 @@ export function getGreeting() {
   }
   return str
 }
+export function openLink(url, deviceType){
+  if(deviceType == "ios"){
+      router.push(`/mpage?jumpLink=${url}`);
+  }else{
+      window.open(url);
+  }
+}
