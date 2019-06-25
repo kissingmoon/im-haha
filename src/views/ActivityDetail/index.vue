@@ -3,9 +3,7 @@
 		<ims-header title="活动详情"/>
 		<div v-if="isShow" class="actv_main">
 			<!-- 在这里绑定html -->
-			<div v-if="!is_8888" v-html="html">
-				<!-- <div v-if="true"> -->
-			</div>
+			<div v-if="!is_8888" v-html="html"></div>
 			<div v-else>
 				<!--活动 12 初次相遇 豪礼相赠   注册免费送88元彩金-->
 				<div v-if="is_8888" style="padding-bottom:24px;">
@@ -52,28 +50,30 @@
 							<div class="row1">手动领取</div>
 						</div>
 					</div>
-					<div class="actv_h5">
-						<span class="actv_reat"></span>申请方式
-					</div>
-					<div class="actv_8888">
-						<div class="actv_8888_t margin_bottom_2">
-							<div class="flex_30">48元</div>
-							<div class="flex_40">58元</div>
-							<div class="flex_30">68元</div>
+					<div v-if="btns_8888.length > 0">
+						<div class="actv_h5">
+							<span class="actv_reat"></span>申请方式
 						</div>
-						<img class="actv_8888_img" src="../../assets/actv_0.png">
-						<div class="actv_8888_t actv_font_0 margin_bottom_8">
-							<div class="flex_30">第三天登录</div>
-							<div class="flex_40">第四天登录</div>
-							<div class="flex_30">第五天登录</div>
-						</div>
-						<div class="actv_8888_t">
-							<div v-for="(btn,index) in btns_8888" :key="index" class="flex_30">
-								<button
-									class="actv_8888_btn"
-									:class="{btns_8888_disabled:btn.disabled ? true : false}"
-									@click="getBonus(btn)"
-								>{{btn.text}}</button>
+						<div class="actv_8888">
+							<div class="actv_8888_t margin_bottom_2">
+								<div class="flex_30">15元</div>
+								<div class="flex_40">25元</div>
+								<div class="flex_30">35元</div>
+							</div>
+							<img class="actv_8888_img" src="../../assets/actv_0.png">
+							<div class="actv_8888_t actv_font_0 margin_bottom_8">
+								<div class="flex_30">第三天登录</div>
+								<div class="flex_40">第四天登录</div>
+								<div class="flex_30">第五天登录</div>
+							</div>
+							<div class="actv_8888_t">
+								<div v-for="(btn,index) in btns_8888" :key="index" class="flex_30">
+									<button
+										class="actv_8888_btn"
+										:class="{btns_8888_disabled:btn.disabled ? true : false}"
+										@click="getBonus(btn)"
+									>{{btn.text}}</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -81,11 +81,6 @@
 						<span class="actv_reat"></span>活动细则
 					</div>
 					<p class="actv_p">
-						<!-- 1.所赠送的彩金需一倍流水方可提款；
-						<br>2.登录期间第二天领取彩金后，要有一次充值记录，才可领取第三天赠送的彩金，第三天领取后要有充值记录，才可领取第四天的，以此类推，方可领取88元全部彩金；
-						<br>3.彩金不可累积申请后下注，必须在每次申请后进行娱乐或提现，申请彩金时账户额度不能大于5元；
-						<br>4.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利；
-						<br>5.公司规定无风险注单不计算有效投注额，无风险注单包括：游戏中同时投注黑白、龙虎、庄闲、投注直注胜率不可超过70%,任何非法套取优惠行为将扣除产生的盈利。 -->
 						1.所赠送的彩金需一倍流水方可提款；
 						<br>2.活动期间，第一天和第二天系统自动派发，
 						<br>第三天彩金领取，当日充值金额满100元以上，即可领取赠送彩金48元
@@ -96,7 +91,6 @@
 						<br>4.参与该活动，领取彩金后如未登录或娱乐，间隔时间超出七天后，将无法再次参与活动；
 						<br>5.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利；
 						<br>6.公司规定无风险注单不计算有效投注额，无风险注单包括：游戏中同时投注黑白、龙虎、庄闲、投注直注胜率不可超过70%,任何非法套取优惠行为将扣除产生的盈利。
-
 					</p>
 				</div>
 				<!-- <div >
@@ -149,7 +143,7 @@
 						<br>3.所赠送的彩金需达到一倍流水即可申请出款，不再与其他优惠共享；
 						<br>4.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利。
 					</p>
-				</div> -->
+				</div>-->
 			</div>
 
 			<div v-if="id==98">
@@ -240,6 +234,17 @@ export default {
 	computed: {
 		...mapGetters(['platformFlag', 'user_token', 'account'])
 	},
+	watch: {
+		account: {
+			handler(val, old) {
+				if (val && this.id == '53') {
+					this.set_8888()
+				}
+			},
+			deep: true,
+			immediate: true
+		}
+	},
 	async mounted() {
 		this.id = this.$route.query.id
 		if (!this.id) {
@@ -323,7 +328,11 @@ export default {
 		},
 		set_8888() {
 			this.btns_8888 = []
-			let account = this.account
+			let account = this.account || {}
+			if (account.ownActivityStatus == '1') {
+				this.is_8888 = true
+				return
+			}
 			let day3 = {
 				disabled: true,
 				text: '等待领取',
@@ -380,6 +389,7 @@ export default {
 			this.btns_8888.push(day4)
 			this.btns_8888.push(day5)
 			this.is_8888 = true
+			return this.btns_8888
 		}
 	}
 }
@@ -480,8 +490,8 @@ export default {
 	color: rgba(116, 116, 116, 1);
 	line-height: 19px;
 }
-.p1{
-	margin-top:15px
+.p1 {
+	margin-top: 15px;
 }
 .actv_h5 {
 	padding: 24px 0 10px;

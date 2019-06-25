@@ -82,6 +82,7 @@ export default {
 			}
 			if (U_TK) {
 				this.setUserToken(U_TK)
+				this.$api.getUserInfoNoWarn()
 			} else {
 				this.setUserToken('')
 			}

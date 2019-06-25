@@ -49,6 +49,7 @@ export default {
       })
   },
   handleUserinfo(res) {
+    res.data.ownActivityStatus = '0'
     store.commit('SET_ACCOUNT', res.data)
     if (res.data.isReceive == '0') {
       store.commit('SET_ISGETCJ', true)
@@ -60,6 +61,9 @@ export default {
     } else if (res.data.threeReceive == '0') {
       store.commit('SET_FOOTREDDOT', true)
     } else {
+      store.commit('SET_FOOTREDDOT', false)
+    }
+    if(res.data.ownActivityStatus == '1'){ //活动过期
       store.commit('SET_FOOTREDDOT', false)
     }
   },
