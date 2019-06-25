@@ -74,14 +74,6 @@ export default {
 		closeDialog() {
 			this.show8888 = false
 		},
-		checkUUID() {
-			let U_IDK = localStorage.getItem('U_IDK')
-			if (!U_IDK) {
-				U_IDK = generateUUID()
-				localStorage.setItem('U_IDK', U_IDK)
-			}
-			this.setPlatformFlag(U_IDK)
-		},
 		checkUTK() {
 			let U_TK = localStorage.getItem('U_TK')
 			const ismjb = this.$route.query.ismjb

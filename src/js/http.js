@@ -65,7 +65,8 @@ instance.interceptors.response.use(
       /*这里的code是200成功拿到后台参数之后,后台返回的数据带的code状态码，如果后台没有返回这种code码，忽略此步骤*/
       switch (response.data.code) {
         case '9002':
-        case '9003': {
+        case '9003':
+        case '9001': {
           if (response.config.loginoutWarn) {
             //这边的提示可以通过config来做判断
             break
