@@ -7,16 +7,18 @@
     <div class="ptpCentent">
         <img style="width:100%;height:100%" src="./img/ptp.png" alt="">
         <div class="bottom">
-            <div class="qrcode">
-
+            <div class="parent">
+              <div ref="qrcode" class="qrcode">
+                <img class="img" :src="qrSrc">
+              </div>
             </div>
             <div class="inviteCode">
-              <div class="inviteCode_left">邀请码：zaq123456</div>
-              <div class="inviteCode_right">复制</div>
+              <div class="inviteCode_left">邀请码：{{result.inviteCode}}</div>
+              <div :data-clipboard-text="result.inviteCode" @click="codefun('邀请码')" class="inviteCode_right copy">复制</div>
             </div>
-            <p class="p">您已通过推荐好友，累计获得了 <span style="color:#FFE04D">10000</span> 佣金</p>
-            <p class="p p1">https://www.captainbi.com/amz_index.html?spread_code=0D9V</p>
-            <div class="btn">
+            <p class="p">您已通过推荐好友，累计获得了 <span style="color:#FFE04D">{{result.inviteMoney}}</span> 佣金</p>
+            <p class="p p1">{{result.link}}</p>
+            <div @click="linkfun('复制链接')" :data-clipboard-text="result.url" class="btn copy">
                 复制链接
             </div>
             <p class="p2">说明：通过扫描二维码或者复制链接注册成功的用户即可成为您的下线</p>
@@ -26,8 +28,72 @@
 </template>
 
 <script>
+import QRCode from '@/js/qrcode.js'
+import clipboard from 'clipboard'
 export default {
-  
+  data(){
+    return{
+      qrSrc:'',
+      result:{},
+      txt:""
+    }
+  },
+  mounted(){
+    this.getData()
+  },
+  methods:{
+    getData(){
+        this.$http.post('/user/getUserPromotion').then(res=>{
+          if (res.code == '200') {
+            this.result = res.data
+            this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
+            this.result.link=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
+						if (this.result.inviteMoney <= 0 || this.result.inviteMoney == 'null') {
+							this.result.url = this.result.url + '&我已经入驻YG娱乐平台，想邀请你来跟我一起免费赚佣金，快点来吧'
+						} else {
+							this.result.url =
+								this.result.url +
+								`&我已在YG娱乐平台赚到￥${this.result.inviteMoney}.00，想邀请你来跟我一起免费赚佣金，快点来吧`
+						}
+						this.$nextTick(() => {
+							this.setQrcode(this.result.url)
+							new clipboard('.copy').on('success', () => {
+								if (this.txt == '复制链接') {
+								} else {
+									this.$toast('邀请码复制成功，快去通知好友吧')
+								}
+							})
+						})
+					}
+        })
+    },
+    codefun(txt){
+      this.txt=txt
+    },
+    linkfun(txt){
+			this.txt=txt
+			Dialog.alert({
+				confirmButtonText:'好的',
+				message: '推荐链接与文案复制成功，赶快跟好友分享吧，分享人数越多，获得的佣金越多。'
+			}).then(() => {
+				
+			});
+		},
+    setQrcode(url) {
+			if (!url) {
+				return
+			}
+			let qrcodeEl = this.$refs.qrcode
+			let qr = new QRCode(qrcodeEl, {
+				text: url,
+				width: qrcodeEl.offsetWidth,
+				height: qrcodeEl.offsetHeight,
+				correctLevel: QRCode.CorrectLevel.L
+			})
+			let qrcodeSrc = qr._oDrawing.srcData
+			this.qrSrc = qrcodeSrc
+		},
+  }
 }
 </script>
 
@@ -51,10 +117,26 @@ export default {
         bottom:0;
         left:3%;
         height:370px;
-        .qrcode{
-          width:130px;
-          height:130px;
-          margin: 0 auto
+        .parent{
+            width:138px;
+            height:138px;
+            margin: 0 auto;
+            background: #fff;
+            position: relative;
+          .qrcode{
+            width:130px;
+            height:130px;
+            position: absolute;
+            right:0;
+            bottom:0;
+            left:0;
+            top:0;
+            margin: auto;
+            .img{
+              width:100%;
+              height:100%
+            }
+          }
         }
         .inviteCode{
           height:28px;
@@ -91,7 +173,7 @@ export default {
           margin-top:10px;
         }
         .p1{
-          margin-top:25px;
+          margin-top:20px;
         }
         .btn{
           width:305px;

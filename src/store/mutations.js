@@ -23,4 +23,7 @@ export default {
     SET_INVITE_CODE(state, param) {
         state.inviteCode = param;
     },
+    SET_SERVICE_URL(state, param) {
+        state.serviceUrl = param;
+    },
 }

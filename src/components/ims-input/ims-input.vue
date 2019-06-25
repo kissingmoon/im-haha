@@ -60,7 +60,6 @@ export default {
 		}
 	},
 	created(){
-		console.log(this.value)
 		if(this.value){
 			this.showInput = true
 			this.smallTXT = true
@@ -98,7 +97,7 @@ export default {
 		},
 		onInput(e) {
 			if (!this.inputLock) {
-				this.regInput(e.target)
+				// this.regInput(e.target)
 				e.returnValue = false
 				this.$emit('input', e.target.value)
 			}

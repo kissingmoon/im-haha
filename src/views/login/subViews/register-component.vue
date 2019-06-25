@@ -47,7 +47,7 @@
 <script>
 import imsInput from '@/components/ims-input/ims-input'
 import mainOptions from '@/config/main-option.js'
-import { randomWord } from '@/js/tools.js'
+import { randomWord, generateUUID } from '@/js/tools.js'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { net_register, net_sendSmsMsg } from '@/js/network.js'
 
@@ -159,7 +159,7 @@ export default {
 	watch: {
 		formData: {
 			handler(newVal, oldVal) {
-				var allRight = true
+				var allRight = true;
 				for (let key in newVal) {
 					if (!newVal[key].model && !newVal[key].noNecessary) {
 						allRight = false
@@ -298,6 +298,14 @@ export default {
 			}
 			return true
 		},
+		setPlatformFlag() {
+			let U_IDK = localStorage.getItem("U_IDK");
+			if(!U_IDK || U_IDK=="undefined"){
+				U_IDK = generateUUID();
+				localStorage.setItem("U_IDK", U_IDK);
+			}
+			return U_IDK;
+		},
 		async register() {
 			if (!this.btnActive) return
 			let result = this.checkForm(this.formData)
@@ -309,7 +317,8 @@ export default {
 			param.codeId = this.code_id
 			param.userId = this.formData.userId.model.toLowerCase()
 			param.pwd = this.formData.pwd.model
-			param.platformFlag = this.platformFlag
+			debugger
+			param.platformFlag = this.setPlatformFlag()
 			param.agentUrl = location.host
 			param.webUmidToken = sessionStorage.getItem("webUmidToken");
 			param.uaToken = sessionStorage.getItem("uaToken");

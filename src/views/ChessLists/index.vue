@@ -44,8 +44,7 @@ export default {
 	},
 	methods: {
 		open(list) {
-			console.log(list)
-			window.open(`/mpage?jumpLink=${this.interfaces.forwardName}&goto=getThird&gameType=${list.gameUrl}`)
+			this.$router.push(`/mpage?jumpLink=${this.interfaces.forwardName}&goto=getThird&gameType=${list.gameUrl}`)
 		}
 	}
 }
