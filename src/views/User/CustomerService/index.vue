@@ -60,7 +60,7 @@ export default {
 	left: 0;
 	bottom: 0;
 	right: 0;
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
 	background-size: cover;
 	/deep/.app_head {
 		background: none;

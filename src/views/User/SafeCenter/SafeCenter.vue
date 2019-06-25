@@ -152,7 +152,7 @@ export default {
 	min-height: 100%;
 	box-sizing: border-box;
 	padding-top: @app_head_height;
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	.main-container {
@@ -164,7 +164,7 @@ export default {
 				box-sizing: border-box;
 				border-radius: 10px;
 				&.has-card {
-					background: url('../../assets/bank_bg.png') no-repeat;
+					background: url('../../../assets/bank_bg.png') no-repeat;
 					background-size: cover;
 				}
 				&.no-card {
