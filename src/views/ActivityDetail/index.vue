@@ -56,9 +56,9 @@
 						</div>
 						<div class="actv_8888">
 							<div class="actv_8888_t margin_bottom_2">
-								<div class="flex_30">15元</div>
-								<div class="flex_40">25元</div>
-								<div class="flex_30">35元</div>
+								<div class="flex_30">48元</div>
+								<div class="flex_40">58元</div>
+								<div class="flex_30">68元</div>
 							</div>
 							<img class="actv_8888_img" src="../../assets/actv_0.png">
 							<div class="actv_8888_t actv_font_0 margin_bottom_8">

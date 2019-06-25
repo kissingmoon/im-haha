@@ -49,7 +49,6 @@ export default {
       })
   },
   handleUserinfo(res) {
-    res.data.ownActivityStatus = '0'
     store.commit('SET_ACCOUNT', res.data)
     if (res.data.isReceive == '0') {
       store.commit('SET_ISGETCJ', true)
