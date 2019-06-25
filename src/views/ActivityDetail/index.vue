@@ -322,7 +322,14 @@ export default {
 					})
 					this.$api.getUserInfo()
 				} else {
-					toast(res.msg)
+					if (res.code == '2037') {
+						toast({
+							duration: 3000,
+							message: res.msg
+						})
+					} else {
+						toast(res.msg)
+					}
 				}
 			})
 		},
