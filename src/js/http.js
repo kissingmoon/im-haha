@@ -111,9 +111,10 @@ instance.interceptors.response.use(
           break
         }
         default:
-          toast(response.data.msg)
+          response.data.msg && toast(response.data.msg)
       }
       return Promise.resolve(response.data)
+      
     } else {
       /*这里的status是网络并没有以200状态成功返回数据，就会进入此分支并根据网络异常状态进行处理，会进入catch逻辑*/
       return Promise.reject(response)
