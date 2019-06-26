@@ -2,7 +2,7 @@
 .team_wrapper {
 	min-height: 100%;
 	box-sizing: border-box;
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	padding-top: @app_head_height;

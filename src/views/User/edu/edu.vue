@@ -103,7 +103,7 @@
 
 <script>
 import { SwitchCell, Cell, CellGroup, Collapse, CollapseItem, Popup, Icon } from 'vant'
-import { getPlatformIconic, refreshAmount, manualTransferPayment, updateAutoChange } from '../../js/network'
+import { getPlatformIconic, refreshAmount, manualTransferPayment, updateAutoChange } from '@/js/network'
 import { mapGetters, mapMutations } from 'vuex'
 export default {
 	data() {
@@ -291,7 +291,7 @@ export default {
 	min-height: 100%;
 	box-sizing: border-box;
 	padding-top: @app_head_height;
-	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 

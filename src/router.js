@@ -115,12 +115,12 @@ export let needLoginRoutes = [
     path: '/safeCenter',
     name: 'safeCenter',
     component: () =>
-      import(/* webpackChunkName: "SafeCenter" */ './views/SafeCenter/SafeCenter.vue')
+      import(/* webpackChunkName: "SafeCenter" */ './views/User/SafeCenter/SafeCenter.vue')
   },
   {
     path: '/balance',
     name: 'balance',
-    component: () => import(/* webpackChunkName: "Balance" */ './views/Balance/Balance.vue')
+    component: () => import(/* webpackChunkName: "Balance" */ './views/User/Balance/Balance.vue')
   },
   {
     path: '/fundsDetail',
@@ -132,13 +132,13 @@ export let needLoginRoutes = [
     path: '/balanceRecord',
     name: 'balanceRecord',
     component: () =>
-      import(/* webpackChunkName: "BalanceRecord" */ './views/BalanceRecord/BalanceRecord.vue')
+      import(/* webpackChunkName: "BalanceRecord" */ './views/User/BalanceRecord/BalanceRecord.vue')
   },
   {
     path: '/setPassword',
     name: 'setPassword',
     component: () =>
-      import(/* webpackChunkName: "SetPassword" */ './views/SetPassword/SetPassword.vue')
+      import(/* webpackChunkName: "SetPassword" */ './views/User/SetPassword/SetPassword.vue')
   },
   {
     path: '/betDetail',
@@ -148,7 +148,7 @@ export let needLoginRoutes = [
   {
     path: '/edu',
     name: 'edu',
-    component: () => import(/* webpackChunkName: "withdrawal" */ './views/edu/edu.vue'),
+    component: () => import(/* webpackChunkName: "edu" */ './views/User/edu/edu.vue'),
     meta: {
       keepAlive: true
     }
@@ -167,32 +167,27 @@ export let needLoginRoutes = [
     path: '/commissionAll',
     name: 'commissionAll',
     component: () =>
-      import(/* webpackChunkName: "SiteMail" */ './views/commissionAll/commissionAll.vue')
-  },
-  {
-    path: '/teamMember',
-    name: 'teamMember',
-    component: () => import(/* webpackChunkName: "SiteMail" */ './views/teamMember/teamMember.vue')
+      import(/* webpackChunkName: "commissionAll" */ './views/commissionAll/commissionAll.vue')
   },
   {
     path: '/team',
     name: 'team',
-    component: () => import(/* webpackChunkName: "SiteMail" */ './views/team/team.vue')
+    component: () => import(/* webpackChunkName: "team" */ './views/Share/team/team.vue')
   },
   {
     path: '/agent',
     name: 'agent',
-    component: () => import(/* webpackChunkName: "SiteMail" */ './views/agent/agent.vue')
+    component: () => import(/* webpackChunkName: "agent" */ './views/agent/agent.vue')
   },
   {
     path: '/agentInstructions',
     name: 'agentInstructions',
-    component: () => import(/* webpackChunkName: "SiteMail" */ './views/agent/agentInstructions.vue')
+    component: () => import(/* webpackChunkName: "agentInstructions" */ './views/agent/agentInstructions.vue')
   },
   {
     path: '/ptp',
     name: 'ptp',
-    component: () => import(/* webpackChunkName: "SiteMail" */ './views/agent/ptp.vue')
+    component: () => import(/* webpackChunkName: "ptp" */ './views/agent/ptp.vue')
   },
 ]
 let routes = [
@@ -261,7 +256,7 @@ let routes = [
     path: '/customer-service',
     name: 'CustomerService',
     component: () =>
-      import(/* webpackChunkName: "CustomerService" */ './views/CustomerService/index.vue')
+      import(/* webpackChunkName: "CustomerService" */ './views/User/CustomerService/index.vue')
   },
   {
     path: '/mpage',

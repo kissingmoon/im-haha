@@ -47,7 +47,7 @@
 
 <script>
 import { net_getDrawCashRec } from '@/js/network.js'
-import noData from '../../components/noData/noData'
+import noData from '@/components/noData/noData'
 
 export default {
 	data() {

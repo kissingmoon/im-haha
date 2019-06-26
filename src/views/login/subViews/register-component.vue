@@ -317,7 +317,6 @@ export default {
 			param.codeId = this.code_id
 			param.userId = this.formData.userId.model.toLowerCase()
 			param.pwd = this.formData.pwd.model
-			debugger
 			param.platformFlag = this.setPlatformFlag()
 			param.agentUrl = location.host
 			param.webUmidToken = sessionStorage.getItem("webUmidToken");

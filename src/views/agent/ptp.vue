@@ -9,7 +9,7 @@
         <div class="bottom">
             <div class="parent">
               <div ref="qrcode" class="qrcode">
-                <img class="img" :src="qrSrc">
+                <img @click="showMask" class="img" :src="qrSrc">
               </div>
             </div>
             <div class="inviteCode">
@@ -24,6 +24,20 @@
             <p class="p2">说明：通过扫描二维码或者复制链接注册成功的用户即可成为您的下线</p>
         </div>
     </div>
+    <transition name="fade">
+			<div @click.stop="isShowMask = false" v-show="isShowMask" class="mask">
+				<div class="mask_main">
+					<div class="mask_qr">
+						<div ref="mask_qr_img" class="mask_qr_img">
+							<img class="img" :src="qrSrc">
+						</div>
+					</div>
+					<p class="mask_p0">长按二维码点击进行保存</p>
+					<p class="mask_p">保存后点击发送图片，小伙伴通过扫描二维码注册成功，立享佣金</p>
+					<div @click="isShowMask = false" class="mask_close"></div>
+				</div>
+			</div>
+		</transition>
   </div>
 </template>
 
@@ -35,7 +49,8 @@ export default {
     return{
       qrSrc:'',
       result:{},
-      txt:""
+      txt:"",
+      isShowMask:false,
     }
   },
   mounted(){
@@ -78,7 +93,10 @@ export default {
 			}).then(() => {
 				
 			});
-		},
+    },
+    showMask(){
+      this.isShowMask=true
+    },
     setQrcode(url) {
 			if (!url) {
 				return
@@ -98,6 +116,60 @@ export default {
 </script>
 
 <style lang="less" scoped> 
+.mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+	.mask_main {
+		width: 230px;
+	}
+	.mask_qr {
+		background: #ffffff;
+		width: 200px;
+		height: 200px;
+		margin: 0 auto;
+		padding: 10px;
+		box-sizing: border-box;
+		.mask_qr_img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			.img {
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+	.mask_p0 {
+		font-size: 14px;
+		color: #f5a623;
+		letter-spacing: 0;
+		text-align: center;
+		margin-top: 18px;
+	}
+	.mask_p {
+		font-size: 12px;
+		color: #ffffff;
+		letter-spacing: 0;
+		text-align: center;
+		line-height: 21px;
+		margin-top: 13px;
+	}
+	.mask_close {
+		width: 22px;
+		height: 22px;
+		background: url('../../assets/icon1.png') no-repeat;
+		background-size: 100%;
+		margin: 30px auto 0;
+	}
+}
   .ptp{
     height: 100%;
     box-sizing: border-box;

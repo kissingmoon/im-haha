@@ -7,17 +7,13 @@ import router from './router'
 import App from './App.vue'
 window.Dialog = Dialog
 window.toast = function(params) {
-  let toastObj = {}
-  let message, duration
+  let toastObj = {
+    duration: 1500
+  }
   if (typeof params == 'string') {
-    message = params
-    duration = 1500
-    toastObj = {
-      message,
-      duration
-    }
+    toastObj = Object.assign({}, toastObj, { message: params })
   } else if (typeof params == 'object') {
-    toastObj = params
+    toastObj = Object.assign({}, toastObj, params)
   }
   Toast(toastObj)
 }
@@ -31,7 +27,7 @@ import loading from './components/loading/loading.js'
 import interfaces from './config/url.js'
 import $http from './js/http.js'
 import api from './js/api.js'
-import { Swipe, SwipeItem} from 'vant';
+import { Swipe, SwipeItem } from 'vant'
 
 Vue.use(List)
   .use(Icon)

@@ -6,13 +6,13 @@
 			</keep-alive>
 		</transition>
 
-		<van-dialog class="actv_8888_dialog" :show-confirm-button="false" v-model="show8888">
+		<van-dialog class="actv_8888_dialog" :show-confirm-button="false" v-model="show188">
 			<div class="actv_88">
 				<div class="actv_8888_t">
-					<img class="actv_8888_img" src="./assets/88@2x.png">
-				</div>
-				<div class="actv_8888_b">
-					<div class="actv_8888_btn" @click="closeDialog">好的</div>
+					<img class="actv_8888_img" src="./assets/88.png">
+					<div class="actv_8888_b">
+						<div class="actv_8888_btn" @click="closeDialog"></div>
+					</div>
 				</div>
 			</div>
 		</van-dialog>
@@ -25,9 +25,14 @@ export default {
 	data() {
 		return {
 			keepALivePages: ['index'],
+<<<<<<< HEAD
 			show8888: false,
 			mjb_ios: false,
 			appWeb: false
+=======
+			show188: false,
+			mjb_ios: false
+>>>>>>> master
 		}
 	},
 	computed: {
@@ -41,7 +46,7 @@ export default {
 	watch: {
 		isGetCJ: {
 			handler(val, old) {
-				if (val != old && val) this.show8888 = true
+				if (val != old && val) this.show188 = true
 			},
 			immediate: true
 		},
@@ -75,7 +80,7 @@ export default {
 			})
 		},
 		closeDialog() {
-			this.show8888 = false
+			this.show188 = false
 		},
 		checkUTK() {
 			let U_TK = localStorage.getItem('U_TK')
@@ -90,6 +95,7 @@ export default {
 			}
 			if (U_TK) {
 				this.setUserToken(U_TK)
+				this.$api.getUserInfoNoWarn()
 			} else {
 				this.setUserToken('')
 			}
@@ -129,13 +135,13 @@ export default {
 </script>
 <style lang="less">
 .actv_8888_dialog {
-	width: 285px;
+	width: 321px;
 	background: transparent;
 }
 .actv_88 {
 	width: 100%;
 	.actv_8888_t {
-		height: 244px;
+		height: 433px;
 		position: relative;
 	}
 	.actv_8888_img {
@@ -143,20 +149,17 @@ export default {
 		display: block;
 	}
 	.actv_8888_b {
-		margin-top: -36px;
-		position: relative;
+		position: absolute;
+		left: 48px;
+		bottom: 26px;
 	}
 	.actv_8888_btn {
-		width: 134px;
-		height: 44px;
+		width: 237px;
+		height: 48px;
 		margin: 0 auto;
-		text-align: center;
 		box-shadow: none;
-		font-size: 16px;
-		color: #6e3be9;
-		line-height: 44px;
-		background: linear-gradient(0deg, rgba(208, 192, 255, 1) 1%, rgba(255, 255, 255, 1) 100%);
-		border-radius: 22px;
+		background: url('./assets/88_btn.png') no-repeat;
+		background-size:100%;
 	}
 }
 #app {

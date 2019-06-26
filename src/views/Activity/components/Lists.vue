@@ -11,7 +11,7 @@
 				<ims-image
 					class="img"
 					lazy
-					:src="list.id=='53' ? 'http://www.tryingdan.com/tupian/photo_2019-06-13_20-08-43909.jpg' : list.imageUrl "
+					:src="list.id=='53' ? 'http://cqyyjaaheyaea.com/tupian/das.jpg' : list.imageUrl "
 				>
 					<div class="img_placeholder" slot="placeholder"></div>
 				</ims-image>
