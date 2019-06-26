@@ -18,14 +18,14 @@ instance.interceptors.request.use(
       config.headers.common['Authorization'] = 'Bearer_' + user_token
     }
     config.headers.common['domain'] = 'fwnix.cn'
-    config.headers.common['template'] = 'fwnix.cn'
+    config.headers.common['template'] = 'ui_zhongbo'
     // 这里设置全局的参数格式，所有类型的请求都会走这个配置
     // 先对请求单独配置做判断，如果没有单独配置，就采用统一配置
     if (!config.headers['Content-Type']) {
       config.headers = {
         'Content-Type': 'application/json',
         domain: 'fwnix.cn',
-        template: 'fwnix.cn'
+        template: 'ui_zhongbo'
       }
     } else if (config.headers['Content-Type'] == 'application/x-www-form-urlencoded') {
       //if(config.data && Object.keys(config.data).length>0){
@@ -83,7 +83,12 @@ instance.interceptors.response.use(
           break
         case '10086':
           //您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码
-          // toast('您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码');
+          Dialog.alert({
+						message: '您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码',
+						confirmButtonText: '好的'
+					}).then(() => {
+            router.push('/login')
+          });
           $api.clearLocal()
           break
         case '200':

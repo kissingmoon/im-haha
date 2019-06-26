@@ -1,6 +1,6 @@
 <template>
-	<div class="login-wrapper">
-		<div class="header-container display-flex flex-center" @click="goBack">
+	<div class="login-wrapper headview_wrapper">
+		<div class="header-container display-flex flex-center login_back" @click="goBack">
 			<div class="back-content"></div>
 		</div>
 		<div class="top-container">
@@ -9,9 +9,12 @@
 			</div>
 			<div class="tip-content display-flex flex-center">
 				<span class="tip-line tip-line__left"></span>
-				&nbsp;&nbsp;热门游戏&nbsp;&nbsp;
+				&nbsp;&nbsp;
+					  权威机构认证  
+					&nbsp;&nbsp;
 				<span class="tip-line tip-line__right"></span>
 			</div>
+			<p class="tip_p">拥有多国官方监管机构颁发的合法执照</p>
 			<div class="down-content display-flex">
 				<div
 					class="item-content flex-1 display-flex flex-column flex-center"
@@ -19,19 +22,22 @@
 					:key="k"
 				>
 					<img :src="v.imgSrc" alt>
-					<div>{{ v.name }}</div>
+					<div class="item-content_p">{{ v.name }}</div>
+					<div class="item-content_p">{{v.dec}}</div>
 				</div>
 			</div>
 		</div>
 		<div
 			class="main-container display-flex"
-			:class="{ 
-                'marquee-left': scrollTo == 'left',
-                'marquee-right': scrollTo == 'right'
-            }"
 		>
-			<login-component @goNext="goNextFun"></login-component>
-			<register-component @goBefore="goBeforeFun"></register-component>
+		<swiper :options="swiperOption" ref="swp">
+			<swiper-slide>
+				<login-component @goNext="goNextFun"></login-component>
+			</swiper-slide>
+			<swiper-slide>
+				<register-component @goBefore="goBeforeFun"></register-component>
+			</swiper-slide>
+		</swiper>
 		</div>
 	</div>
 </template>
@@ -45,22 +51,27 @@ export default {
 	data() {
 		return {
 			scrollTo: '',
+			swiperOption: {},
 			iconList: [
 				{
 					imgSrc: require('./img/dl1.png'),
-					name: '棋牌游戏'
+					name: '马尔他博彩牌照',
+					dec: '(MGA)认证'
 				},
 				{
 					imgSrc: require('./img/dl2.png'),
-					name: '彩票投注'
+					name: '英属维尔京群岛',
+					dec: '(BVI)认证'
 				},
 				{
 					imgSrc: require('./img/dl3.png'),
-					name: '真人娱乐'
+					name: '菲律宾(PAGCOR)',
+					dec: '监督博彩牌照'
 				},
 				{
 					imgSrc: require('./img/dl4.png'),
-					name: '亚太体育'
+					name: '英国GC',
+					dec: '监督委员会'
 				}
 			]
 		}
@@ -76,13 +87,17 @@ export default {
 			setAccount: 'SET_ACCOUNT'
 		}),
 		goNextFun() {
-			this.scrollTo = 'left'
+			this.$refs.swp.swiper.slideTo(1);
 		},
 		goBeforeFun() {
-			this.scrollTo = 'right'
+			this.$refs.swp.swiper.slideTo(0);
 		},
 		goBack() {
-			this.$router.go(-1)
+			if (history.length <= 1) {
+				this.$router.push('/')
+			} else {
+				this.$router.go(-1)
+			}
 		}
 	}
 }
@@ -91,7 +106,7 @@ export default {
 <style lang="less" scoped>
 .login-wrapper {
 	background: url('./img/login-bg.jpg') no-repeat;
-	background-size: 100% auto;
+	background-size: cover;
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -113,25 +128,32 @@ export default {
 	}
 	.top-container {
 		.up-content {
-			height: 110px;
+			height: 90px;
 			img {
 				height: 55px;
 				width: 154px;
 			}
 		}
-		.tip-content {
-			margin-top: 25px;
-			font-size: 12px;
+		.tip_p{
+			color: #fff;
 			text-align: center;
-			color: @color_txt_yellow;
+			margin-top:5px; 
+		}
+		.tip-content {
+			margin-top: 20px;
+			font-size: 18px;
+			text-align: center;
+			color: #fff;
+			font-weight: bold;
+
 			.tip-line {
 				width: 73px;
 				height: 1px;
 				&.tip-line__left {
-					background: url('./img/left-line.png') no-repeat;
+					background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
 				}
 				&.tip-line__right {
-					background: url('./img/right-line.png') no-repeat;
+					background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
 				}
 			}
 		}
@@ -139,41 +161,21 @@ export default {
 			.item-content {
 				height: 110px;
 				font-size: 12px;
-				color: @color_txt_yellow;
+				color: #fff;
+				.item-content_p{
+					font-size: 11px;
+					white-space:nowrap;
+				}
 				img {
 					height: 48px;
 					width: 48px;
-					margin-bottom: 10px;
+					margin-bottom: 9px;
 				}
 			}
 		}
 	}
 	.main-container {
-		// padding-bottom: 50px;
-	}
-}
-.marquee-left {
-	transform: translate3d(-100%, 0, 0);
-	animation: marquee-left 0.2s linear;
-}
-@keyframes marquee-left {
-	0% {
-		transform: translate3d(0, 0, 0);
-	}
-	100% {
-		transform: translate3d(-100%, 0, 0);
-	}
-}
-.marquee-right {
-	transform: translate3d(0, 0, 0);
-	animation: marquee-right 0.2s linear;
-}
-@keyframes marquee-right {
-	0% {
-		transform: translate3d(-100%, 0, 0);
-	}
-	100% {
-		transform: translate3d(0, 0, 0);
+		
 	}
 }
 </style>

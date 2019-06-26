@@ -8,37 +8,38 @@ export default {
 		const goto = this.$route.query.goto
 		const gameType = this.$route.query.gameType
 		if (goto == 'pay') {
-			this.$http.post(gameJumpUrl, this.$route.query).then(res => {
-				if (res.code == 200) {
-					location.href = res.data.url
-				}
-			})
+			let loading = this.$loading({ text: '正在跳转…' })
+			this.$http
+				.post(gameJumpUrl, this.$route.query)
+				.then(res => {
+					if (res.code == 200) {
+						location.href = res.data.url
+					}
+					loading.close()
+				})
+				.catch(() => {
+					loading.close()
+				})
 		} else if (goto == 'getThird') {
 			let param = {}
 			if (gameType) {
 				param.gameType = gameType
 			}
-			this.$http.post(gameJumpUrl, param).then(res => {
-				if (res.code == 200) {
-					location.href = res.data
-				}
-			})
+			let loading = this.$loading({ text: '正在跳转…' })
+			this.$http
+				.post(gameJumpUrl, param)
+				.then(res => {
+					if (res.code == 200) {
+						location.href = res.data
+					}
+
+					loading.close()
+				})
+				.catch(() => {
+					loading.close()
+				})
 		} else {
 			location.href = gameJumpUrl
-		}
-	},
-	methods: {
-		getQueryString() {
-			const url = location.search //获取url中"?"符后的字串
-			const theRequest = new Object()
-			if (url.indexOf('?') != -1) {
-				const str = url.substr(1),
-					strs = str.split('&')
-				for (let i = 0; i < strs.length; i++) {
-					theRequest[strs[i].split('=')[0]] = unescape(strs[i].split('=')[1])
-				}
-			}
-			return theRequest
 		}
 	}
 }

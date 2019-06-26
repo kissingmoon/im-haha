@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<ims-header title="头像修改" />
+	<div class="useravator_wrapper headview_wrapper">
+		<ims-header title="头像修改"/>
 		<div v-show="isShow" class="avator">
 			<div class="imgs">
 				<ims-image
@@ -12,7 +12,7 @@
 					:src="list.imageUrl"
 				/>
 			</div>
-			<button @click="submit" class="btn">确定</button>
+			<button @click="submit" :disabled="disabled" class="btn">确定</button>
 		</div>
 	</div>
 </template>
@@ -24,8 +24,9 @@ export default {
 	data() {
 		return {
 			isShow: false,
-			active: null,
-			lists: []
+			active: -1,
+			lists: [],
+			disabled: true
 		}
 	},
 	computed: {
@@ -50,6 +51,7 @@ export default {
 	methods: {
 		selectImg(index) {
 			this.active = index
+			this.disabled = false
 		},
 		submit() {
 			this.$http.post('/user/editUserImage', { imageId: this.lists[this.active].id }).then(res => {
@@ -67,15 +69,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.avator {
-	padding-bottom: 50px;
-}
-.imgs {
-	display: flex;
-	flex-wrap: wrap;
-	padding: 15px;
-	justify-content: space-between;
-
+.useravator_wrapper {
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	.avator {
+		padding-bottom: 50px;
+	}
+	.imgs {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 15px;
+		justify-content: space-between;
+	}
 	.img {
 		width: 96px;
 		border-radius: 50%;
@@ -88,23 +94,26 @@ export default {
 	}
 	.img.active {
 		/deep/.image__inner {
-			border: 4px solid rgba(229, 200, 139, 1);
+			border: 4px solid #46a8fe;
 		}
 	}
-}
-.btn {
-	width: 265px;
-	height: 44px;
-	background: rgba(229, 200, 139, 1);
-	font-size: 18px;
-	color: rgba(255, 255, 255, 1);
-	line-height: 44px;
-	border: none;
-	outline: none;
-	box-sizing: border-box;
-	border-radius: 22px;
-	margin: 0 auto;
-	display: block;
+	.btn {
+		width: 265px;
+		height: 44px;
+		background: @btn_color;
+		font-size: 18px;
+		color: rgba(255, 255, 255, 1);
+		line-height: 44px;
+		border: none;
+		outline: none;
+		box-sizing: border-box;
+		border-radius: 22px;
+		margin: 0 auto;
+		display: block;
+	}
+	.btn:disabled {
+		background: @btn_color_disabled;
+	}
 }
 </style>
 

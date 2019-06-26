@@ -13,6 +13,7 @@
 					v-for="(text,index) in texts"
 					:style="{paddingRight:(index != texts.length-1) ? wrapWidth+'px' : '0px'}"
 					:key="index"
+					@click="diolag(text)"
 					class="text"
 				>{{text}}</span>
 			</div>
@@ -61,7 +62,7 @@ export default {
 							return
 						}
 						const offsetWidth = content.getBoundingClientRect().width
-						if (true ) {
+						if (true) {
 							this.offsetWidth = offsetWidth
 							this.duration = offsetWidth / this.speed
 							this.contentStyle = {
@@ -81,6 +82,14 @@ export default {
 	},
 
 	methods: {
+		diolag(text) {
+			if (text) {
+				Dialog.alert({
+					message: text,
+					confirmButtonText: '好的'
+				})
+			}
+		},
 		onAnimationEnd() {
 			this.firstRound = false
 			this.$nextTick(() => {
@@ -107,7 +116,7 @@ export default {
 	padding: 9px 20px 8px 17px;
 }
 .icon {
-	width: 16.5px;
+	width: 25px;
 	height: 15px;
 	background: url('./icon.png') no-repeat;
 	background-size: 100%;
@@ -115,6 +124,7 @@ export default {
 }
 .text {
 	display: inline-block;
+	color: #fff;
 }
 .wrap {
 	height: 15px;

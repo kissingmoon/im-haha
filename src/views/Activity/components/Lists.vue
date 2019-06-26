@@ -1,15 +1,25 @@
 <template>
 	<ul v-if="lists.length>0" class="activities">
 		<transition-group tag="ul" name="fade">
-			<li v-for="(list,index) in lists" :key="index" @click="openActivity(list)" class="activity">
-				<ims-image class="img" lazy :src="list.imageUrl">
+			<li
+				v-for="(list,index) in lists"
+				:key="index"
+				@click="openActivity(list)"
+				src="../121212.png"
+				class="activity"
+			>
+				<ims-image
+					class="img"
+					lazy
+					:src="list.id=='53' ? 'http://www.tryingdan.com/tupian/photo_2019-06-13_20-08-43909.jpg' : list.imageUrl "
+				>
 					<div class="img_placeholder" slot="placeholder"></div>
 				</ims-image>
 				<div class="title">
 					<p class="p">{{list.title}}</p>
-					<img class="icon" src="../../../assets/img/arrow_right_d.png">
+					<img class="icon" src="../../../assets/icon_right.png">
 				</div>
-				<div v-if="list.detailDemo == 'T01' && footRedDot" class="actv_8888"></div>
+				<div v-if="list.id == '53' && footRedDot" class="actv_8888"></div>
 			</li>
 		</transition-group>
 	</ul>
@@ -21,7 +31,7 @@ export default {
 	components: {
 		ImsImage
 	},
-		computed:{
+	computed: {
 		...mapGetters(['footRedDot'])
 	},
 	props: {
@@ -40,17 +50,27 @@ export default {
 </script>
 <style lang="less" scoped>
 .activities {
+	position: absolute;
+	top: 52px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 	width: 100%;
-	padding: 44px 15px 30px 15px;
+	padding: 0 15px;
 	box-sizing: border-box;
 	.activity {
 		background: transparent;
 		border-radius: 5px;
 		overflow: hidden;
-		margin-top: 10px;
+		margin-bottom: 10px;
 		position: relative;
 	}
-	.actv_8888{
+	.activity:first-child{
+		margin-top: 10px;
+	}
+	.actv_8888 {
 		position: absolute;
 		right: 0;
 		top: 0;
@@ -77,7 +97,7 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 		padding-right: 8px;
-		background: #fff;
+		background: rgba(255, 255, 255, 0.5);
 	}
 	.p {
 		.line-camp(1);
@@ -89,8 +109,8 @@ export default {
 		padding: 0 8px;
 	}
 	.icon {
-		width: 12px;
-		height: 12px;
+		width: 16px;
+		height: 16px;
 	}
 }
 </style>

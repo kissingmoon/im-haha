@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { Tab, Tabs, List } from 'vant';
+import { Tab, Tabs } from 'vant';
 export default {
     data() {
        return {

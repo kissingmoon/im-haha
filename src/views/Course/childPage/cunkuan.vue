@@ -1,7 +1,7 @@
 <template>
-	<div class="ck">
+	<div class="ck headview_wrapper">
 		<ims-header title="存款教程"/>
-		<Tabs :tabs="tabs" @click="clickTabs"/>
+		<Tabs class="ck_tabs" :tabs="tabs" @click="clickTabs"/>
 		<swiper :options="swiperOption">
 			<swiper-slide v-for="(item,index) in curSwipers" :key="index">
 				<img class="img" :src="item.imgSrc">
@@ -113,11 +113,21 @@ export default {
 
 <style scoped lang="less">
 .ck {
-	background-color: #ffffff;
-	height: 100%;
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-top: @app_head_height;
+	background: url('../../../assets/page_bg_default.jpg') no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+
+	/deep/ .swiper-container{
 	background: url('../img/cunkuan-bg.png') no-repeat;
 	background-size: 100% auto;
 	background-position: bottom;
+	}
+	.ck_tabs{
+		margin-top: 10px;
+	}
 	.img {
 		display: block;
 		width: 100%;
@@ -125,13 +135,13 @@ export default {
 	.swiper-pagination {
 		/deep/ .swiper-pagination-bullet {
 			box-sizing: border-box;
-			background: #dedede;
+			background: #fff;
 			opacity: 1;
-			width: 13px;
-			height: 13px;
+			width: 10px;
+			height: 10px;
 		}
 		/deep/ .swiper-pagination-bullet-active {
-			background: #e5c88b;
+			background: #46a8fe;
 		}
 	}
 }

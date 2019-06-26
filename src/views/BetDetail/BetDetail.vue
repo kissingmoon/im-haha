@@ -1,26 +1,30 @@
 <template>
 	<div class="bet-wrapper display-flex flex-column">
-		<div class="header-container">
-			<div class="header-box">
-				<ims-header title="投注记录" @onRightClick="onRightClick" :rightIcon="true">
-				</ims-header>
-			</div>
-		</div>
+		<ims-header title="投注记录">
+			<div slot="right" class="header-cottage" @click="onRightClick"></div>
+		</ims-header>
+
 		<div class="formTitle">
 			<div class="flexBox display-flex">
 				<div class="left flex-1 display-flex">
 					<div class="name flex-1">
 						<b>名称</b>
 					</div>
-					<div class="time flex-1"><b>时间</b></div>
+					<div class="time flex-1">
+						<b>时间</b>
+					</div>
 				</div>
 				<div class="right flex-1 display-flex">
-					<div class="tz flex-1"><b>投注</b></div>
-					<div class="profit flex-1"><b>盈亏</b></div>
+					<div class="tz flex-1">
+						<b>投注</b>
+					</div>
+					<div class="profit flex-1">
+						<b>盈亏</b>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="main flex-1">
+		<div class="main_main flex-1">
 			<van-pull-refresh v-if="details.length > 0" v-model="isLoading" @refresh="onRefresh">
 				<van-list v-model="Listloading" :finished="finished" finished-text="没有更多了" @load="loadMore">
 					<div class="itemWrap">
@@ -36,7 +40,7 @@
 								</div>
 							</div>
 							<div class="right flex-1 display-flex">
-								<div class="status flex-1 display-flex">- {{item.betNumber}}</div>
+								<div class="status flex-1 display-flex">{{item.betNumber}}</div>
 								<div
 									class="money flex-1 display-flex"
 									:style="{color: item.netNumber >= 0 ? '#89C5A6' : '#E0877F'}"
@@ -46,11 +50,16 @@
 					</div>
 				</van-list>
 			</van-pull-refresh>
-			<noData v-else></noData>
+			<noData class="no_data" v-else></noData>
 		</div>
 		<div class="bottom-popup-container">
 			<van-popup v-model="switchs.showPopup" position="bottom">
-				<div v-for="(v,k) in popList" :key="k" class="popup-item ims--txt--midum" @click="searchData(v)">{{ v.date_text }}</div>
+				<div
+					v-for="(v,k) in popList"
+					:key="k"
+					class="popup-item ims--txt--midum"
+					@click="searchData(v)"
+				>{{ v.date_text }}</div>
 				<div class="popup-item cacle-txt" @click="switchs.showPopup = false">取消</div>
 			</van-popup>
 		</div>
@@ -59,7 +68,7 @@
 
 <script>
 import { findUserRecord } from '../../js/network'
-import noData from "../../components/noData/noData"
+import noData from '../../components/noData/noData'
 export default {
 	data() {
 		return {
@@ -67,7 +76,7 @@ export default {
 				showPopup: false
 			},
 			popList: [
-				{ date_text: '全部', data_type: '' },
+				{ date_text: '全部', data_type: '5' },
 				{ date_text: '最近三天', data_type: '2' },
 				{ date_text: '最近一周', data_type: '3' },
 				{ date_text: '最近一月', data_type: '4' }
@@ -88,7 +97,6 @@ export default {
 	created() {
 		history.scrollRestoration = 'manual'
 		this.$emit('showChoose')
-
 		this.net_getData(0, this.pageData)
 	},
 	methods: {
@@ -157,35 +165,45 @@ export default {
 			this.switchs.showPopup = true
 		}
 	},
-	components:{
+	components: {
 		noData
 	}
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .bet-wrapper {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: @base_color;
-	.header-container {
-		.header-box {
-			height: 49px;
-		}
+	padding-top: @app_head_height;
+	box-sizing: border-box;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	.van-pull-refresh__track {
+		height: 100%;
 	}
+	.header-cottage {
+		width: 100%;
+		height: @app_head_height;
+		background: url('../../assets/time-ico.png') no-repeat;
+		background-size: 22px;
+		background-position: center right;
+	}
+
 	.formTitle {
 		position: fixed;
-		top: 50px;
+		top: @app_head_height;
 		left: 0;
 		right: 0;
 		z-index: 899;
 		color: #333;
 		line-height: 30px;
 		text-align: left;
-		background: #ffffff;
+		background: rgba(255, 255, 255, 0.5);
 		border-bottom: 1px solid #f2f2f2;
 		.flexBox {
 			padding: 0 12px;
@@ -195,10 +213,12 @@ export default {
 			}
 		}
 	}
-	.main {
+	.main_main {
 		padding-top: 30px;
-		background-color: #fff;
-		.van-pull-refresh {
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		/deep/.van-pull-refresh {
+			min-height: 100%;
 			border-top: 1px solid #f2f2f2;
 		}
 		.itemWrap {
@@ -251,11 +271,5 @@ export default {
 	}
 }
 </style>
-<style lang="less">
-.bet-wrapper {
-	.van-pull-refresh__track {
-		height: 100%;
-	}
-}
-</style>
+
 

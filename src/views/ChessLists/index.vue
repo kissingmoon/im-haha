@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="chess_wrapper headview_wrapper">
 		<ims-header :title="title"/>
 		<ul class="lists">
 			<li
@@ -32,8 +32,12 @@ export default {
 	mounted() {
 		this.title = this.$route.query.title || '游戏'
 		let id = this.$route.query.id
+		if (!id) {
+			this.$router.replace('/')
+			return
+		}
 		this.$http.post('/home/getPtGamesList', { id: id }).then(res => {
-			if (res.code == '200') {
+			if (res.code == '200') {				
 				this.lists = res.data.ptGamesList
 			}
 		})
@@ -47,10 +51,26 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.chess_wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding-top: @app_head_height;
+	min-height: 100%;
+	box-sizing: border-box;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: cover;
+	overflow: hidden;
+}
 .lists {
 	width: 100%;
+	height: 100%;
 	padding: 21px 11px 0;
 	box-sizing: border-box;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	.list {
 		width: 100px;
 		display: inline-block;

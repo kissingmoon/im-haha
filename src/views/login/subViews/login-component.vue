@@ -21,7 +21,7 @@
 					>
 						<div class="slot-icon--left" :class="v.leftIconClass" slot="leftIcon"></div>
 						<div class="slot-icon--right" :class="v.rightIconClass" slot="rightIcon">
-							<img v-if="v.imgSrc" :src="codeSrc" alt>
+							<img v-if="v.imgSrc" :src="codeSrc">
 						</div>
 					</ims-input>
 				</div>
@@ -35,7 +35,7 @@
 					@click="login"
 				>登录</div>
 				<div class="submit-tip">
-					<a href @click="goHome">先去逛逛</a>
+					<div href @click="goHome">先去逛逛</div>
 				</div>
 			</div>
 			<div class="submit-box display-flex flex-center flex-column" @click="goNext">
@@ -54,6 +54,9 @@ import { randomWord } from '@/js/tools.js'
 import { net_login } from '@/js/network.js'
 
 export default {
+	components: {
+		imsInput
+	},
 	data() {
 		return {
 			formData: {
@@ -79,7 +82,6 @@ export default {
 					model: '',
 					placeholder: '验证码',
 					leftIconClass: 'left-icon__code',
-					rightIconClass: 'right-icon__code',
 					rightIconClass: '',
 					type: 'tel',
 					regTip: '',
@@ -93,9 +95,7 @@ export default {
 			codeSrc: ''
 		}
 	},
-	components: {
-		imsInput
-	},
+
 	computed: {
 		...mapGetters(['platformFlag'])
 	},
@@ -127,11 +127,17 @@ export default {
 		goNext() {
 			this.$emit('goNext')
 		},
-		leftClickFun() {},
 		rightClickFun(v, k) {
 			if (k == 'code') {
 				this.formData.code.model = ''
 				this.setCode()
+			}
+			if (k == 'pwd') {
+				if (this.formData.pwd.rightIconClass == 'right-icon__eye') {
+					this.formData.pwd.rightIconClass = 'right-icon__eye0'
+				} else {
+					this.formData.pwd.rightIconClass = 'right-icon__eye'
+				}
 			}
 		},
 		inputFocusFun(v, k) {},
@@ -167,7 +173,11 @@ export default {
 				localStorage.setItem('U_TK', res.data.token)
 				this.setPlatformFlag(res.data.platformFlag)
 				this.$api.getUserInfo()
-				this.$router.go(-1)
+				if (history.length <= 1) {
+					this.$router.push('/')
+				} else {
+					this.$router.go(-1)
+				}
 			} else {
 				this.formData.code.model = ''
 				this.setCode()
@@ -180,7 +190,6 @@ export default {
 		},
 		goHome() {
 			this.$router.push('/')
-			return false
 		}
 	}
 }
@@ -195,34 +204,39 @@ export default {
 	box-sizing: border-box;
 	.main-container {
 		height: 100%;
+		width: 100%;
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+		box-sizing: border-box;
 		.form-box {
-			background: rgba(255, 255, 255, 0.1);
+			background: rgba(255, 255, 255, 0.4);
 			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.1);
 			padding: 0 15px 18px 15px;
 			.form-title {
 				padding: 25px 0 20px 0;
 				text-align: center;
-				font-size: 15px;
+				font-size: 18px;
 				font-family: 'HiraginoSansGB-W3';
 				font-weight: normal;
-				color: rgba(229, 200, 139, 1);
+				color: #fff;
 			}
 			.form-input-content {
+				width: 100%;
 				.form-input-item {
 					margin-top: 14px;
 					.slot-icon--left {
-						width: 15px;
-						height: 18px;
+						width: 20px;
+						height: 20px;
 						background-size: 100% 100%;
 						background-repeat: no-repeat;
 						&.left-icon__userId {
-							.bg-image('./../img/dl_peo');
+							background-image: url('../img/dl_peo.png');
 						}
 						&.left-icon__pwd {
-							.bg-image('./../img/dl_password');
+							background-image: url('../img/dl_password.png');
 						}
 						&.left-icon__code {
-							.bg-image('./../img/yanzhengma');
+							background-image: url('../img/yanzhengma.png');
 						}
 					}
 					.slot-icon--right {
@@ -231,7 +245,12 @@ export default {
 						&.right-icon__eye {
 							width: 18px;
 							height: 12px;
-							.bg-image('./../img/yanjing');
+							background-image: url('../img/yanjing.png');
+						}
+						&.right-icon__eye0 {
+							width: 18px;
+							height: 12px;
+							background-image: url('../img/yanjing0.png');
 						}
 						&.right-icon__clear {
 							width: 17px;
@@ -252,7 +271,7 @@ export default {
 					font-size: 12px;
 					font-family: 'HiraginoSansGB-W3';
 					font-weight: normal;
-					color: rgba(229, 200, 139, 1);
+					color: #fff;
 				}
 			}
 			.form-submit-content {
@@ -262,29 +281,28 @@ export default {
 				font-family: 'HiraginoSansGB-W3';
 				font-weight: normal;
 				color: rgba(255, 255, 255, 1);
-				background: rgba(155, 155, 155, 0.8);
+				background: rgba(155, 155, 155, .8);
 				&.active {
-					background: rgba(229, 200, 139, 1);
+					background: @btn_color;
 				}
 			}
 			.submit-tip {
 				text-align: center;
 				padding-top: 10px;
-				a {
+				div {
 					text-decoration: underline;
-					color: rgba(229, 200, 139, 1);
+					color: #fff;
 				}
 			}
 		}
 		.submit-box {
 			width: 54px;
-			background: rgba(0, 0, 0, 1);
-			box-shadow: 0px 5px 20px 0px rgba(223, 223, 223, 0.91);
-			opacity: 0.3;
+			background: rgba(0, 0, 0, 0.4);
+			flex-shrink: 0;
 			.submit-box__btn--top {
 				width: 24px;
 				height: 24px;
-				.bg-image('./../img/ico_zhuce');
+				background: url('../img/ico_zhuce.png') no-repeat;
 				background-size: 100% 100%;
 				margin-bottom: 15px;
 			}

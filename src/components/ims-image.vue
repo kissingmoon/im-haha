@@ -111,7 +111,7 @@ export default {
 }
 </script>
 <style>
-.image__inner{
+.image__inner {
 	display: block;
 	width: 100%;
 }
