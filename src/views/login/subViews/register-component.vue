@@ -16,14 +16,17 @@
 							:type="v.type"
 							:valueType="v.valueType"
 							:maxlength="v.maxlength"
+							:readonly="v.readonly"
 							@onInputFocus="inputFocusFun(v, k)"
 							@onInputBlur="inputBlurFun(v, k)"
 							@onleftClick="leftClickFun(v, k)"
 							@onrightClick="rightClickFun(v, k)"
 						>
 							<div class="slot-icon--left" :class="v.leftIconClass" slot="leftIcon"></div>
-							<div class="slot-icon--right" :class="v.rightIconClass" slot="rightIcon">
-								<img v-if="v.imgSrc" :src="codeSrc" alt>
+							<div class="slot-icon--right" :class="v.extra?'':v.rightIconClass" slot="rightIcon">
+								<img v-if="v.rightIconClass == 'right-icon__code'" :src="codeSrc" alt>
+								<span :class="v.rightIconClass" class="display-flex flex-center" v-if="v.rightIconClass == 'right-icon__simcode'" @click="sendSIMCode(k)">获取</span>
+								<span class="display-flex flex-center right-icon__simcode" v-if="v.rightIconClass == 'right-icon__waiting'">{{ countZero }}s</span>
 							</div>
 						</ims-input>
 						<div class="input-tip">
@@ -44,9 +47,9 @@
 <script>
 import imsInput from '@/components/ims-input/ims-input'
 import mainOptions from '@/config/main-option.js'
-import { randomWord } from '@/js/tools.js'
+import { randomWord, generateUUID } from '@/js/tools.js'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
-import { net_register } from '@/js/network.js'
+import { net_register, net_sendSmsMsg } from '@/js/network.js'
 
 export default {
 	data() {
@@ -60,7 +63,8 @@ export default {
 					type: '',
 					regTip: '请输入6-11位字母或数字',
 					valueType: 'letterNum',
-					maxlength: 11
+					maxlength: 11,
+					extra: false
 				},
 				pwd: {
 					model: '',
@@ -70,7 +74,8 @@ export default {
 					type: 'password',
 					regTip: '请输入6-16位字母或数字',
 					valueType: 'letterNum',
-					maxlength: 16
+					maxlength: 16,
+					extra: false
 				},
 				confirmPwd: {
 					model: '',
@@ -80,41 +85,83 @@ export default {
 					type: 'password',
 					regTip: '',
 					valueType: 'letterNum',
-					maxlength: 16
+					maxlength: 16,
+					extra: false
+				},
+								phone: {
+					model: '',
+					placeholder: '手机号',
+					leftIconClass: 'left-icon__phone',
+					rightIconClass: '',
+					rightIconClass: '',
+					type: 'tel',
+					regTip: '',
+					imgSrc: true,
+					valueType: 'num',
+					maxlength: 11,
+					extra: false
 				},
 				code: {
 					model: '',
 					placeholder: '验证码',
-					leftIconClass: 'left-icon__code',
-					rightIconClass: 'right-icon__code',
-					rightIconClass: '',
+					leftIconClass: 'left-icon__simcode',
+					rightIconClass: 'right-icon__simcode',
 					type: '',
 					regTip: '',
 					imgSrc: true,
 					valueType: 'num',
-					maxlength: 4
+					maxlength: 6,
+					extra: true
+				},
+				inviteCode:{
+					name:'inviteCode',
+					model:"",
+					placeholder: "邀请码（选填）",
+					leftIconClass: 'left-icon__inviteCode',
+					rightIconClass: '',
+					type: 'text',
+					regTip: '',
+					valueType: 'letterNum',
+					maxlength: 8,
+					extra: false,
+					noNecessary: true,
+					readonly:false
 				}
+				// code: {
+				// 	model: '',
+				// 	placeholder: '验证码',
+				// 	leftIconClass: 'left-icon__code',
+				// 	rightIconClass: 'right-icon__code',
+				// 	rightIconClass: '',
+				// 	type: '',
+				// 	regTip: '',
+				// 	imgSrc: true,
+				// 	valueType: 'num',
+				// 	maxlength: 4
+				// }
 			},
 			pointers: {
 				formData: -1
 			},
 			btnActive: false,
 			code_id: '',
-			codeSrc: ''
+			codeSrc: '',
+			timer: {},
+         	countZero: 60
 		}
 	},
 	components: {
 		imsInput
 	},
 	computed: {
-		...mapGetters(['net_btn_click', 'platformFlag'])
+		...mapGetters(['net_btn_click', 'platformFlag', 'invite_code'])
 	},
 	watch: {
 		formData: {
 			handler(newVal, oldVal) {
-				var allRight = true
+				var allRight = true;
 				for (let key in newVal) {
-					if (!newVal[key].model) {
+					if (!newVal[key].model && !newVal[key].noNecessary) {
 						allRight = false
 					} else if (key == 'userId') {
 						this.formData.userId.rightIconClass = 'right-icon__clear'
@@ -126,15 +173,61 @@ export default {
 		}
 	},
 	created() {
-		this.setCode()
+		// this.setCode()
+		this.checkInvite()
 	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
-			setAccount: 'SET_ACCOUNT'
+			setAccount: 'SET_ACCOUNT',
+			setInviteCode: 'SET_INVITE_CODE',
+			setNetBtnclick: 'SET_NET_BTNCLICK'
 		}),
 		goBefore() {
 			this.$emit('goBefore')
+		},
+		checkInvite() {
+			let inviteCode = this.$route.query.inviteCode;
+			if(!this.invite_code && inviteCode){
+				this.setInviteCode(inviteCode)
+			}
+			if(this.invite_code){
+				this.formData.inviteCode.model = this.invite_code;
+				this.formData.inviteCode.readonly = true;
+			}
+		},
+		sendSIMCode(index){
+			let val = this.formData.phone.model;
+			if(!/^1[1-9][0-9]{9}$/.test(val)){
+				this.$toast("手机号格式错误")
+				return
+			}
+			if(!this.net_btn_click){
+				return
+			}
+			let param = {};
+			param.phone = this.formData.phone.model;
+			this.setNetBtnclick(false);
+			net_sendSmsMsg(param).then(res => {
+				if(res.code == "200"){
+					this.$toast("验证码已发送")
+					this.countTimer(this.countZero);
+					this.formData[index].rightIconClass = "right-icon__waiting";
+				}
+			})
+		},
+		countTimer(num) {
+			if (this.countZero == 0) {		
+				this.formData.code.rightIconClass = "right-icon__simcode";
+				this.countZero = 60;
+				this.timer = null;
+			} else {
+				this.countZero--;
+				this.timer = setTimeout(() => {
+					this.countTimer(this.countZero)
+				},
+				1000)
+			}
 		},
 		leftClickFun() {},
 		rightClickFun(v, k) {
@@ -173,6 +266,13 @@ export default {
 		checkForm(param) {
 			let keys = Object.keys(param)
 			for (let item of keys) {
+				if (item == 'phone') {
+					let val = param[item].model;
+					if(!/^1[1-9][0-9]{9}$/.test(val)){
+						this.$toast('手机号格式错误')
+						return false
+					}
+				}
 				if (item == 'userId') {
 					if (param[item].model.length < 6) {
 						this.$toast('用户名长度最少6位')
@@ -190,26 +290,37 @@ export default {
 					}
 				}
 				if (item == 'code') {
-					if (param[item].model.length != 4) {
-						this.$toast('请输入4位数字验证码')
+					if (param[item].model.length != 6) {
+						this.$toast('请输入6位数字验证码')
 						return false
 					}
 				}
 			}
 			return true
 		},
+		setPlatformFlag() {
+			let U_IDK = localStorage.getItem("U_IDK");
+			if(!U_IDK || U_IDK=="undefined"){
+				U_IDK = generateUUID();
+				localStorage.setItem("U_IDK", U_IDK);
+			}
+			return U_IDK;
+		},
 		async register() {
 			if (!this.btnActive) return
 			let result = this.checkForm(this.formData)
 			if (!result) return
 			let param = {}
+			param.phone = this.formData.phone.model
 			param.code = this.formData.code.model
-			param.inviteCode = ''
+			param.inviteCode = this.formData.inviteCode.model
 			param.codeId = this.code_id
 			param.userId = this.formData.userId.model.toLowerCase()
 			param.pwd = this.formData.pwd.model
-			param.platformFlag = this.platformFlag
+			param.platformFlag = this.setPlatformFlag()
 			param.agentUrl = location.host
+			param.webUmidToken = sessionStorage.getItem("webUmidToken");
+			param.uaToken = sessionStorage.getItem("uaToken");
 			let res = await net_register(param)
 			if (res.code == '200') {
 				toast('注册成功！')
@@ -231,7 +342,7 @@ export default {
 .reg-wrapper {
 	width: 100%;
 	height: 100%;
-	padding: 0 12px;
+	padding: 0 12px 20px 0;
 	flex-shrink: 0;
 	box-sizing: border-box;
 	.main-container {
@@ -288,6 +399,15 @@ export default {
 						&.left-icon__code {
 							background-image: url('../img/yanzhengma.png');
 						}
+						&.left-icon__simcode {
+							background-image: url('../img/shoujiyzm.png');
+						}
+						&.left-icon__phone {
+							background-image: url('../img/phone.png');
+						}
+						&.left-icon__inviteCode{
+							background-image: url('../img/invite-code.png');
+						}
 					}
 					.slot-icon--right {
 						background-size: 100% 100%;
@@ -311,6 +431,12 @@ export default {
 							display: flex;
 							width: 80px;
 							height: 35px;
+						}
+						.right-icon__simcode{
+							width:46px;
+							height:29px;
+							background:rgba(255,255,255,0.7);
+							border-radius:4px;
 						}
 					}
 				}

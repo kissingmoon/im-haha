@@ -37,7 +37,6 @@ export default {
 		this.init()
 	},
 	activated() {
-		this.getHomeHeadData()
 		if (this.isError) {
 			this.init()
 		} else {

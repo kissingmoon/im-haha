@@ -18,7 +18,7 @@ export default {
 	},
 	data() {
 		return {
-			keepALivePages: ['home', 'course', 'activity', 'user']
+			keepALivePages: ['home', 'share', 'activity', 'user']
 		}
 	},
 	computed: {
@@ -35,7 +35,7 @@ export default {
 		async getAlert() {
 			let res = await net_getAlert()
 			if (res.code == '200') {
-				if (res.data.alert) {
+				if (res.data && res.data.alert) {
 					if (!this.isGetCJ) {
 						Dialog.alert({
 							title: res.data.title,

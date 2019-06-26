@@ -10,6 +10,14 @@ Vue.use(Router)
 
 let course_router = [
   {
+    path: '/course',
+    name: 'course',
+    component: Course,
+    meta: {
+      keepAlive: true
+    }
+  },
+  {
     path: '/',
     name: 'jc',
     component: () => import(/* webpackChunkName: "jc" */ './views/Course/Course.vue'),
@@ -80,17 +88,18 @@ export let needLoginRoutes = [
   {
     path: '/userinfo',
     name: 'Userinfo',
-    component: () => import(/* webpackChunkName: "Userinfo" */ './views/Userinfo/index.vue')
+    component: () => import(/* webpackChunkName: "Userinfo" */ './views/User/Userinfo/index.vue')
   },
   {
     path: '/username',
     name: 'Username',
-    component: () => import(/* webpackChunkName: "Username" */ './views/Username/index.vue')
+    component: () => import(/* webpackChunkName: "Username" */ './views/User/Username/index.vue')
   },
   {
     path: '/useravator',
     name: 'Useravator',
-    component: () => import(/* webpackChunkName: "Useravator" */ './views/Useravator/index.vue')
+    component: () =>
+      import(/* webpackChunkName: "Useravator" */ './views/User/Useravator/index.vue')
   },
   {
     path: '/bank-charge',
@@ -106,12 +115,12 @@ export let needLoginRoutes = [
     path: '/safeCenter',
     name: 'safeCenter',
     component: () =>
-      import(/* webpackChunkName: "SafeCenter" */ './views/SafeCenter/SafeCenter.vue')
+      import(/* webpackChunkName: "SafeCenter" */ './views/User/SafeCenter/SafeCenter.vue')
   },
   {
     path: '/balance',
     name: 'balance',
-    component: () => import(/* webpackChunkName: "Balance" */ './views/Balance/Balance.vue')
+    component: () => import(/* webpackChunkName: "Balance" */ './views/User/Balance/Balance.vue')
   },
   {
     path: '/fundsDetail',
@@ -123,13 +132,13 @@ export let needLoginRoutes = [
     path: '/balanceRecord',
     name: 'balanceRecord',
     component: () =>
-      import(/* webpackChunkName: "BalanceRecord" */ './views/BalanceRecord/BalanceRecord.vue')
+      import(/* webpackChunkName: "BalanceRecord" */ './views/User/BalanceRecord/BalanceRecord.vue')
   },
   {
     path: '/setPassword',
     name: 'setPassword',
     component: () =>
-      import(/* webpackChunkName: "SetPassword" */ './views/SetPassword/SetPassword.vue')
+      import(/* webpackChunkName: "SetPassword" */ './views/User/SetPassword/SetPassword.vue')
   },
   {
     path: '/betDetail',
@@ -139,7 +148,7 @@ export let needLoginRoutes = [
   {
     path: '/edu',
     name: 'edu',
-    component: () => import(/* webpackChunkName: "withdrawal" */ './views/edu/edu.vue'),
+    component: () => import(/* webpackChunkName: "edu" */ './views/User/edu/edu.vue'),
     meta: {
       keepAlive: true
     }
@@ -152,8 +161,34 @@ export let needLoginRoutes = [
   {
     path: '/siteMail',
     name: 'SiteMail',
-    component: () => import(/* webpackChunkName: "SiteMail" */ './views/SiteMail/SiteMail.vue')
-  }
+    component: () => import(/* webpackChunkName: "SiteMail" */ './views/User/SiteMail/SiteMail.vue')
+  },
+  {
+    path: '/commissionAll',
+    name: 'commissionAll',
+    component: () =>
+      import(/* webpackChunkName: "commissionAll" */ './views/commissionAll/commissionAll.vue')
+  },
+  {
+    path: '/team',
+    name: 'team',
+    component: () => import(/* webpackChunkName: "team" */ './views/Share/team/team.vue')
+  },
+  {
+    path: '/agent',
+    name: 'agent',
+    component: () => import(/* webpackChunkName: "agent" */ './views/agent/agent.vue')
+  },
+  {
+    path: '/agentInstructions',
+    name: 'agentInstructions',
+    component: () => import(/* webpackChunkName: "agentInstructions" */ './views/agent/agentInstructions.vue')
+  },
+  {
+    path: '/ptp',
+    name: 'ptp',
+    component: () => import(/* webpackChunkName: "ptp" */ './views/agent/ptp.vue')
+  },
 ]
 let routes = [
   {
@@ -177,21 +212,13 @@ let routes = [
         }
       },
       {
-        path: '/course',
-        name: 'course',
-        component: Course,
+        path: '/share',
+        name: 'share',
+        component: Share,
         meta: {
           keepAlive: true
         }
       },
-      // {
-      //   path: '/share',
-      //   name: 'share',
-      //   component: Share,
-      //   meta: {
-      //     keepAlive: true
-      //   }
-      // },
       {
         path: '/activity',
         name: 'activity',
@@ -211,6 +238,10 @@ let routes = [
     ]
   },
   {
+    path: '/regist',
+    redirect: '/login'
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "Login" */ './views/login/login.vue')
@@ -225,7 +256,7 @@ let routes = [
     path: '/customer-service',
     name: 'CustomerService',
     component: () =>
-      import(/* webpackChunkName: "CustomerService" */ './views/CustomerService/index.vue')
+      import(/* webpackChunkName: "CustomerService" */ './views/User/CustomerService/index.vue')
   },
   {
     path: '/mpage',
@@ -235,7 +266,7 @@ let routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ './views/About/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ './views/User/About/About.vue')
   },
   ...needLoginRoutes,
   ...course_router
@@ -258,6 +289,10 @@ router.beforeEach((to, from, next) => {
       return to.path == item.path
     })
     if (needLogin) {
+      next('/')
+    }
+  } else {
+    if (to.path == '/login') {
       next('/')
     }
   }

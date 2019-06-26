@@ -1,5 +1,6 @@
 <template>
-	<div class="course_wrapper view_wrapper">
+	<div class="course_wrapper headview_wrapper">
+		<ims-header class="about_head" title="教程"></ims-header>
 		<div class="courses">
 			<div v-for="(list,i) in lists" @click="openLink(list)" :key="i" class="course">
 				<div class="c_l">
@@ -43,6 +44,16 @@ export default {
 </script>
 <style lang="less" scoped>
 .course_wrapper {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding-top: @app_head_height;
+	box-sizing: border-box;
+	background: url('../../assets/page_bg_default.jpg') no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
 	.courses {
 		padding: 21px 10px;
 	}
