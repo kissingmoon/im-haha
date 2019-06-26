@@ -25,14 +25,9 @@ export default {
 	data() {
 		return {
 			keepALivePages: ['index'],
-<<<<<<< HEAD
-			show8888: false,
-			mjb_ios: false,
-			appWeb: false
-=======
+			appWeb: false,
 			show188: false,
 			mjb_ios: false
->>>>>>> master
 		}
 	},
 	computed: {
