@@ -16,7 +16,7 @@
               <div class="inviteCode_left">邀请码：{{result.inviteCode}}</div>
               <div :data-clipboard-text="result.inviteCode" @click="codefun('邀请码')" class="inviteCode_right copy">复制</div>
             </div>
-            <p class="p">您已通过推荐好友，累计获得了 <span style="color:#FFE04D">{{result.inviteMoney}}</span> 佣金</p>
+            <p class="p">您已通过推荐好友，累计获得了 <span style="color:#FFE04D">￥{{result.inviteMoney=='null'?0:result.inviteMoney}}.00</span> 佣金</p>
             <p class="p p1">{{result.link}}</p>
             <div @click="linkfun('复制链接')" :data-clipboard-text="result.url" class="btn copy">
                 复制链接

@@ -33,6 +33,9 @@ import $http from './js/http.js'
 import api from './js/api.js'
 import { Swipe, SwipeItem} from 'vant';
 
+import animated from 'animate.css'
+Vue.use(animated) 
+
 Vue.use(List)
   .use(Icon)
   .use(Popup)

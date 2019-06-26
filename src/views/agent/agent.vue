@@ -7,47 +7,47 @@
 		</div>
         <div class="Yesterday">
             <p class="Yesterday_p">昨日业绩</p>
-            <p class="Yesterday_money">10000<em style="font-size:24px;fontWeight: 650">￥</em></p>
+            <p class="Yesterday_money">{{Yesterday.yesterdayMoney.toFixed(2)}}<em style="font-size:24px;fontWeight: 650">￥</em></p>
         </div>
         <div class="profit_commission">
             <div class="left">
-                <p class="profit_commission_p p1">0人</p>
-                <p class="profit_commission_p">昨日红利佣金</p>
+                <p class="profit_commission_p p1">￥{{Yesterday.redbagCount.toFixed(2)}}</p>
+                <p class="profit_commission_p">昨日推荐佣金</p>
             </div>
             <div class="right">
-                <p class="profit_commission_p p2">￥0.00</p>
-                <p class="profit_commission_p">红利佣金总计</p>
+                <p class="profit_commission_p p2">￥{{Yesterday.totalCommission.toFixed(2)}}</p>
+                <p class="profit_commission_p">昨日红利佣金</p>
             </div>
         </div>
         <div class="aesearchersAdd">
             <div class="aesearchersAdd_div">
-                <p class="aesearchersAdd_div_p p1">0人</p>
+                <p class="aesearchersAdd_div_p p1">{{Yesterday.addNumber}}人</p>
                 <p class="aesearchersAdd_div_p">今日新增</p>
             </div>
             <div class="aesearchersAdd_div">
-                <p class="aesearchersAdd_div_p p2">0人</p>
+                <p class="aesearchersAdd_div_p p2">{{Yesterday.thisMonthNumber}}人</p>
                 <p class="aesearchersAdd_div_p">本月新增</p>
             </div>
             <div class="aesearchersAdd_div">
-                <p class="aesearchersAdd_div_p p3">280人</p>
+                <p class="aesearchersAdd_div_p p3">{{Yesterday.geamMembers}}人</p>
                 <p class="aesearchersAdd_div_p">团队成员</p>
             </div>
         </div>
         <div class="getCommission">
             分享推荐佣金：10000
-            <div class="receive">转账余额</div>
+            <div  class="receive">转账余额</div>
         </div>
         <div class="getCommission">
             业绩红利佣金：10000
             <div class="receive">立即领取</div>
         </div>
         <div class="getCommission">
-            历史佣金业绩：10000
+            历史佣金业绩：￥{{Yesterday.historyCommission.toFixed(2)}}
             <div class="goto"></div>
         </div>
         <div @click="goto('/ptp')" class="promote">
             <p class="promote_p">推广赚钱</p>
-            <p class="promote_p">分享累计已赚3000.00</p>
+            <p class="promote_p">分享累计已赚￥{{Yesterday.historyCommission.toFixed(2)}}</p>
             <div class="promote_div">
                 立即分享
                 <div class="promote_div_goto">
@@ -55,21 +55,45 @@
                 </div>
             </div>
         </div>
+        <p class="currentLevel">当前推广等级：<span style="color:#000">代理级</span></p>
     </div>
 </template>
 
 
 <script>
+import { mapGetters } from 'vuex'
     export default {
        data(){
            return{
-
+               Yesterday:{},
            }
        } ,
+       created(){
+           this.agent()
+       },
+       computed:{
+           ...mapGetters(['user_token'])
+       },
        methods:{
-           goto(path){
-               this.$router.push(path)
-           }
+            goto(path){
+                this.$router.push(path)
+            },
+            agent(){
+                if(!this.user_token){
+                    this.$router.push('/login')
+                    return
+                }else{
+                    this.yesterday()
+                }  
+            },
+            yesterday(){
+                this.$http.post('/gameAgent/integrated-interface').then(res=>{                   
+                    if(res.code=='200'){
+                        console.log(res)
+                        this.Yesterday=res.data
+                    }
+                })
+            },
        }
     }
 </script>
@@ -237,6 +261,15 @@
                     background-size: 100% 100%
                 }
             }
+        }
+        .currentLevel{
+            width:84.67%;
+            line-height: 20px;
+            color:#4A4A4A;
+            text-align: left;
+            font-size: 14px;
+            margin: 0 auto;
+            margin-top:12px;
         }
     }
 </style>

@@ -273,6 +273,11 @@ let routes = [
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ './views/User/About/About.vue')
   },
+  {
+    path: '/commissionDetails',
+    name: 'commissionDetails',
+    component: () => import(/* webpackChunkName: "about" */ './views/commissionAll/commissionDetails.vue')
+  },
   ...needLoginRoutes,
   ...course_router
 ]
