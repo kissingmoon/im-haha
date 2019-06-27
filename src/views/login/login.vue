@@ -80,7 +80,11 @@ export default {
 		loginComponent,
 		registerComponent
 	},
-	computed: {},
+	mounted(){
+		if(this.$route.query.inviteCode){
+			this.goNextFun()
+		}
+	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',

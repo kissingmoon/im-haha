@@ -54,7 +54,7 @@
 				<div class="linear"></div>
 				<div @click="clickThis(1)" class="btn">
 					<img class="img" src="./img/icon_new_mine_deal.png">
-					<p class="p">交易记录</p>
+					<p class="p">资金明细</p>
 				</div>
 				<div class="linear"></div>
 				<div @click="clickThis(2)" class="btn">
@@ -63,22 +63,27 @@
 				</div>
 			</div>
 			<div class="btns">
+				<div @click="clickThis(8)" class="btn">
+					<img class="img" src="./img/daili_icon.png">
+					<p class="p">我的代理</p>
+				</div>
+				<div class="linear"></div>
 				<div @click="clickThis(3)" class="btn">
 					<img class="img" src="./img/icon_new_mine_courtesy.png">
 					<p class="p">额度转换</p>
 				</div>
 				<div class="linear"></div>
-				<div @click="clickThis(4)" class="btn">
-					<img class="img" src="./img/icon_new_mine_vip.png">
-					<p class="p">VIP详情</p>
-				</div>
-				<div class="linear"></div>
+				<div @click="clickThis(4,false)" class="btn">
+					<img class="img" src="./img/guide.png">
+					<p class="p">新手教程</p>
+				</div>	
+			</div>
+			<div class="btns">
 				<div @click="clickThis(5,false)" class="btn">
 					<img class="img" src="./img/icon_new_mine_bankcard.png">
 					<p class="p">客服</p>
 				</div>
-			</div>
-			<div class="btns">
+				<div class="linear"></div>
 				<div @click="clickThis(6,false)" class="btn">
 					<img class="img" src="./img/icon_new_mine_about.png">
 					<p class="p">关于</p>
@@ -89,10 +94,10 @@
 					<p class="p">安全中心</p>
 				</div>
 				<div class="linear"></div>
-				<div @click="clickThis(8)" class="btn">
+				<!-- <div @click="clickThis(8)" >
 					<img class="img" src="./img/icon_new_mine_loginout.png">
 					<p class="p">账号退出</p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -146,7 +151,7 @@ export default {
 					break
 				}
 				case 4: {
-					toast('正在升级中，敬请期待')
+					this.$router.push('/course')
 					break
 				}
 				case 5: {
@@ -162,7 +167,8 @@ export default {
 					break
 				}
 				case 8: {
-					this.quitClick()
+					this.$toast('正在升级中，敬请期待')
+					//this.$router.push('/agent')
 					break
 				}
 				case 10: {
@@ -187,31 +193,31 @@ export default {
 				}
 			}
 		},
-		quitClick() {
-			Dialog.confirm({
-				title: '确定要退出登录账户吗？'
-			})
-				.then(() => {
-					this.quitAccount()
-				})
-				.catch(() => {})
-		},
-		async quitAccount(action, done) {
-			// if (action === 'confirm') {
-			// let res = await net_signOut();
-			// if(res.code == "200"){
-			// 	this.$api.clearLocal ();
-			// 	done();
-			// }
-			// } else {
-			// 	done();
-			// }
-			let res = await net_signOut()
-			if (res.code == '200') {
-				this.$api.clearLocal()
-				toast('成功退出登录！')
-			}
-		}
+		// quitClick() {
+		// 	Dialog.confirm({
+		// 		title: '确定要退出登录账户吗？'
+		// 	})
+		// 		.then(() => {
+		// 			this.quitAccount()
+		// 		})
+		// 		.catch(() => {})
+		// },
+		// async quitAccount(action, done) {
+		// 	// if (action === 'confirm') {
+		// 	// let res = await net_signOut();
+		// 	// if(res.code == "200"){
+		// 	// 	this.$api.clearLocal ();
+		// 	// 	done();
+		// 	// }
+		// 	// } else {
+		// 	// 	done();
+		// 	// }
+		// 	let res = await net_signOut()
+		// 	if (res.code == '200') {
+		// 		this.$api.clearLocal()
+		// 		toast('成功退出登录！')
+		// 	}
+		// }
 	}
 }
 </script>

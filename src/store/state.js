@@ -6,5 +6,7 @@ export default {
   platformFlag: '',
   net_btn_click: true,
   isGetCJ: false, //  是否可以领取彩金
-  footRedDot: false //  脚部红点显示
+  footRedDot: false, //  脚部红点显示
+  inviteCode: '',
+  serviceUrl: ''
 }

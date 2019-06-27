@@ -64,8 +64,9 @@ instance.interceptors.response.use(
     if (response.status === 200) {
       /*这里的code是200成功拿到后台参数之后,后台返回的数据带的code状态码，如果后台没有返回这种code码，忽略此步骤*/
       switch (response.data.code) {
-        case '9002':
-        case '9003': {
+        case '9001':
+        case '9002': {
+          $api.clearLocal()
           if (response.config.loginoutWarn) {
             //这边的提示可以通过config来做判断
             break
@@ -74,7 +75,6 @@ instance.interceptors.response.use(
           setTimeout(() => {
             router.push('/login')
           }, 1000)
-          $api.clearLocal()
           break
         }
         case '1003':
@@ -111,9 +111,10 @@ instance.interceptors.response.use(
           break
         }
         default:
-          toast(response.data.msg)
+          response.data.msg && toast(response.data.msg)
       }
       return Promise.resolve(response.data)
+      
     } else {
       /*这里的status是网络并没有以200状态成功返回数据，就会进入此分支并根据网络异常状态进行处理，会进入catch逻辑*/
       return Promise.reject(response)

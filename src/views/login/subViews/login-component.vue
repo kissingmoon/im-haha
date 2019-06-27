@@ -14,7 +14,6 @@
 						:type="v.type"
 						:valueType="v.valueType"
 						:maxlength="v.maxlength"
-						@onInputFocus="inputFocusFun(v, k)"
 						@onInputBlur="inputBlurFun(v, k)"
 						@onleftClick="leftClickFun(v, k)"
 						@onrightClick="rightClickFun(v, k)"
@@ -95,9 +94,8 @@ export default {
 			codeSrc: ''
 		}
 	},
-
 	computed: {
-		...mapGetters(['platformFlag'])
+		...mapGetters(['platformFlag', 'serviceUrl'])
 	},
 	watch: {
 		formData: {
@@ -122,7 +120,8 @@ export default {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
 			setAccount: 'SET_ACCOUNT',
-			setPlatformFlag: 'SET_PLATFORM_FLAG'
+			setPlatformFlag: 'SET_PLATFORM_FLAG',
+			setServiceUrl: 'SET_SERVICE_URL'
 		}),
 		goNext() {
 			this.$emit('goNext')
@@ -140,7 +139,6 @@ export default {
 				}
 			}
 		},
-		inputFocusFun(v, k) {},
 		inputBlurFun(v, k) {
 			if (k == 'userId') {
 				this.formData.userId.rightIconClass = ''
@@ -185,8 +183,26 @@ export default {
 			}
 		},
 		goToKefu() {
-			location.href =
-				'https://e19.entrychat.com/chat/chatClient/chatbox.jsp?companyID=1146765&configID=2564&jid=6346431126&s=1'
+			if (this.serviceUrl) {
+				location.href = this.serviceUrl
+			} else {
+				let loading = this.$loading({ text: '正在加载…' })
+				this.$http
+					.post('/home/getServiceUrl')
+					.then(res => {
+						if (res.code == '200') {
+							this.setServiceUrl(res.data.serviceUrl)
+							location.href = res.data.serviceUrl
+						} else {
+							toast('获取客服链接失败')
+						}
+						loading.close()
+					})
+					.catch(err => {
+						loading.close()
+						toast('获取客服链接失败')
+					})
+			}
 		},
 		goHome() {
 			this.$router.push('/')
@@ -198,7 +214,7 @@ export default {
 <style lang="less" scoped>
 .log-wrapper {
 	width: 100%;
-	height: 100%;
+	// height: 100%;
 	padding: 0 12px;
 	flex-shrink: 0;
 	box-sizing: border-box;
@@ -281,7 +297,7 @@ export default {
 				font-family: 'HiraginoSansGB-W3';
 				font-weight: normal;
 				color: rgba(255, 255, 255, 1);
-				background: rgba(155, 155, 155, .8);
+				background: rgba(155, 155, 155, 0.8);
 				&.active {
 					background: @btn_color;
 				}

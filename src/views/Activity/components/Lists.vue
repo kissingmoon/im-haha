@@ -2,8 +2,8 @@
 	<ul v-if="lists.length>0" class="activities">
 		<transition-group tag="ul" name="fade">
 			<li
-				v-for="(list,index) in lists"
-				:key="index"
+				v-for="(list) in lists"
+				:key="list.id"
 				@click="openActivity(list)"
 				src="../121212.png"
 				class="activity"
@@ -11,7 +11,7 @@
 				<ims-image
 					class="img"
 					lazy
-					:src="list.id=='53' ? 'http://www.tryingdan.com/tupian/photo_2019-06-13_20-08-43909.jpg' : list.imageUrl "
+					:src="list.id=='53' ? 'http://cqyyjaaheyaea.com/tupian/das.jpg' : list.imageUrl "
 				>
 					<div class="img_placeholder" slot="placeholder"></div>
 				</ims-image>
@@ -67,7 +67,7 @@ export default {
 		margin-bottom: 10px;
 		position: relative;
 	}
-	.activity:first-child{
+	.activity:first-child {
 		margin-top: 10px;
 	}
 	.actv_8888 {

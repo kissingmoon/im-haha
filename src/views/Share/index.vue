@@ -11,6 +11,18 @@
 	overflow: hidden;
 	border-radius: 6px;
 	padding-top: 12px;
+	position: relative;
+	.instructions {
+		position: absolute;
+		width: 92%;
+		min-height: 50px;
+		bottom: 10px;
+		line-height: 20px;
+		color: rgba(255, 255, 255, 0.9);
+		padding: 0 4%;
+		letter-spacing:1px;
+		font-size: 12px;
+	}
 	.img {
 		display: block;
 		width: 100%;
@@ -18,7 +30,7 @@
 }
 .dash {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	text-align: center;
 	width: 355px;
@@ -28,20 +40,14 @@
 	.dash_l {
 		flex-basis: 50%;
 	}
-	.dash_r {
-		flex-basis: 50%;
-	}
 	.p0 {
-		margin-bottom: 6px;
 		font-size: 16px;
 		font-weight: 500;
 		color: rgba(68, 68, 68, 1);
 		line-height: 22px;
 	}
-	.p1 {
-		font-size: 14px;
-		color: rgba(68, 68, 68, 1);
-		line-height: 20px;
+	.p1{
+		border-right:1px solid #ccc
 	}
 }
 .qr_box {
@@ -126,8 +132,8 @@
 	background: rgba(0, 0, 0, 0.7);
 	display: flex;
 	align-items: center;
-  justify-content: center;
-  z-index: 1000;
+	justify-content: center;
+	z-index: 1000;
 	.mask_main {
 		width: 230px;
 	}
@@ -142,6 +148,10 @@
 			display: block;
 			width: 100%;
 			height: 100%;
+			.img {
+				display: block;
+				width: 100%;
+			}
 		}
 	}
 	.mask_p0 {
@@ -174,15 +184,18 @@
 		<div v-if="isShow">
 			<div class="banner">
 				<img class="img" src="../../assets/banner.png">
+				<div
+					class="instructions"
+				>推荐佣金：您分享给小伙伴，小伙伴通过您的链接或者是邀请码注册成功后，游戏在线5分钟，您获得2元佣金，小伙伴获得1元佣金，以此类推，分享越多佣金越多！</div>
 			</div>
 			<div class="dash">
-				<div class="dash_l">
-					<p class="p0">{{result.peopleNum}}人</p>
-					<p class="p1">微信推荐人数总计</p>
+				<div @click="gopage('/team')" class="dash_l">
+					<p class="p0 p1">{{result.peopleNum}}人</p>
+					<p class="p0 p1">推荐人数总计</p>
 				</div>
-				<div class="dash_r">
-					<p class="p0">¥{{result.inviteMoney}}</p>
-					<p class="p1">推荐佣金总计</p>
+				<div @click="gopage('/commissionAll')" class="dash_l">
+					<p class="p0">￥{{result.inviteMoney=='null'?0:result.inviteMoney}}.00</p>
+					<p class="p0">推荐佣金总计</p>
 				</div>
 			</div>
 			<div class="qr_box">
@@ -191,7 +204,9 @@
 						<div v-if="!isLogin" class="qr_img">
 							<img class="img" src="../../assets/qr.png">
 						</div>
-						<div v-else ref="qrcode" @click="openQr" class="qr_img"></div>
+						<div v-else ref="qrcode" @click="openQr" class="qr_img">
+							<img class="img" :src="qrSrc">
+						</div>
 					</div>
 					<div class="qr_r" style="cursor: pointer;">
 						<p v-if="isLogin" class="invite">邀请码：{{result.inviteCode}}</p>
@@ -199,32 +214,40 @@
 						<div v-if="!isLogin" class="copy" @click="login">复制邀请码</div>
 						<div
 							v-else
-							class="copy"
-							onclick="void(0)"
+							class="copy needsclick"
+							@click="tipone('复制邀请码')"
 							style="cursor: pointer;"
 							:data-clipboard-text="result.inviteCode"
 						>复制邀请码</div>
 						<div v-if="!isLogin" class="copy" @click="login">复制链接</div>
 						<div
 							v-else
-							class="copy"
-							onclick="void(0)"
+							class="copy needsclick"
+							@click="tip('复制链接')"
 							style="cursor: pointer;"
 							:data-clipboard-text="result.url"
 						>复制链接</div>
 					</div>
 				</div>
-				<div class="tip">说明：通过扫描二维码或者复制链接注册成功的用户即可成为您的下线</div>
+				<div v-if="!user_token" class="tip">通过分享邀请好友一起游戏，您将获得推荐和红利佣金，越分享越多金。</div>
+				<div v-else class="tip">
+					您已成功通过推荐{{shareobj.userNum}}个好友，累计获得了
+					<span
+						style="color:#E65858"
+					>￥{{shareobj.userMoney==null?0:shareobj.userMoney}}.00</span> 佣金，快去召唤小伙伴吧
+				</div>
 			</div>
 		</div>
 		<transition name="fade">
-			<div v-show="isShowMask" class="mask">
+			<div @click.stop="isShowMask = false" v-show="isShowMask" class="mask">
 				<div class="mask_main">
 					<div class="mask_qr">
-						<div ref="mask_qr_img" class="mask_qr_img"></div>
+						<div ref="mask_qr_img" class="mask_qr_img">
+							<img class="img" :src="qrSrc">
+						</div>
 					</div>
 					<p class="mask_p0">长按二维码点击进行保存</p>
-					<p class="mask_p">保存后点击微信发送图片，小伙伴通过扫描二维码注册成功，立享佣金</p>
+					<p class="mask_p">保存后点击发送图片，小伙伴通过扫描二维码注册成功，立享佣金</p>
 					<div @click="isShowMask = false" class="mask_close"></div>
 				</div>
 			</div>
@@ -236,18 +259,20 @@ import { mapGetters } from 'vuex'
 import clipboard from 'clipboard'
 import QRCode from '@/js/qrcode.js'
 import { getGreeting } from '@/js/tools.js'
-
 export default {
 	name: 'share',
 	data() {
 		return {
 			isShow: false,
 			isShowMask: false,
-			qrSrc: '',
+			qrSrc: null,
 			result: {
 				peopleNum: '0',
-				inviteMoney: '0.00'
-			}
+				inviteMoney: '0'
+			},
+			shareobj: {},
+			link: '',
+			txt: ''
 		}
 	},
 	computed: {
@@ -264,7 +289,11 @@ export default {
 	mounted() {
 		this.getData()
 	},
-	activated() {},
+	activated() {
+		if (this.isShow) {
+			this.getData()
+		}
+	},
 	methods: {
 		copy(text) {
 			if (!this.isLogin) {
@@ -280,18 +309,60 @@ export default {
 				this.isShow = true
 				return
 			}
-			this.$http.post('/user/getUserPromotion', {}, { loginoutWarn: true }).then(res => {
-				if (res.code == '200') {
-					this.result = res.data
+			this.$http
+				.post('/user/getUserPromotion', {}, { loginoutWarn: true })
+				.then(res => {
 					this.isShow = true
-					this.$nextTick(() => {
-						this.setQrcode(res.data.url)
-						new clipboard('.copy').on('success', () => {
-							this.$toast('复制成功')
+					if (res.code == '200') {
+						this.result = res.data
+						this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
+						let qrUrl = this.result.url
+						if (this.result.inviteMoney <= 0 || this.result.inviteMoney == 'null') {
+							this.result.url = this.result.url + '&我已经入驻YG娱乐平台，想邀请你来跟我一起免费赚佣金，快点来吧'
+						} else {
+							this.result.url =
+								this.result.url +
+								`&我已在YG娱乐平台赚到￥${this.result.inviteMoney}.00，想邀请你来跟我一起免费赚佣金，快点来吧`
+						}
+						this.$nextTick(() => {
+							this.setQrcode(qrUrl)
+							new clipboard('.copy').on('success', () => {
+								if (this.txt == '复制链接') {
+								} else {
+									this.$toast('邀请码复制成功，快去通知好友吧')
+								}
+							})
 						})
-					})
-				}
+					}
+					this.sharethat()
+				})
+				.catch(err => {
+					this.isShow = true
+				})
+		},
+		sharethat() {
+			this.$http.post('/user/getUserShareMoney').then(res => {
+				this.shareobj = res.data
 			})
+		},
+		tip(txt){
+			this.txt=txt
+			Dialog.alert({
+				confirmButtonText:'好的',
+				message: '推荐链接与文案复制成功，赶快跟好友分享吧，分享人数越多，获得的佣金越多。'
+			}).then(() => {
+				
+			});
+		},
+		tipone(txt) {
+			this.txt = txt
+		},
+		gopage(path) {
+			if (this.user_token) {
+				this.$router.push(path)
+			} else {
+				this.$router.push('/login')
+			}
 		},
 		login() {
 			this.$router.push('/login')
@@ -301,32 +372,17 @@ export default {
 				return
 			}
 			let qrcodeEl = this.$refs.qrcode
-			let w = qrcodeEl.offsetWidth
-			let h = qrcodeEl.offsetHeight
-			new QRCode(qrcodeEl, {
+			let qr = new QRCode(qrcodeEl, {
 				text: url,
-				width: w,
-				height: h,
+				width: qrcodeEl.offsetWidth,
+				height: qrcodeEl.offsetHeight,
 				correctLevel: QRCode.CorrectLevel.L
 			})
+			let qrcodeSrc = qr._oDrawing.srcData
+			this.qrSrc = qrcodeSrc
 		},
 		openQr() {
 			this.isShowMask = true
-			if (this.$refs.mask_qr_img.querySelector('img')) {
-				return
-			}
-			this.$nextTick(() => {
-				let qrcodeEl = this.$refs.mask_qr_img
-				let w = qrcodeEl.offsetWidth
-				let h = qrcodeEl.offsetHeight
-				new QRCode(qrcodeEl, {
-					text: this.result.url,
-					width: w,
-					height: h,
-					colorLight: '#fff',
-					correctLevel: QRCode.CorrectLevel.L
-				})
-			})
 		}
 	}
 }

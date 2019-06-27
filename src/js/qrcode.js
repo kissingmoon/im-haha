@@ -1,30 +1,4 @@
-/**
- * @fileoverview
- * - Using the 'QRCode for Javascript library'
- * - Fixed dataset of 'QRCode for Javascript library' for support full-spec.
- * - this library has no dependencies.
- *
- * @author davidshimjs
- * @see <a href="http://www.d-project.com/" target="_blank">http://www.d-project.com/</a>
- * @see <a href="http://jeromeetienne.github.com/jquery-qrcode/" target="_blank">http://jeromeetienne.github.com/jquery-qrcode/</a>
- */
-
 var QRCode = (function() {
-  //---------------------------------------------------------------------
-  // QRCode for JavaScript
-  //
-  // Copyright (c) 2009 Kazuhiko Arase
-  //
-  // URL: http://www.d-project.com/
-  //
-  // Licensed under the MIT license:
-  //   http://www.opensource.org/licenses/mit-license.php
-  //
-  // The word "QR Code" is registered trademark of
-  // DENSO WAVE INCORPORATED
-  //   http://www.denso-wave.com/qrcode/faqpatent-e.html
-  //
-  //---------------------------------------------------------------------
   function QR8bitByte(data) {
     this.mode = QRMode.MODE_8BIT_BYTE
     this.data = data
@@ -961,10 +935,6 @@ var QRCode = (function() {
     [2953, 2331, 1663, 1273]
   ]
 
-  function _isSupportCanvas() {
-    return typeof CanvasRenderingContext2D != 'undefined'
-  }
-
   // android 2.x doesn't support Data-URI spec
   function _getAndroid() {
     var android = false
@@ -982,312 +952,176 @@ var QRCode = (function() {
     return android
   }
 
-  var svgDrawer = (function() {
-    var Drawing = function(el, htOption) {
-      this._el = el
-      this._htOption = htOption
+  var Drawing = (function() {
+    // Drawing in Canvas
+    function _onMakeImage() {
+      this.srcData = this._elCanvas.toDataURL('image/png')
+      this._elCanvas.style.display = 'none'
     }
 
-    Drawing.prototype.draw = function(oQRCode) {
-      var _htOption = this._htOption
-      var _el = this._el
-      var nCount = oQRCode.getModuleCount()
-      var nWidth = Math.floor(_htOption.width / nCount)
-      var nHeight = Math.floor(_htOption.height / nCount)
+    /**
+     * Check whether the user's browser supports Data URI or not
+     *
+     * @private
+     * @param {Function} fSuccess Occurs if it supports Data URI
+     * @param {Function} fFail Occurs if it doesn't support Data URI
+     */
+    function _safeSetDataURI(fSuccess, fFail) {
+      var self = this
+      self._fFail = fFail
+      self._fSuccess = fSuccess
 
-      this.clear()
+      // Check it just once
+      if (self._bSupportDataURI === null) {
+        var el = document.createElement('img')
+        var fOnError = function() {
+          self._bSupportDataURI = false
 
-      function makeSVG(tag, attrs) {
-        var el = document.createElementNS('http://www.w3.org/2000/svg', tag)
-        for (var k in attrs) if (attrs.hasOwnProperty(k)) el.setAttribute(k, attrs[k])
-        return el
-      }
-
-      var svg = makeSVG('svg', {
-        viewBox: '0 0 ' + String(nCount) + ' ' + String(nCount),
-        width: '100%',
-        height: '100%',
-        fill: _htOption.colorLight
-      })
-      svg.setAttributeNS(
-        'http://www.w3.org/2000/xmlns/',
-        'xmlns:xlink',
-        'http://www.w3.org/1999/xlink'
-      )
-      _el.appendChild(svg)
-
-      svg.appendChild(
-        makeSVG('rect', { fill: _htOption.colorLight, width: '100%', height: '100%' })
-      )
-      svg.appendChild(
-        makeSVG('rect', { fill: _htOption.colorDark, width: '1', height: '1', id: 'template' })
-      )
-
-      for (var row = 0; row < nCount; row++) {
-        for (var col = 0; col < nCount; col++) {
-          if (oQRCode.isDark(row, col)) {
-            var child = makeSVG('use', { x: String(col), y: String(row) })
-            child.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#template')
-            svg.appendChild(child)
-          }
-        }
-      }
-    }
-    Drawing.prototype.clear = function() {
-      while (this._el.hasChildNodes()) this._el.removeChild(this._el.lastChild)
-    }
-    return Drawing
-  })()
-
-  var useSVG = document.documentElement.tagName.toLowerCase() === 'svg'
-
-  // Drawing in DOM by using Table tag
-  var Drawing = useSVG
-    ? svgDrawer
-    : !_isSupportCanvas()
-    ? (function() {
-        var Drawing = function(el, htOption) {
-          this._el = el
-          this._htOption = htOption
-        }
-
-        /**
-         * Draw the QRCode
-         *
-         * @param {QRCode} oQRCode
-         */
-        Drawing.prototype.draw = function(oQRCode) {
-          var _htOption = this._htOption
-          var _el = this._el
-          var nCount = oQRCode.getModuleCount()
-          var nWidth = Math.floor(_htOption.width / nCount)
-          var nHeight = Math.floor(_htOption.height / nCount)
-          var aHTML = ['<table style="border:0;border-collapse:collapse;">']
-
-          for (var row = 0; row < nCount; row++) {
-            aHTML.push('<tr>')
-
-            for (var col = 0; col < nCount; col++) {
-              aHTML.push(
-                '<td style="border:0;border-collapse:collapse;padding:0;margin:0;width:' +
-                  nWidth +
-                  'px;height:' +
-                  nHeight +
-                  'px;background-color:' +
-                  (oQRCode.isDark(row, col) ? _htOption.colorDark : _htOption.colorLight) +
-                  ';"></td>'
-              )
-            }
-
-            aHTML.push('</tr>')
-          }
-
-          aHTML.push('</table>')
-          _el.innerHTML = aHTML.join('')
-
-          // Fix the margin values as real size.
-          var elTable = _el.childNodes[0]
-          var nLeftMarginTable = (_htOption.width - elTable.offsetWidth) / 2
-          var nTopMarginTable = (_htOption.height - elTable.offsetHeight) / 2
-
-          if (nLeftMarginTable > 0 && nTopMarginTable > 0) {
-            elTable.style.margin = nTopMarginTable + 'px ' + nLeftMarginTable + 'px'
-          }
-        }
-
-        /**
-         * Clear the QRCode
-         */
-        Drawing.prototype.clear = function() {
-          this._el.innerHTML = ''
-        }
-
-        return Drawing
-      })()
-    : (function() {
-        // Drawing in Canvas
-        function _onMakeImage() {
-          this._elImage.src = this._elCanvas.toDataURL('image/png')
-          this._elImage.style.display = 'block'
-          this._elCanvas.style.display = 'none'
-        }
-
-        /**
-         * Check whether the user's browser supports Data URI or not
-         *
-         * @private
-         * @param {Function} fSuccess Occurs if it supports Data URI
-         * @param {Function} fFail Occurs if it doesn't support Data URI
-         */
-        function _safeSetDataURI(fSuccess, fFail) {
-          var self = this
-          self._fFail = fFail
-          self._fSuccess = fSuccess
-
-          // Check it just once
-          if (self._bSupportDataURI === null) {
-            var el = document.createElement('img')
-            var fOnError = function() {
-              self._bSupportDataURI = false
-
-              if (self._fFail) {
-                self._fFail.call(self)
-              }
-            }
-            var fOnSuccess = function() {
-              self._bSupportDataURI = true
-
-              if (self._fSuccess) {
-                self._fSuccess.call(self)
-              }
-            }
-
-            el.onabort = fOnError
-            el.onerror = fOnError
-            el.onload = fOnSuccess
-            el.src =
-              'data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==' // the Image contains 1px data.
-            return
-          } else if (self._bSupportDataURI === true && self._fSuccess) {
-            self._fSuccess.call(self)
-          } else if (self._bSupportDataURI === false && self._fFail) {
+          if (self._fFail) {
             self._fFail.call(self)
           }
         }
+        var fOnSuccess = function() {
+          self._bSupportDataURI = true
 
-        /**
-         * Drawing QRCode by using canvas
-         *
-         * @constructor
-         * @param {HTMLElement} el
-         * @param {Object} htOption QRCode Options
-         */
-        var Drawing = function(el, htOption) {
-          this._bIsPainted = false
-          this._android = _getAndroid()
-
-          this._htOption = htOption
-          this._elCanvas = document.createElement('canvas')
-          this._elCanvas.width = htOption.width
-          this._elCanvas.height = htOption.height
-          el.appendChild(this._elCanvas)
-          this._el = el
-          this._oContext = this._elCanvas.getContext('2d')
-          this._bIsPainted = false
-          this._elImage = document.createElement('img')
-          this._elImage.style.display = 'none'
-          this._el.appendChild(this._elImage)
-          this._bSupportDataURI = null
-        }
-
-        /**
-         * Draw the QRCode
-         *
-         * @param {QRCode} oQRCode
-         */
-        Drawing.prototype.draw = function(oQRCode) {
-          var _elImage = this._elImage
-          var _oContext = this._oContext
-          var _htOption = this._htOption
-
-          var nCount = oQRCode.getModuleCount()
-          var nWidth = _htOption.width / nCount
-          var nHeight = _htOption.height / nCount
-          var nRoundedWidth = Math.round(nWidth)
-          var nRoundedHeight = Math.round(nHeight)
-
-          _elImage.style.display = 'none'
-          this.clear()
-
-          if (_htOption.useLinearGradient) {
-            _oContext.beginPath()
-            _oContext.moveTo(0, 0)
-            _oContext.lineTo(_htOption.width, 0)
-            _oContext.lineTo(_htOption.width, _htOption.height)
-            _oContext.lineTo(0, _htOption.height)
-            var grd = _oContext.createLinearGradient(_htOption.height, 0, 0, 0)
-
-            grd.addColorStop(0, _htOption.useLinearGradient.start)
-            grd.addColorStop(1, _htOption.useLinearGradient.stop)
-            _oContext.fillStyle = grd
-            _oContext.fill()
+          if (self._fSuccess) {
+            self._fSuccess.call(self)
           }
+        }
+        fOnSuccess()
+        //  ??  为啥要加后面注释这些?  看上去没什么用啊
+        // el.onabort = fOnError
+        // el.onerror = fOnError
+        // el.onload = fOnSuccess
+        // el.src =
+        //   'data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==' // the Image contains 1px data.
+        return
+      } else if (self._bSupportDataURI === true && self._fSuccess) {
+        self._fSuccess.call(self)
+      } else if (self._bSupportDataURI === false && self._fFail) {
+        self._fFail.call(self)
+      }
+    }
 
-          for (var row = 0; row < nCount; row++) {
-            for (var col = 0; col < nCount; col++) {
-              var bIsDark = oQRCode.isDark(row, col)
-              var nLeft = col * nWidth
-              var nTop = row * nHeight
-              if (_htOption.useLinearGradient) {
-                if (!bIsDark) {
-                  continue
-                }
-              }
-              _oContext.strokeStyle = bIsDark ? _htOption.colorDark : _htOption.colorLight
-              _oContext.lineWidth = 1
-              _oContext.fillStyle = bIsDark ? _htOption.colorDark : _htOption.colorLight
-              _oContext.fillRect(nLeft, nTop, nWidth, nHeight)
+    /**
+     * Drawing QRCode by using canvas
+     *
+     * @constructor
+     * @param {HTMLElement} el
+     * @param {Object} htOption QRCode Options
+     */
+    var Drawing = function(el, htOption) {
+      this._bIsPainted = false
+      this._android = _getAndroid()
 
-              // 안티 앨리어싱 방지 처리
-              _oContext.strokeRect(
-                Math.floor(nLeft) + 0.5,
-                Math.floor(nTop) + 0.5,
-                nRoundedWidth,
-                nRoundedHeight
-              )
+      this._htOption = htOption
+      this._elCanvas = document.createElement('canvas')
+      this._elCanvas.width = htOption.width
+      this._elCanvas.height = htOption.height
+      //el.appendChild(this._elCanvas)    //可以不添加canvas到dom上?
+      this._el = el
+      this._oContext = this._elCanvas.getContext('2d')
+      this._bIsPainted = false
+      this._bSupportDataURI = null
+    }
 
-              _oContext.strokeRect(
-                Math.ceil(nLeft) - 0.5,
-                Math.ceil(nTop) - 0.5,
-                nRoundedWidth,
-                nRoundedHeight
-              )
+    /**
+     * Draw the QRCode
+     *
+     * @param {QRCode} oQRCode
+     */
+    Drawing.prototype.draw = function(oQRCode) {
+      var _oContext = this._oContext
+      var _htOption = this._htOption
+
+      var nCount = oQRCode.getModuleCount()
+      var nWidth = _htOption.width / nCount
+      var nHeight = _htOption.height / nCount
+      var nRoundedWidth = Math.round(nWidth)
+      var nRoundedHeight = Math.round(nHeight)
+
+      this.clear()
+
+      if (_htOption.useLinearGradient) {
+        _oContext.beginPath()
+        _oContext.moveTo(0, 0)
+        _oContext.lineTo(_htOption.width, 0)
+        _oContext.lineTo(_htOption.width, _htOption.height)
+        _oContext.lineTo(0, _htOption.height)
+        var grd = _oContext.createLinearGradient(_htOption.height, 0, 0, 0)
+
+        grd.addColorStop(0, _htOption.useLinearGradient.start)
+        grd.addColorStop(1, _htOption.useLinearGradient.stop)
+        _oContext.fillStyle = grd
+        _oContext.fill()
+      }
+
+      for (var row = 0; row < nCount; row++) {
+        for (var col = 0; col < nCount; col++) {
+          var bIsDark = oQRCode.isDark(row, col)
+          var nLeft = col * nWidth
+          var nTop = row * nHeight
+          if (_htOption.useLinearGradient) {
+            if (!bIsDark) {
+              continue
             }
           }
+          _oContext.strokeStyle = bIsDark ? _htOption.colorDark : _htOption.colorLight
+          _oContext.lineWidth = 1
+          _oContext.fillStyle = bIsDark ? _htOption.colorDark : _htOption.colorLight
+          _oContext.fillRect(nLeft, nTop, nWidth, nHeight)
 
-          this._bIsPainted = true
+          // 안티 앨리어싱 방지 처리
+          _oContext.strokeRect(
+            Math.floor(nLeft) + 0.5,
+            Math.floor(nTop) + 0.5,
+            nRoundedWidth,
+            nRoundedHeight
+          )
+
+          _oContext.strokeRect(
+            Math.ceil(nLeft) - 0.5,
+            Math.ceil(nTop) - 0.5,
+            nRoundedWidth,
+            nRoundedHeight
+          )
         }
+      }
 
-        /**
-         * Make the image from Canvas if the browser supports Data URI.
-         */
-        Drawing.prototype.makeImage = function() {
-          if (this._bIsPainted) {
-            _safeSetDataURI.call(this, _onMakeImage)
-          }
-        }
+      this._bIsPainted = true
+    }
 
-        /**
-         * Return whether the QRCode is painted or not
-         *
-         * @return {Boolean}
-         */
-        Drawing.prototype.isPainted = function() {
-          return this._bIsPainted
-        }
+    /**
+     * Make the image from Canvas if the browser supports Data URI.
+     */
+    Drawing.prototype.makeImage = function() {
+      if (this._bIsPainted) {
+        _safeSetDataURI.call(this, _onMakeImage)
+      }
+    }
 
-        /**
-         * Clear the QRCode
-         */
-        Drawing.prototype.clear = function() {
-          this._oContext.clearRect(0, 0, this._elCanvas.width, this._elCanvas.height)
-          this._bIsPainted = false
-        }
+    /**
+     * Clear the QRCode
+     */
+    Drawing.prototype.clear = function() {
+      this._oContext.clearRect(0, 0, this._elCanvas.width, this._elCanvas.height)
+      this._bIsPainted = false
+    }
 
-        /**
-         * @private
-         * @param {Number} nNumber
-         */
-        Drawing.prototype.round = function(nNumber) {
-          if (!nNumber) {
-            return nNumber
-          }
+    /**
+     * @private
+     * @param {Number} nNumber
+     */
+    Drawing.prototype.round = function(nNumber) {
+      if (!nNumber) {
+        return nNumber
+      }
 
-          return Math.floor(nNumber * 1000) / 1000
-        }
+      return Math.floor(nNumber * 1000) / 1000
+    }
 
-        return Drawing
-      })()
+    return Drawing
+  })()
 
   /**
    * Get the type by string length
@@ -1392,15 +1226,10 @@ var QRCode = (function() {
       el = document.getElementById(el)
     }
 
-    if (this._htOption.useSVG) {
-      Drawing = svgDrawer
-    }
-
     this._android = _getAndroid()
     this._el = el
     this._oQRCode = null
     this._oDrawing = new Drawing(this._el, this._htOption)
-
     if (this._htOption.text) {
       this.makeCode(this._htOption.text)
     }
@@ -1420,20 +1249,7 @@ var QRCode = (function() {
     this._oQRCode.make()
     this._el.title = sText
     this._oDrawing.draw(this._oQRCode)
-    this.makeImage()
-  }
-
-  /**
-   * Make the Image from Canvas element
-   * - It occurs automatically
-   * - Android below 3 doesn't support Data-URI spec.
-   *
-   * @private
-   */
-  QRCode.prototype.makeImage = function() {
-    if (typeof this._oDrawing.makeImage == 'function' && (!this._android || this._android >= 3)) {
-      this._oDrawing.makeImage()
-    }
+    this._oDrawing.makeImage()
   }
 
   /**

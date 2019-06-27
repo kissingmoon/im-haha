@@ -31,3 +31,10 @@ export const net_msgDelete = (param ={}) => http.post("/msg/deleteAll", param);
 /* ------------------ 公告消息弹窗 ----------------- */
 export const net_getAlert = (param ={}) => http.post("/home/alert/getAlert", param);
 export const net_alertRead = (param ={}) => http.post("/home/alert/insertRead", param);
+/* ------------------ 注册接口 ----------------- */
+export const net_sendSmsMsg = (param ={}) => http.post("/user/sendSmsMsg", param);
+/* ------------------ 代理接口 ----------------- */
+export const net_getUserPro = (param ={}) => http.post("/user/getUserPromotion", param);
+export const net_getUserProList = (param ={}) => http.post("/user/getUserPromotionList", param);
+export const net_getUserShare = (param ={}) => http.post("/user/getUserShareMoney", param);
+export const net_getTeamList = (param ={}) => http.post("/user/getTeamMembersList", param);
