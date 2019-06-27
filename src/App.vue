@@ -51,13 +51,15 @@ export default {
 		this.setAliToken()
 		this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
 		this.getServiceUrl()
+		this.getAgentUrl()
 	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
 			setMjb: 'SET_MJB',
 			setPlatformFlag: 'SET_PLATFORM_FLAG',
-			setServiceUrl: 'SET_SERVICE_URL'
+			setServiceUrl: 'SET_SERVICE_URL',
+			setAgentUrl:'SET_AGENT_URL'
 		}),
 		getServiceUrl() {
 			this.$http.post('/home/getServiceUrl').then(res => {
@@ -66,6 +68,10 @@ export default {
 				}
 			})
 		},
+		getAgentUrl(){
+      const agentUrl = this.$route.query.agentUrl;
+      this.setAgentUrl(agentUrl)
+    },
 		closeDialog() {
 			this.show188 = false
 		},

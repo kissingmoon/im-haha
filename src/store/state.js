@@ -8,5 +8,6 @@ export default {
   isGetCJ: false, //  是否可以领取彩金
   footRedDot: false, //  脚部红点显示
   inviteCode: '',
-  serviceUrl: ''
+  serviceUrl: '',
+  agentUrl: "",
 }
