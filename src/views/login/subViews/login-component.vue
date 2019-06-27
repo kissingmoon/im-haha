@@ -28,11 +28,12 @@
 					<div></div>
 					<div class="tip-item right-tip-box" @click="goToKefu">忘记密码?</div>
 				</div>
-				<div
-					class="form-submit-content display-flex flex-center"
-					:class="{ 'active': btnActive }"
+				<ims-btn 
+					class="form-submit-content display-flex flex-center" 
+					:class="{ 'active': btnActive }" 
+					:throttleTime="1000"  
 					@click="login"
-				>登录</div>
+				>登录</ims-btn>
 				<div class="submit-tip">
 					<div href @click="goHome">先去逛逛</div>
 				</div>
@@ -164,7 +165,9 @@ export default {
 			param.pwd = this.formData.pwd.model
 			param.agentUrl = location.host
 			param.platformFlag = this.platformFlag
+			let loading = this.$loading({ text: '正在登录…' })
 			let res = await net_login(param)
+			loading.close()
 			if (res.code == '200') {
 				toast('登录成功！')
 				this.setUserToken(res.data.token)
@@ -291,6 +294,7 @@ export default {
 				}
 			}
 			.form-submit-content {
+				width: 100%;
 				height: 42px;
 				border-radius: 21px;
 				font-size: 18px;

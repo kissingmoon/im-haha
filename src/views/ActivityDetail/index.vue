@@ -213,7 +213,7 @@
 			</div>
 
 			<div v-show="!is_8888" class="actv_btn_box">
-				<button class="actv_btn" @click="submit">立即申请</button>
+				<ims-btn class="actv_btn" :throttleTime="1000"  @click="submit">立即申请</ims-btn>
 			</div>
 		</div>
 	</div>
@@ -261,7 +261,7 @@ export default {
 				return
 			}
 			let id = this.list.id
-			let loading = this.$loading({ text: '正在申请' })
+			//let loading = this.$loading({ text: '正在申请' })
 			this.$http
 				.post('/gameActivity/apply/' + id, { platformFlag: this.platformFlag })
 				.then(res => {
@@ -464,14 +464,10 @@ export default {
 	padding: 20px 0;
 }
 .actv_btn {
-	display: block;
 	width: 173px;
 	height: 42px;
-	background: linear-gradient(180deg, @color_shallow_blue 0%, @color_deep_blue 100%);
 	box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.5), 0px 2px 0px 0px rgba(97, 51, 34, 1),
 		0px 1px 0px 0px rgba(255, 234, 152, 1);
-	font-size: 17px;
-	color: rgba(255, 255, 255, 1);
 	line-height: 42px;
 	border-radius: 21px;
 	transition: all 0.1s linear;

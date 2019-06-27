@@ -28,9 +28,7 @@ instance.interceptors.request.use(
         template: 'ui_zhongbo'
       }
     } else if (config.headers['Content-Type'] == 'application/x-www-form-urlencoded') {
-      //if(config.data && Object.keys(config.data).length>0){
       if (config.data) {
-        //todo 为啥要加 .length > 0
         if (aesKey) {
           config.data = QS.stringify({
             params: $api.Encry(JSON.stringify(config.data), aesKey, aesKey)

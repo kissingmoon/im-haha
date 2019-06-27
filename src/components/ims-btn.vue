@@ -12,7 +12,7 @@ export default {
 	props: {
 		disabled: {
 			type: Boolean,
-			default: true
+			default: false
 		},
 		throttleTime: {
 			type: Number, //多少时间触发一次click

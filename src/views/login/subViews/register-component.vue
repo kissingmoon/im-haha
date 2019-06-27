@@ -34,11 +34,12 @@
 						</div>
 					</div>
 				</div>
-				<div
-					class="form-submit-content display-flex flex-center"
-					:class="{ 'active': btnActive }"
+				<ims-btn 
+					class="form-submit-content display-flex flex-center" 
+					:class="{ 'active': btnActive }" 
+					:throttleTime="1000"  
 					@click="register"
-				>注册</div>
+				>注册</ims-btn>
 			</div>
 		</div>
 	</div>
@@ -321,7 +322,9 @@ export default {
 			param.agentUrl = location.host
 			param.webUmidToken = sessionStorage.getItem("webUmidToken");
 			param.uaToken = sessionStorage.getItem("uaToken");
+			let loading = this.$loading({ text: '正在请求…' })
 			let res = await net_register(param)
+			loading.close()
 			if (res.code == '200') {
 				toast('注册成功！')
 				this.setUserToken(res.data.token)
@@ -442,6 +445,7 @@ export default {
 				}
 			}
 			.form-submit-content {
+				width: 100%;
 				height: 42px;
 				border-radius: 21px;
 				font-size: 18px;

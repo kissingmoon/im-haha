@@ -12,7 +12,7 @@
 					:src="list.imageUrl"
 				/>
 			</div>
-			<ims-btn @click="submit" throttleTime="500" :disabled="disabled" class="btn">确定</ims-btn>
+			<ims-btn @click="submit" :throttleTime="500" :disabled="disabled" class="btn">确定</ims-btn>
 		</div>
 	</div>
 </template>
