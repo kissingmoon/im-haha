@@ -72,18 +72,24 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                 let queryParam = {
                     "page_no": "1"
                 };
+                let loading = this.$loading({ text: '正在加载…' })
                 Object.assign(this.queryParam, queryParam)
                 this.finished = false;
                 this.initFinish = false;
-                this.getUserPro();
+                this.getUserPro(loading);
                 this.getRecList(this.queryParam, "init");
             },
             goBack(){
                 this.$router.go(-1)
             },
-            async getUserPro(){
-                let res = await net_getUserPro()
-                this.totalPro = res.data
+            async getUserPro(loading){
+                try {
+                    let res = await net_getUserPro()
+                    this.totalPro = res.data
+                    loading.close()
+                } catch {
+                    loading.close()
+                }
             },
             async getRecList(param, type){
                 let res = {};
