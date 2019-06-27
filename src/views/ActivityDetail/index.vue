@@ -50,7 +50,7 @@
 							<div class="row1">手动领取</div>
 						</div>
 					</div>
-					<div v-if="btns_8888.length > 0">
+					<div>
 						<div class="actv_h5">
 							<span class="actv_reat"></span>申请方式
 						</div>
@@ -66,7 +66,7 @@
 								<div class="flex_40">第四天登录</div>
 								<div class="flex_30">第五天登录</div>
 							</div>
-							<div class="actv_8888_t">
+							<div v-if="btns_8888.length > 0" class="actv_8888_t">
 								<div v-for="(btn,index) in btns_8888" :key="index" class="flex_30">
 									<button
 										class="actv_8888_btn"
@@ -83,7 +83,7 @@
 					<p class="actv_p">
 						1.所赠送的彩金需一倍流水方可提款；
 						<br>2.活动期间，第一天和第二天系统自动派发，
-						<br>第三天彩金领取，当日充值金额满100元以上，即可领取赠送彩金48元
+						<br>第三天彩金领取，需要进行有效投注一次，当日充值金额满100元以上，即可领取赠送彩金48元
 						<br>第四天彩金领取，当天有效投注达到500元以上，可领取58元彩金
 						<br>第五天彩金领取，当天有效投注达到1000元以上，可领取第五天彩金68元
 						<br>免费赠送彩金总计：188元；
