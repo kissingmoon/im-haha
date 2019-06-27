@@ -316,6 +316,7 @@ export default {
 					if (res.code == '200') {
 						this.result = res.data
 						this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
+						let qrUrl = this.result.url
 						if (this.result.inviteMoney <= 0 || this.result.inviteMoney == 'null') {
 							this.result.url = this.result.url + '&我已经入驻YG娱乐平台，想邀请你来跟我一起免费赚佣金，快点来吧'
 						} else {
@@ -324,7 +325,7 @@ export default {
 								`&我已在YG娱乐平台赚到￥${this.result.inviteMoney}.00，想邀请你来跟我一起免费赚佣金，快点来吧`
 						}
 						this.$nextTick(() => {
-							this.setQrcode(this.result.url)
+							this.setQrcode(qrUrl)
 							new clipboard('.copy').on('success', () => {
 								if (this.txt == '复制链接') {
 								} else {

@@ -50,7 +50,7 @@
 							<div class="row1">手动领取</div>
 						</div>
 					</div>
-					<div v-if="btns_8888.length > 0">
+					<div>
 						<div class="actv_h5">
 							<span class="actv_reat"></span>申请方式
 						</div>
@@ -66,7 +66,7 @@
 								<div class="flex_40">第四天登录</div>
 								<div class="flex_30">第五天登录</div>
 							</div>
-							<div class="actv_8888_t">
+							<div v-if="btns_8888.length > 0" class="actv_8888_t">
 								<div v-for="(btn,index) in btns_8888" :key="index" class="flex_30">
 									<button
 										class="actv_8888_btn"

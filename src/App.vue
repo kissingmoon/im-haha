@@ -139,6 +139,8 @@ export default {
 		position: absolute;
 		left: 48px;
 		bottom: 26px;
+		width: 237px;
+		height: 48px;
 	}
 	.actv_8888_btn {
 		width: 237px;
