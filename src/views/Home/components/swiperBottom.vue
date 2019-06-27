@@ -100,11 +100,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import ImsImage from '@/components/ims-image.vue'
 export default {
-	components: {
-		ImsImage
-	},
 	props: {
 		lists: {
 			type: Array,

@@ -105,10 +105,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import { net_signOut } from '@/js/network.js'
-import ImsImage from '@/components/ims-image.vue'
 export default {
 	name: 'user',
-	components: { ImsImage },
 	data() {
 		return {
 			inited: false
