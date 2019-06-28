@@ -68,11 +68,13 @@
 							</div>
 							<div v-if="btns_8888.length > 0" class="actv_8888_t">
 								<div v-for="(btn,index) in btns_8888" :key="index" class="flex_30">
-									<button
+									<ims-btn
 										class="actv_8888_btn"
+										:throttleTime="1000"
 										:class="{btns_8888_disabled:btn.disabled ? true : false}"
+										:disabled="btn.disabled"
 										@click="getBonus(btn)"
-									>{{btn.text}}</button>
+									>{{btn.text}}</ims-btn>
 								</div>
 							</div>
 						</div>
@@ -261,7 +263,7 @@ export default {
 				return
 			}
 			let id = this.list.id
-			//let loading = this.$loading({ text: '正在申请' })
+			let loading = this.$loading({ text: '正在申请' })
 			this.$http
 				.post('/gameActivity/apply/' + id, { platformFlag: this.platformFlag })
 				.then(res => {
@@ -396,7 +398,6 @@ export default {
 			this.btns_8888.push(day4)
 			this.btns_8888.push(day5)
 			this.is_8888 = true
-			return this.btns_8888
 		}
 	}
 }
