@@ -71,6 +71,7 @@
 									<button
 										class="actv_8888_btn"
 										:class="{btns_8888_disabled:btn.disabled ? true : false}"
+										:disabled="btn.disabled"
 										@click="getBonus(btn)"
 									>{{btn.text}}</button>
 								</div>
