@@ -155,7 +155,7 @@ export default {
 		imsInput
 	},
 	computed: {
-		...mapGetters(['net_btn_click', 'platformFlag', 'invite_code'])
+		...mapGetters(['net_btn_click', 'platformFlag', 'invite_code', 'agent_url'])
 	},
 	watch: {
 		formData: {
@@ -320,6 +320,9 @@ export default {
 			param.pwd = this.formData.pwd.model
 			param.platformFlag = this.setPlatformFlag()
 			param.agentUrl = location.host
+			if(this.agent_url){
+				param.agentUrl = this.agent_url;
+			}
 			param.webUmidToken = sessionStorage.getItem("webUmidToken");
 			param.uaToken = sessionStorage.getItem("uaToken");
 			let loading = this.$loading({ text: '正在请求…' })
