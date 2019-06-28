@@ -165,7 +165,7 @@ export default {
 			param.agentUrl = location.host
 			param.platformFlag = this.platformFlag
 			let res = await net_login(param)
-			if (res.code == '200') {
+			if (res.code == '200' || res.code == '20015') {
 				toast('登录成功！')
 				this.setUserToken(res.data.token)
 				localStorage.setItem('U_TK', res.data.token)
