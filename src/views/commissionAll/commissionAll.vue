@@ -37,12 +37,15 @@
                         <div v-if="initFinish && recList.length<1" class="no-data-box display-flex justify-center align-end">暂无数据，快去推广赚佣金吧！</div>
                         <div @click='gotoDetails(v)' class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
-                                <p class="left_p">结算时间:{{v.createTime}}</p>
-                                <p class="left_p p1">{{v.money==1?'上级用户ID':'推荐用户ID'}}：{{v.fromUserId}}</p>
+                                <p class="left_p">{{v.settleTime}}</p>
+                                <p class="left_p p1">奖励：￥{{v.bet.toFixed(2)}}</p>
                             </div>
                             <div class="lists_right">
-                                <div class="mid">{{v.status=='1'?'已奖励':'未领取'}}</div>
-                                <div class="right">￥{{v.money}}.0</div>
+                                <div class="midAvtive">{{v.type}}
+                                    <span style="color:green" v-if="v.status==1">(已完成)</span>
+                                    <span v-if="v.status==2">(审核中)</span>
+                                    <span style="color:red" v-if="v.status==3">(未通过)</span>
+                                </div>                                
                             </div>   
                         </div>
                 </div>
@@ -72,7 +75,7 @@
 
 <script>
 import {mapActions,mapGetters,mapMutations} from 'vuex';
-import { net_getUserProList, net_getUserPro } from '@/js/network.js'
+import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/network.js'
 
     export default {
         data(){
@@ -87,7 +90,9 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                 queryParam: {
                     "page_no": "1",
                     "page_size": "10",
-                    "date_type": "5"   //  5：全部数据    4：月数据   3：周数据   2：当前3天数据
+                    "date_type": "5" ,  //  5：全部数据    4：月数据   3：周数据   2：当前3天数据
+                    'startTime': "",
+                    "endTime" :""
                 },
                 loading: false,
                 finished: true,
@@ -112,16 +117,16 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
         created(){
         },
         mounted(){
-            this.init()
+            this.switchfun(0)
         },
         methods:{
             switchfun(index){
                 this.switchNum=index
                 if(index==0){
-                    this.profitCommission()
+                    this.init(0)
                 }
                 if(index==1){
-                    this.init()
+                    this.init(1)
                 }
             },
             datafun(s){
@@ -152,18 +157,15 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
             gotoDetails(v){
                 this.$router.push({name:'commissionDetails',query:{'v':v}})
             },
-            profitCommission(){
-                
-            },
-            init(){
+            init(val){
                 let queryParam = {
                     "page_no": "1"
                 };
                 Object.assign(this.queryParam, queryParam)
                 this.finished = false;
                 this.initFinish = false;
-                this.getUserPro();
-                this.getRecList(this.queryParam, "init");
+                this.getUserPro(val);
+                this.getRecList(this.queryParam, "init",val);
             },
             goBack(){
                 this.$router.go(-1)
@@ -172,16 +174,19 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                 let res = await net_getUserPro()
                 this.totalPro = res.data
             },
-            async getRecList(param, type){
+            async getRecList(param, type,val){
                 let res = {};
-                // if(this.activeTab==0){
-                //     res = await net_getUserProList(param);
-                // }else if(this.activeTab == 1){
-                //     res = await net_getUserProList(param);
-                // }
-                res = await net_getUserProList(param);
+                if(val==1){                    
+                    res = await net_getUserProList(param);
+                }
+                if(val==0){
+                    console.log(val)
+                    res = await net_getUserProList1(param)
+                    console.log(res)
+                }
                 if(type == "ref"){
                     if(res.code == "200"){
+                        console.log(555)
                         this.recList = res.data.data;
                         this.refLoading = false;
                         if(this.recList.length < this.queryParam.page_size){
@@ -192,6 +197,7 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                 }else if(type == "more"){
                     if(res.code == "200"){
                         this.recList = this.recList.concat(res.data.result);
+                        console.log(666)
                         this.moreLoading = false;
                         if(this.recList.length >= this.recListTotal){
                             this.finished = true;
@@ -200,6 +206,7 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                     }
                 }else if(type == "init"){
                     this.recList = res.data.result;
+                    console.log(777)
                     this.recListTotal = res.data.count;
                     // this.totalMoney = res.data.totalMoney;
                     this.initFinish = true;
@@ -221,7 +228,7 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                         return
                     }
                     this.queryParam.page_no ++;
-                    this.getRecList(this.queryParam, "more");
+                    this.getRecList(this.queryParam, "more",this.switchNum);
                 }else{
                     this.moreLoading = false;
                 }
@@ -404,6 +411,14 @@ import { net_getUserProList, net_getUserPro } from '@/js/network.js'
                             color:#828080 ;
                             font-size: 12px;
                             opacity: 0.5;
+                        }
+                        .midAvtive{
+                            width:100%;
+                            height:46px;
+                            text-align: center;
+                            line-height: 46px;
+                            color:#828080 ;
+                            font-size: 12px;
                         }
                         .right{
                             width:100%;

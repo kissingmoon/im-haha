@@ -109,13 +109,13 @@
             例1：A当天总业绩为300万，A没有自营业绩，其中直属代理B1、B2、B3业绩分别为50万、100万、150万，那么A当天能赚取多少佣金呢？
         </p>
         <div class="calculate">
-
+            <img style="width:100%;height:100%" src="./img/suanfa.png" alt="">
         </div>
         <p class="actv_p">
             例2：A当天总业绩为300万，其中A自营业绩为50万，直属代理B1、B2业绩分别为100万、150万，那么A当天能赚取多少佣金呢？
         </p>
         <div class="calculate">
-
+            <img style="width:100%;height:100%" src="./img/algorithm.png" alt="">
         </div>
         <p class="actv_p">
             注：总业绩=自营业绩+下级的有效投注总和； 自营业绩：会员A（自身）有效投注总和。

@@ -7,47 +7,47 @@
 		</div>
         <div class="Yesterday">
             <p class="Yesterday_p">昨日业绩</p>
-            <p class="Yesterday_money">{{Yesterday.yesterdayMoney.toFixed(2)}}<em style="font-size:24px;fontWeight: 650">￥</em></p>
+            <p class="Yesterday_money">{{Yesterday.yesterdayMoney==null?'0.00':Yesterday.yesterdayMoney.toFixed(2)}}<em style="font-size:24px;fontWeight: 650">￥</em></p>
         </div>
         <div class="profit_commission">
             <div class="left">
-                <p class="profit_commission_p p1">￥{{Yesterday.redbagCount.toFixed(2)}}</p>
+                <p class="profit_commission_p p1">￥{{Yesterday.redbagCount==null?'0.00':Yesterday.redbagCount.toFixed(2)}}</p>
                 <p class="profit_commission_p">昨日推荐佣金</p>
             </div>
             <div class="right">
-                <p class="profit_commission_p p2">￥{{Yesterday.totalCommission.toFixed(2)}}</p>
+                <p class="profit_commission_p p2">￥{{Yesterday.totalCommission==null?'0.00':Yesterday.totalCommission.toFixed(2)}}</p>
                 <p class="profit_commission_p">昨日红利佣金</p>
             </div>
         </div>
         <div class="aesearchersAdd">
-            <div class="aesearchersAdd_div">
-                <p class="aesearchersAdd_div_p p1">{{Yesterday.addNumber}}人</p>
+            <div @click="newMembers('1')" class="aesearchersAdd_div">
+                <p class="aesearchersAdd_div_p p1">{{Yesterday.addNumber==null?'0':Yesterday.addNumber}}人</p>
                 <p class="aesearchersAdd_div_p">今日新增</p>
             </div>
-            <div class="aesearchersAdd_div">
-                <p class="aesearchersAdd_div_p p2">{{Yesterday.thisMonthNumber}}人</p>
+            <div @click="newMembers('2')" class="aesearchersAdd_div">
+                <p class="aesearchersAdd_div_p p2">{{Yesterday.thisMonthNumber==null?'0':Yesterday.thisMonthNumber}}人</p>
                 <p class="aesearchersAdd_div_p">本月新增</p>
             </div>
-            <div class="aesearchersAdd_div">
-                <p class="aesearchersAdd_div_p p3">{{Yesterday.geamMembers}}人</p>
+            <div @click="newMembers('0')" class="aesearchersAdd_div">
+                <p class="aesearchersAdd_div_p p3">{{Yesterday.geamMembers==null?'0':Yesterday.geamMembers}}人</p>
                 <p class="aesearchersAdd_div_p">团队成员</p>
             </div>
         </div>
         <div class="getCommission">
-            分享推荐佣金：10000
-            <div  class="receive">转账余额</div>
+            分享推荐佣金：￥{{Yesterday.withdrawCommision==null?'0.00':Yesterday.withdrawCommision.toFixed(2)}}
+            <div @click="toBalance" class="receive">转账余额</div>
         </div>
         <div class="getCommission">
-            业绩红利佣金：10000
+            业绩红利佣金：￥{{Yesterday.wxSpreadCommission==null?'0.00':Yesterday.wxSpreadCommission.toFixed(2)}}
             <div class="receive">立即领取</div>
         </div>
-        <div class="getCommission">
-            历史佣金业绩：￥{{Yesterday.historyCommission.toFixed(2)}}
+        <div @click="gotoCommission('/commissionAll')" class="getCommission">
+            历史佣金业绩：￥{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}
             <div class="goto"></div>
         </div>
         <div @click="goto('/ptp')" class="promote">
             <p class="promote_p">推广赚钱</p>
-            <p class="promote_p">分享累计已赚￥{{Yesterday.historyCommission.toFixed(2)}}</p>
+            <p class="promote_p">分享累计已赚￥{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}</p>
             <div class="promote_div">
                 立即分享
                 <div class="promote_div_goto">
@@ -89,11 +89,98 @@ import { mapGetters } from 'vuex'
             yesterday(){
                 this.$http.post('/gameAgent/integrated-interface').then(res=>{                   
                     if(res.code=='200'){
-                        console.log(res)
                         this.Yesterday=res.data
                     }
                 })
             },
+            toBalance(){
+                if(this.Yesterday.withdrawCommision<=0){
+                    this.$toast('分享推荐佣金为0，快去推广吧')
+                }else{
+                    Dialog.confirm({
+                        message: '分享推荐佣金要转出至账户余额 ？'
+                    }).then(() => {
+                        // on confirm
+                        this.Determine()
+                    }).catch(() => {
+                        // on cancel
+                    });
+                }
+            },
+            Determine(){
+                this.$http.post('/gameAgent/withdraw',{
+                    money:this.Yesterday.withdrawCommision
+                }).then(res=>{                   
+                    console.log(res)
+                })
+            },
+            getNowFormatDate() {//获取当前时间
+                var date = new Date();
+                var seperator1 = "-";
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                        var strDate = date.getDate();
+                        var hours = date.getHours();
+                        var minutes =date.getMinutes();
+                        var seconds =date.getSeconds()
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                        }
+                        if(hours >=0 && hours<=9){
+                                hours = "0" + hours;
+                        }
+                        if(minutes >=0 && minutes<=9){
+                                minutes = "0" + minutes;
+                        }
+                        if(seconds >=0 && seconds<=9){
+                                seconds = "0" + seconds;
+                        }
+                var currentdate = year + seperator1 + month + seperator1 + strDate+' '+hours+':'+minutes+':'+seconds;
+                return currentdate;
+            },
+            start(n){
+                var date = new Date();
+                var seperator1 = "-";
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var strDate = date.getDate();
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                if(n==1){
+                    var currentdate = year + seperator1 + month + seperator1 + strDate+' '+'00'+':'+'00'+':'+'00';
+                    return currentdate;
+                }
+                if(n==2){
+                    var currentdate = year + seperator1 + month + seperator1 + '01'+' '+'00'+':'+'00'+':'+'00';
+                    return currentdate;
+                }
+            },
+            newMembers(param){ 
+                var startTime , endTime
+                if(param==0){
+                    startTime=""
+                    endTime=""
+                }
+                if(param==1){
+                    startTime = this.start(1)
+                    endTime =this.getNowFormatDate()
+                }
+                if(param==2){
+                    startTime = this.start(2)
+                    endTime =this.getNowFormatDate()
+                }
+                this.$router.push({name:'team',query:{startTime,endTime}})
+            },
+            gotoCommission(path){
+                this.$router.push(path)
+            }
        }
     }
 </script>

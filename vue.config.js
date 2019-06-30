@@ -26,7 +26,7 @@ module.exports = {
       '/api': {
         // target: 'http://192.168.27.142:8199', //参考   https://cli.vuejs.org/zh/guide/mode-and-env.html
         target: 'http://47.52.16.236:8199',
-        // target: 'http://192.168.27.8:8199',
+        // target: 'http://192.168.27.23:8199',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api' //代理的路径
