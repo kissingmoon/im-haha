@@ -181,7 +181,8 @@ export default {
 			setUserToken: 'SET_USER_TOKEN',
 			setAccount: 'SET_ACCOUNT',
 			setInviteCode: 'SET_INVITE_CODE',
-			setNetBtnclick: 'SET_NET_BTNCLICK'
+			setNetBtnclick: 'SET_NET_BTNCLICK',
+			setJuluShow:'SET_JULY_SHOW'
 		}),
 		goBefore() {
 			this.$emit('goBefore')
@@ -327,6 +328,7 @@ export default {
 			let res = await net_register(param)
 			if (res.code == '200') {
 				toast('注册成功！')
+				this.setJuluShow(true)
 				this.setUserToken(res.data.token)
 				localStorage.setItem('U_TK', res.data.token)
 				this.$api.getUserInfo()

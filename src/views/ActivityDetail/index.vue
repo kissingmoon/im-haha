@@ -145,6 +145,71 @@
 						<br>4.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利。
 					</p>
 				</div>-->
+				<!-- <div>
+						<div class="actv_h">七月好礼，百家欢乐，连续七天彩金送不停</div>
+						<p class="actv_p">
+							活动日期：2019年7月1日至2019年7月7日<br>
+							活动对象：YG娱乐全体会员<br>
+							活动内容：今日起YG娱乐会员凡是在活动期间进入真人视讯娱乐，打码量达到指定金额，即可领取相应彩金。
+						</p>
+						<p  style="height:15px"></p>
+						<p class="actv_p ">
+							七天时间，限时活动，越娱乐越多金，快来玩吧！
+						</p>
+						<div class="actv_h5">
+							<span class="actv_reat"></span>活动奖励
+						</div>
+						<div class="actv_table12">
+							<div class="col3 col3_0">
+								<div class="row1">当日打码量</div>
+								<div class="row1">1000元+</div>
+								<div class="row1">3000元+</div>
+								<div class="row1">5000元+</div>
+								<div class="row1">10000元+</div>
+								<div class="row1">30000元+</div>
+								<div class="row1">50000元+</div>
+								<div class="row1">100000元+</div>
+								<div class="row1">300000元+</div>
+								<div class="row1">500000元+</div>
+								<div class="row1">1000000元+</div>
+							</div>
+							<div class="col2 ">
+								<div class="row2 row2_1">赠送彩金</div>
+								<div class="row2 row2_1">8元</div>
+								<div class="row2 row2_1">18元</div>
+								<div class="row2 row2_1">28元</div>
+								<div class="row2 row2_1">38元</div>
+								<div class="row2 row2_1">58元</div>
+								<div class="row2 row2_1">88元</div>
+								<div class="row2 row2_1">188元</div>
+								<div class="row2 row2_1">388元</div>
+								<div class="row2 row2_1">588元</div>
+								<div class="row2 row2_1">888元</div>
+							</div>
+
+							<div class="col2">
+								<div class="row2 row2_0">流水要求</div>
+								<div class="row2 row2_1">一倍流水</div>
+							</div>
+							<div class="col2">
+								<div class="row2 row2_0">游戏限制</div>
+								<div class="row2 row2_1">AG真人视讯百家乐，龙虎斗
+								BG真人视讯百家乐，龙虎斗
+								</div>
+							</div>
+						</div>
+						<div class="actv_h5">
+							<span class="actv_reat"></span>活动细则
+						</div>
+						<p class="actv_p">
+							1.	活动期间，用户当天娱乐百家乐打码量达到指定金额，即可享受活动彩金；<br>
+							2.	该活动彩金，无需会员申请，次日结算，系统自动发放；<br>
+							3.	所赠送的彩金需达到一倍流水即可申请出款，可与其他优惠共享；<br>
+							4.	所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利；<br>
+							5.	YG娱乐保留对活动最终解释权；以及在无通知的情况下修改，终止活动的权利，适用于所有优惠。
+						</p>
+				</div> -->
+
 			</div>
 
 			<div v-if="id==98">
