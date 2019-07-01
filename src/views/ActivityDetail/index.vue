@@ -268,6 +268,7 @@ export default {
 				.then(res => {
 					if (res.code == '200') {
 						let lists = res.data.data
+						console.log(lists)
 						lists.forEach(list => {
 							if (this.id == list.id) {
 								this.list = list
@@ -276,7 +277,8 @@ export default {
 									this.set_8888()
 								} else {
 									if (list.isShowApply == 0) {
-										this.flag = false
+										// this.flag = false
+										this.is_8888=true
 									}
 									this.html = html
 								}
