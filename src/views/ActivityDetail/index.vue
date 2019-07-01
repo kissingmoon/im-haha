@@ -214,7 +214,7 @@
 			</div>
 
 			<div v-show="!is_8888" class="actv_btn_box">
-				<button class="actv_btn" @click="submit">立即申请</button>
+				<button v-if="show" class="actv_btn" @click="submit">立即申请</button>
 			</div>
 		</div>
 	</div>
@@ -229,7 +229,8 @@ export default {
 			html: '',
 			is_8888: false,
 			btns_8888: [],
-			flag: false
+			flag: false,
+			show:true,
 		}
 	},
 	computed: {
@@ -248,6 +249,7 @@ export default {
 	},
 	async mounted() {
 		this.id = this.$route.query.id
+		console.log(this.id)
 		if (!this.id) {
 			toast('无效的链接')
 			return
@@ -293,7 +295,8 @@ export default {
 									this.set_8888()
 								} else {
 									if (list.isShowApply == 0) {
-										this.flag = false
+										this.show = false
+										// this.is_8888=true
 									}
 									this.html = html
 								}

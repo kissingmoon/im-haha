@@ -10,4 +10,5 @@ export default {
   inviteCode: '',
   serviceUrl: '',
   agentUrl: "",
+  July:false,
 }
