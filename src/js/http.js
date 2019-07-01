@@ -26,7 +26,8 @@ instance.interceptors.request.use(
       config.headers = {
         'Content-Type': 'application/json',
         domain: 'fwnix.cn',
-        template: 'ui_zhongbo'
+        template: 'ui_zhongbo',
+        templateId: options.templateId
       }
     } else if (config.headers['Content-Type'] == 'application/x-www-form-urlencoded') {
       //if(config.data && Object.keys(config.data).length>0){
