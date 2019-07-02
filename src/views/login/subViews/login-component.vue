@@ -168,8 +168,8 @@ export default {
 			param.platformFlag = this.platformFlag
 			let loading = this.$loading({ text: '正在登录…' })
 			let res = await net_login(param)
+			loading.close()
 			if (res.code == '200' || res.code == '20015') {
-				toast('登录成功！')
 				this.setJuluShow(true)
 				this.setUserToken(res.data.token)
 				localStorage.setItem('U_TK', res.data.token)

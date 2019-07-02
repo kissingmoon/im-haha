@@ -7,6 +7,10 @@ import router from './router'
 import App from './App.vue'
 window.Dialog = Dialog
 window.toast = function(params) {
+  if (!params) {
+    console.log('toast null')
+    return
+  }
   let toastObj = {
     duration: 1500
   }

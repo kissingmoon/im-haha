@@ -64,8 +64,9 @@ instance.interceptors.response.use(
     if (response.status === 200) {
       /*这里的code是200成功拿到后台参数之后,后台返回的数据带的code状态码，如果后台没有返回这种code码，忽略此步骤*/
       switch (response.data.code) {
-          case '9002':
-          case '9003': {
+        case '9001':
+        case '9002':
+        case '9003': {
           $api.clearLocal()
           if (response.config.loginoutWarn) {
             //这边的提示可以通过config来做判断
@@ -84,11 +85,11 @@ instance.interceptors.response.use(
         case '10086':
           //您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码
           Dialog.alert({
-						message: '您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码',
-						confirmButtonText: '好的'
-					}).then(() => {
+            message: '您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码',
+            confirmButtonText: '好的'
+          }).then(() => {
             router.push('/login')
-          });
+          })
           $api.clearLocal()
           break
         case '200':
@@ -114,7 +115,6 @@ instance.interceptors.response.use(
           response.data.msg && toast(response.data.msg)
       }
       return Promise.resolve(response.data)
-      
     } else {
       /*这里的status是网络并没有以200状态成功返回数据，就会进入此分支并根据网络异常状态进行处理，会进入catch逻辑*/
       return Promise.reject(response)
