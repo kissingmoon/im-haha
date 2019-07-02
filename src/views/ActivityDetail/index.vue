@@ -3,15 +3,17 @@
 		<ims-header title="活动详情"/>
 		<div v-if="isShow" class="actv_main">
 			<!-- 在这里绑定html -->
-			<div v-if="!is_8888" v-html="html"></div>
+			<div v-if="!is_8888" v-html="html">
+				<!-- <div v-if="true"> -->
+			</div>
 			<div v-else>
 				<!--活动 12 初次相遇 豪礼相赠   注册免费送88元彩金-->
 				<div v-if="is_8888" style="padding-bottom:24px;">
-					<div class="actv_h">初次相遇 豪礼相赠 注册免费送188元彩金</div>
+					<div class="actv_h">初次相遇 豪礼相赠 注册免费送88元彩金</div>
 					<p class="actv_p">
 						活动时间：即日起
 						<br>活动对象：YG娱乐全体人员
-						<br>活动内容：即日起成功注册成为我司会员，即可获得免费赠送的188元的迎新豪礼！只需达到对应的条件即可领取相应的彩金，盈利到指定的金额即可申请提款，赠送人数无上限！尚未注册/存款的亲们强烈建议您注册/存款，超多优惠等着您噢！
+						<br>活动内容：即日起成功注册成为我司会员，即可获得免费赠送的88元的迎新豪礼！只需达到对应的条件即可领取相应的彩金，盈利到指定的金额即可申请提款，赠送人数无上限！尚未注册/存款的亲们强烈建议您注册/存款，超多优惠等着您噢！
 					</p>
 					<div class="actv_h5">
 						<span class="actv_reat"></span>奖励规则
@@ -31,11 +33,11 @@
 						</div>
 						<div class="col3 col3_1">
 							<div class="row1">彩金金额</div>
-							<div class="row1">6元</div>
+							<div class="row1">5元</div>
 							<div class="row1">8元</div>
-							<div class="row1">48元</div>
-							<div class="row1">58元</div>
-							<div class="row1">68元</div>
+							<div class="row1">15元</div>
+							<div class="row1">25元</div>
+							<div class="row1">35元</div>
 						</div>
 						<div class="col2">
 							<div class="row2 row2_0">提款要求</div>
@@ -50,32 +52,28 @@
 							<div class="row1">手动领取</div>
 						</div>
 					</div>
-					<div>
-						<div class="actv_h5">
-							<span class="actv_reat"></span>申请方式
+					<div class="actv_h5">
+						<span class="actv_reat"></span>申请方式
+					</div>
+					<div class="actv_8888">
+						<div class="actv_8888_t margin_bottom_2">
+							<div class="flex_30">15元</div>
+							<div class="flex_40">25元</div>
+							<div class="flex_30">35元</div>
 						</div>
-						<div class="actv_8888">
-							<div class="actv_8888_t margin_bottom_2">
-								<div class="flex_30">48元</div>
-								<div class="flex_40">58元</div>
-								<div class="flex_30">68元</div>
-							</div>
-							<img class="actv_8888_img" src="../../assets/actv_0.png">
-							<div class="actv_8888_t actv_font_0 margin_bottom_8">
-								<div class="flex_30">第三天登录</div>
-								<div class="flex_40">第四天登录</div>
-								<div class="flex_30">第五天登录</div>
-							</div>
-							<div v-if="btns_8888.length > 0" class="actv_8888_t">
-								<div v-for="(btn,index) in btns_8888" :key="index" class="flex_30">
-									<ims-btn
-										class="actv_8888_btn"
-										:throttleTime="1000"
-										:class="{btns_8888_disabled:btn.disabled ? true : false}"
-										:disabled="btn.disabled"
-										@click="getBonus(btn)"
-									>{{btn.text}}</ims-btn>
-								</div>
+						<img class="actv_8888_img" src="../../assets/actv_0.png">
+						<div class="actv_8888_t actv_font_0 margin_bottom_8">
+							<div class="flex_30">第三天登录</div>
+							<div class="flex_40">第四天登录</div>
+							<div class="flex_30">第五天登录</div>
+						</div>
+						<div class="actv_8888_t">
+							<div v-for="(btn,index) in btns_8888" :key="index" class="flex_30">
+								<button
+									class="actv_8888_btn"
+									:class="{btns_8888_disabled:btn.disabled ? true : false}"
+									@click="getBonus(btn)"
+								>{{btn.text}}</button>
 							</div>
 						</div>
 					</div>
@@ -84,15 +82,10 @@
 					</div>
 					<p class="actv_p">
 						1.所赠送的彩金需一倍流水方可提款；
-						<br>2.活动期间，第一天和第二天系统自动派发，
-						<br>第三天彩金领取，需要进行有效投注一次，当日充值金额满100元以上，即可领取赠送彩金48元
-						<br>第四天彩金领取，当天有效投注达到500元以上，可领取58元彩金
-						<br>第五天彩金领取，当天有效投注达到1000元以上，可领取第五天彩金68元
-						<br>免费赠送彩金总计：188元；
-						<br>3.申请的彩金必须有进行娱乐，才可以继续申请后续彩金；
-						<br>4.参与该活动，领取彩金后如未登录或娱乐，间隔时间超出七天后，将无法再次参与活动；
-						<br>5.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利；
-						<br>6.公司规定无风险注单不计算有效投注额，无风险注单包括：游戏中同时投注黑白、龙虎、庄闲、投注直注胜率不可超过70%,任何非法套取优惠行为将扣除产生的盈利。
+						<br>2.登录期间第二天领取彩金后，要有一次充值记录，才可领取第三天赠送的彩金，第三天领取后要有充值记录，才可领取第四天的，以此类推，方可领取88元全部彩金；
+						<br>3.彩金不可累积申请后下注，必须在每次申请后进行娱乐或提现，申请彩金时账户额度不能大于5元；
+						<br>4.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利；
+						<br>5.公司规定无风险注单不计算有效投注额，无风险注单包括：游戏中同时投注黑白、龙虎、庄闲、投注直注胜率不可超过70%,任何非法套取优惠行为将扣除产生的盈利。
 					</p>
 				</div>
 				<!-- <div >
@@ -145,7 +138,7 @@
 						<br>3.所赠送的彩金需达到一倍流水即可申请出款，不再与其他优惠共享；
 						<br>4.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利。
 					</p>
-				</div>-->
+				</div> -->
 			</div>
 
 			<div v-if="id==98">
@@ -215,7 +208,7 @@
 			</div>
 
 			<div v-show="!is_8888" class="actv_btn_box">
-				<ims-btn class="actv_btn" :throttleTime="1000"  @click="submit">立即申请</ims-btn>
+				<button v-if="show" class="actv_btn" @click="submit">立即申请</button>
 			</div>
 		</div>
 	</div>
@@ -230,25 +223,16 @@ export default {
 			html: '',
 			is_8888: false,
 			btns_8888: [],
-			flag: false
+			flag: false,
+			show:true,
 		}
 	},
 	computed: {
 		...mapGetters(['platformFlag', 'user_token', 'account'])
 	},
-	watch: {
-		account: {
-			handler(val, old) {
-				if (val && this.id == '53') {
-					this.set_8888()
-				}
-			},
-			deep: true,
-			immediate: true
-		}
-	},
 	async mounted() {
 		this.id = this.$route.query.id
+		console.log(this.id)
 		if (!this.id) {
 			toast('无效的链接')
 			return
@@ -286,6 +270,7 @@ export default {
 				.then(res => {
 					if (res.code == '200') {
 						let lists = res.data.data
+						console.log(lists)
 						lists.forEach(list => {
 							if (this.id == list.id) {
 								this.list = list
@@ -294,7 +279,9 @@ export default {
 									this.set_8888()
 								} else {
 									if (list.isShowApply == 0) {
-										this.flag = false
+										// this.flag = false
+										debugger
+										this.is_8888=true
 									}
 									this.html = html
 								}
@@ -324,24 +311,13 @@ export default {
 					})
 					this.$api.getUserInfo()
 				} else {
-					if (res.code == '2037') {
-						toast({
-							duration: 3000,
-							message: res.msg
-						})
-					} else {
-						toast(res.msg)
-					}
+					toast(res.msg)
 				}
 			})
 		},
 		set_8888() {
 			this.btns_8888 = []
-			let account = this.account || {}
-			if (account.ownActivityStatus == '1') {
-				this.is_8888 = true
-				return
-			}
+			let account = this.account
 			let day3 = {
 				disabled: true,
 				text: '等待领取',
@@ -465,10 +441,14 @@ export default {
 	padding: 20px 0;
 }
 .actv_btn {
+	display: block;
 	width: 173px;
 	height: 42px;
+	background: linear-gradient(180deg, @color_shallow_blue 0%, @color_deep_blue 100%);
 	box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.5), 0px 2px 0px 0px rgba(97, 51, 34, 1),
 		0px 1px 0px 0px rgba(255, 234, 152, 1);
+	font-size: 17px;
+	color: rgba(255, 255, 255, 1);
 	line-height: 42px;
 	border-radius: 21px;
 	transition: all 0.1s linear;
@@ -494,8 +474,8 @@ export default {
 	color: rgba(116, 116, 116, 1);
 	line-height: 19px;
 }
-.p1 {
-	margin-top: 15px;
+.p1{
+	margin-top:15px
 }
 .actv_h5 {
 	padding: 24px 0 10px;

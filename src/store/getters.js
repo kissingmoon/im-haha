@@ -9,4 +9,5 @@ export default {
   invite_code: state => state.inviteCode, //保存邀请码
   serviceUrl: state => state.serviceUrl,
   agent_url: state => state.agentUrl,
+  July:state => state.July,
 }
