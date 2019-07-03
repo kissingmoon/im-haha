@@ -3,6 +3,7 @@ node_modules
 /dist
 dist.zip
 vue.config.js
+/public/vendor
 
 # local env files
 .env.local
