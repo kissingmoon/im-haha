@@ -119,8 +119,8 @@ export default {
 				totalBalance: '',
 				balance: ''
 			},
-			userPlatFormBalance: [],
 			show: false,
+			userPlatFormBalance: [],
 			otherPlatFormBlance: [],
 			choosedAccoundObj: {}, //  下拉框列表选中的对象
 			choosed_outAccoundObj: {}, //  选中的转出账户对象，包括账户名，账户id，和选中的账户下标
@@ -156,7 +156,7 @@ export default {
 				this.userBalance.totalBalance = res.data.totalBalance
 				this.userPlatFormBalance.forEach(list => {
 					if (item.platform == list.platform) {
-						list.pfmBalance = res.data.userPlatFormBalance
+						list.balance = res.data.platformBalance
 					}
 				})
 				toast('刷新成功')
