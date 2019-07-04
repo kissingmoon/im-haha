@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npm run serve",
     "serve": "vue-cli-service serve",
-    "build": "npm run dll && npm run build",
+    "build": "npm run dll && npm run old-build",
     "old-build": "vue-cli-service build",
     "dll": "webpack -p --progress --config ./webpack.dll.conf.js",
     "lint": "vue-cli-service lint",
