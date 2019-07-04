@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-let Dlls = ['vue', 'axios', 'lodash', 'swiper']
+let Dlls = ['vue', 'bases', 'lodash', 'swiper']
 let DllPlugins = Dlls.map(item => {
   return new webpack.DllReferencePlugin({
     context: process.cwd(),
@@ -21,7 +21,7 @@ module.exports = {
   },
   configureWebpack: {
     plugins: [
-      //new BundleAnalyzerPlugin(),
+      new BundleAnalyzerPlugin(),
       ...DllPlugins,
       new AddAssetHtmlPlugin({
         // dll文件位置
