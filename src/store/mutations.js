@@ -26,4 +26,10 @@ export default {
     SET_SERVICE_URL(state, param) {
         state.serviceUrl = param;
     },
+    SET_AGENT_URL(state, param) {
+        state.agentUrl = param;
+    },
+    SET_JULY_SHOW(state, param) {
+        state.July = param;
+    },
 }

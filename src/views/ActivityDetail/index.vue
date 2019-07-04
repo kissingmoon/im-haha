@@ -71,6 +71,7 @@
 									<button
 										class="actv_8888_btn"
 										:class="{btns_8888_disabled:btn.disabled ? true : false}"
+										:disabled="btn.disabled"
 										@click="getBonus(btn)"
 									>{{btn.text}}</button>
 								</div>
@@ -213,7 +214,7 @@
 			</div>
 
 			<div v-show="!is_8888 && !appWeb" class="actv_btn_box">
-				<button class="actv_btn" @click="submit">立即申请</button>
+				<button v-if="show" class="actv_btn" @click="submit">立即申请</button>
 			</div>
 		</div>
 	</div>
@@ -229,7 +230,8 @@ export default {
 			is_8888: false,
 			btns_8888: [],
 			flag: false,
-			appWeb: false
+			appWeb: false,
+			show:true,
 		}
 	},
 	computed: {
@@ -295,7 +297,8 @@ export default {
 									this.set_8888()
 								} else {
 									if (list.isShowApply == 0) {
-										this.flag = false
+										this.show = false
+										// this.is_8888=true
 									}
 									this.html = html
 								}

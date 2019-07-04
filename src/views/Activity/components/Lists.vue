@@ -25,12 +25,8 @@
 	</ul>
 </template>
 <script>
-import ImsImage from '@/components/ims-image.vue'
 import { mapGetters } from 'vuex'
 export default {
-	components: {
-		ImsImage
-	},
 	computed: {
 		...mapGetters(['footRedDot'])
 	},

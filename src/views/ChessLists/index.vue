@@ -18,11 +18,7 @@
 	</div>
 </template>
 <script>
-import ImsImage from '@/components/ims-image.vue'
 export default {
-	components: {
-		ImsImage
-	},
 	data() {
 		return {
 			title: '',
