@@ -21,7 +21,7 @@ module.exports = {
   },
   configureWebpack: {
     plugins: [
-      new BundleAnalyzerPlugin(),
+      //new BundleAnalyzerPlugin(),
       ...DllPlugins,
       new AddAssetHtmlPlugin({
         // dll文件位置
