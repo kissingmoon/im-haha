@@ -7,7 +7,7 @@
 			</div>
 			<div class="form-box flex-1">
 				<div class="form-title">注册</div>
-				<div class="form-input-content">
+				<div class="form-input-content" id="regForm">
 					<div class="form-input-item" v-for="(v, k) in formData" :key="k">
 						<ims-input
 							:name="k"
@@ -25,7 +25,7 @@
 							<div class="slot-icon--left" :class="v.leftIconClass" slot="leftIcon"></div>
 							<div class="slot-icon--right" :class="v.extra?'':v.rightIconClass" slot="rightIcon">
 								<img v-if="v.rightIconClass == 'right-icon__code'" :src="codeSrc" alt>
-								<span :class="v.rightIconClass" class="display-flex flex-center" v-if="v.rightIconClass == 'right-icon__simcode'" @click="sendSIMCode(k)">获取</span>
+								<span ref="getCode" id="getCode" :class="v.rightIconClass" class="display-flex flex-center" v-if="v.rightIconClass == 'right-icon__simcode'" @click="sendSIMCode(k)">获取</span>
 								<span class="display-flex flex-center right-icon__simcode" v-if="v.rightIconClass == 'right-icon__waiting'">{{ countZero }}s</span>
 							</div>
 						</ims-input>
@@ -33,6 +33,8 @@
 							<span v-show="pointers.formData == k">{{ v.regTip }}</span>
 						</div>
 					</div>
+					
+								<div id="meme">dianwo</div>
 				</div>
 				<div
 					class="form-submit-content display-flex flex-center"
@@ -176,6 +178,9 @@ export default {
 		// this.setCode()
 		this.checkInvite()
 	},
+	mounted() {
+		this.initGeetest();
+	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
@@ -186,6 +191,30 @@ export default {
 		}),
 		goBefore() {
 			this.$emit('goBefore')
+		},
+		initGeetest() {
+			initGeetest({
+					// 以下配置参数来自服务端 SDK
+					gt: '6216680937717fdab947ed9e71a3aaa1',
+					challenge: 'e8382b9e08987b2f851e9468a596029b',
+					offline: false,
+					new_captcha: true,
+					timeout: '5000',
+					product: 'bind'
+        }, function (captchaObj) {
+					captchaObj.onReady(function(){
+								//your code
+							}).onSuccess(function(){
+								//your code
+							}).onError(function(){
+								//your code
+							})
+						document.getElementById("meme").addEventListener("click", ()=>{
+							alert(99)
+							captchaObj.verify(); 
+						})
+        // 省略其他方法的调用
+    	});
 		},
 		checkInvite() {
 			let inviteCode = this.$route.query.inviteCode;
