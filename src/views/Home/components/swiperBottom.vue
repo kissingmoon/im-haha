@@ -9,7 +9,7 @@
 				:class="{active:activeIndex==index}"
 				@click="changeSwiper(list,index)"
 			>
-				<img class="img" :src="activeIndex==index ? list.iconImgOffUrl :list.iconImgOnUrl">
+				<img class="img" :src="activeIndex==index ? list.iconImgOffUrl :list.iconImgOnUrl" />
 				<span class="text">{{list.gameTitleCn}}</span>
 			</li>
 		</ul>
@@ -21,7 +21,7 @@
 					@click.native="open(item.platformInfos[0],item )"
 					:src="item.platformInfos[0].gameImageUrl"
 				>
-					<img class="slide_1" slot="placeholder" src="../../../assets/banner_load1.png">
+					<img class="slide_1" slot="placeholder" src="../../../assets/banner_load1.png" />
 				</ims-image>
 				<div v-if="item.platformInfos.length == 2" class="slide_2">
 					<div class="img_box img_box0">
@@ -29,14 +29,14 @@
 							class="img"
 							:src="item.platformInfos[0].gameImageUrl"
 							@click="open(item.platformInfos[0],item)"
-						>
+						/>
 					</div>
 					<div class="img_box img_box1">
 						<img
 							class="img"
 							:src="item.platformInfos[1].gameImageUrl"
 							@click="open(item.platformInfos[1],item)"
-						>
+						/>
 					</div>
 				</div>
 				<div v-if="item.platformInfos.length == 3" class="slide_3">
@@ -45,21 +45,21 @@
 							class="img"
 							:src="item.platformInfos[0].gameImageUrl"
 							@click="open(item.platformInfos[0],item)"
-						>
+						/>
 					</div>
 					<div class="img_box img_box1">
 						<img
 							class="img"
 							:src="item.platformInfos[1].gameImageUrl"
 							@click="open(item.platformInfos[1],item)"
-						>
+						/>
 					</div>
 					<div class="img_box img_box2">
 						<img
 							class="img"
 							:src="item.platformInfos[2].gameImageUrl"
 							@click="open(item.platformInfos[2],item)"
-						>
+						/>
 					</div>
 				</div>
 				<div v-if="item.platformInfos.length == 4" class="slide_4">
@@ -68,14 +68,14 @@
 							class="img"
 							:src="item.platformInfos[0].gameImageUrl"
 							@click="open(item.platformInfos[0],item)"
-						>
+						/>
 					</div>
 					<div class="img_box img_box1">
 						<img
 							class="img"
 							:src="item.platformInfos[1].gameImageUrl"
 							@click="open(item.platformInfos[1],item)"
-						>
+						/>
 					</div>
 					<div class="img_box2">
 						<div class="img_box2_box img_box2_box0">
@@ -83,14 +83,105 @@
 								class="img"
 								:src="item.platformInfos[2].gameImageUrl"
 								@click="open(item.platformInfos[2],item)"
-							>
+							/>
 						</div>
 						<div class="img_box2_box img_box2_box1">
 							<img
 								class="img"
 								:src="item.platformInfos[3].gameImageUrl"
 								@click="open(item.platformInfos[3],item)"
-							>
+							/>
+						</div>
+					</div>
+				</div>
+				<div v-if="item.platformInfos.length == 5" class="slide_4">
+					<div class="img_box img_box0">
+						<img
+							class="img"
+							:src="item.platformInfos[0].gameImageUrl"
+							@click="open(item.platformInfos[0],item)"
+						/>
+					</div>
+					<div class="img_box2 mb_6">
+						<div class="img_box2_box img_box2_box0">
+							<img
+								class="img"
+								:src="item.platformInfos[1].gameImageUrl"
+								@click="open(item.platformInfos[1],item)"
+							/>
+						</div>
+						<div class="img_box2_box img_box2_box1">
+							<img
+								class="img"
+								:src="item.platformInfos[2].gameImageUrl"
+								@click="open(item.platformInfos[2],item)"
+							/>
+						</div>
+					</div>
+					<div class="img_box2">
+						<div class="img_box2_box img_box2_box0">
+							<img
+								class="img"
+								:src="item.platformInfos[3].gameImageUrl"
+								@click="open(item.platformInfos[3],item)"
+							/>
+						</div>
+						<div class="img_box2_box img_box2_box1">
+							<img
+								class="img"
+								:src="item.platformInfos[4].gameImageUrl"
+								@click="open(item.platformInfos[4],item)"
+							/>
+						</div>
+					</div>
+				</div>
+				<div v-if="item.platformInfos.length == 6" class="slide_4">
+					<div class="img_box2 mb_6">
+						<div class="img_box2_box img_box2_box0">
+							<img
+								class="img"
+								:src="item.platformInfos[0].gameImageUrl"
+								@click="open(item.platformInfos[0],item)"
+							/>
+						</div>
+						<div class="img_box2_box img_box2_box1">
+							<img
+								class="img"
+								:src="item.platformInfos[1].gameImageUrl"
+								@click="open(item.platformInfos[1],item)"
+							/>
+						</div>
+					</div>
+					<div class="img_box2 mb_6">
+						<div class="img_box2_box img_box2_box0">
+							<img
+								class="img"
+								:src="item.platformInfos[2].gameImageUrl"
+								@click="open(item.platformInfos[2],item)"
+							/>
+						</div>
+						<div class="img_box2_box img_box2_box1">
+							<img
+								class="img"
+								:src="item.platformInfos[3].gameImageUrl"
+								@click="open(item.platformInfos[3],item)"
+							/>
+						</div>
+					</div>
+					<div class="img_box2">
+						<div class="img_box2_box img_box2_box0">
+							<img
+								class="img"
+								:src="item.platformInfos[4].gameImageUrl"
+								@click="open(item.platformInfos[4],item)"
+							/>
+						</div>
+						<div class="img_box2_box img_box2_box1">
+							<img
+								class="img"
+								:src="item.platformInfos[5].gameImageUrl"
+								@click="open(item.platformInfos[5],item)"
+							/>
 						</div>
 					</div>
 				</div>
@@ -100,11 +191,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import ImsImage from '@/components/ims-image.vue'
 export default {
-	components: {
-		ImsImage
-	},
 	props: {
 		lists: {
 			type: Array,
@@ -151,7 +238,7 @@ export default {
 			let gameJumpUrl = platformInfos.gameJumpUrl
 
 			const ismjb = this.ismjb || localStorage.getItem('ismjb')
-			if(platformInfos.gameStatus==2){
+			if (platformInfos.gameStatus == 2) {
 				this.$toast(platformInfos.alertMsg)
 				return
 			}
@@ -184,7 +271,7 @@ export default {
 		slideChange() {
 			this.activeIndex = this.$refs.bottomSwiper.swiper.activeIndex
 		},
-		changeSwiper(list,index) {
+		changeSwiper(list, index) {
 			this.$refs.bottomSwiper.swiper.slideTo(index)
 		}
 	}
@@ -216,7 +303,7 @@ export default {
 				height: 22px;
 				margin-right: 7px;
 			}
-			.text{
+			.text {
 				min-width: 4em;
 				text-align: center;
 			}
@@ -299,7 +386,6 @@ export default {
 		overflow: hidden;
 		flex: 1;
 	}
-
 	.img_box2 {
 		margin-bottom: 0;
 		flex: 1;
@@ -312,10 +398,14 @@ export default {
 			flex: 1;
 			margin-right: 6px;
 			overflow: hidden;
+			border-radius: 5px;
 		}
 		.img_box2_box1 {
 			margin-right: 0;
 		}
+	}
+	.mb_6 {
+		margin-bottom: 6px;
 	}
 	.img {
 		display: block;

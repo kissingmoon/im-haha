@@ -6,9 +6,9 @@
 				<notice :texts="notice"/>
 				<user-data/>
 			</div>
-			<swiper-bottom :lists="swiperBottomData"/>
+			<swiper-bottom ref='bottomSwiper' :lists="swiperBottomData"/>
 		</div>
-		<div @click.stop v-if="July" class="JulyActivities">
+		<div @click.stop v-if="JulyShow" class="JulyActivities">
 				<div class="centent">
 					<div class="centent_head">
 						<p class="centent_head_p1">七月送好礼，百家齐欢乐，连续七天彩金送不停</p>
@@ -59,7 +59,6 @@
           </div>
 				</div>			
 		</div>
-		<swiperBottom ref='bottomSwiper'></swiperBottom>
 	</div>
 </template>
 
@@ -79,6 +78,7 @@ export default {
 	},
 	data() {
 		return {
+			JulyShow:false,
 			isShow: false,
 			isError: false,
 			swiperTopData: [],
@@ -93,6 +93,7 @@ export default {
 		this.init()
 	},
 	activated() {
+		this.Julyfun()
 		if (this.isError) {
 			this.init()
 		} else {
@@ -100,18 +101,29 @@ export default {
 		}
 	},
 	computed:{
-		...mapGetters(['July'])
+		...mapGetters([
+      'July'
+    ]),
 	},
 	methods: {
 		...mapMutations({
 			setJuluShow:'SET_JULY_SHOW'
 		}),
+		downJuly(){
+			this.JulyShow=false
+			this.setJuluShow(false)
+		},
+		Julyfun(){
+			if(this.July){
+				setTimeout(()=>{
+          this.JulyShow=true
+        },500)
+			}
+		},
 		gotogame(){
+			this.JulyShow=false
 			this.setJuluShow(false)
 			this.$refs.bottomSwiper.open(this.Julygame)
-		},
-		downJuly(){
-			this.setJuluShow(false)
 		},
 		async init() {
 			let loading = this.$loading({ text: '正在加载…' })
