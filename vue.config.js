@@ -27,9 +27,9 @@ module.exports = {
         // dll文件位置
         filepath: path.resolve(__dirname, './public/vendor/*.js'),
         // dll 引用路径
-        publicPath: './vendor',
+        publicPath: '/vendor',
         // dll最终输出的目录
-        outputPath: './vendor'
+        outputPath: '/vendor'
       })
     ]
   },
@@ -44,7 +44,7 @@ module.exports = {
     port: 8080,
     proxy: {
       '/api': {
-        target: 'http://192.168.27.142:8199',
+        target: 'http://47.52.16.236:8199',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api' //代理的路径
