@@ -15,11 +15,11 @@
             <van-list v-model="moreLoading" :finished="finished" :finished-text="finishedText" @load="onLoad" :offset="30">
                 <div v-if="switchNum==0" class="contribution">
                     <div class="left">
-                        <p class="contribution_p p1">{{totalPro.peopleNum}}人</p>
+                        <p class="contribution_p p1">￥{{performanceBonuses.totalCommission}}.00</p>
                         <p class="contribution_p p3">昨日红利佣金</p>
                     </div>
                     <div class="right">
-                        <p class="contribution_p p2">￥{{totalPro.inviteMoney=='null'?0:totalPro.inviteMoney}}.00</p>
+                        <p class="contribution_p p2">￥{{performanceBonuses.bonusMoney}}.00</p>
                         <p class="contribution_p">红利佣金总计</p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                         <div @click='gotoDetails(v)' class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
                                 <p class="left_p">{{v.settleTime}}</p>
-                                <p class="left_p p1">奖励：￥{{v.bet.toFixed(2)}}</p>
+                                <p class="left_p p1">奖励：￥{{v.bet}}.00</p>
                             </div>
                             <div class="lists_right">
                                 <div class="midAvtive">{{v.type}}
@@ -66,7 +66,16 @@
         </div>
         <div @click.stop="end" v-show="maskShow" class="mask">
             <div @click.stop :class="down_pop">
-                <div :class="listNum==index?'liststyle':''" @click="listfun(index)" class="item" v-for="(item,index) in lists" :key="index">{{item}}</div>
+                <div 
+                :class="listNum==index ? 'liststyle' : ''" 
+                @click="listfun(index)" 
+                class="item" 
+                v-for="(item,index) in lists" 
+                :key="index"
+                >
+                {{item}}
+                </div>
+                <div @click="cancel" class="item">取消</div>
             </div>
         </div>
     </div>
@@ -92,7 +101,8 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                     "page_size": "10",
                     "date_type": "5" ,  //  5：全部数据    4：月数据   3：周数据   2：当前3天数据
                     'startTime': "",
-                    "endTime" :""
+                    "endTime" :"",
+                    "gameId" : 0
                 },
                 loading: false,
                 finished: true,
@@ -109,6 +119,9 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                     // }
                 ],
                 totalPro:{},
+                performanceBonuses:{},
+                typeArr:[],
+                count:-1,
                 recListTotal: 0,
                 finishedText: ""
                 // agentList:[0]
@@ -129,16 +142,20 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                     this.init(1)
                 }
             },
+            cancel(){
+                this.end()
+            },
             datafun(s){
                 this.num++
+                this.count=s
                 if(this.num%2==1){
                     this.maskShow=true
                     this.down_pop='bouncetop animated slideInUp'
                     if(s==0){ 
-                        this.lists=["全部记录","体育投注","捕鱼游戏","棋牌游戏","电子游戏","捕鱼游戏","捕鱼游戏","捕鱼游戏","取消"]
+                        this.lists=this.typeArr
                     }
                     if(s==1){
-                        this.lists=["全部记录","最近三天","近七天","一个月","三个月","取消"]
+                        this.lists=["全部记录","最近三天","近七天","一个月","三个月"]
                     }
                 } 
             },
@@ -151,8 +168,93 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                     },500)
                 }
             },
+            //////////////////////////////////////////////////
+            getNowFormatDate() {//获取当前时间
+                var date = new Date();
+                var seperator1 = "-";
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var strDate = date.getDate();
+                var hours = date.getHours();
+                var minutes =date.getMinutes();
+                var seconds =date.getSeconds()
+                if (month >= 1 && month <= 9) {
+                    month = "0" + month;
+                }
+                if (strDate >= 0 && strDate <= 9) {
+                    strDate = "0" + strDate;
+                }
+                if(hours >=0 && hours<=9){
+                        hours = "0" + hours;
+                }
+                if(minutes >=0 && minutes<=9){
+                        minutes = "0" + minutes;
+                }
+                if(seconds >=0 && seconds<=9){
+                        seconds = "0" + seconds;
+                }
+                var currentdate = year + seperator1 + month + seperator1 + strDate+' '+hours+':'+minutes+':'+seconds;
+                return currentdate;
+            },
+            format(now){
+                var y,m,d;
+                y = now.getFullYear();
+                m = now.getMonth() + 1;
+                d = now.getDate();
+                return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0,8);
+            },
+            beforeYouGet(n) {//获取之前时间
+                var y,m,d;
+            var curTime = new Date().getTime();
+                var startDate = curTime - (n * 3600 * 24 * 1000);
+                return this.format(new Date(startDate))		
+            },
+            beforMinutes(n){////获取之前月时间
+                var dt = new Date();
+                var Month= dt.setMonth( dt.getMonth()-n );
+                return this.format(new Date(Month)) 	    
+            },
+            time(m){
+                if(m==0){
+                    this.queryParam.endTime=""
+                    this.queryParam.startTime=""
+                }
+                if(m==1){
+                    this.queryParam.endTime=this.getNowFormatDate()
+                    this.queryParam.startTime=this.beforeYouGet(3)
+                }
+                if(m==2){
+                    this.queryParam.endTime=this.getNowFormatDate()
+                    this.queryParam.startTime=this.beforeYouGet(7)
+                }
+                if(m==3){
+                    this.queryParam.endTime=this.getNowFormatDate()
+                    this.queryParam.startTime=this.beforMinutes(1)
+                }
+                if(m==4){
+                    this.queryParam.endTime=this.getNowFormatDate()
+                    this.queryParam.startTime=this.beforMinutes(3)
+                }
+            },
+        ///////////////////////////////////
             listfun(index){
                 this.listNum=index
+                this.end()
+                this.queryParam.page_no=1
+                if(this.switchNum==0){
+                    if(this.count==0){
+                        this.queryParam.gameId=index                       
+                        this.getRecList(this.queryParam, "init",this.switchNum);
+                    }
+                    if(this.count==1){
+                        this.time(index)
+                        this.getRecList(this.queryParam, "init",this.switchNum);
+                    }
+                }
+                if(this.switchNum==1){
+                    this.time(index)
+                    this.getRecList(this.queryParam, "init",this.switchNum);
+                }
             },
             gotoDetails(v){
                 this.$router.push({name:'commissionDetails',query:{'v':v}})
@@ -180,13 +282,12 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                     res = await net_getUserProList(param);
                 }
                 if(val==0){
-                    console.log(val)
                     res = await net_getUserProList1(param)
-                    console.log(res)
+                    this.performanceBonuses = res.data
+                    this.typeArr=res.data.gameType
                 }
                 if(type == "ref"){
                     if(res.code == "200"){
-                        console.log(555)
                         this.recList = res.data.data;
                         this.refLoading = false;
                         if(this.recList.length < this.queryParam.page_size){
@@ -197,22 +298,23 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                 }else if(type == "more"){
                     if(res.code == "200"){
                         this.recList = this.recList.concat(res.data.result);
-                        console.log(666)
                         this.moreLoading = false;
-                        if(this.recList.length >= this.recListTotal){
+                        if(res.data.result.length ==0){
                             this.finished = true;
                             this.finishedText = "已经到底了~"
                         }
                     }
                 }else if(type == "init"){
                     this.recList = res.data.result;
-                    console.log(777)
                     this.recListTotal = res.data.count;
                     // this.totalMoney = res.data.totalMoney;
                     this.initFinish = true;
+                    if(this.recList.length>=10){
+                        this.finished = false;
+                    }
                     if(this.recList.length < parseInt(this.queryParam.page_size)){
                         this.moreLoading = false;
-                        this.finished = true;
+                        this.finished = true;                       
                         if(this.recList.length > 0){
                             this.finishedText = "没有更多了~"
                         }

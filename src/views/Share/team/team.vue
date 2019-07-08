@@ -24,6 +24,7 @@
 				width:100%;
 				height:32px
 			}
+			input::-webkit-input-placeholder{text-align: center;} 
 			.removeipt{
 				position: absolute;
 				right:5%;
@@ -35,11 +36,11 @@
 		}
 	}
 	.team_dash {
-		padding: 12px 0;
+		padding: 12px 0 0 0;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		height: 104px;
+		height: 92px;
 		box-sizing: border-box;
 		.team_dash_l {
 			// width: 162px;
@@ -84,6 +85,7 @@
 		background: rgba(255, 255, 255, 0.5);
 		min-height: calc(100vh - 104px - @app_head_height);
 		border-radius: 5px;
+		margin-top:12px; 
 		.lists_null {
 			min-height: calc(100vh - 300px);
 			display: flex;
@@ -101,6 +103,7 @@
 				color: #4a4a4a;
 				line-height: 17px;
 				margin-top: 15px;
+				text-align: center
 			}
 		}
 	}
@@ -260,12 +263,12 @@
 		
 		<div v-if="isShow" class="team_main">
 			<div class="search">
-					<input @input="searchfun" class="ipt" v-model="ipt" type="text" >
+					<input placeholder="根据账号搜索" @input="searchfun" class="ipt" v-model="ipt" type="text" >
 					<div @click="kong" v-show="remove" class="removeipt">
 						<img style="width:100%;height:100%" src="./img/shutdown.png" alt="">
 					</div>
 			</div>
-			<div class="team_dash display-flex">
+			<div v-show="show" class="team_dash display-flex">
 				<div class="team_dash_l flex-1">
 					<div class="team_dash--box">
 						<p class="p0">{{info.peopleNum}}人</p>
@@ -275,7 +278,7 @@
 				<div class="team_dash_l flex-1">
 					<div class="team_dash--box">
 						<p class="p0">¥{{info.inviteMoney=='null' ? '0' : info.inviteMoney}}.00</p>
-						<p class="p1">推荐佣金总计</p>
+						<p class="p1">团队业绩总计</p>
 					</div>
 				</div>
 			</div>
@@ -304,7 +307,8 @@
 				<div v-else class="lists_null">
 					<div>
 						<img class="img" src="./img/e.png">
-						<p class="p">暂无团队成员，快去召唤小伙伴吧！</p>
+						<p v-if="!show_p" class="p">暂无团队成员，快去召唤小伙伴吧！</p>
+						<p v-else class="p">暂无 该账号信息</p>
 					</div>
 				</div>
 			</div>
@@ -353,7 +357,9 @@ export default {
 			startTime:"",
 			endTime:"",
 			ipt:'',
-			remove:false
+			remove:false,
+			show:true,
+			show_p:false,
 		}
 	},
 	async mounted() {
@@ -400,11 +406,13 @@ export default {
 				}
 		},
 		searchfun(){
-			if(this.ipt){
+			if(this.ipt!=""){				
+				this.show=false
 				this.remove=true
 				this.searchTime()
 			}else{
 				this.remove=false
+				this.show=true
 				this.searchTime()
 			}	
 		},
@@ -413,12 +421,19 @@ export default {
 				cuserId:this.ipt,
 			}).then(res=>{
 				this.lists=res.data.data
+				if(this.lists.length==0){
+					this.show_p=true
+				}
+				if(this.ipt==""){
+					this.show_p=false
+				}
 				this.orderfun()
 			})
 		},
 		kong(){
 			this.ipt=''
 			this.remove=false
+			this.show=true
 			this.searchTime()
 		},
 		getNowFormatDate() {//获取当前时间

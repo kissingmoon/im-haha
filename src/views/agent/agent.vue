@@ -7,7 +7,7 @@
 		</div>
         <div class="Yesterday">
             <p class="Yesterday_p">昨日业绩</p>
-            <p class="Yesterday_money">{{Yesterday.yesterdayMoney==null?'0.00':Yesterday.yesterdayMoney.toFixed(2)}}<em style="font-size:24px;fontWeight: 650">￥</em></p>
+            <p class="Yesterday_money"><em style="font-size:24px;fontWeight: 650">￥</em>{{Yesterday.yesterdayMoney==null?'0.00':Yesterday.yesterdayMoney.toFixed(2)}}</p>
         </div>
         <div class="profit_commission">
             <div class="left">
@@ -39,7 +39,7 @@
         </div>
         <div class="getCommission">
             业绩红利佣金：￥{{Yesterday.wxSpreadCommission==null?'0.00':Yesterday.wxSpreadCommission.toFixed(2)}}
-            <div class="receive">立即领取</div>
+            <div @click="receive" class="receive">立即领取</div>
         </div>
         <div @click="gotoCommission('/commissionAll')" class="getCommission">
             历史佣金业绩：￥{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}
@@ -47,7 +47,7 @@
         </div>
         <div @click="goto('/ptp')" class="promote">
             <p class="promote_p">推广赚钱</p>
-            <p class="promote_p">分享累计已赚￥{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}</p>
+            <p class="promote_p">分享累计已赚{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}</p>
             <div class="promote_div">
                 立即分享
                 <div class="promote_div_goto">
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <p class="currentLevel">当前推广等级：<span style="color:#000">代理级</span></p>
+        <p class="currentLevel">当前推广等级：<span style="color:#000;fontWeight: 600">{{Yesterday.leveName}}</span></p>
     </div>
 </template>
 
@@ -101,18 +101,49 @@ import { mapGetters } from 'vuex'
                         message: '分享推荐佣金要转出至账户余额 ？'
                     }).then(() => {
                         // on confirm
-                        this.Determine()
+                        this.Determine(0)
                     }).catch(() => {
                         // on cancel
                     });
                 }
             },
-            Determine(){
-                this.$http.post('/gameAgent/withdraw',{
-                    money:this.Yesterday.withdrawCommision
-                }).then(res=>{                   
-                    console.log(res)
-                })
+            receive(){
+                if(this.Yesterday.wxSpreadCommission<=0){
+                    this.$toast('业绩红利佣金为0，快去推广吧')
+                }else{
+                    Dialog.confirm({
+                        message: '红利佣金领取审核后将会转入您的账户余额'
+                    }).then(() => {
+                        // on confirm
+                        this.Determine(1)
+                    }).catch(() => {
+                        // on cancel
+                    });
+                }
+            },
+            Determine(val){
+                if(val==0){
+                    this.$http.post('/gameAgent/withdraw',{
+                        money:this.Yesterday.withdrawCommision,
+                        type:'wxType'
+                    }).then(res=>{   
+                        if(res.code==200){
+                            this.$toast(res.msg)
+                            this.Yesterday.withdrawCommision=0
+                        }                
+                    })
+                }
+                if(val==1){
+                    this.$http.post('/gameAgent/withdraw',{
+                        money:this.Yesterday.wxSpreadCommission,
+                        type:'shoreType'
+                    }).then(res=>{                   
+                        if(res.code==200){
+                            this.$toast(res.msg)
+                            this.Yesterday.wxSpreadCommission=0
+                        }
+                    })
+                }
             },
             getNowFormatDate() {//获取当前时间
                 var date = new Date();
@@ -128,16 +159,16 @@ import { mapGetters } from 'vuex'
                 }
                 if (strDate >= 0 && strDate <= 9) {
                     strDate = "0" + strDate;
-                        }
-                        if(hours >=0 && hours<=9){
-                                hours = "0" + hours;
-                        }
-                        if(minutes >=0 && minutes<=9){
-                                minutes = "0" + minutes;
-                        }
-                        if(seconds >=0 && seconds<=9){
-                                seconds = "0" + seconds;
-                        }
+                }
+                if(hours >=0 && hours<=9){
+                    hours = "0" + hours;
+                }
+                if(minutes >=0 && minutes<=9){
+                    minutes = "0" + minutes;
+                }
+                if(seconds >=0 && seconds<=9){
+                    seconds = "0" + seconds;
+                }
                 var currentdate = year + seperator1 + month + seperator1 + strDate+' '+hours+':'+minutes+':'+seconds;
                 return currentdate;
             },
@@ -356,7 +387,7 @@ import { mapGetters } from 'vuex'
             text-align: left;
             font-size: 14px;
             margin: 0 auto;
-            margin-top:12px;
+            margin-top:12px;            
         }
     }
 </style>

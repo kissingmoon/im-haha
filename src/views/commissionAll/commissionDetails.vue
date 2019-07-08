@@ -166,33 +166,30 @@
 			<div class="team_dash display-flex">
 				<div class="team_dash_l flex-1">
 					<div class="team_dash--box">
-						<p class="p0">{{info.peopleNum}}人</p>
-						<p class="p1">团队成员总计</p>
+						<p class="p0">{{info.sumCount}}人</p>
+						<p class="p1">贡献人数总计</p>
 					</div>
 				</div>
 				<div class="team_dash_l flex-1">
 					<div class="team_dash--box">
-						<p class="p0">¥{{info.inviteMoney=='null' ? '0' : info.inviteMoney}}.00</p>
-						<p class="p1">推荐佣金总计</p>
+						<p class="p0">¥{{info.sumMoney=='null' ? '0' : info.sumMoney}}.00</p>
+						<p class="p1">贡献金额总计</p>
 					</div>
 				</div>
 			</div>
 			<div class="lists_box">
 				<div class="lists_top">
-					<div class="lists_t">旗下成员账号</div>
-					<div class="lists_t">用户等级</div>
-					<div class="lists_t">注册时间</div>
+					<div class="lists_t">成员账号</div>
+					<div class="lists_t">贡献投注量总计</div>
+					<div class="lists_t">贡献日期</div>
 				</div>
 				<div v-if="lists.length>0" class="lists">
 					<div v-for="(list,index) in lists" :key="index" class="list">
 						<div class="list_l">
-							<!-- <span class="list_l_img">
-								<img class="img" src>
-							</span> -->
 							<span class="list_l_name">{{list.userId}}</span>
 						</div>
-						<div class="list_m">会员级</div>
-						<div class="list_m">{{list.createDate.slice(0,10)}}</div>
+						<div class="list_m">￥{{list.teamDml}}.00</div>
+						<div class="list_m">{{list.settleTime.slice(0,10)}}</div>
 					</div>
 					<p class="list_more">{{loadMoreText}}</p>
 				</div>
@@ -222,31 +219,21 @@ export default {
 			lists: [],
 			loadMoreText: '加载中...',
 			isDateShow: false,
-			date_type_now: '',
-			datePopup: [
-				{ date_text: '全部记录', data_type: '2' },
-				{ date_text: '最近三天', data_type: '3' },
-				{ date_text: '最近七天', data_type: '4' },
-				{ date_text: '一个月', data_type: '4' },
-				{ date_text: '三个月', data_type: '4' },
-				{ date_text: '取消', data_type: '4' }
-			]
 		}
 	},
 	async mounted() {
-    let v = this.$route.query.v
-    console.log(v)
+		let v = this.$route.query.v || {userId:'',settleTime:''}
 		let loading = this.$loading({ text: '正在加载…' })
 		try {
-			let [res1, res2] = await Promise.all([this.getInfo(), this.getLists()])
-			loading.close()
-			if (res1.code == '200' && res2.code == '200') {
-				if (res2.data.result.length < this.page_size) {
+			let  [res] = await Promise.all([this.getLists(v)])
+			loading.close()		
+			if (res.code == '200') {
+				if (res.data.gameCommisionList.length < this.page_size) {
 					this.hasgetAll = true
 					this.loadMoreText = '没有更多了~'
 				}
-				this.info = res1.data
-				this.lists = res2.data.result
+				this.info=res.data
+				this.lists = res.data.gameCommisionList
 				this.isShow = true
 				this.scrollFn = throttle(this.scroll, 300)
 				window.addEventListener('scroll', this.scrollFn)
@@ -274,22 +261,23 @@ export default {
 				this.getMore()
 			}
 		},
-		getInfo() {
-			return this.$http.post('/user/getUserPromotion', {})
-		},
-		getLists() {
-			return this.$http.post('user/getTeamMembersList', {
+		getLists(v) {
+			return this.$http.post('/gameAgent/commision/info', {
 				page_no: 1,
-				page_size: this.page_size
+				page_size: this.page_size,
+				userId:v.userId,
+				time:v.settleTime
 			})
 		},
 		getMore() {
 			this.page += 1
 			this.isgetMore = true
 			this.$http
-				.post('user/getTeamMembersList', {
+				.post('/gameAgent/commision/info', {
 					page_no: this.page,
-					page_size: this.page_size
+					page_size: this.page_size,
+					userId:v.userId,
+					time:v.settleTime
 				})
 				.then(res => {
 					if (res.code == '200') {

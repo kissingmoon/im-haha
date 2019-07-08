@@ -118,7 +118,7 @@
             <img style="width:100%;height:100%" src="./img/algorithm.png" alt="">
         </div>
         <p class="actv_p">
-            注：总业绩=自营业绩+下级的有效投注总和； 自营业绩：会员A（自身）有效投注总和。
+            注：总业绩=自营业绩+下级的有效投注总和；<br> 自营业绩：会员A（自身）有效投注总和。
         </p>
         <div class="calculate calculate1">
             <span style="color:#FF6464">无限代理佣金获取必须有自营业绩或至少发展两条线</span>,两者条件必须满足其中之一。<br> 代理线举例：你的代理线推广了300万业绩，如只有一个代理线，则无法享受该业绩佣金
