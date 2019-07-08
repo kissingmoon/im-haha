@@ -34,11 +34,12 @@
 						</div>
 					</div>
 				</div>
-				<div
-					class="form-submit-content display-flex flex-center"
-					:class="{ 'active': btnActive }"
+				<ims-btn 
+					class="form-submit-content display-flex flex-center" 
+					:class="{ 'active': btnActive }" 
+					:throttleTime="1000"  
 					@click="register"
-				>注册</div>
+				>注册</ims-btn>
 			</div>
 		</div>
 	</div>
@@ -77,17 +78,17 @@ export default {
 					maxlength: 16,
 					extra: false
 				},
-				confirmPwd: {
-					model: '',
-					placeholder: '确认密码',
-					leftIconClass: 'left-icon__pwd',
-					rightIconClass: 'right-icon__eye',
-					type: 'password',
-					regTip: '',
-					valueType: 'letterNum',
-					maxlength: 16,
-					extra: false
-				},
+				// confirmPwd: {
+				// 	model: '',
+				// 	placeholder: '确认密码',
+				// 	leftIconClass: 'left-icon__pwd',
+				// 	rightIconClass: 'right-icon__eye',
+				// 	type: 'password',
+				// 	regTip: '',
+				// 	valueType: 'letterNum',
+				// 	maxlength: 16,
+				// 	extra: false
+				// },
 								phone: {
 					model: '',
 					placeholder: '手机号',
@@ -154,7 +155,7 @@ export default {
 		imsInput
 	},
 	computed: {
-		...mapGetters(['net_btn_click', 'platformFlag', 'invite_code'])
+		...mapGetters(['net_btn_click', 'platformFlag', 'invite_code', 'agent_url'])
 	},
 	watch: {
 		formData: {
@@ -181,7 +182,8 @@ export default {
 			setUserToken: 'SET_USER_TOKEN',
 			setAccount: 'SET_ACCOUNT',
 			setInviteCode: 'SET_INVITE_CODE',
-			setNetBtnclick: 'SET_NET_BTNCLICK'
+			setNetBtnclick: 'SET_NET_BTNCLICK',
+			setJuluShow:'SET_JULY_SHOW'
 		}),
 		goBefore() {
 			this.$emit('goBefore')
@@ -280,10 +282,10 @@ export default {
 					}
 				}
 				if (item == ('pwd' || 'confirmPwd')) {
-					if (param['pwd'].model != param['confirmPwd'].model) {
-						this.$toast('两次密码输入不一致')
-						return false
-					}
+					// if (param['pwd'].model != param['confirmPwd'].model) {
+					// 	this.$toast('两次密码输入不一致')
+					// 	return false
+					// }
 					if (param[item].model.length < 6) {
 						this.$toast('密码长度最少6位')
 						return false
@@ -319,20 +321,32 @@ export default {
 			param.pwd = this.formData.pwd.model
 			param.platformFlag = this.setPlatformFlag()
 			param.agentUrl = location.host
+			if(this.agent_url){
+				param.agentUrl = this.agent_url;
+			}
 			param.webUmidToken = sessionStorage.getItem("webUmidToken");
 			param.uaToken = sessionStorage.getItem("uaToken");
-			let res = await net_register(param)
-			if (res.code == '200') {
-				toast('注册成功！')
-				this.setUserToken(res.data.token)
-				localStorage.setItem('U_TK', res.data.token)
-				this.$api.getUserInfo()
-				this.$router.push('/user')
-			} else {
-				this.formData.code.model = ''
-				this.setCode()
-				toast(res.msg)
+			let loading = this.$loading({ text: '正在请求…' })
+			try {
+				let res = await net_register(param)
+				loading.close()
+				if (res.code == '200') {
+					toast('注册成功！')
+					this.setJuluShow(true)
+					this.setUserToken(res.data.token)
+					localStorage.setItem('U_TK', res.data.token)
+					this.$api.getUserInfo()
+					this.$router.push('/user')
+				} else {
+					this.formData.code.model = ''
+					this.setCode()
+					toast(res.msg)
+				}
+			} catch (error) {
+				loading.close()
 			}
+
+			
 		}
 	}
 }
@@ -442,6 +456,7 @@ export default {
 				}
 			}
 			.form-submit-content {
+				width: 100%;
 				height: 42px;
 				border-radius: 21px;
 				font-size: 18px;

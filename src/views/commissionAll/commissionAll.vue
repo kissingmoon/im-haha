@@ -263,6 +263,7 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                 let queryParam = {
                     "page_no": "1"
                 };
+                let loading = this.$loading({ text: '正在加载…' })
                 Object.assign(this.queryParam, queryParam)
                 this.finished = false;
                 this.initFinish = false;
@@ -272,9 +273,14 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
             goBack(){
                 this.$router.go(-1)
             },
-            async getUserPro(){
-                let res = await net_getUserPro()
-                this.totalPro = res.data
+            async getUserPro(loading){
+                try {
+                    let res = await net_getUserPro()
+                    this.totalPro = res.data
+                    loading.close()
+                } catch {
+                    loading.close()
+                }
             },
             async getRecList(param, type,val){
                 let res = {};

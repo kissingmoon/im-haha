@@ -105,10 +105,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import { net_signOut } from '@/js/network.js'
-import ImsImage from '@/components/ims-image.vue'
 export default {
 	name: 'user',
-	components: { ImsImage },
 	data() {
 		return {
 			inited: false
@@ -167,8 +165,8 @@ export default {
 					break
 				}
 				case 8: {
-					// this.$toast('正在升级中，敬请期待')
-					this.$router.push('/agent')
+					this.$toast('正在升级中，敬请期待')
+					//this.$router.push('/agent')
 					break
 				}
 				case 10: {

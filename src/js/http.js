@@ -30,9 +30,7 @@ instance.interceptors.request.use(
         templateId: options.templateId
       }
     } else if (config.headers['Content-Type'] == 'application/x-www-form-urlencoded') {
-      //if(config.data && Object.keys(config.data).length>0){
       if (config.data) {
-        //todo 为啥要加 .length > 0
         if (aesKey) {
           config.data = QS.stringify({
             params: $api.Encry(JSON.stringify(config.data), aesKey, aesKey)
@@ -66,9 +64,10 @@ instance.interceptors.response.use(
     if (response.status === 200) {
       /*这里的code是200成功拿到后台参数之后,后台返回的数据带的code状态码，如果后台没有返回这种code码，忽略此步骤*/
       switch (response.data.code) {
+        case '9001':
         case '9002':
-        case '9003':
-        case '9001': {
+        case '9003': {
+          $api.clearLocal()
           if (response.config.loginoutWarn) {
             //这边的提示可以通过config来做判断
             break
@@ -77,7 +76,6 @@ instance.interceptors.response.use(
           setTimeout(() => {
             router.push('/login')
           }, 1000)
-          $api.clearLocal()
           break
         }
         case '1003':
@@ -87,11 +85,11 @@ instance.interceptors.response.use(
         case '10086':
           //您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码
           Dialog.alert({
-						message: '您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码',
-						confirmButtonText: '好的'
-					}).then(() => {
+            message: '您的帐号在其它地方登录，您已被迫下线，如果不是您本人操作，请及时修改密码',
+            confirmButtonText: '好的'
+          }).then(() => {
             router.push('/login')
-          });
+          })
           $api.clearLocal()
           break
         case '200':
@@ -114,7 +112,7 @@ instance.interceptors.response.use(
           break
         }
         default:
-          toast(response.data.msg)
+          response.data.msg && toast(response.data.msg)
       }
       return Promise.resolve(response.data)
     } else {

@@ -31,13 +31,14 @@
 						<cell-group>
 							<cell
 								class="display-flex align-center"
-								v-for="item in platFormBalance"
+								v-for="item in userPlatFormBalance"
 								:key="item.pfmFlag"
-								:value="Number(item.pfmBalance).toFixed(2)"
+								:value="Number(item.balance).toFixed(2)"
 								value-class="money"
 							>
 								<template slot="title">
-									<span class="custom-text">{{item.pfmName}}</span>
+									<p>{{item.title}}</p>
+									<p style="color:#666;font-size:14px;">{{item.pfmName}}</p>
 								</template>
 								<span
 									slot="right-icon"
@@ -53,19 +54,19 @@
 			<div class="account">
 				<p>转出账户</p>
 				<div class="inputBox display-flex align-center" @click="showAccounts('out')">
-					<span class="text flex-1">{{choosed_outAccoundObj.game_title_cn}}</span>
-					<icon class="rightCorner" name="arrow"/>
+					<span class="text flex-1">{{choosed_outAccoundObj.title}}</span>
+					<van-icon class="rightCorner" name="arrow" />
 				</div>
 
 				<p>转入账户</p>
 				<div class="inputBox display-flex align-center" @click="showAccounts('in')">
-					<span class="text flex-1">{{choosed_inAccoundObj.game_title_cn}}</span>
-					<icon class="rightCorner" name="arrow"/>
+					<span class="text flex-1">{{choosed_inAccoundObj.title}}</span>
+					<van-icon class="rightCorner" name="arrow" />
 				</div>
 
 				<p>金额</p>
 				<div class="inputBox display-flex align-center">
-					<input v-model="money" type="tel" name class="inputMoney" maxlength="11" placeholder="请输入金额">
+					<input v-model="money" type="tel" name class="inputMoney" maxlength="11" placeholder="请输入金额" />
 				</div>
 			</div>
 
@@ -74,22 +75,25 @@
 			</div>
 		</div>
 
-		<popup class="popup" v-model="show" position="bottom" :overlay="true" :lock-scroll="true">
+		<van-popup class="popup" v-model="show" position="bottom" :overlay="true" :lock-scroll="true">
 			<div class="main display-flex flex-coloum">
 				<div class="top" @click="selectHide">
 					<div class="botIconBox display-flex align-center justify-center">
-						<icon name="arrow-down"/>
+						<van-icon name="arrow-down" />
 					</div>
 				</div>
 				<div class="gunBox flex-1">
 					<div class="selectBox" key="selectBox" :botBar_status="false">
 						<div class="listWrap">
-							<div v-for="(item,index) in otherPlatFormBlance" :key="item.platform_iconic">
-								<div class="item display-flex justify-between" @click="accountChoose(item,index)">
-									<div>{{item.game_title_cn}}</div>
+							<div v-for="(item,index) in otherPlatFormBlance" :key="index">
+								<div class="item" @click="accountChoose(item,index)">
+									<div>
+										<p>{{item.title}}</p>
+										<p v-if="item.pfmName" style="color:#666;font-size:14px;">{{item.pfmName}}</p>
+									</div>
 									<div
 										class="icon"
-										:class="{'on':item.platform_iconic == choosedAccoundObj.platform_iconic}"
+										:class="{'on':item.platform == choosedAccoundObj.platform}"
 									></div>
 								</div>
 							</div>
@@ -97,12 +101,12 @@
 					</div>
 				</div>
 			</div>
-		</popup>
+		</van-popup>
 	</div>
 </template>
 
 <script>
-import { SwitchCell, Cell, CellGroup, Collapse, CollapseItem, Popup, Icon } from 'vant'
+import { SwitchCell, Cell, CellGroup, Collapse, CollapseItem } from 'vant'
 import { getPlatformIconic, refreshAmount, manualTransferPayment, updateAutoChange } from '@/js/network'
 import { mapGetters, mapMutations } from 'vuex'
 export default {
@@ -115,13 +119,12 @@ export default {
 				totalBalance: '',
 				balance: ''
 			},
-			platFormBalance: [],
 			show: false,
+			userPlatFormBalance: [],
 			otherPlatFormBlance: [],
 			choosedAccoundObj: {}, //  下拉框列表选中的对象
 			choosed_outAccoundObj: {}, //  选中的转出账户对象，包括账户名，账户id，和选中的账户下标
 			choosed_inAccoundObj: {}, //  选中的转入账户对象，包括账户名，账户id，和选中的账户下标
-			datas: {}, //  初始化时获得的全部数据，用于转入转出时切换功能
 			money: '',
 			activeFlag: ''
 		}
@@ -135,64 +138,61 @@ export default {
 	created() {
 		this.getDatas()
 	},
+	watch: {
+		money(newVal, oldVal) {
+			this.money = this.money.replace(/\D/g, '')
+		}
+	},
 	methods: {
 		...mapMutations({
 			setNetBtnclick: 'SET_NET_BTNCLICK'
 		}),
 		async refreshMoney(item) {
-			this.activeFlag = item.pfmFlag
-			let refreshAmountData = await refreshAmount({ platformFlag: item.pfmFlag })
+			this.activeFlag = item.platform
+			let res = await refreshAmount({ platformFlag: item.platform })
 			this.activeFlag = ''
-			if (refreshAmountData.code == 200) {
-				this.userBalance.balance = refreshAmountData.data.balance
-				this.userBalance.totalBalance = refreshAmountData.data.totalBalance
-				for (const it of this.platFormBalance) {
-					if (item.pfmFlag == it.pfmFlag) {
-						it.pfmBalance = refreshAmountData.data.platformBalance
+			if (res.code == 200) {
+				this.userBalance.balance = res.data.balance
+				this.userBalance.totalBalance = res.data.totalBalance
+				this.userPlatFormBalance.forEach(list => {
+					if (item.platform == list.platform) {
+						list.balance = res.data.platformBalance
 					}
-				}
+				})
+				toast('刷新成功')
 			}
 		},
 		//  获取页面初始化数据
 		async getDatas() {
-			let dataObj = await getPlatformIconic()
-			if (dataObj.code == '200') {
-				this.checked = dataObj.data.creditSwitch == '0' ? false : true
+			let res = await getPlatformIconic()
+			if (res.code == '200') {
+				this.checked = res.data.creditSwitch == '0' ? false : true
 			}
-			if (dataObj.data.creditSwitch == '0') {
-				this.datas = dataObj.data
-				this.userBalance = this.datas.userBalance
-				this.platFormBalance = this.datas.userPlatFormBalance
-				this.otherPlatFormBlance = this.datas.platformIconic
+			if (res.data.creditSwitch == '0') {
+				this.userBalance = res.data.userBalance
+				this.userPlatFormBalance = res.data.userPlatFormBalance
+				this.otherPlatFormBlance = res.data.userPlatFormBalance.concat(res.data.platformIconic)
 
-				this.choosed_outAccoundObj = this.datas.platformIconic[this.datas.platformIconic.length - 1]
-				this.choosed_outAccoundObj.index = this.datas.platformIconic.length - 1
-				this.choosed_inAccoundObj = this.datas.platformIconic[0]
-				this.choosed_inAccoundObj.index = 0
+				this.choosed_outAccoundObj = this.otherPlatFormBlance[0]
+				this.choosed_inAccoundObj = this.otherPlatFormBlance[this.otherPlatFormBlance.length - 1]
 			}
 		},
 		selectHide() {
 			this.show = false
 		},
-		accountChoose(item, index) {
-			let obj = {
-				game_title_cn: item.game_title_cn,
-				platform_iconic: item.platform_iconic,
-				index: index
-			}
+		accountChoose(item) {
 			if (this.accoundType == 'in') {
-				this.choosed_inAccoundObj = obj
-				if (item.platform_iconic == 'xjye') {
-					this.choosed_outAccoundObj = this.datas.platformIconic[0]
-				} else {
-					this.choosed_outAccoundObj = this.datas.platformIconic[this.datas.platformIconic.length - 1]
-				}
+				this.choosed_inAccoundObj = item
+				this.choosed_outAccoundObj = this.otherPlatFormBlance[this.otherPlatFormBlance.length - 1]
 			} else {
-				this.choosed_outAccoundObj = obj
-				if (item.platform_iconic == 'xjye') {
-					this.choosed_inAccoundObj = this.datas.platformIconic[0]
-				} else {
-					this.choosed_inAccoundObj = this.datas.platformIconic[this.datas.platformIconic.length - 1]
+				this.choosed_outAccoundObj = item
+				this.choosed_inAccoundObj = this.otherPlatFormBlance[this.otherPlatFormBlance.length - 1]
+			}
+			if(this.choosed_inAccoundObj.platform == 'xjye' && this.choosed_outAccoundObj.platform == 'xjye'){
+				if(this.accoundType == 'in'){
+					this.choosed_outAccoundObj = this.otherPlatFormBlance[0]
+				}else{
+					this.choosed_inAccoundObj = this.otherPlatFormBlance[0]
 				}
 			}
 			this.selectHide()
@@ -207,20 +207,15 @@ export default {
 			this.show = true
 		},
 		async confirm() {
-			if (!this.net_btn_click) {
-				return
-			}
 			let param = {
-				platformIN: this.choosed_inAccoundObj.platform_iconic,
-				platformOUT: this.choosed_outAccoundObj.platform_iconic,
+				platformIN: this.choosed_inAccoundObj.platform,
+				platformOUT: this.choosed_outAccoundObj.platform,
 				money: this.money
 			}
 			this.$http
 				.post('/thirdGames/manualTransferPayment', param)
 				.then(res => {
 					this.money = ''
-					this.choosed_outAccoundObj = this.datas.platformIconic[this.datas.platformIconic.length - 1]
-					this.choosed_inAccoundObj = this.datas.platformIconic[0]
 					if (res.code == 200) {
 						toast('提交成功！')
 						this.getDatas()
@@ -230,8 +225,6 @@ export default {
 				})
 				.catch(err => {
 					this.money = ''
-					this.choosed_outAccoundObj = this.datas.platformIconic[this.datas.platformIconic.length - 1]
-					this.choosed_inAccoundObj = this.datas.platformIconic[0]
 				})
 			this.setNetBtnclick(false)
 		},
@@ -275,9 +268,7 @@ export default {
 		Cell,
 		CellGroup,
 		Collapse,
-		CollapseItem,
-		Popup,
-		Icon
+		CollapseItem
 	}
 }
 </script>
@@ -431,8 +422,11 @@ export default {
 						-webkit-overflow-scrolling: touch;
 						.item {
 							line-height: 25px;
-							padding: 18px 12px;
+							padding: 12px 12px;
 							border-bottom: 1px solid #f2f2f2;
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
 							> div:first-child {
 								color: #333;
 								font-size: 15px;

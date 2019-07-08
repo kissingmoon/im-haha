@@ -7,17 +7,17 @@ import router from './router'
 import App from './App.vue'
 window.Dialog = Dialog
 window.toast = function(params) {
-  let toastObj = {}
-  let message, duration
+  if (!params) {
+    console.log('toast null')
+    return
+  }
+  let toastObj = {
+    duration: 1500
+  }
   if (typeof params == 'string') {
-    message = params
-    duration = 1500
-    toastObj = {
-      message,
-      duration
-    }
+    toastObj = Object.assign({}, toastObj, { message: params })
   } else if (typeof params == 'object') {
-    toastObj = params
+    toastObj = Object.assign({}, toastObj, params)
   }
   Toast(toastObj)
 }
@@ -27,11 +27,13 @@ import './style/less/transition.less'
 import 'swiper/dist/css/swiper.css'
 
 import ImsHeader from '@/components/ims-header/ims-header'
+import ImsImage from '@/components/ims-image.vue'
+import ImsBtn from '@/components/ims-btn.vue'
 import loading from './components/loading/loading.js'
 import interfaces from './config/url.js'
 import $http from './js/http.js'
 import api from './js/api.js'
-import { Swipe, SwipeItem} from 'vant';
+import { Swipe, SwipeItem } from 'vant'
 
 import animated from 'animate.css'
 Vue.use(animated) 
@@ -46,6 +48,8 @@ Vue.use(List)
   .use(SwipeItem)
 
 Vue.component('ims-header', ImsHeader)
+Vue.component('ims-image', ImsImage)
+Vue.component('ims-btn', ImsBtn)
 
 Vue.config.productionTip = false
 

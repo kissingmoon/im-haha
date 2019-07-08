@@ -62,6 +62,9 @@ export default {
     } else {
       store.commit('SET_FOOTREDDOT', false)
     }
+    if(res.data.ownActivityStatus == '1'){ //活动过期
+      store.commit('SET_FOOTREDDOT', false)
+    }
   },
   clearLocal() {
 
