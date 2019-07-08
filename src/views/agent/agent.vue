@@ -42,7 +42,7 @@
             <div @click="receive" class="receive">立即领取</div>
         </div>
         <div @click="gotoCommission('/commissionAll')" class="getCommission">
-            历史佣金业绩：￥{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}
+            历史佣金总计：￥{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}
             <div class="goto"></div>
         </div>
         <div @click="goto('/ptp')" class="promote">

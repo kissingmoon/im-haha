@@ -271,13 +271,13 @@
 			<div v-show="show" class="team_dash display-flex">
 				<div class="team_dash_l flex-1">
 					<div class="team_dash--box">
-						<p class="p0">{{info.peopleNum}}人</p>
+						<p class="p0">{{info.count}}人</p>
 						<p class="p1">团队成员总计</p>
 					</div>
 				</div>
 				<div class="team_dash_l flex-1">
 					<div class="team_dash--box">
-						<p class="p0">¥{{info.inviteMoney=='null' ? '0' : info.inviteMoney}}.00</p>
+						<p class="p0">¥{{info.recordSumMoney=='null' ? '0' : info.recordSumMoney}}.00</p>
 						<p class="p1">团队业绩总计</p>
 					</div>
 				</div>
@@ -363,19 +363,19 @@ export default {
 		}
 	},
 	async mounted() {
-		this.startTime=this.$route.query.startTime
-		this.endTime=this.$route.query.endTime
+		this.startTime=this.$route.query.startTime || ""
+		this.endTime=this.$route.query.endTime || ""
 		let loading = this.$loading({ text: '正在加载…' })
 		try {
-			let [res1, res2] = await Promise.all([this.getInfo(), this.getLists()])
+			let [res] = await Promise.all([this.getLists()])
 			loading.close()
-			if (res1.code == '200' && res2.code == '200') {
-				if (res2.data.data.length < this.page_size) {
+			if (res.code == '200') {				
+				if (res.data.data.list.length < this.page_size) {
 					this.hasgetAll = true
 					this.loadMoreText = '没有更多了~'
 				}
-				this.info = res1.data
-				this.lists = res2.data.data
+				this.info = res.data.data
+				this.lists = res.data.data.list
 				this.isShow = true
 				this.scrollFn = throttle(this.scroll, 300)
 				window.addEventListener('scroll', this.scrollFn)
@@ -421,6 +421,10 @@ export default {
 				cuserId:this.ipt,
 			}).then(res=>{
 				this.lists=res.data.data
+				if (res.data.data.length < this.page_size) {
+					this.hasgetAll = true
+					this.loadMoreText = '没有更多了~'
+				}
 				if(this.lists.length==0){
 					this.show_p=true
 				}
@@ -545,9 +549,9 @@ export default {
 				this.getMore()
 			}
 		},
-		getInfo() {
-			return this.$http.post('/user/getUserPromotion', {})
-		},
+		// getInfo() {
+		// 	return this.$http.post('/user/getUserPromotion', {})
+		// },
 		// user/getTeamMembersList
 		getLists() {			
 			this.page += 1

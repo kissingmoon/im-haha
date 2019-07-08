@@ -25,11 +25,11 @@
                 </div>
                 <div v-else class="contribution">
                     <div class="left">
-                        <p class="contribution_p p1">{{totalPro.peopleNum}}人</p>
+                        <p class="contribution_p p1">{{totalPro.userNum}}人</p>
                         <p class="contribution_p p3">推荐人数总计</p>
                     </div>
                     <div class="right">
-                        <p class="contribution_p p2">￥{{totalPro.inviteMoney=='null'?0:totalPro.inviteMoney}}.00</p>
+                        <p class="contribution_p p2">￥{{totalPro.userMoney=='null'?0:totalPro.userMoney}}.00</p>
                         <p class="contribution_p">推荐佣金总计</p>
                     </div>
                 </div>
@@ -64,10 +64,10 @@
                 </div>              
             </van-list>
         </div>
+        <!-- :class="listNum==index ? 'liststyle' : ''" -->
         <div @click.stop="end" v-show="maskShow" class="mask">
             <div @click.stop :class="down_pop">
-                <div 
-                :class="listNum==index ? 'liststyle' : ''" 
+                <div               
                 @click="listfun(index)" 
                 class="item" 
                 v-for="(item,index) in lists" 
@@ -267,7 +267,7 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                 Object.assign(this.queryParam, queryParam)
                 this.finished = false;
                 this.initFinish = false;
-                this.getUserPro(val);
+                this.getUserPro(loading);
                 this.getRecList(this.queryParam, "init",val);
             },
             goBack(){
