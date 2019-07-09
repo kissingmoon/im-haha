@@ -4,14 +4,14 @@
 		<div class="courses">
 			<div v-for="(list,i) in lists" @click="openLink(list)" :key="i" class="course">
 				<div class="c_l">
-					<img class="c_img0" :src="list.img">
+					<img class="c_img0" :src="list.img" />
 					<p class="c_p">
 						<span class="c_p_0">{{list.title}}</span>
 						<span class="c_p_1">{{list.desc}}</span>
 					</p>
 				</div>
 				<div class="c_r">
-					<img class="c_img1" src="./icon/entry.png">
+					<img class="c_img1" src="./icon/entry.png" />
 				</div>
 			</div>
 		</div>
@@ -24,13 +24,13 @@ export default {
 	data() {
 		return {
 			lists: [
-				{ img: require('./icon/deposit.png'), title: '存款教程', desc: '存款急速到账', link: '/course/ck' },
-				{ img: require('./icon/withdraw.png'), title: '取款教程', desc: '急速提款仅需30秒', link: '/course/qk' },
-				{ img: require('./icon/noviceGuide.png'), title: '新手教程', desc: '新手学习的教程', link: '/course/newerJc' },
-				{ img: require('./icon/techSupport.png'), title: '技术支持', desc: '提供全面技术支持', link: '/course/jszc' },
-				{ img: require('./icon/howtoplay.png'), title: '玩法教程', desc: '真人体育彩票玩法', link: '/course/wfjc' },
-				{ img: require('./icon/contactUs.png'), title: '联系我们', desc: '为您提供全天服务', link: '/course/contact' },
-				{ img: require('./icon/aboutUs.png'), title: 'YG娱乐', desc: '责任隐私策略', link: '/course/privacy' }
+				{ img: require('./icon/deposit.png'), title: '存款教程', desc: '存款急速到账', link: '/course-ck' },
+				{ img: require('./icon/withdraw.png'), title: '取款教程', desc: '急速提款仅需30秒', link: '/course-qk' },
+				{ img: require('./icon/noviceGuide.png'), title: '新手教程', desc: '新手学习的教程', link: '/course-newerJc' },
+				{ img: require('./icon/techSupport.png'), title: '技术支持', desc: '提供全面技术支持', link: '/course-jszc' },
+				{ img: require('./icon/howtoplay.png'), title: '玩法教程', desc: '真人体育彩票玩法', link: '/course-wfjc' },
+				{ img: require('./icon/contactUs.png'), title: '联系我们', desc: '为您提供全天服务', link: '/course-contact' },
+				{ img: require('./icon/aboutUs.png'), title: 'YG娱乐', desc: '责任隐私策略', link: '/course-privacy' }
 			]
 		}
 	},
