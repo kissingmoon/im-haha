@@ -222,7 +222,7 @@ export default {
 		}
 	},
 	async mounted() {
-		let v = this.$route.query.v || {userId:'',settleTime:''}
+		let v = this.$route.query.v || {userId:'',settleTime:'',gameTypeCode:''}
 		let loading = this.$loading({ text: '正在加载…' })
 		try {
 			let  [res] = await Promise.all([this.getLists(v)])
@@ -267,7 +267,7 @@ export default {
 				page_size: this.page_size,
 				userId:v.userId,
 				time:v.settleTime,
-				gameType:v.gameType
+				gameTypeCode:v.gameTypeCode
 			})
 		},
 		getMore() {
@@ -278,7 +278,8 @@ export default {
 					page_no: this.page,
 					page_size: this.page_size,
 					userId:v.userId,
-					time:v.settleTime
+					time:v.settleTime,
+					gameTypeCode:v.gameTypeCode
 				})
 				.then(res => {
 					if (res.code == '200') {

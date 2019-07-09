@@ -533,12 +533,12 @@ export default {
 		orderfun(){
 			if(this.sorting=='top'){
 				this.lists=this.lists.sort((a,b)=>{
-					return a.bet-b.bet
+					return a.countDml-b.countDml
 				})
 			}
 			if(this.sorting=='bot'){
 				this.lists=this.lists.sort((a,b)=>{
-					return b.bet-a.bet
+					return b.countDml-a.countDml
 				})
 			}
 		},
