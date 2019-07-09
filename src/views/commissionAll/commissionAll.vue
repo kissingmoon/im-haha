@@ -42,8 +42,8 @@
                             </div>
                             <div class="lists_right">
                                 <div class="midAvtive">{{v.type}}
-                                    <span style="color:green" v-if="v.status==1">(已完成)</span>
-                                    <span v-if="v.status!=1">(审核中)</span>
+                                    <!-- <span style="color:green" v-if="v.status==1">(已完成)</span>
+                                    <span v-if="v.status!=1">(审核中)</span> -->
                                     <!-- <span style="color:red" v-if="v.status==3">(未通过)</span> -->
                                 </div>                                
                             </div>   

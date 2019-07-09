@@ -300,7 +300,7 @@
 							<span class="list_l_name">{{list.userId}}</span>
 						</div>
 						<div class="list_m">{{list.userLevel}}</div>
-						<div class="list_m">{{list.bet}}</div>
+						<div class="list_m">{{list.countDml}}</div>
 					</div>
 					<p class="list_more">{{loadMoreText}}</p>
 				</div>

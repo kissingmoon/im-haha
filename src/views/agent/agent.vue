@@ -39,7 +39,7 @@
         </div>
         <div class="getCommission">
             业绩红利佣金：￥{{Yesterday.wxSpreadCommission==null?'0.00':Yesterday.wxSpreadCommission.toFixed(2)}}
-            <div @click="receive" class="receive">立即领取</div>
+            <div @click="isShow" class="receive">立即领取</div>
         </div>
         <div @click="gotoCommission('/commissionAll')" class="getCommission">
             历史佣金总计：￥{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}
@@ -61,7 +61,7 @@
 
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
     export default {
        data(){
            return{
@@ -107,18 +107,30 @@ import { mapGetters } from 'vuex'
                     });
                 }
             },
-            receive(){
+            isShow(){
+              this.$http.post('/gameAgent/commision/check',{}).then(res=>{
+                  if(res.code==200){
+                      this.receive(res.data)
+                  }
+              })
+            },
+            receive(data){               
                 if(this.Yesterday.wxSpreadCommission<=0){
                     this.$toast('业绩红利佣金为0，快去推广吧')
-                }else{
-                    Dialog.confirm({
-                        message: '红利佣金领取审核后将会转入您的账户余额'
-                    }).then(() => {
-                        // on confirm
-                        this.Determine(1)
-                    }).catch(() => {
-                        // on cancel
-                    });
+                }else{ 
+                    if(data==1){
+                        this.$toast('已经申请提现,正在审核中,请耐心等待')
+                    }else{
+                        Dialog.confirm({
+                            message: '红利佣金领取审核后将会转入您的账户余额'
+                        }).then(() => {
+                            // on confirm
+                            this.Determine(1)
+                        }).catch(() => {
+                            // on cancel
+                        });
+                    }                  
+                        
                 }
             },
             Determine(val){
@@ -138,9 +150,8 @@ import { mapGetters } from 'vuex'
                         money:this.Yesterday.wxSpreadCommission,
                         type:'shoreType'
                     }).then(res=>{                   
-                        if(res.code==200){
+                        if(res.code==200){                            
                             this.$toast(res.msg)
-                            this.Yesterday.wxSpreadCommission=0
                         }
                     })
                 }
@@ -150,10 +161,10 @@ import { mapGetters } from 'vuex'
                 var seperator1 = "-";
                 var year = date.getFullYear();
                 var month = date.getMonth() + 1;
-                        var strDate = date.getDate();
-                        var hours = date.getHours();
-                        var minutes =date.getMinutes();
-                        var seconds =date.getSeconds()
+                var strDate = date.getDate();
+                var hours = date.getHours();
+                var minutes =date.getMinutes();
+                var seconds =date.getSeconds()
                 if (month >= 1 && month <= 9) {
                     month = "0" + month;
                 }
