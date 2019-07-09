@@ -286,9 +286,9 @@
 				<div class="lists_top">
 					<div class="lists_t">旗下成员账号</div>
 					<div class="lists_t">用户等级</div>
-					<div class="lists_t">用户总业绩
-						<div :class="sorting=='top'?'sortingtop':''" @click="sortingfun('top')" class="reverseOrder"></div>
-						<div :class="sorting=='bot'?'sortingbot':''" @click="sortingfun('bot')" class="order"></div>
+					<div @click="sortingfun" class="lists_t">用户总业绩
+						<div :class="sorting=='bot'?'sortingtop':''"  class="reverseOrder"></div>
+						<div :class="sorting=='top'?'sortingbot':''"  class="order"></div>
 					</div>
 				</div>
 				<div v-if="lists.length>0" class="lists">
@@ -354,6 +354,7 @@ export default {
 			num:0,
 			listNum:0,
 			sorting:'',
+			sortingNum:0,
 			startTime:"",
 			endTime:"",
 			ipt:'',
@@ -519,8 +520,14 @@ export default {
 			this.hasgetAll = false
 			this.getMore()
 		},
-		sortingfun(val){
-			this.sorting=val
+		sortingfun(){
+			this.sortingNum ++
+			if(this.sortingNum%2==1){
+				this.sorting='bot'
+			}
+			if(this.sortingNum%2==0){
+				this.sorting='top'
+			}
 			this.orderfun()
 		},
 		orderfun(){
@@ -574,8 +581,8 @@ export default {
 				})
 				.then(res => {
 					if (res.code == '200') {
-						this.lists = this.lists.concat(res.data.data)
-						if (res.data.data.length < this.page_size) {
+						this.lists = this.lists.concat(res.data.data.list)
+						if (res.data.data.list.length < this.page_size) {
 							this.hasgetAll = true
 							this.loadMoreText = '已经到底了~'
 						}

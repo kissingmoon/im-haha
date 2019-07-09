@@ -38,13 +38,13 @@
                         <div @click='gotoDetails(v)' class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
                                 <p class="left_p">{{v.settleTime}}</p>
-                                <p class="left_p p1">奖励：￥{{v.bet}}.00</p>
+                                <p class="left_p p1">奖励：￥{{v.commision}}.00</p>
                             </div>
                             <div class="lists_right">
                                 <div class="midAvtive">{{v.type}}
                                     <span style="color:green" v-if="v.status==1">(已完成)</span>
-                                    <span v-if="v.status==2">(审核中)</span>
-                                    <span style="color:red" v-if="v.status==3">(未通过)</span>
+                                    <span v-if="v.status!=1">(审核中)</span>
+                                    <!-- <span style="color:red" v-if="v.status==3">(未通过)</span> -->
                                 </div>                                
                             </div>   
                         </div>
@@ -130,7 +130,8 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
         created(){
         },
         mounted(){
-            this.switchfun(0)
+            let index=this.$route.query.index
+            this.switchfun(index)
         },
         methods:{
             switchfun(index){

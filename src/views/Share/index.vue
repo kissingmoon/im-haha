@@ -360,9 +360,9 @@ export default {
 		gopage(name) {
 			if (this.user_token) {				
 				if(name=='team'){
-					this.$router.push({name:name,qurey:{startTime:"",endTime:""}})
+					this.$router.push({name:name,query:{startTime:"",endTime:""}})
 				}else{
-					this.$router.push({name:name})
+					this.$router.push({name:name,query:{index:1}})
 				}
 			} else {
 				this.$router.push('/login')

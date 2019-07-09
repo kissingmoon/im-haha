@@ -210,7 +210,7 @@ import { mapGetters } from 'vuex'
                 this.$router.push({name:'team',query:{startTime,endTime}})
             },
             gotoCommission(path){
-                this.$router.push(path)
+                this.$router.push({path,query:{index:0}})
             }
        }
     }
