@@ -173,14 +173,14 @@
 				<div class="team_dash_l flex-1">
 					<div class="team_dash--box">
 						<p class="p0">¥{{info.sumMoney=='null' ? '0' : info.sumMoney}}.00</p>
-						<p class="p1">贡献金额总计</p>
+						<p class="p1">打码量总计</p>
 					</div>
 				</div>
 			</div>
 			<div class="lists_box">
 				<div class="lists_top">
 					<div class="lists_t">成员账号</div>
-					<div class="lists_t">贡献投注量总计</div>
+					<div class="lists_t">贡献打码量总计</div>
 					<div class="lists_t">贡献日期</div>
 				</div>
 				<div v-if="lists.length>0" class="lists">
@@ -266,7 +266,8 @@ export default {
 				page_no: 1,
 				page_size: this.page_size,
 				userId:v.userId,
-				time:v.settleTime
+				time:v.settleTime,
+				gameType:v.gameType
 			})
 		},
 		getMore() {
