@@ -2,10 +2,9 @@
 	<ul v-if="lists.length>0" class="activities">
 		<transition-group tag="ul" name="fade">
 			<li
-				v-for="(list,index) in lists"
-				:key="index"
+				v-for="list in lists"
+				:key="list.id"
 				@click="openActivity(list)"
-				src="../121212.png"
 				class="activity"
 			>
 				<ims-image
