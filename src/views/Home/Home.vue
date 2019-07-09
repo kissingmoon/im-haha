@@ -272,7 +272,7 @@ export default {
 	}
 }
 .home_wrapper {
-	.top{
+	.top {
 		margin-bottom: 12px;
 	}
 	.home {
