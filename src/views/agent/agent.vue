@@ -47,7 +47,7 @@
         </div>
         <div @click="goto('/ptp')" class="promote">
             <p class="promote_p">推广赚钱</p>
-            <p class="promote_p">分享累计已赚{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}</p>
+            <!-- <p class="promote_p">分享累计已赚{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}</p> -->
             <div class="promote_div">
                 立即分享
                 <div class="promote_div_goto">
@@ -359,7 +359,8 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
         }
         .promote{
             width:84.67%;
-            height:60px;
+            // height:60px;三期改动
+            height:30px;
             border-radius: 5px;
             margin:0 auto;
             margin-top:10px;
@@ -378,7 +379,8 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
                 width:86px;
                 height:20px;
                 right:5%;
-                top:30px;
+                top:15px;
+                // top:30px;三期改动
                 line-height: 20px;
                 font-size: 14px;
                 color:#4A4A4A;
