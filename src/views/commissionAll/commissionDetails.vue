@@ -283,8 +283,8 @@ export default {
 				})
 				.then(res => {
 					if (res.code == '200') {
-						this.lists = this.lists.concat(res.data.result)
-						if (res.data.result.length < this.page_size) {
+						this.lists = this.lists.concat(res.data.gameCommisionList)
+						if (res.data.gameCommisionList.length < this.page_size) {
 							this.hasgetAll = true
 							this.loadMoreText = '已经到底了~'
 						}
