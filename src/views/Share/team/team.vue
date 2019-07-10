@@ -24,7 +24,8 @@
 				width:100%;
 				height:32px
 			}
-			input::-webkit-input-placeholder{text-align: center;} 
+			.ipt::-webkit-input-placeholder{text-align: center;} 
+			.ipt1::-webkit-input-placeholder{text-align: left;}
 			.removeipt{
 				position: absolute;
 				right:5%;
@@ -263,7 +264,7 @@
 		
 		<div v-if="isShow" class="team_main">
 			<div class="search">
-					<input placeholder="根据账号搜索" @input="searchfun" class="ipt" v-model="ipt" type="text" >
+					<input placeholder="根据账号搜索" @blur="onblur" @focus="onfocus" @input="searchfun" class="ipt"  v-model="ipt" type="text" >
 					<div @click="kong" v-show="remove" class="removeipt">
 						<img style="width:100%;height:100%" src="./img/shutdown.png" alt="">
 					</div>
@@ -405,6 +406,12 @@ export default {
 								this.maskShow=false
 						},500)
 				}
+		},
+		onfocus(){
+			document.getElementsByClassName("ipt")[0].className="ipt ipt1"
+		},
+		onblur(){
+			document.getElementsByClassName("ipt")[0].className="ipt"
 		},
 		searchfun(){
 			if(this.ipt!=""){				
