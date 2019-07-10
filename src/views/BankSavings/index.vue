@@ -14,7 +14,8 @@
 					>
 						<img :src="list.gate_img" class="icon">
 						<div class="pp" :class="[(list.gate_name.includes('云闪付') || list.gate_name.includes('银行转账')) ? 'margin_4' : 'height_34'] ">{{list.gate_name}}</div>
-						<div v-if="list.gate_name.includes('云闪付')" class="ppp">首次使用送10%</div>
+						<!-- <div class="pp" :class="[list.gate_name.includes('银行转账') ? 'margin_4' : 'height_34'] ">{{list.gate_name}}</div> -->
+						<div v-if="list.gate_name.includes('云闪付')" class="ppp">额外赠送1%</div>
 						<div v-if="list.gate_name.includes('银行转账')" class="ppp">额外赠送1%</div>
 						<div class="bg"></div>
 					</li>
