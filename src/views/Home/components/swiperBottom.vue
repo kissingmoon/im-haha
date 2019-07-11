@@ -11,6 +11,7 @@
 			>
 				<img class="img" :src="activeIndex==index ? list.iconImgOffUrl :list.iconImgOnUrl" />
 				<span class="text">{{list.gameTitleCn}}</span>
+				<img v-if="index==0" class="img_hot" src="../img/hot.png" />
 			</li>
 		</ul>
 		<swiper class="bottom_swiper" @slideChange="slideChange" :options="swiper" ref="bottomSwiper">
@@ -298,6 +299,7 @@ export default {
 			font-weight: 500;
 			color: rgb(102, 102, 102);
 			transition: all 0.2s ease;
+			position: relative;
 			.img {
 				width: 22px;
 				height: 22px;
@@ -306,6 +308,14 @@ export default {
 			.text {
 				min-width: 4em;
 				text-align: center;
+			}
+			.img_hot{
+				position: absolute;
+				top:0;
+				right: 0;
+				width: 30px;
+				height: 26px;
+
 			}
 		}
 		.index:last-child {

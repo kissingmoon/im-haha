@@ -123,7 +123,7 @@ export default {
 			setAccount: 'SET_ACCOUNT',
 			setPlatformFlag: 'SET_PLATFORM_FLAG',
 			setServiceUrl: 'SET_SERVICE_URL',
-			// setJuluShow:'SET_JULY_SHOW'
+			setJuluShow:'SET_JULY_SHOW'
 		}),
 		goNext() {
 			this.$emit('goNext')
@@ -170,7 +170,7 @@ export default {
 			let res = await net_login(param)
 			loading.close()
 			if (res.code == '200' || res.code == '20015') {
-				// this.setJuluShow(true)
+				this.setJuluShow(true)
 				this.setUserToken(res.data.token)
 				localStorage.setItem('U_TK', res.data.token)
 				this.setPlatformFlag(res.data.platformFlag)
