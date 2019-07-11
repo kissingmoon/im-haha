@@ -1,5 +1,5 @@
 <template>
-  <div class="ptp">
+  <div v-show="ptpShow" class="ptp">
     <div class="header-container">
 			<ims-header title="推广赚钱">
       </ims-header> 
@@ -51,16 +51,20 @@ export default {
       result:{},
       txt:"",
       isShowMask:false,
+      ptpShow:false
     }
   },
   mounted(){
-    this.getData()
+    let loading = this.$loading({ text: '正在加载…' })
+    this.getData(loading)
   },
   methods:{
-    getData(){
+    getData(loading){
         this.$http.post('/user/getUserPromotion').then(res=>{
           if (res.code == '200') {
             this.result = res.data
+            this.ptpShow=true
+            loading.close()
             this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
             this.result.link=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
 						if (this.result.inviteMoney <= 0 || this.result.inviteMoney == 'null') {

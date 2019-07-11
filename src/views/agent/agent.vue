@@ -1,5 +1,5 @@
 <template>
-    <div class="agent">
+    <div v-if="agentShow" class="agent">
         <div class="header-container">
 			<ims-header title="我的代理">
                 <div slot="right" @click="goto('/agentInstructions')" >说明</div>
@@ -66,10 +66,12 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
        data(){
            return{
                Yesterday:{},
+               agentShow:false
            }
        } ,
        created(){
-           this.agent()
+           let loading = this.$loading({ text: '正在加载…' })
+           this.agent(loading)
        },
        computed:{
            ...mapGetters(['user_token'])
@@ -78,18 +80,20 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
             goto(path){
                 this.$router.push(path)
             },
-            agent(){
+            agent(loading){
                 if(!this.user_token){
                     this.$router.push('/login')
                     return
                 }else{
-                    this.yesterday()
+                    this.yesterday(loading)
                 }  
             },
-            yesterday(){
+            yesterday(loading){
                 this.$http.post('/gameAgent/integrated-interface').then(res=>{                   
                     if(res.code=='200'){
                         this.Yesterday=res.data
+                        this.agentShow=true
+                        loading.close()
                     }
                 })
             },

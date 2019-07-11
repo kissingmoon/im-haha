@@ -33,7 +33,7 @@
                         <p class="contribution_p">推荐佣金总计</p>
                     </div>
                 </div>
-                <div v-if="switchNum==0" class="drop_down">
+                <div v-if="switchNum==0"  class="drop_down">
                         <div v-if="initFinish && recList.length<1" class="no-data-box display-flex justify-center align-end">暂无数据，快去推广赚佣金吧！</div>
                         <div @click='gotoDetails(v)' class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
@@ -49,7 +49,7 @@
                             </div>   
                         </div>
                 </div>
-                <div v-else class="drop_down">
+                <div  v-else  class="drop_down">
                         <div v-if="initFinish && recList.length<1" class="no-data-box display-flex justify-center align-end">暂无数据，快去推广赚佣金吧！</div>
                         <div class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
@@ -123,7 +123,8 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                 typeArr:[],
                 count:-1,
                 recListTotal: 0,
-                finishedText: ""
+                finishedText: "",
+                index:-1
                 // agentList:[0]
             }
         },
@@ -135,7 +136,7 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
         },
         methods:{
             switchfun(index){
-                this.switchNum=index
+                this.index=index
                 if(index==0){
                     this.init(0)
                 }
@@ -306,6 +307,7 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                     if(res.code == "200"){
                         this.recList = this.recList.concat(res.data.result);
                         this.moreLoading = false;
+                        // this.switchNum=this.index
                         if(res.data.result.length ==0){
                             this.finished = true;
                             this.finishedText = "已经到底了~"
@@ -314,6 +316,7 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                 }else if(type == "init"){
                     this.recList = res.data.result;
                     this.recListTotal = res.data.count;
+                    this.switchNum=this.index
                     // this.totalMoney = res.data.totalMoney;
                     this.initFinish = true;
                     if(this.recList.length>=10){
