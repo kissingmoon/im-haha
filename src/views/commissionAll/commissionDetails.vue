@@ -189,7 +189,7 @@
 							<span class="list_l_name">{{list.userId}}</span>
 						</div>
 						<div class="list_m">￥{{list.teamDml}}.00</div>
-						<div class="list_m">{{list.settleTime.slice(0,10)}}</div>
+						<div class="list_m">{{list.newTime}}</div>
 					</div>
 					<p class="list_more">{{loadMoreText}}</p>
 				</div>
