@@ -15,11 +15,11 @@
             <van-list v-model="moreLoading" :finished="finished" :finished-text="finishedText" @load="onLoad" :offset="30">
                 <div v-if="switchNum==0" class="contribution">
                     <div class="left">
-                        <p class="contribution_p p1">￥{{performanceBonuses.totalCommission}}.00</p>
+                        <p class="contribution_p p1">￥{{performanceBonuses.totalCommission?performanceBonuses.totalCommission.toFixed(2):'0.00'}}</p>
                         <p class="contribution_p p3">昨日红利佣金</p>
                     </div>
                     <div class="right">
-                        <p class="contribution_p p2">￥{{performanceBonuses.bonusMoney}}.00</p>
+                        <p class="contribution_p p2">￥{{performanceBonuses.bonusMoney?performanceBonuses.bonusMoney.toFixed(2):'0.00'}}</p>
                         <p class="contribution_p">红利佣金总计</p>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <p class="contribution_p p3">推荐人数总计</p>
                     </div>
                     <div class="right">
-                        <p class="contribution_p p2">￥{{totalPro.userMoney=='null'?0:totalPro.userMoney}}.00</p>
+                        <p class="contribution_p p2">￥{{totalPro.userMoney?totalPro.userMoney.toFixed(2):'0.00'}}</p>
                         <p class="contribution_p">推荐佣金总计</p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                         <div @click='gotoDetails(v)' class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
                                 <p class="left_p">{{v.settleTime}}</p>
-                                <p class="left_p p1">奖励：￥{{v.commision}}.00</p>
+                                <p class="left_p p1">奖励：￥{{v.commision?v.commision.toFixed(2):'0.00'}}</p>
                             </div>
                             <div class="lists_right">
                                 <div class="midAvtive">{{v.type}}
@@ -58,7 +58,7 @@
                             </div>
                             <div class="lists_right">
                                 <div class="mid">{{v.status=='1'?'已奖励':'未领取'}}</div>
-                                <div class="right">￥{{v.money}}.00</div>
+                                <div class="right">￥{{v.money?v.money.toFixed(2):'0.00'}}</div>
                             </div>   
                         </div>
                 </div>              

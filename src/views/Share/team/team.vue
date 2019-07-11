@@ -278,7 +278,7 @@
 				</div>
 				<div class="team_dash_l flex-1">
 					<div class="team_dash--box">
-						<p class="p0">¥{{info.recordSumMoney=='null' ? '0' : info.recordSumMoney}}.00</p>
+						<p class="p0">¥{{info.recordSumMoney ? info.recordSumMoney.toFixed(2) :'0.00' }}</p>
 						<p class="p1">团队业绩总计</p>
 					</div>
 				</div>

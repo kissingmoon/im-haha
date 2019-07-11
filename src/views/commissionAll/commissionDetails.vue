@@ -186,10 +186,13 @@
 				<div v-if="lists.length>0" class="lists">
 					<div v-for="(list,index) in lists" :key="index" class="list">
 						<div class="list_l">
-							<span class="list_l_name">{{list.userId}}</span>
+							<!-- <span class="list_l_name">{{list.userId}}</span> -->
+							<span class="list_l_name">{{list.playerId}}</span> 
 						</div>
-						<div class="list_m">￥{{list.teamDml}}.00</div>
-						<div class="list_m">{{list.newTime}}</div>
+						<!-- <div class="list_m">￥{{list.teamDml}}.00</div> -->
+						<div class="list_m">￥{{list.dml}}.00</div>
+						<!-- <div class="list_m">{{list.newTime}}</div> -->
+						<div class="list_m">{{list.createTime}}</div>
 					</div>
 					<p class="list_more">{{loadMoreText}}</p>
 				</div>
