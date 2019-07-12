@@ -414,15 +414,20 @@ export default {
 			document.getElementsByClassName("ipt")[0].className="ipt"
 		},
 		searchfun(){
+			this.reset()
 			if(this.ipt!=""){				
 				this.show=false
 				this.remove=true
 				this.searchTime()
-			}else{
+			}else{								
 				this.remove=false
 				this.show=true
 				this.searchTime()
 			}	
+		},
+		reset(){
+			this.hasgetAll = false
+			this.loadMoreText = '加载中...'
 		},
 		searchTime(){
 			this.$http.post('/gameAgent/group/list/userId', {
@@ -446,7 +451,25 @@ export default {
 			this.ipt=''
 			this.remove=false
 			this.show=true
-			this.searchTime()
+			this.page=0
+			// this.searchTime()				
+			this.page += 1	
+			console.log(this.hasgetAll,this.loadMoreText)	
+			this.$http.post('/gameAgent/group/list', {
+				page_no: this.page,
+				page_size: this.page_size,
+				startTime:this.startTime,
+				endTime:this.endTime
+			}).then(res=>{
+				if (res.code == '200') {				
+					if (res.data.data.list.length < this.page_size) {
+						this.hasgetAll = true
+						this.loadMoreText = '没有更多了~'
+					}
+					this.info = res.data.data
+					this.lists = res.data.data.list
+				}
+			})	
 		},
 		getNowFormatDate() {//获取当前时间
         var date = new Date();
