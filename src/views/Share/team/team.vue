@@ -264,7 +264,7 @@
 		
 		<div v-if="isShow" class="team_main">
 			<div class="search">
-					<input placeholder="根据账号搜索" @blur="onblur" @focus="onfocus" @input="searchfun" class="ipt"  v-model="ipt" type="text" >
+					<input placeholder="根据账号搜索" @blur="onblur" @focus="onfocus" @input="searchfun" class="ipt"  v-model.trim="ipt" type="text" >
 					<div @click="kong" v-show="remove" class="removeipt">
 						<img style="width:100%;height:100%" src="./img/shutdown.png" alt="">
 					</div>

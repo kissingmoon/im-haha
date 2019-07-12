@@ -7,15 +7,15 @@
 		</div>
         <div class="Yesterday">
             <p class="Yesterday_p">昨日业绩</p>
-            <p class="Yesterday_money"><em style="font-size:24px;fontWeight: 650">￥</em>{{Yesterday.yesterdayMoney==null?'0.00':Yesterday.yesterdayMoney.toFixed(2)}}</p>
+            <p class="Yesterday_money"><em style="font-size:24px;fontWeight: 650">￥</em>{{Yesterday.yesterdayMoney | filter}}</p>
         </div>
         <div class="profit_commission">
             <div class="left">
-                <p class="profit_commission_p p1">￥{{Yesterday.redbagCount==null?'0.00':Yesterday.redbagCount.toFixed(2)}}</p>
+                <p class="profit_commission_p p1">￥{{Yesterday.redbagCount | filter}}</p>
                 <p class="profit_commission_p">昨日推荐佣金</p>
             </div>
             <div class="right">
-                <p class="profit_commission_p p2">￥{{Yesterday.totalCommission==null?'0.00':Yesterday.totalCommission.toFixed(2)}}</p>
+                <p class="profit_commission_p p2">￥{{Yesterday.totalCommission | filter}}</p>
                 <p class="profit_commission_p">昨日红利佣金</p>
             </div>
         </div>
@@ -34,15 +34,15 @@
             </div>
         </div>
         <div class="getCommission">
-            分享推荐佣金：￥{{Yesterday.withdrawCommision==null?'0.00':Yesterday.withdrawCommision.toFixed(2)}}
+            分享推荐佣金：￥{{Yesterday.withdrawCommision | filter}}
             <div @click="toBalance" class="receive">转账余额</div>
         </div>
         <div class="getCommission">
-            业绩红利佣金：￥{{Yesterday.wxSpreadCommission==null?'0.00':Yesterday.wxSpreadCommission.toFixed(2)}}
+            业绩红利佣金：￥{{Yesterday.wxSpreadCommission | filter}}
             <div @click="isShow" class="receive">立即领取</div>
         </div>
         <div @click="gotoCommission('/commissionAll')" class="getCommission">
-            历史佣金总计：￥{{Yesterday.historyCommission==null?'0.00':Yesterday.historyCommission.toFixed(2)}}
+            历史佣金总计：￥{{Yesterday.historyCommission | filter}}
             <div class="goto"></div>
         </div>
         <div @click="goto('/ptp')" class="promote">
@@ -69,6 +69,15 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
                agentShow:false
            }
        } ,
+       filters:{
+            filter(data){
+                if(data){
+                    return data.toFixed(2)
+                }else{
+                    return '0.00'
+                }     
+            }
+        },
        created(){
            let loading = this.$loading({ text: '正在加载…' })
            this.agent(loading)
