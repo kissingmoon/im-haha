@@ -1,7 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
+const Obfuscator = require('webpack-obfuscator')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+const isPro = process.env.NODE_ENV === 'production'
 
 let Dlls = ['vue', 'bases', 'lodash', 'swiper']
 let DllPlugins = Dlls.map(item => {
@@ -30,8 +34,15 @@ module.exports = {
         publicPath: '/vendor',
         // dll最终输出的目录
         outputPath: '/vendor'
-      })
-    ]
+      }),
+      isPro &&
+        new Obfuscator(
+          {
+            rotateUnicodeArray: true
+          },
+          []
+        )
+    ].filter(() => true)
   },
   lintOnSave: false,
   pluginOptions: {
