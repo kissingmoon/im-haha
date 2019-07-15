@@ -55,7 +55,10 @@ export default {
 		getData(hd_type) {
 			return this.$http.get('/gameActivity/list', { page_no: 1, page_size: 100, hd_type: hd_type }).then(res => {
 				if (res.code == '200') {
-					this.lists = res.data.data
+					this.lists = []
+					this.$nextTick(()=>{
+						this.lists = res.data.data
+					})
 				}
 			})
 		},
