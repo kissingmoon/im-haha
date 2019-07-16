@@ -42,7 +42,7 @@ module.exports = {
           },
           []
         )
-    ].filter(() => true)
+    ].filter(Boolean)
   },
   lintOnSave: false,
   pluginOptions: {
