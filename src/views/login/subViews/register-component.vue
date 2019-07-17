@@ -56,6 +56,7 @@ import { net_register, net_sendSmsMsg } from '@/js/network.js'
 export default {
 	data() {
 		return {
+			captchaIns: {},
 			formData: {
 				userId: {
 					model: '',
@@ -179,7 +180,8 @@ export default {
 		this.checkInvite()
 	},
 	mounted() {
-		this.initGeetest();
+		// this.initGeetest();
+		this.initNECaptcha();
 	},
 	methods: {
 		...mapMutations({
@@ -216,6 +218,39 @@ export default {
         // 省略其他方法的调用
     	});
 		},
+		initNECaptcha() {
+			var _this = this;
+			debugger
+			initNECaptcha({
+					// config对象，参数配置
+					captchaId: '4c925b0df7a04b0f859ec355e968b596',
+					element: '#getCode',
+					mode: 'popup',
+					width: '320px',
+					onVerify: function(err, data){
+            // 用户验证码验证成功后，进行实际的提交行为
+						// todo3
+            if (!err) {
+							console.log("验证成功")
+							console.log(err)
+							console.log(data)
+							// captchaIns.close()
+							return
+						}
+						console.log("验证失败")
+						console.log(err)
+        	}
+			}, function  onload (instance) {
+					// 初始化成功后得到验证实例instance，可以调用实例的方法
+					console.log("初始化成功")
+					console.log(instance)
+					_this.captchaIns = instance
+			}, function  onerror (err) {
+					console.log("初始化失败")
+					console.log(err)
+					// 初始化失败后触发该函数，err对象描述当前错误信息
+			})
+		},
 		checkInvite() {
 			let inviteCode = this.$route.query.inviteCode;
 			if(!this.invite_code && inviteCode){
@@ -235,6 +270,7 @@ export default {
 			if(!this.net_btn_click){
 				return
 			}
+			this.captchaIns.popUp() 
 			let param = {};
 			param.phone = this.formData.phone.model;
 			this.setNetBtnclick(false);
