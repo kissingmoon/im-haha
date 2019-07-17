@@ -2,10 +2,12 @@ import CryptoJS from 'crypto-js/crypto-js'
 import store from './../store.js'
 import router from './../router'
 import $http from './http.js'
+import {crKKuu} from './tools.js'
 // 默认的 KEY 与 iv 如果没有给
-const KEY = CryptoJS.enc.Utf8.parse('1234567890123456')
-const IV = CryptoJS.enc.Utf8.parse('1234567890123456')
-
+// const KEY = CryptoJS.enc.Utf8.parse('1234567890123456')
+// const IV = CryptoJS.enc.Utf8.parse('1234567890123456')
+const KEY = CryptoJS.enc.Utf8.parse(crKKuu())
+const IV = CryptoJS.enc.Utf8.parse(crKKuu())
 export default {
   /*获取用户信息接口，根据返回结果判断用户的token是否失效*/
   getUserInfo(param = {}, option = {}) {

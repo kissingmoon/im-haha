@@ -136,3 +136,18 @@ export function openLink(url, deviceType){
       window.open(url);
   }
 }
+export function crKKuu(){
+  let a = crIpp();
+  let XX = crJJox();
+  let boob = crZYZZ();
+  return "JUg8"+a+XX+boob
+}
+export function crIpp(){
+  return "+11%"
+}
+export function crJJox(){
+  return "H_32"
+}
+export function crZYZZ(){
+  return "s=OL"
+}

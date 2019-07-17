@@ -25,7 +25,7 @@
 							<div class="slot-icon--left" :class="v.leftIconClass" slot="leftIcon"></div>
 							<div class="slot-icon--right" :class="v.extra?'':v.rightIconClass" slot="rightIcon">
 								<img v-if="v.rightIconClass == 'right-icon__code'" :src="codeSrc" alt>
-								<span ref="getCode" id="getCode" :class="v.rightIconClass" class="display-flex flex-center" v-if="v.rightIconClass == 'right-icon__simcode'" @click="sendSIMCode(k)">获取</span>
+								<span ref="getCode" id="getCode" :class="v.rightIconClass" class="display-flex flex-center" v-if="v.rightIconClass == 'right-icon__simcode'" @click="startSend(k)">获取</span>
 								<span class="display-flex flex-center right-icon__simcode" v-if="v.rightIconClass == 'right-icon__waiting'">{{ countZero }}s</span>
 							</div>
 						</ims-input>
@@ -51,7 +51,7 @@ import imsInput from '@/components/ims-input/ims-input'
 import mainOptions from '@/config/main-option.js'
 import { randomWord, generateUUID } from '@/js/tools.js'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
-import { net_register, net_sendSmsMsg } from '@/js/network.js'
+import { net_register, net_sendSmsMsg, net_getShield } from '@/js/network.js'
 
 export default {
 	data() {
@@ -220,7 +220,6 @@ export default {
 		},
 		initNECaptcha() {
 			var _this = this;
-			debugger
 			initNECaptcha({
 					// config对象，参数配置
 					captchaId: '4c925b0df7a04b0f859ec355e968b596',
@@ -228,27 +227,22 @@ export default {
 					mode: 'popup',
 					width: '320px',
 					onVerify: function(err, data){
-            // 用户验证码验证成功后，进行实际的提交行为
-						// todo3
+						// 用户验证码验证成功后，进行实际的提交行为
             if (!err) {
-							console.log("验证成功")
-							console.log(err)
-							console.log(data)
-							// captchaIns.close()
+							// _this.captchaIns.refresh()
+							net_getShield({NECaptchaValidate:data.validate}).then(res => {
+								if(res.code == "200"){
+									_this.sendSIMCode()
+								}
+							})
 							return
 						}
-						console.log("验证失败")
-						console.log(err)
         	}
 			}, function  onload (instance) {
-					// 初始化成功后得到验证实例instance，可以调用实例的方法
-					console.log("初始化成功")
-					console.log(instance)
-					_this.captchaIns = instance
+				// 初始化成功后得到验证实例instance，可以调用实例的方法
+				_this.captchaIns = instance
 			}, function  onerror (err) {
-					console.log("初始化失败")
-					console.log(err)
-					// 初始化失败后触发该函数，err对象描述当前错误信息
+				// 初始化失败后触发该函数，err对象描述当前错误信息
 			})
 		},
 		checkInvite() {
@@ -261,7 +255,7 @@ export default {
 				this.formData.inviteCode.readonly = true;
 			}
 		},
-		sendSIMCode(index){
+		startSend(){
 			let val = this.formData.phone.model;
 			if(!/^1[1-9][0-9]{9}$/.test(val)){
 				this.$toast("手机号格式错误")
@@ -271,6 +265,8 @@ export default {
 				return
 			}
 			this.captchaIns.popUp() 
+		},
+		sendSIMCode(){
 			let param = {};
 			param.phone = this.formData.phone.model;
 			this.setNetBtnclick(false);
@@ -278,7 +274,7 @@ export default {
 				if(res.code == "200"){
 					this.$toast("验证码已发送")
 					this.countTimer(this.countZero);
-					this.formData[index].rightIconClass = "right-icon__waiting";
+					this.formData.code.rightIconClass = "right-icon__waiting";
 				}
 			})
 		},

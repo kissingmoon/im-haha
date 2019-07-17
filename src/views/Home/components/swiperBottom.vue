@@ -108,7 +108,7 @@ export default {
 	props: {
 		lists: {
 			type: Array,
-			default: []
+			default: () => []
 		}
 	},
 	data() {
