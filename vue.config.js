@@ -34,14 +34,14 @@ module.exports = {
         publicPath: '/vendor',
         // dll最终输出的目录
         outputPath: '/vendor'
-      }),
-      isPro &&
-        new Obfuscator(
-          {
-            rotateUnicodeArray: true
-          },
-          []
-        )
+      })
+      // isPro &&
+      //   new Obfuscator(
+      //     {
+      //       rotateUnicodeArray: true
+      //     },
+      //     []
+      //   )
     ].filter(Boolean)
   },
   lintOnSave: false,
@@ -55,7 +55,7 @@ module.exports = {
     port: 8080,
     proxy: {
       '/api': {
-        target: 'http://192.168.27.142:8199',
+        target: 'http://47.52.16.236:8199',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api' //代理的路径
