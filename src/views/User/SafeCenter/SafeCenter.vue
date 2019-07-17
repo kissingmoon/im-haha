@@ -141,6 +141,7 @@ export default {
 			if (res.code == '200') {
 				this.$api.clearLocal()
 				toast('成功退出登录！')
+				this.$router.go(-1)
 			}
 		}
 	}
