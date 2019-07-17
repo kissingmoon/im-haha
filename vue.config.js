@@ -34,14 +34,14 @@ module.exports = {
         publicPath: '/vendor',
         // dll最终输出的目录
         outputPath: '/vendor'
-      }),
-      isPro &&
-        new Obfuscator(
-          {
-            rotateUnicodeArray: true
-          },
-          []
-        )
+      })
+      // isPro &&
+      //   new Obfuscator(
+      //     {
+      //       rotateUnicodeArray: true
+      //     },
+      //     []
+      //   )
     ].filter(Boolean)
   },
   lintOnSave: false,
