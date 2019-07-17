@@ -126,7 +126,7 @@ export default {
 	background-position: bottom;
 	}
 	.ck_tabs{
-		margin-top: 10px;
+		padding-top: 10px;
 	}
 	.img {
 		display: block;

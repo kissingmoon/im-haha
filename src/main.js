@@ -7,6 +7,10 @@ import router from './router'
 import App from './App.vue'
 window.Dialog = Dialog
 window.toast = function(params) {
+  if (!params) {
+    console.log('toast null')
+    return
+  }
   let toastObj = {
     duration: 1500
   }
@@ -23,6 +27,8 @@ import './style/less/transition.less'
 import 'swiper/dist/css/swiper.css'
 
 import ImsHeader from '@/components/ims-header/ims-header'
+import ImsImage from '@/components/ims-image.vue'
+import ImsBtn from '@/components/ims-btn.vue'
 import loading from './components/loading/loading.js'
 import interfaces from './config/url.js'
 import $http from './js/http.js'
@@ -39,6 +45,8 @@ Vue.use(List)
   .use(SwipeItem)
 
 Vue.component('ims-header', ImsHeader)
+Vue.component('ims-image', ImsImage)
+Vue.component('ims-btn', ImsBtn)
 
 Vue.config.productionTip = false
 

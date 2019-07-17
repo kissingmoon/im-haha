@@ -12,15 +12,13 @@
 					:src="list.imageUrl"
 				/>
 			</div>
-			<button @click="submit" :disabled="disabled" class="btn">确定</button>
+			<ims-btn @click="submit" :throttleTime="500" :disabled="disabled" class="btn">确定</ims-btn>
 		</div>
 	</div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import ImsImage from '@/components/ims-image.vue'
 export default {
-	components: { ImsImage },
 	data() {
 		return {
 			isShow: false,
@@ -84,6 +82,7 @@ export default {
 	}
 	.img {
 		width: 96px;
+		height: 96px;
 		border-radius: 50%;
 		margin-bottom: 15px;
 		transition: all 0.2s linear;
@@ -97,22 +96,8 @@ export default {
 			border: 4px solid #46a8fe;
 		}
 	}
-	.btn {
-		width: 265px;
-		height: 44px;
-		background: @btn_color;
-		font-size: 18px;
-		color: rgba(255, 255, 255, 1);
-		line-height: 44px;
-		border: none;
-		outline: none;
-		box-sizing: border-box;
-		border-radius: 22px;
-		margin: 0 auto;
-		display: block;
-	}
-	.btn:disabled {
-		background: @btn_color_disabled;
+	.btn{
+		width: 264px;
 	}
 }
 </style>

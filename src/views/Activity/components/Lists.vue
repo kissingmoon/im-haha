@@ -1,11 +1,10 @@
 <template>
-	<ul v-if="lists.length>0" class="activities">
+	<div v-if="lists.length>0" class="activities">
 		<transition-group tag="ul" name="fade">
 			<li
-				v-for="(list) in lists"
+				v-for="list in lists"
 				:key="list.id"
 				@click="openActivity(list)"
-				src="../121212.png"
 				class="activity"
 			>
 				<ims-image
@@ -22,15 +21,11 @@
 				<div v-if="list.id == '53' && footRedDot" class="actv_8888"></div>
 			</li>
 		</transition-group>
-	</ul>
+	</div>
 </template>
 <script>
-import ImsImage from '@/components/ims-image.vue'
 import { mapGetters } from 'vuex'
 export default {
-	components: {
-		ImsImage
-	},
 	computed: {
 		...mapGetters(['footRedDot'])
 	},

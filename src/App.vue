@@ -1,5 +1,5 @@
 <template>
-	<div id="app" :class="{'mjb_ios':mjb_ios}">
+	<div id="app" :class="[mjb_ios ? 'mjb_ios' : '', appWeb ? 'appWeb': '']">
 		<transition name="fade">
 			<keep-alive :include="keepALivePages">
 				<router-view/>
@@ -25,6 +25,7 @@ export default {
 	data() {
 		return {
 			keepALivePages: ['index'],
+			appWeb: false,
 			show188: false,
 			mjb_ios: false
 		}
@@ -41,6 +42,13 @@ export default {
 		isGetCJ: {
 			handler(val, old) {
 				if (val != old && val) this.show188 = true
+			},
+			immediate: true
+		},
+		$route: {
+			handler(val, oldVal) {
+				let query = this.$route.query
+				this.appWeb = query.appWeb == 'true' ? true : false //rn写的app内会用到h5页面
 			},
 			immediate: true
 		}
@@ -88,7 +96,7 @@ export default {
 			}
 			if (U_TK) {
 				this.setUserToken(U_TK)
-				this.$api.getUserInfoNoWarn()
+				this.$api.getUserInfoNoWarn({ transferOut: '1' })
 			} else {
 				this.setUserToken('')
 			}
