@@ -5,6 +5,13 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import store from './store'
 import router from './router'
 import App from './App.vue'
+
+if (process.env.NODE_ENV == 'development') {
+  Vue.config.devtools = true
+} else {
+  Vue.config.devtools = false
+}
+
 window.Dialog = Dialog
 window.toast = function(params) {
   if (!params) {
