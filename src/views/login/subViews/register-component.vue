@@ -17,6 +17,7 @@
 							:valueType="v.valueType"
 							:maxlength="v.maxlength"
 							:readonly="v.readonly"
+							:extra="v.extra"
 							@onInputFocus="inputFocusFun(v, k)"
 							@onInputBlur="inputBlurFun(v, k)"
 							@onleftClick="leftClickFun(v, k)"
@@ -25,7 +26,10 @@
 							<div class="slot-icon--left" :class="v.leftIconClass" slot="leftIcon"></div>
 							<div class="slot-icon--right" :class="v.extra?'':v.rightIconClass" slot="rightIcon">
 								<img v-if="v.rightIconClass == 'right-icon__code'" :src="codeSrc" alt>
-								<span ref="getCode" id="getCode" :class="v.rightIconClass" class="display-flex flex-center" v-if="v.rightIconClass == 'right-icon__simcode'" @click="startSend(k)">获取</span>
+								
+							</div>
+							<div v-if="v.extra" class="slot-icon--right" :class="v.extra?'':v.rightIconClass" slot="rightOuterIcon">
+								<span ref="getCode"  :class="v.rightIconClass" class="display-flex flex-center" v-if="v.rightIconClass == 'right-icon__simcode'" @click="startSend(k)">获取</span>
 								<span class="display-flex flex-center right-icon__simcode" v-if="v.rightIconClass == 'right-icon__waiting'">{{ countZero }}s</span>
 							</div>
 						</ims-input>
@@ -33,8 +37,6 @@
 							<span v-show="pointers.formData == k">{{ v.regTip }}</span>
 						</div>
 					</div>
-					
-								<div id="meme">dianwo</div>
 				</div>
 				<ims-btn 
 					class="form-submit-content display-flex flex-center" 
@@ -42,6 +44,7 @@
 					:throttleTime="1000"  
 					@click="register"
 				>注册</ims-btn>
+				<div id="getCode"></div>
 			</div>
 		</div>
 	</div>
@@ -52,12 +55,15 @@ import imsInput from '@/components/ims-input/ims-input'
 import mainOptions from '@/config/main-option.js'
 import { randomWord, generateUUID } from '@/js/tools.js'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
-import { net_register, net_sendSmsMsg, net_getShield } from '@/js/network.js'
+import { net_register, net_sendSmsMsg, net_getShield, net_openGraph } from '@/js/network.js'
 
 export default {
 	data() {
 		return {
 			captchaIns: {},
+			WatchMan: {},
+			wmToken:"",
+			hasCaptcha: true,
 			formData: {
 				userId: {
 					model: '',
@@ -92,7 +98,7 @@ export default {
 				// 	maxlength: 16,
 				// 	extra: false
 				// },
-								phone: {
+				phone: {
 					model: '',
 					placeholder: '手机号',
 					leftIconClass: 'left-icon__phone',
@@ -179,10 +185,12 @@ export default {
 	created() {
 		// this.setCode()
 		this.checkInvite()
+		this.getWmSwitch()
 	},
 	mounted() {
 		// this.initGeetest();
 		this.initNECaptcha();
+		this.initWatchman();
 	},
 	methods: {
 		...mapMutations({
@@ -194,6 +202,15 @@ export default {
 		}),
 		goBefore() {
 			this.$emit('goBefore')
+		},
+		getWmSwitch(){
+			net_openGraph().then(res => {
+				if(res.data && res.data.status == "5001"){
+					this.hasCaptcha = true;
+				}else{
+					this.hasCaptcha = false;
+				}
+			})
 		},
 		initGeetest() {
 			initGeetest({
@@ -246,6 +263,26 @@ export default {
 				// 初始化失败后触发该函数，err对象描述当前错误信息
 			})
 		},
+		initWatchman(){
+			var _this = this;
+			// 初始化SDK，只需初始化一次
+			// auto使用默认值，即自动化模式
+			initWatchman({
+					productNumber: 'YD00881449707603',
+					onload: function (instance) {
+						_this.WatchMan = instance
+						console.log("初始化完成！")
+						_this.submitReg()
+					}
+			});
+		},
+		submitReg(){
+			this.WatchMan.getToken('7bc4946a64ce4412845ddf1a14a7bc79', token => {
+				// 提交点赞业务请求
+				console.log(token)
+				this.wmToken = token
+			});
+		},
 		checkInvite() {
 			let inviteCode = this.$route.query.inviteCode;
 			if(!this.invite_code && inviteCode){
@@ -265,7 +302,16 @@ export default {
 			if(!this.net_btn_click){
 				return
 			}
-			this.captchaIns.popUp() 
+			// this.captchaIns.popUp() 
+			if(this.hasCaptcha){
+				this.captchaIns.refresh() 
+				this.$nextTick(() => {
+					this.captchaIns.popUp() 
+				})
+				
+			}else{
+				this.sendSIMCode()
+			}
 		},
 		sendSIMCode(){
 			let param = {};
@@ -382,6 +428,7 @@ export default {
 			param.pwd = this.formData.pwd.model
 			param.platformFlag = this.setPlatformFlag()
 			param.agentUrl = location.host
+			param.wmToken = this.wmToken
 			if(this.agent_url){
 				param.agentUrl = this.agent_url;
 			}

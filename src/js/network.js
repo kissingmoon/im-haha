@@ -40,3 +40,4 @@ export const net_getUserShare = (param ={}) => http.post("/user/getUserShareMone
 export const net_getTeamList = (param ={}) => http.post("/user/getTeamMembersList", param);
 /* ------------------ 网易云盾 ----------------- */
 export const net_getShield = (param) => http.get("/user/getShield", param);
+export const net_openGraph = (param) => http.get("/user/openGraphValidate", param);

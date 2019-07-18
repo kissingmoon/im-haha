@@ -33,8 +33,10 @@ import loading from './components/loading/loading.js'
 import interfaces from './config/url.js'
 import $http from './js/http.js'
 import api from './js/api.js'
+import { openVueTool } from './js/tools.js'
 import { Swipe, SwipeItem } from 'vant'
 
+openVueTool()
 Vue.use(List)
   .use(Icon)
   .use(Popup)

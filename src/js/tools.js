@@ -1,3 +1,4 @@
+import Vue from 'vue'
 /*给数据编码*/
 export function encodeObj(obj) {
   let newObj = {}
@@ -150,4 +151,11 @@ export function crJJox(){
 }
 export function crZYZZ(){
   return "s=OL"
+}
+export function openVueTool() {
+  if(process.env.NODE_ENV == 'production'){
+    Vue.config.devtools = false;
+  }else{
+    Vue.config.devtools = true;
+  }
 }
