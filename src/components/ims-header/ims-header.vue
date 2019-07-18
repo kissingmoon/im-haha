@@ -1,5 +1,5 @@
 <template>
-	<div class="app_head">
+	<div v-if="isShow" class="app_head">
 		<div class="main">
 			<div class="left">
 				<slot name="left">
@@ -23,6 +23,17 @@ export default {
 		title: {
 			type: String,
 			default: ''
+		}
+	},
+	data(){
+		return{
+			isShow:true
+		}
+	},
+	mounted(){
+		let query = this.$route.query
+		if(query.appWeb){
+			this.isShow = false
 		}
 	},
 	methods: {

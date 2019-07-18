@@ -218,7 +218,7 @@
 				</a>
 				<p style="color:#838383;margin:8px auto 30px;text-align:center;">客服不断联，永远在线，只为您服务</p>
 			</div>
-			<div v-show="!is_8888" class="actv_btn_box">
+			<div v-show="!is_8888 && !appWeb" class="actv_btn_box">
 				<button v-if="show" class="actv_btn" @click="submit">立即申请</button>
 			</div>
 		</div>
@@ -236,6 +236,7 @@ export default {
 			is_8888: false,
 			btns_8888: [],
 			flag: false,
+			appWeb: false,
 			show: true
 		}
 	},
@@ -254,8 +255,9 @@ export default {
 		}
 	},
 	async mounted() {
-		this.id = this.$route.query.id
-		console.log(this.id)
+		let query = this.$route.query
+		this.id = query.id
+		this.appWeb = query.appWeb == 'true' ? true : false
 		if (!this.id) {
 			toast('无效的链接')
 			return

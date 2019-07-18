@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from './views/Home/index.vue'
 import Home from './views/Home/Home.vue'
-import Course from './views/Course/Course.vue'
 import Share from './views/Share/index.vue'
 import Activity from './views/Activity/Activity.vue'
 import User from './views/User/User.vue'
@@ -12,21 +11,13 @@ let course_router = [
   {
     path: '/course',
     name: 'course',
-    component: Course,
-    meta: {
-      keepAlive: true
-    }
-  },
-  {
-    path: '/',
-    name: 'jc',
-    component: () => import(/* webpackChunkName: "jc" */ './views/Course/Course.vue'),
+    component: () => import(/* webpackChunkName: "course" */ './views/Course/Course.vue'),
     meta: {
       keepAlive: false
     }
   },
   {
-    path: '/course/ck',
+    path: '/course-ck',
     name: 'ck',
     component: () => import(/* webpackChunkName: "ck" */ './views/Course/childPage/cunkuan.vue'),
     meta: {
@@ -34,7 +25,7 @@ let course_router = [
     }
   },
   {
-    path: '/course/qk',
+    path: '/course-qk',
     name: 'qk',
     component: () => import(/* webpackChunkName: "qk" */ './views/Course/childPage/qukuan.vue'),
     meta: {
@@ -42,7 +33,7 @@ let course_router = [
     }
   },
   {
-    path: '/course/newerJc',
+    path: '/course-newerJc',
     name: 'newerJc',
     component: () =>
       import(/* webpackChunkName: "newerJc" */ './views/Course/childPage/newerJC.vue'),
@@ -51,7 +42,7 @@ let course_router = [
     }
   },
   {
-    path: '/course/jszc',
+    path: '/course-jszc',
     name: 'jszc',
     component: () => import(/* webpackChunkName: "jszc" */ './views/Course/childPage/jszc.vue'),
     meta: {
@@ -59,7 +50,7 @@ let course_router = [
     }
   },
   {
-    path: '/course/wfjc',
+    path: '/course-wfjc',
     name: 'wfjc',
     component: () => import(/* webpackChunkName: "wfjc" */ './views/Course/childPage/wfjc.vue'),
     meta: {
@@ -67,7 +58,7 @@ let course_router = [
     }
   },
   {
-    path: '/course/contact',
+    path: '/course-contact',
     name: 'contact',
     component: () =>
       import(/* webpackChunkName: "contact" */ './views/Course/childPage/contact.vue'),
@@ -76,7 +67,7 @@ let course_router = [
     }
   },
   {
-    path: '/course/privacy',
+    path: '/course-privacy',
     name: 'privacy',
     component: () => import(/* webpackChunkName: "about" */ './views/Course/childPage/privacy.vue'),
     meta: {
