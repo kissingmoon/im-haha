@@ -250,7 +250,7 @@ export default {
 							// _this.captchaIns.refresh()
 							net_getShield({NECaptchaValidate:data.validate}).then(res => {
 								if(res.code == "200"){
-									_this.sendSIMCode()
+									_this.sendSIMCode({NECaptchaValidate:data.validate})
 								}
 							})
 							return
@@ -308,11 +308,10 @@ export default {
 				})
 				
 			}else{
-				this.sendSIMCode()
+				this.sendSIMCode({NECaptchaValidate: ""})
 			}
 		},
-		sendSIMCode(){
-			let param = {};
+		sendSIMCode(param){
 			param.phone = this.formData.phone.model;
 			this.setNetBtnclick(false);
 			net_sendSmsMsg(param).then(res => {
