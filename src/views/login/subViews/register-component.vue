@@ -213,15 +213,16 @@ export default {
 			})
 		},
 		initGeetest() {
-			initGeetest({
-					// 以下配置参数来自服务端 SDK
-					gt: '6216680937717fdab947ed9e71a3aaa1',
-					challenge: 'e8382b9e08987b2f851e9468a596029b',
-					offline: false,
-					new_captcha: true,
-					timeout: '5000',
-					product: 'bind'
-        }, function (captchaObj) {
+			let config = {
+				// 以下配置参数来自服务端 SDK
+				gt: '6216680937717fdab947ed9e71a3aaa1',
+				challenge: 'e8382b9e08987b2f851e9468a596029b',
+				offline: false,
+				new_captcha: true,
+				timeout: '5000',
+				product: 'bind'
+			}
+			initGeetest(config, function (captchaObj) {
 					captchaObj.onReady(function(){
 								//your code
 							}).onSuccess(function(){
@@ -230,7 +231,6 @@ export default {
 								//your code
 							})
 						document.getElementById("meme").addEventListener("click", ()=>{
-							alert(99)
 							captchaObj.verify(); 
 						})
         // 省略其他方法的调用
@@ -271,7 +271,6 @@ export default {
 					productNumber: 'YD00881449707603',
 					onload: function (instance) {
 						_this.WatchMan = instance
-						console.log("初始化完成！")
 						_this.submitReg()
 					}
 			});
@@ -279,7 +278,6 @@ export default {
 		submitReg(){
 			this.WatchMan.getToken('7bc4946a64ce4412845ddf1a14a7bc79', token => {
 				// 提交点赞业务请求
-				console.log(token)
 				this.wmToken = token
 			});
 		},
