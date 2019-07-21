@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <p class="currentLevel">当前推广等级：<span style="color:#000;fontWeight: 600">{{Yesterday.leveName}}</span></p>
+        <!-- <p class="currentLevel">当前推广等级：<span style="color:#000;fontWeight: 600">{{Yesterday.leveName}}</span></p> -->
     </div>
 </template>
 

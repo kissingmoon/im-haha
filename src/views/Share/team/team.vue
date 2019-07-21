@@ -286,7 +286,7 @@
 			<div class="lists_box">
 				<div class="lists_top">
 					<div class="lists_t">旗下成员账号</div>
-					<div class="lists_t">用户等级</div>
+					<div class="lists_t">昨日业绩</div>
 					<div @click="sortingfun" class="lists_t">用户总业绩
 						<div :class="sorting=='bot'?'sortingtop':''"  class="reverseOrder"></div>
 						<div :class="sorting=='top'?'sortingbot':''"  class="order"></div>
@@ -300,7 +300,7 @@
 							</span> -->
 							<span class="list_l_name">{{list.userId}}</span>
 						</div>
-						<div class="list_m">{{list.userLevel}}</div>
+						<div class="list_m">{{list.hierPerformance}}</div>
 						<div class="list_m">{{list.countDml}}</div>
 					</div>
 					<p class="list_more">{{loadMoreText}}</p>
@@ -346,7 +346,7 @@ export default {
 				{ date_text: '最近三天', data_type: 1 },
 				{ date_text: '最近七天', data_type: 2 },
 				{ date_text: '一个月', data_type: 3},
-				{ date_text: '三个月', data_type: 4 },
+				// { date_text: '三个月', data_type: 4 },
 				{ date_text: '取消', data_type: 5 }
 			],
 
@@ -413,28 +413,33 @@ export default {
 		onblur(){
 			document.getElementsByClassName("ipt")[0].className="ipt"
 		},
-		searchfun(){
-			this.reset()
+		searchfun(){		
 			if(this.ipt!=""){				
 				this.show=false
 				this.remove=true
-				this.searchTime()
-			}else{								
+				this.searchTime()				
+			}else{											
 				this.remove=false
 				this.show=true
-				this.searchTime()
+				this.kong()	
+				// this.searchTime()
 			}	
 		},
 		reset(){
 			this.hasgetAll = false
 			this.loadMoreText = '加载中...'
+			this.lastscrollTop=0
 		},
 		searchTime(){
-			this.$http.post('/gameAgent/group/list/userId', {
+			this.$http.post('/gameAgent/group/list', {
 				cuserId:this.ipt,
+				page_no: 0,
+				page_size: 99999,
+				startTime:"",
+				endTime:""
 			}).then(res=>{
-				this.lists=res.data.data
-				if (res.data.data.length < this.page_size) {
+				this.lists=res.data.data.list
+				if (res.data.data.list.length < this.page_size) {
 					this.hasgetAll = true
 					this.loadMoreText = '没有更多了~'
 				}
@@ -454,7 +459,7 @@ export default {
 			this.page=0
 			// this.searchTime()				
 			this.page += 1	
-			console.log(this.hasgetAll,this.loadMoreText)	
+			this.reset()
 			this.$http.post('/gameAgent/group/list', {
 				page_no: this.page,
 				page_size: this.page_size,
@@ -468,6 +473,7 @@ export default {
 					}
 					this.info = res.data.data
 					this.lists = res.data.data.list
+					this.orderfun()
 				}
 			})	
 		},

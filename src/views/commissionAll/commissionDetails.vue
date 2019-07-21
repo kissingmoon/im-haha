@@ -179,20 +179,20 @@
 			</div>
 			<div class="lists_box">
 				<div class="lists_top">
+					<div class="lists_t">排序</div>
 					<div class="lists_t">成员账号</div>
 					<div class="lists_t">贡献打码量总计</div>
-					<div class="lists_t">贡献日期</div>
 				</div>
 				<div v-if="lists.length>0" class="lists">
 					<div v-for="(list,index) in lists" :key="index" class="list">
 						<div class="list_l">
 							<!-- <span class="list_l_name">{{list.userId}}</span> -->
-							<span class="list_l_name">{{list.playerId}}</span> 
+							<span class="list_l_name">{{index+1}}</span> 
 						</div>
 						<!-- <div class="list_m">￥{{list.teamDml}}.00</div> -->
-						<div class="list_m">￥{{list.dml}}.00</div>
+						<div class="list_m">{{list.playerId}}</div>
 						<!-- <div class="list_m">{{list.newTime}}</div> -->
-						<div class="list_m">{{list.createTime}}</div>
+						<div class="list_m">￥{{list.dml}}.00</div>
 					</div>
 					<p class="list_more">{{loadMoreText}}</p>
 				</div>
@@ -237,6 +237,7 @@ export default {
 				}
 				this.info=res.data
 				this.lists = res.data.gameCommisionList
+				this.orderfun()
 				this.isShow = true
 				this.scrollFn = throttle(this.scroll, 300)
 				window.addEventListener('scroll', this.scrollFn)
@@ -264,6 +265,11 @@ export default {
 				this.getMore()
 			}
 		},
+		orderfun(){
+				this.lists=this.lists.sort((a,b)=>{
+					return a.dml-b.dml
+				})
+		},
 		getLists(v) {
 			return this.$http.post('/gameAgent/commision/info', {
 				page_no: 1,
@@ -287,6 +293,7 @@ export default {
 				.then(res => {
 					if (res.code == '200') {
 						this.lists = this.lists.concat(res.data.gameCommisionList)
+						this.orderfun()
 						if (res.data.gameCommisionList.length < this.page_size) {
 							this.hasgetAll = true
 							this.loadMoreText = '已经到底了~'

@@ -38,10 +38,10 @@
                         <div @click='gotoDetails(v)' class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
                                 <p class="left_p">{{v.settleTime}}</p>
-                                <p class="left_p p1">奖励：￥{{v.commision | filter}}</p>
+                                <p class="left_p p1">{{v.type}}&nbsp;&nbsp;￥{{v.commision | filter}}</p>
                             </div>
                             <div class="lists_right">
-                                <div class="midAvtive">{{v.type}}
+                                <div class="midAvtive">{{v.leveName}}
                                     <!-- <span style="color:green" v-if="v.status==1">(已完成)</span>
                                     <span v-if="v.status!=1">(审核中)</span> -->
                                     <!-- <span style="color:red" v-if="v.status==3">(未通过)</span> -->
@@ -166,7 +166,7 @@ import { net_getUserProList, net_getUserPro ,net_getUserProList1} from '@/js/net
                         this.lists=this.typeArr
                     }
                     if(s==1){
-                        this.lists=["全部记录","最近三天","近七天","一个月","三个月"]
+                        this.lists=["全部记录","最近三天","近七天","一个月"]
                     }
                 } 
             },
