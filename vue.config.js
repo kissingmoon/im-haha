@@ -1,7 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
+const Obfuscator = require('webpack-obfuscator')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+const isPro = process.env.NODE_ENV === 'production'
 
 let Dlls = ['vue', 'bases', 'lodash', 'swiper']
 let DllPlugins = Dlls.map(item => {
@@ -30,8 +34,15 @@ module.exports = {
         publicPath: '/vendor',
         // dll最终输出的目录
         outputPath: '/vendor'
-      })
-    ]
+      }),
+      isPro &&
+        new Obfuscator(
+          {
+            rotateUnicodeArray: true
+          },
+          []
+        )
+    ].filter(Boolean)
   },
   lintOnSave: false,
   pluginOptions: {
@@ -44,8 +55,9 @@ module.exports = {
     port: 8080,
     proxy: {
       '/api': {
-        // target: 'http://47.52.16.236:8199',
-        target: 'http://192.168.27.245:8199',
+        target: 'http://192.168.27.142:8199', //test 参考   https://cli.vuejs.org/zh/guide/mode-and-env.html
+        // target: 'http://192.168.12.33:8199', 
+        // target: 'http://192.168.27.245:8199',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api' //代理的路径

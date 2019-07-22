@@ -5,6 +5,13 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import store from './store'
 import router from './router'
 import App from './App.vue'
+
+if (process.env.NODE_ENV == 'development') {
+  Vue.config.devtools = true
+} else {
+  Vue.config.devtools = false
+}
+
 window.Dialog = Dialog
 window.toast = function(params) {
   if (!params) {
@@ -33,11 +40,13 @@ import loading from './components/loading/loading.js'
 import interfaces from './config/url.js'
 import $http from './js/http.js'
 import api from './js/api.js'
+import { openVueTool } from './js/tools.js'
 import { Swipe, SwipeItem } from 'vant'
 
 import animated from 'animate.css'
 Vue.use(animated) 
 
+openVueTool()
 Vue.use(List)
   .use(Icon)
   .use(Popup)

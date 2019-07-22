@@ -39,3 +39,6 @@ export const net_getUserProList = (param ={}) => http.post("/user/getUserPromoti
 export const net_getUserProList1 = (param ={}) => http.post("/gameAgent/commision/list", param);
 export const net_getUserShare = (param ={}) => http.post("/user/getUserShareMoney", param);
 export const net_getTeamList = (param ={}) => http.post("/user/getTeamMembersList", param);
+/* ------------------ 网易云盾 ----------------- */
+export const net_getShield = (param) => http.get("/user/getShield", param);
+export const net_openGraph = (param) => http.get("/user/openGraphValidate", param);

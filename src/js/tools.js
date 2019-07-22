@@ -1,3 +1,4 @@
+import Vue from 'vue'
 /*给数据编码*/
 export function encodeObj(obj) {
   let newObj = {}
@@ -134,5 +135,27 @@ export function openLink(url, deviceType){
       router.push(`/mpage?jumpLink=${url}`);
   }else{
       window.open(url);
+  }
+}
+export function crKKuu(){
+  let a = crIpp();
+  let XX = crJJox();
+  let boob = crZYZZ();
+  return "JUg8"+a+XX+boob
+}
+export function crIpp(){
+  return "+11%"
+}
+export function crJJox(){
+  return "H_32"
+}
+export function crZYZZ(){
+  return "s=OL"
+}
+export function openVueTool() {
+  if(process.env.NODE_ENV == 'production'){
+    Vue.config.devtools = false;
+  }else{
+    Vue.config.devtools = true;
   }
 }

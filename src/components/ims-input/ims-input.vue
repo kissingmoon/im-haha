@@ -22,9 +22,9 @@
 			<div class="right-content" @click="rightIconClick">
 				<slot name="rightIcon"></slot>
 			</div>
-			<div class="display-flex flex-center" @click="rightIconClick">
-				<slot name="rightOuterIcon"></slot>
-			</div>
+		</div>
+		<div v-if="extra" class="display-flex flex-center right-Out__cont" @click="rightIconClick">
+			<slot name="rightOuterIcon"></slot>
 		</div>
 	</div>
 </template>
@@ -57,6 +57,10 @@ export default {
 		valueType: {
 			type: String,
 			default: ''
+		},
+		extra: {
+			type: Boolean,
+			default: false
 		}
 	},
 	created(){
@@ -172,6 +176,9 @@ export default {
 			top: 50%;
 			transform: translateY(-50%);
 		}
+	}
+	.right-Out__cont{
+		margin-right: 10px;
 	}
 }
 </style>
