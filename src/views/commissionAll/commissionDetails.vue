@@ -179,9 +179,9 @@
 			</div>
 			<div class="lists_box">
 				<div class="lists_top">
-					<div class="lists_t">排序</div>
+					<div class="lists_t">排名</div>
 					<div class="lists_t">成员账号</div>
-					<div class="lists_t">贡献打码量总计</div>
+					<div class="lists_t">打码量</div>
 				</div>
 				<div v-if="lists.length>0" class="lists">
 					<div v-for="(list,index) in lists" :key="index" class="list">
@@ -267,7 +267,7 @@ export default {
 		},
 		orderfun(){
 				this.lists=this.lists.sort((a,b)=>{
-					return a.dml-b.dml
+					return b.dml-a.dml
 				})
 		},
 		getLists(v) {
