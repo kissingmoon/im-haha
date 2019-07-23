@@ -346,7 +346,7 @@ export default {
 				{ date_text: '最近三天', data_type: 1 },
 				{ date_text: '最近七天', data_type: 2 },
 				{ date_text: '一个月', data_type: 3},
-				// { date_text: '三个月', data_type: 4 },
+				{ date_text: '三个月', data_type: 4 },
 				{ date_text: '取消', data_type: 5 }
 			],
 
@@ -554,6 +554,8 @@ export default {
 			this.end()
 			this.lists=[]
 			this.hasgetAll = false
+			this.sorting=''
+			this.sortingNum=0
 			this.getMore()
 		},
 		sortingfun(){
@@ -576,6 +578,9 @@ export default {
 				this.lists=this.lists.sort((a,b)=>{
 					return b.countDml-a.countDml
 				})
+			}
+			if(this.sorting==''){
+				return
 			}
 		},
 		scroll(e) {
