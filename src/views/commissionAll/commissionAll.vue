@@ -38,7 +38,7 @@
                         <div @click='gotoDetails(v)' class="lists" v-for="(v, k) in recList" :key="k">
                             <div class="left">
                                 <p class="left_p">{{v.settleTime}}</p>
-                                <p class="left_p p1">{{v.type}}&nbsp;&nbsp;￥{{v.commision | filter}}</p>
+                                <p class="left_p p1">{{v.type}}&nbsp;&nbsp;￥{{v.commisionMoney | filter}}</p>
                             </div>
                             <div class="lists_right">
                                 <div class="midAvtive">{{v.leveName}}

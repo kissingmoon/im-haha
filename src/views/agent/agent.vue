@@ -132,7 +132,7 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
                     this.$toast('业绩红利佣金为0，快去推广吧')
                 }else{ 
                     if(data==1){
-                        this.$toast('已经申请提现,正在审核中,请耐心等待')
+                        this.$toast('您还有一笔申请，正在审核中')
                     }else{
                         Dialog.confirm({
                             message: '红利佣金领取审核后将会转入您的账户余额'
@@ -153,7 +153,7 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
                         type:'wxType'
                     }).then(res=>{   
                         if(res.code==200){
-                            this.$toast(res.msg)
+                            // this.$toast(res.msg)
                             this.Yesterday.withdrawCommision=0
                         }                
                     })
@@ -164,7 +164,7 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
                         type:'shoreType'
                     }).then(res=>{                   
                         if(res.code==200){                            
-                            this.$toast(res.msg)
+                            // this.$toast(res.msg)
                         }
                     })
                 }
