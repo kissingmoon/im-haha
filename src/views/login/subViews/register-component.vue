@@ -212,30 +212,30 @@ export default {
 				}
 			})
 		},
-		initGeetest() {
-			let config = {
-				// 以下配置参数来自服务端 SDK
-				gt: '6216680937717fdab947ed9e71a3aaa1',
-				challenge: 'e8382b9e08987b2f851e9468a596029b',
-				offline: false,
-				new_captcha: true,
-				timeout: '5000',
-				product: 'bind'
-			}
-			initGeetest(config, function (captchaObj) {
-					captchaObj.onReady(function(){
-								//your code
-							}).onSuccess(function(){
-								//your code
-							}).onError(function(){
-								//your code
-							})
-						document.getElementById("meme").addEventListener("click", ()=>{
-							captchaObj.verify(); 
-						})
-        // 省略其他方法的调用
-    	});
-		},
+		// initGeetest() {
+		// 	let config = {
+		// 		// 以下配置参数来自服务端 SDK
+		// 		gt: '6216680937717fdab947ed9e71a3aaa1',
+		// 		challenge: 'e8382b9e08987b2f851e9468a596029b',
+		// 		offline: false,
+		// 		new_captcha: true,
+		// 		timeout: '5000',
+		// 		product: 'bind'
+		// 	}
+		// 	initGeetest(config, function (captchaObj) {
+		// 			captchaObj.onReady(function(){
+		// 						//your code
+		// 					}).onSuccess(function(){
+		// 						//your code
+		// 					}).onError(function(){
+		// 						//your code
+		// 					})
+		// 				document.getElementById("meme").addEventListener("click", ()=>{
+		// 					captchaObj.verify(); 
+		// 				})
+    //     // 省略其他方法的调用
+    // 	});
+		// },
 		initNECaptcha() {
 			var _this = this;
 			initNECaptcha({
