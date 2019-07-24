@@ -180,6 +180,11 @@ export let needLoginRoutes = [
     name: 'ptp',
     component: () => import(/* webpackChunkName: "ptp" */ './views/agent/ptp.vue'),
   },
+  {
+    path: '/service',
+    name: 'service',
+    component: () => import(/* webpackChunkName: "ptp" */ './views/service/service.vue')
+  },
 ]
 let routes = [
   {
