@@ -22,6 +22,8 @@ module.exports = {
     config.plugins.delete('prefetch')
     config.plugins.delete('preload')
     config.plugins.delete('pwa')
+    config.output.filename('[name]_[hash].js')
+    config.output.chunkFilename('js/[name]_[hash].js')
   },
   configureWebpack: {
     plugins: [
