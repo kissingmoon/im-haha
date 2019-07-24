@@ -15,7 +15,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, dllPath),
-    filename: '[name].dll.js',
+    filename: '[name]_[hash].js',
     // vendor.dll.js中暴露出的全局变量名
     // 保持与 webpack.DllPlugin 中名称一致
     library: '[name]_[hash]'
