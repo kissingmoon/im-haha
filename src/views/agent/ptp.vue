@@ -1,5 +1,5 @@
 <template>
-  <div class="ptp">
+  <div v-show="ptpShow" class="ptp">
     <div class="header-container">
 			<ims-header title="推广赚钱">
       </ims-header> 
@@ -16,7 +16,7 @@
               <div class="inviteCode_left">邀请码：{{result.inviteCode}}</div>
               <div :data-clipboard-text="result.inviteCode" @click="codefun('邀请码')" class="inviteCode_right copy">复制</div>
             </div>
-            <p class="p">您已通过推荐好友，累计获得了 <span style="color:#FFE04D">{{result.inviteMoney}}</span> 佣金</p>
+            <p class="p">您已通过推荐好友，累计获得了 <span style="color:#FFE04D">￥{{result.inviteMoney=='null'?0:result.inviteMoney}}.00</span> 佣金</p>
             <p class="p p1">{{result.link}}</p>
             <div @click="linkfun('复制链接')" :data-clipboard-text="result.url" class="btn copy">
                 复制链接
@@ -51,16 +51,20 @@ export default {
       result:{},
       txt:"",
       isShowMask:false,
+      ptpShow:false
     }
   },
   mounted(){
-    this.getData()
+    let loading = this.$loading({ text: '正在加载…' })
+    this.getData(loading)
   },
   methods:{
-    getData(){
+    getData(loading){
         this.$http.post('/user/getUserPromotion').then(res=>{
           if (res.code == '200') {
             this.result = res.data
+            this.ptpShow=true
+            loading.close()
             this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
             this.result.link=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
 						if (this.result.inviteMoney <= 0 || this.result.inviteMoney == 'null') {

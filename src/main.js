@@ -43,6 +43,9 @@ import api from './js/api.js'
 import { openVueTool } from './js/tools.js'
 import { Swipe, SwipeItem } from 'vant'
 
+import animated from 'animate.css'
+Vue.use(animated) 
+
 openVueTool()
 Vue.use(List)
   .use(Icon)

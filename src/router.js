@@ -178,7 +178,7 @@ export let needLoginRoutes = [
   {
     path: '/ptp',
     name: 'ptp',
-    component: () => import(/* webpackChunkName: "ptp" */ './views/agent/ptp.vue')
+    component: () => import(/* webpackChunkName: "ptp" */ './views/agent/ptp.vue'),
   },
 ]
 let routes = [
@@ -258,6 +258,11 @@ let routes = [
     path: '/about',
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ './views/User/About/About.vue')
+  },
+  {
+    path: '/commissionDetails',
+    name: 'commissionDetails',
+    component: () => import(/* webpackChunkName: "about" */ './views/commissionAll/commissionDetails.vue')
   },
   ...needLoginRoutes,
   ...course_router

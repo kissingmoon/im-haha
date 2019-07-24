@@ -165,8 +165,8 @@ export default {
 					break
 				}
 				case 8: {
-					this.$toast('正在升级中，敬请期待')
-					//this.$router.push('/agent')
+					// this.$toast('正在升级中，敬请期待')
+					this.$router.push('/agent')
 					break
 				}
 				case 10: {

@@ -189,11 +189,11 @@
 				>推荐佣金：您分享给小伙伴，小伙伴通过您的链接或者是邀请码注册成功后，游戏在线5分钟，您获得2元佣金，小伙伴获得1元佣金，以此类推，分享越多佣金越多！</div>
 			</div>
 			<div class="dash">
-				<div @click="gopage('/team')" class="dash_l">
+				<div @click="gopage('team')" class="dash_l">
 					<p class="p0 p1">{{result.peopleNum}}人</p>
 					<p class="p0 p1">推荐人数总计</p>
 				</div>
-				<div @click="gopage('/commissionAll')" class="dash_l">
+				<div @click="gopage('commissionAll')" class="dash_l">
 					<p class="p0">￥{{result.inviteMoney=='null'?0:result.inviteMoney}}.00</p>
 					<p class="p0">推荐佣金总计</p>
 				</div>
@@ -357,9 +357,13 @@ export default {
 		tipone(txt) {
 			this.txt = txt
 		},
-		gopage(path) {
-			if (this.user_token) {
-				this.$router.push(path)
+		gopage(name) {
+			if (this.user_token) {				
+				if(name=='team'){
+					this.$router.push({name:name,query:{startTime:"",endTime:""}})
+				}else{
+					this.$router.push({name:name,query:{index:1}})
+				}
 			} else {
 				this.$router.push('/login')
 			}
