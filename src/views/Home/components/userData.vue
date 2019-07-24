@@ -23,7 +23,7 @@
 				<div class="icon icon2"></div>
 				<p>取款</p>
 			</div>
-			<div @click="gotoPage('/customer-service',false)" class="option">
+			<div @click="gotoPage('/service',false)" class="option">
 				<div class="icon icon3"></div>
 				<p>客服</p>
 			</div>
