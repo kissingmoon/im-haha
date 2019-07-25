@@ -35,7 +35,7 @@
         </div>
         <p class="p">{{OBJ.QQ1}}</p>
         <p class="p">QQ客服1</p>
-        <div :data-clipboard-text="OBJ.QQ1" class="btn copy" @click="openWx('97880762')">复制账号并打开</div>
+        <div :data-clipboard-text="OBJ.QQ1" class="btn copy" @click="openWx('97880762')">联系客服并打开</div>
       </div>
       <div v-if="item==1" class="right">
         <div class="img">
@@ -43,7 +43,7 @@
         </div>
         <p class="p">{{OBJ.QQ2}}</p>
         <p class="p">QQ客服2</p>
-        <div :data-clipboard-text="OBJ.QQ2" class="btn copy" @click="openWx('97880763')">复制账号并打开</div>
+        <div :data-clipboard-text="OBJ.QQ2" class="btn copy" @click="openWx('97880763')">联系客服并打开</div>
       </div>
 
       <div v-if="item==2" class="left">
@@ -52,7 +52,7 @@
         </div>
         <p class="p">{{OBJ.MT1}}</p>
         <p class="p">MT客服1</p>
-        <div :data-clipboard-text="OBJ.MT1" class="btn copy" @click="openMT('888888')">复制账号并打开</div>
+        <div :data-clipboard-text="OBJ.MT1" class="btn copy" @click="openMT('888888')">联系客服并打开</div>
       </div>
       <div v-if="item==2" class="right">
         <div class="img">
@@ -60,7 +60,7 @@
         </div>
         <p class="p">{{OBJ.MT2}}</p>
         <p class="p">MT客服2</p>
-        <div :data-clipboard-text="OBJ.MT2" class="btn copy" @click="openMT('999999')">复制账号并打开</div>
+        <div :data-clipboard-text="OBJ.MT2" class="btn copy" @click="openMT('999999')">联系客服并打开</div>
       </div>
     </div>
 
@@ -76,7 +76,7 @@ import Tabs from '../../components/tabs/tabs.vue'
 export default {
   data(){
     return{
-      tabs:["在线客服","QQ客服","MT"],
+      tabs:["在线客服","QQ客服","MT客服"],
       item:0,
       OBJ:{
         QQ1:'97880762',
@@ -99,7 +99,7 @@ export default {
       this.item=index
     },
     openWx (num) {
-      window.open ('mqqwpa://im/chat?chat_type=wpa&uin='+num+'&version=1&src_type=web&web_src=oicqzone.com') 
+      window.open('mqqwpa://im/chat?chat_type=wpa&uin='+num+'&version=1&src_type=web&web_src=oicqzone.com') 
     },
     openMT(num){
       window.open ('mtmessenger://localhost?id='+num) 
@@ -108,7 +108,7 @@ export default {
   mounted(){
     this.$nextTick(() => {
       new clipboard('.copy').on('success', () => {
-          // this.$toast('复制成功')
+          this.$toast('复制成功')
       })
     })
   }
