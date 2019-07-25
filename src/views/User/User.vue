@@ -153,7 +153,8 @@ export default {
 					break
 				}
 				case 5: {
-					this.$router.push('/customer-service')
+					// this.$router.push('/customer-service')
+					this.$router.push('/service')
 					break
 				}
 				case 6: {
