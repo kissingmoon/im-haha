@@ -57,7 +57,8 @@ export default {
 		// this.checkUUID()
 		this.checkUTK()
 		this.setAliToken()
-		this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
+		// this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
+		this.mjb_ios = this.$route.query.showHeader == '1' ? true : false
 		this.getServiceUrl()
 		this.getAgentUrl()
 	},
