@@ -58,20 +58,9 @@ export default {
 		// this.checkUUID()
 		this.checkUTK()
 		this.setAliToken()
-		// this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
-		let showHeader = this.$route.query.showHeader
-		if (!showHeader) {
-			this.mjb_ios = true
-			this.mjb_ios_half = false
-		} else if (showHeader == '1') {
-			this.mjb_ios = false
-			this.mjb_ios_half = false
-		} else if (showHeader == '2') {
-			this.mjb_ios = false
-			this.mjb_ios_half = true
-		}
 		this.getServiceUrl()
 		this.getAgentUrl()
+		this.fixMjb()
 	},
 	methods: {
 		...mapMutations({
@@ -81,6 +70,22 @@ export default {
 			setServiceUrl: 'SET_SERVICE_URL',
 			setAgentUrl:'SET_AGENT_URL'
 		}),
+		fixMjb(){
+			let showHeader = this.$route.query.showHeader
+			let ismjb = this.$route.query.ismjb
+			if(ismjb == 'ios'){
+				if (!showHeader) {
+					this.mjb_ios = true
+					this.mjb_ios_half = false
+				} else if (showHeader == '1') {
+					this.mjb_ios = false
+					this.mjb_ios_half = false
+				} else if (showHeader == '2') {
+					this.mjb_ios = false
+					this.mjb_ios_half = true
+				}
+			}
+		},
 		getServiceUrl() {
 			this.$http.post('/home/getServiceUrl').then(res => {
 				if (res.code == '200') {
