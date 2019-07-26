@@ -11,7 +11,17 @@
 @text_color: #4a4a4a;
 @text_color_navs: #6c4932;
 @actv_table_border_color: #333;
-@iphone_xr: 40px;
+@iPhone_6: 16px;
+@iPhone_6p: 20px;
+@iPhone_X: 28px;
+@iPhone_XR: 34px;
+@iPhone_Xs_Max: 34px;
+
+@iPhone_6_half: 6px;
+@iPhone_6p_half: 8px;
+@iPhone_X_half: 10px;
+@iPhone_XR_half: 13px;
+@iPhone_Xs_Max_half: 14px;
 
 .view_wrapper {
   position: absolute;
@@ -45,27 +55,53 @@
 @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
   .mjb_ios {
     .view_wrapper {
-      top: @iphone_xr !important;
+      top: @iPhone_X !important;
     }
     .app_head {
       .main {
-        top: @iphone_xr !important;
+        top: @iPhone_X !important;
       }
     }
     .headview_wrapper {
-      padding-top: @app_head_height + @iphone_xr !important;
+      padding-top: @app_head_height + @iPhone_X !important;
     }
     .bet-wrapper {
-      top: @app_head_height + @iphone_xr !important;
+      top: @app_head_height + @iPhone_X !important;
       .formTitle {
-        top: @app_head_height + @iphone_xr !important;
+        top: @app_head_height + @iPhone_X !important;
       }
     }
     .login_back {
-      top: @iphone_xr !important;
+      top: @iPhone_X !important;
     }
     .wfjc .wfjc_tabs {
-      top: @app_head_height + @iphone_xr !important;
+      top: @app_head_height + @iPhone_X !important;
+    }
+  }
+  //专为残疾马甲包设计
+  .mjb_ios_half {
+    .view_wrapper {
+      top: @iPhone_X_half !important;
+    }
+    .app_head {
+      .main {
+        top: @iPhone_X_half !important;
+      }
+    }
+    .headview_wrapper {
+      padding-top: @app_head_height + @iPhone_X_half !important;
+    }
+    .bet-wrapper {
+      top: @app_head_height + @iPhone_X_half !important;
+      .formTitle {
+        top: @app_head_height + @iPhone_X_half !important;
+      }
+    }
+    .login_back {
+      top: @iPhone_X_half !important;
+    }
+    .wfjc .wfjc_tabs {
+      top: @app_head_height + @iPhone_X_half !important;
     }
   }
 }
@@ -73,27 +109,53 @@
 @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
   .mjb_ios {
     .view_wrapper {
-      top: @iphone_xr !important;
+      top: @iPhone_XR !important;
     }
     .app_head {
       .main {
-        top: @iphone_xr !important;
+        top: @iPhone_XR !important;
       }
     }
     .headview_wrapper {
-      padding-top: @app_head_height + @iphone_xr !important;
+      padding-top: @app_head_height + @iPhone_XR !important;
     }
     .bet-wrapper {
-      top: @app_head_height + @iphone_xr !important;
+      top: @app_head_height + @iPhone_XR !important;
       .formTitle {
-        top: @app_head_height + @iphone_xr !important;
+        top: @app_head_height + @iPhone_XR !important;
       }
     }
     .login_back {
-      top: @iphone_xr !important;
+      top: @iPhone_XR !important;
     }
     .wfjc .wfjc_tabs {
-      top: @app_head_height + @iphone_xr !important;
+      top: @app_head_height + @iPhone_XR !important;
+    }
+  }
+  //专为残疾马甲包设计
+  .mjb_ios_half {
+    .view_wrapper {
+      top: @iPhone_XR_half !important;
+    }
+    .app_head {
+      .main {
+        top: @iPhone_XR_half !important;
+      }
+    }
+    .headview_wrapper {
+      padding-top: @app_head_height + @iPhone_XR_half !important;
+    }
+    .bet-wrapper {
+      top: @app_head_height + @iPhone_XR_half !important;
+      .formTitle {
+        top: @app_head_height + @iPhone_XR_half !important;
+      }
+    }
+    .login_back {
+      top: @iPhone_XR_half !important;
+    }
+    .wfjc .wfjc_tabs {
+      top: @app_head_height + @iPhone_XR_half !important;
     }
   }
 }
@@ -101,27 +163,55 @@
 @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
   .mjb_ios {
     .view_wrapper {
-      top: @iphone_xr !important;
+      top: @iPhone_Xs_Max  !important;
     }
     .app_head {
       .main {
-        top: @iphone_xr !important;
+        top: @iPhone_Xs_Max  !important;
       }
     }
     .headview_wrapper {
-      padding-top: @app_head_height + @iphone_xr !important;
+      padding-top: @app_head_height + @iPhone_Xs_Max  !important;
     }
     .bet-wrapper {
-      top: @app_head_height + @iphone_xr !important;
+      top: @app_head_height + @iPhone_Xs_Max  !important;
       .formTitle {
-        top: @app_head_height + @iphone_xr !important;
+        top: @app_head_height + @iPhone_Xs_Max  !important;
       }
     }
     .login_back {
-      top: @iphone_xr !important;
+      top: @iPhone_Xs_Max  !important;
     }
     .wfjc .wfjc_tabs {
-      top: @app_head_height + @iphone_xr !important;
+      top: @app_head_height + @iPhone_Xs_Max  !important;
+    }
+  }
+  //专为残疾马甲包设计
+  .mjb_ios_half {
+    .view_wrapper {
+      top: @iPhone_Xs_Max_half  !important;
+    }
+    .app_head {
+      .main {
+        top: @iPhone_Xs_Max_half  !important;
+      }
+    }
+    .headview_wrapper {
+      padding-top: @app_head_height + @iPhone_Xs_Max_half  !important;
+    }
+    .bet-wrapper {
+      top: @app_head_height + @iPhone_Xs_Max_half  !important;
+      .formTitle {
+        top: @app_head_height + @iPhone_Xs_Max_half  !important;
+      }
+    }
+    .login_back {
+      top: @iPhone_Xs_Max_half  !important;
+    }
+    .wfjc .wfjc_tabs {
+      top: @app_head_height + @iPhone_Xs_Max_half  !important;
     }
   }
 }
+
+

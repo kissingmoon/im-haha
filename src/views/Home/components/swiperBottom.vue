@@ -41,7 +41,7 @@
 					</div>
 				</div>
 				<div v-if="item.platformInfos.length == 3" class="slide_3">
-					<div class="img_box img_box0">
+					<div class="img_box">
 						<img
 							class="img"
 							:src="item.platformInfos[0].gameImageUrl"
@@ -49,18 +49,20 @@
 						/>
 					</div>
 					<div class="img_box img_box1">
-						<img
-							class="img"
-							:src="item.platformInfos[1].gameImageUrl"
-							@click="open(item.platformInfos[1],item)"
-						/>
-					</div>
-					<div class="img_box img_box2">
-						<img
-							class="img"
-							:src="item.platformInfos[2].gameImageUrl"
-							@click="open(item.platformInfos[2],item)"
-						/>
+						<div class="img_box1_0 img_box1_1">
+							<img
+								class="img"
+								:src="item.platformInfos[1].gameImageUrl"
+								@click="open(item.platformInfos[1],item)"
+							/>
+						</div>
+						<div class="img_box1_0 img_box1_2">
+							<img
+								class="img"
+								:src="item.platformInfos[2].gameImageUrl"
+								@click="open(item.platformInfos[2],item)"
+							/>
+						</div>
 					</div>
 				</div>
 				<div v-if="item.platformInfos.length == 4" class="slide_4">
@@ -309,13 +311,12 @@ export default {
 				min-width: 4em;
 				text-align: center;
 			}
-			.img_hot{
+			.img_hot {
 				position: absolute;
-				top:0;
+				top: 0;
 				right: 0;
 				width: 30px;
 				height: 26px;
-
 			}
 		}
 		.index:last-child {
@@ -327,7 +328,6 @@ export default {
 			color: #fff;
 		}
 	}
-
 	.bottom_swiper {
 		height: 100%;
 		width: 245px;
@@ -370,14 +370,27 @@ export default {
 	display: flex;
 	flex-direction: column;
 	.img_box {
-		width: 100%;
 		border-radius: 5px;
-		margin-bottom: 6px;
 		overflow: hidden;
 		flex: 1;
+		margin-bottom: 6px;
 	}
-	.img_box2 {
+	.img_box1 {
 		margin-bottom: 0;
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		.img_box1_0 {
+			height: 100%;
+			flex: 1;
+			margin-right: 6px;
+			overflow: hidden;
+			border-radius: 5px;
+		}
+		.img_box1_2 {
+			margin-right: 0;
+		}
 	}
 	.img {
 		display: block;
