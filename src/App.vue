@@ -179,7 +179,7 @@ export default {
 }
 #app {
 	height: 100%;
-	background: red;
+	// background: red;
 }
 </style>
 
