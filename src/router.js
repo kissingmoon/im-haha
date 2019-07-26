@@ -179,12 +179,7 @@ export let needLoginRoutes = [
     path: '/ptp',
     name: 'ptp',
     component: () => import(/* webpackChunkName: "ptp" */ './views/agent/ptp.vue'),
-  },
-  {
-    path: '/service',
-    name: 'service',
-    component: () => import(/* webpackChunkName: "ptp" */ './views/service/service.vue')
-  },
+  },  
 ]
 let routes = [
   {
@@ -253,6 +248,11 @@ let routes = [
     name: 'CustomerService',
     component: () =>
       import(/* webpackChunkName: "CustomerService" */ './views/User/CustomerService/index.vue')
+  },
+  {
+    path: '/service',
+    name: 'service',
+    component: () => import(/* webpackChunkName: "ptp" */ './views/service/service.vue')
   },
   {
     path: '/mpage',

@@ -1,5 +1,5 @@
 <template>
-	<div id="app" :class="[mjb_ios ? 'mjb_ios' : '', appWeb ? 'appWeb': '']">
+	<div id="app" :class="[mjb_ios ? 'mjb_ios' : '', appWeb ? 'appWeb': '', mjb_ios_half ? 'mjb_ios_half' : '']">
 		<transition name="fade">
 			<keep-alive :include="keepALivePages">
 				<router-view/>
@@ -27,7 +27,8 @@ export default {
 			keepALivePages: ['index'],
 			appWeb: false,
 			show188: false,
-			mjb_ios: false
+			mjb_ios: false,
+			mjb_ios_half: false
 		}
 	},
 	computed: {
@@ -57,7 +58,18 @@ export default {
 		// this.checkUUID()
 		this.checkUTK()
 		this.setAliToken()
-		this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
+		// this.mjb_ios = this.$route.query.ismjb == 'ios' ? true : false
+		let showHeader = this.$route.query.showHeader
+		if (!showHeader) {
+			this.mjb_ios = true
+			this.mjb_ios_half = false
+		} else if (showHeader == '1') {
+			this.mjb_ios = false
+			this.mjb_ios_half = false
+		} else if (showHeader == '2') {
+			this.mjb_ios = false
+			this.mjb_ios_half = true
+		}
 		this.getServiceUrl()
 		this.getAgentUrl()
 	},
@@ -167,6 +179,7 @@ export default {
 }
 #app {
 	height: 100%;
+	background: red;
 }
 </style>
 

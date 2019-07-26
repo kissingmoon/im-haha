@@ -32,7 +32,7 @@
 								:maxlength="v.maxlength"
 								:placeholder="v.placeholder"
 								@input="onInput"
-							>
+							/>
 						</div>
 					</div>
 					<div class="tip-content">
@@ -191,14 +191,20 @@ export default {
 			let param = {}
 			param.money = this.balanceObj.drawNum.model
 			param.bankPassword = this.balanceObj.drawPwd.model
-			let res = await net_drawCash(param)
-			if (res.code == '200') {
-				toast('提现申请成功！')
-				this.$api.getUserInfo()
-				this.balanceObj.drawNum.model = ''
-				this.balanceObj.drawPwd.model = ''
-			} else if (res.code == '201') {
-				this.balanceTip = res.msg
+			let loading = this.$loading({ text: '正在加载…' })
+			try {
+				let res = await net_drawCash(param)
+				if (res.code == '200') {
+					toast('提现申请成功！')
+					this.$api.getUserInfo()
+					this.balanceObj.drawNum.model = ''
+					this.balanceObj.drawPwd.model = ''
+				} else if (res.code == '201') {
+					this.balanceTip = res.msg
+				}
+				loading.close()
+			} catch {
+				loading.close()
 			}
 		}
 	}

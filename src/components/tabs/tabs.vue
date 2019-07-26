@@ -118,7 +118,7 @@ export default {
 		text-align: center;
 		height: 100%;
 		line-height: 40px;
-		min-width: 60px;
+		min-width: 83px;
 		padding: 0 15px;
 		font-size: 12px;
 		z-index: 4;

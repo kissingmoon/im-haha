@@ -1,5 +1,5 @@
 <template>
-    <div v-if="agentShow" class="agent">
+    <div v-if="agentShow" class="agent headview_wrapper">
         <div class="header-container">
 			<ims-header title="我的代理">
                 <div slot="right" @click="goto('/agentInstructions')" >说明</div>
