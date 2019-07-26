@@ -1,5 +1,5 @@
 <template>
-    <div class="agent">
+    <div class="agent headview_wrapper">
         <div class="header-container">
 			<ims-header title="佣金总计">
                 <div slot="right">
