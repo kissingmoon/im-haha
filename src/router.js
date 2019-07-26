@@ -171,11 +171,6 @@ export let needLoginRoutes = [
     component: () => import(/* webpackChunkName: "agent" */ './views/agent/agent.vue')
   },
   {
-    path: '/agentInstructions',
-    name: 'agentInstructions',
-    component: () => import(/* webpackChunkName: "agentInstructions" */ './views/agent/agentInstructions.vue')
-  },
-  {
     path: '/ptp',
     name: 'ptp',
     component: () => import(/* webpackChunkName: "ptp" */ './views/agent/ptp.vue'),
@@ -185,6 +180,11 @@ let routes = [
   {
     path: '*',
     redirect: '/'
+  },
+  {
+    path: '/agentInstructions',
+    name: 'agentInstructions',
+    component: () => import(/* webpackChunkName: "agentInstructions" */ './views/agent/agentInstructions.vue')
   },
   {
     path: '/',
