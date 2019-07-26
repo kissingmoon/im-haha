@@ -35,7 +35,10 @@
         </div>
         <p class="p">{{OBJ.QQ1}}</p>
         <p class="p">QQ客服1</p>
-        <a href="mqqwpa://im/chat?chat_type=wpa&uin=97880762&version=1&src_type=web&web_src=oicqzone.com" target="_blank" class="btn needsclick" >联系客服并打开</a>
+        <a href="mqqwpa://im/chat?chat_type=wpa&uin=97880762&version=1&src_type=web&web_src=oicqzone.com" 
+        target="_blank" class="btn copy needsclick" 
+        :data-clipboard-text="OBJ.QQ1"
+        >复制账号并打开</a>
       </div>
       <div v-if="item==1" class="right">
         <div class="img">
@@ -43,7 +46,10 @@
         </div>
         <p class="p">{{OBJ.QQ2}}</p>
         <p class="p">QQ客服2</p>
-        <a href="mqqwpa://im/chat?chat_type=wpa&uin=97880763&version=1&src_type=web&web_src=oicqzone.com" target="_blank"  class="btn needsclick" >联系客服并打开</a>
+        <a href="mqqwpa://im/chat?chat_type=wpa&uin=97880763&version=1&src_type=web&web_src=oicqzone.com" 
+        target="_blank"  class="btn copy needsclick" 
+        :data-clipboard-text="OBJ.QQ2"
+        >复制账号并打开</a>
       </div>
 
       <div v-if="item==2" class="left">
@@ -52,7 +58,10 @@
         </div>
         <p class="p">{{OBJ.MT1}}</p>
         <p class="p">MT客服1</p>
-        <a  href="mtmessenger://localhost?id=888888" target="_blank" class="btn needsclick" >联系客服并打开</a>
+        <a  href="mtmessenger://localhost?id=888888" target="_blank" 
+        class="btn copy needsclick"
+        :data-clipboard-text="OBJ.MT1" 
+        >复制账号并打开</a>
       </div>
       <div v-if="item==2" class="right">
         <div class="img">
@@ -60,9 +69,15 @@
         </div>
         <p class="p">{{OBJ.MT2}}</p>
         <p class="p">MT客服2</p>
-        <a href="mtmessenger://localhost?id=999999" target="_blank" class="btn needsclick" >联系客服并打开</a>
+        <a href="mtmessenger://localhost?id=999999" target="_blank"
+         class="btn copy needsclick" 
+         :data-clipboard-text="OBJ.MT2" 
+         >复制账号并打开</a>
       </div>
     </div>
+    <p v-if="item!=0" class="tost">
+      亲爱的用户，如您在联系客服的时候，没有顺利打开客服会话窗口，请手动复制账号，在MT即时通讯软件上进行添加，我们客服365*24h在线，为您答疑。
+    </p>
 
   </div>
 </template>
@@ -105,6 +120,13 @@ export default {
     //   window.open ('mtmessenger://localhost?id='+num) 
     // }
   },
+  mounted(){
+    this.$nextTick(() => {
+      new clipboard('.copy').on('success', () => {
+
+      })
+    })
+  }
 }
 </script>
 
@@ -204,6 +226,15 @@ export default {
         font-size: 14px;
         background: linear-gradient(to right, #4990E2 0%,#7EC1F0 100%);
       }   
+    }
+    .tost{
+      color:#626262;
+      font-size: 14px;
+      line-height: 20px;
+      margin: 150px auto;
+      padding: 0 10px;
+      text-align: center;
+      opacity: 0.8;
     }
   }
 </style>
