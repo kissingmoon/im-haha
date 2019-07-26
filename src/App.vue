@@ -1,5 +1,11 @@
 <template>
-	<div id="app" :class="[mjb_ios ? 'mjb_ios' : '', appWeb ? 'appWeb': '', mjb_ios_half ? 'mjb_ios_half' : '']">
+	<div id="app"
+		:class="
+		[mjb_ios ? 'mjb_ios' : '', 
+			appWeb ? 'appWeb': '', 
+			mjb_ios_half ? 'mjb_ios_half' : '',
+			wrong_Pos ? 'wrong_Pos' : ''
+	]">
 		<transition name="fade">
 			<keep-alive :include="keepALivePages">
 				<router-view/>
@@ -28,7 +34,8 @@ export default {
 			appWeb: false,
 			show188: false,
 			mjb_ios: false,
-			mjb_ios_half: false
+			mjb_ios_half: false,
+			wrong_Pos: false
 		}
 	},
 	computed: {
