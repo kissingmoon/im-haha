@@ -57,7 +57,7 @@ module.exports = {
     port: 8080,
     proxy: {
       '/api': {
-        target: 'http://47.52.16.236:8199', 
+        target: 'http://47.52.27.245:8199', 
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api' //代理的路径
