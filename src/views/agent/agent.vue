@@ -35,7 +35,7 @@
         </div>
         <div class="getCommission">
             分享推荐佣金：￥{{Yesterday.withdrawCommision | filter}}
-            <div @click="toBalance" class="receive">转账余额</div>
+            <div @click="toBalance" class="receive">转至余额</div>
         </div>
         <div class="getCommission">
             业绩红利佣金：￥{{Yesterday.wxSpreadCommission | filter}}
