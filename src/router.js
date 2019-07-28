@@ -283,7 +283,7 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  let U_TK = localStorage.getItem('U_TK')
+  let U_TK = store.getters.user_token || localStorage.getItem('U_TK')
   if (!U_TK) {
     //如果没有token 而且访问的路由需要登入那就到首页
     let needLogin = needLoginRoutes.some(item => {
