@@ -80,10 +80,15 @@ export default {
 		fixMjb(){
 			let showHeader = this.$route.query.showHeader
 			let ismjb = this.$route.query.ismjb
+			let wrongPos = this.$route.query.ismjb
 			if(ismjb == 'ios'){
 				if (!showHeader) {
-					this.mjb_ios = true
-					this.mjb_ios_half = false
+					if(wrongPos){
+						this.wrong_Pos = true
+					}else{
+						this.mjb_ios = true
+						this.mjb_ios_half = false
+					}
 				} else if (showHeader == '1') {
 					this.mjb_ios = false
 					this.mjb_ios_half = false
