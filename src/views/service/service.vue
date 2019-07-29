@@ -123,7 +123,7 @@ export default {
   mounted(){
     this.$nextTick(() => {
       new clipboard('.copy').on('success', () => {
-
+        this.$toast('复制成功')
       })
     })
   }
