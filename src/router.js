@@ -5,6 +5,8 @@ import Home from './views/Home/Home.vue'
 import Share from './views/Share/index.vue'
 import Activity from './views/Activity/Activity.vue'
 import User from './views/User/User.vue'
+import store from './store'
+
 Vue.use(Router)
 
 let course_router = [

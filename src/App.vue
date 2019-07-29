@@ -83,18 +83,16 @@ export default {
 			let wrongPos = this.$route.query.ismjb
 			if(ismjb == 'ios'){
 				if (!showHeader) {
-					if(wrongPos){
-						this.wrong_Pos = true
-					}else{
-						this.mjb_ios = true
-						this.mjb_ios_half = false
-					}
+					this.mjb_ios = true
+					this.mjb_ios_half = false
 				} else if (showHeader == '1') {
 					this.mjb_ios = false
 					this.mjb_ios_half = false
 				} else if (showHeader == '2') {
 					this.mjb_ios = false
 					this.mjb_ios_half = true
+				} else if (showHeader == '3') {
+					this.wrong_Pos = true
 				}
 			}
 		},
