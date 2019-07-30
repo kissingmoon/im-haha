@@ -11,4 +11,5 @@ export default {
   serviceUrl: '',
   agentUrl: "",
   July:false,
+  ismjb: false
 }
