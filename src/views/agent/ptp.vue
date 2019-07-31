@@ -65,8 +65,10 @@ export default {
             this.result = res.data
             this.ptpShow=true
             loading.close()
-            this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
-            this.result.link=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
+            // this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
+            // this.result.link=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
+            this.result.url = 'http://www.pack-page.com/static/index_YG.html' + '?jumpLink=' + encodeURIComponent(this.result.url)
+            this.result.link = 'http://www.pack-page.com/static/index_YG.html' + '?jumpLink=' + encodeURIComponent(this.result.url)
 						if (this.result.inviteMoney <= 0 || this.result.inviteMoney == 'null') {
 							this.result.url = this.result.url + '&我已经入驻YG娱乐平台，想邀请你来跟我一起免费赚佣金，快点来吧'
 						} else {
@@ -192,7 +194,7 @@ export default {
         width:94%;
         bottom:0;
         left:3%;
-        height:370px;
+        // height:370px;
         .parent{
             width:138px;
             height:138px;
@@ -247,6 +249,7 @@ export default {
           width:305px;
           margin:0 auto;
           margin-top:10px;
+          word-break: break-all;
         }
         .p1{
           margin-top:20px;
@@ -268,6 +271,7 @@ export default {
           width:305px;
           margin:0 auto;
           color:rgba(250, 250, 250, 0.6);
+          padding-bottom: 20px;
         }
       }
     }
