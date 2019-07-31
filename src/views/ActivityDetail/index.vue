@@ -183,7 +183,7 @@
 					<span class="actv_reat"></span>活动细则
 				</div>
 				<p class="actv_p">
-					1.添加MT客服号888888或999999，即可领取免费彩金；
+					1.添加MT客服号666666或999999，即可领取免费彩金；
 					<br />2.赠送彩金的领取方式：
 				</p>
 				<p class="actv_p" style="padding-left:1em;">
@@ -196,12 +196,12 @@
 					<br />5.所有优惠特为玩家而设，如发现任何团体或个人以不诚实方式套取红利或任何威胁，滥用公司优惠等行为，公司保留冻结，取消该团体或个人账户及账户结余的权利。
 				</p>
 				<div style="color:#FF33CB;margin:20px auto 11px;text-align:center;cursor: pointer;">
-					<span>MT客服号：888888</span>
+					<span>MT客服号：666666</span>
 					<span
 						style="color:#0188FE;display:inline-block;padding:7px 10px;cursor: pointer;"
 						onclick="void(0)"
 						class="copy needsclick"
-						:data-clipboard-text="888888"
+						:data-clipboard-text="666666"
 					>复制</span>
 				</div>
 				<div style="color:#FF33CB;margin:20px auto 11px;text-align:center;cursor: pointer;">
