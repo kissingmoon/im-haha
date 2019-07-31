@@ -315,7 +315,8 @@ export default {
 					this.isShow = true
 					if (res.code == '200') {
 						this.result = res.data
-						this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
+						// this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
+						this.result.url = 'http://www.pack-page.com/static/index_YG.html' + '?jumpLink=' + encodeURIComponent(this.result.url)
 						let qrUrl = this.result.url
 						if (this.result.inviteMoney <= 0 || this.result.inviteMoney == 'null') {
 							this.result.url = this.result.url + '&我已经入驻YG娱乐平台，想邀请你来跟我一起免费赚佣金，快点来吧'
