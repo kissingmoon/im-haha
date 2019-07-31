@@ -45,10 +45,8 @@
         if (getQueryVariable("jumpLink")) {
             aaa = getQueryVariable("jumpLink");
             bbb = decodeURIComponent(aaa)
-            document.getElementById("iframe_01").src = bbb;
+            window.location.href = bbb;
         } 
-        // window.location.href = downloadUrl + window.location.search;
-        window.location.href = bbb;
     }
 
     var browser = {
