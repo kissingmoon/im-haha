@@ -10,7 +10,7 @@
       <div class="img">
       </div>
       <p class="p">有问题，找客服</p>
-      <a :href="serviceUrl" class="btn">联系在线客服</a>
+      <a :href="serviceUrl" target="_blank" class="btn">联系在线客服</a>
     </div>
     <div v-else class="serviceTab">    
       <!-- <div v-if="item==1" class="left">
