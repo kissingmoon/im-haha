@@ -92,7 +92,7 @@ export default {
 					this.mjb_ios = false
 					this.mjb_ios_half = true
 				} else if (showHeader == '3') {
-					this.wrong_Pos = true
+					// this.wrong_Pos = true
 				}
 			}
 		},

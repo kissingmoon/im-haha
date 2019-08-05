@@ -27,6 +27,10 @@
 				<div class="icon icon3"></div>
 				<p>客服</p>
 			</div>
+			<div @click="gotoPage('/test',false)" class="option">
+				<div class="icon icon3"></div>
+				<p>测试</p>
+			</div>
 		</div>
 	</div>
 </template>
