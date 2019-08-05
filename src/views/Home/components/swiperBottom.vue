@@ -19,7 +19,7 @@
 				<ims-image
 					v-if="item.platformInfos.length == 1"
 					class="slide_1"
-					@click.native="open(item.platformInfos[0],item )"
+					@click.native="beforeOpen(item.platformInfos[0],item )"
 					:src="item.platformInfos[0].gameImageUrl"
 				>
 					<img class="slide_1" slot="placeholder" src="../../../assets/banner_load1.png" />
@@ -29,14 +29,14 @@
 						<img
 							class="img"
 							:src="item.platformInfos[0].gameImageUrl"
-							@click="open(item.platformInfos[0],item)"
+							@click="beforeOpen(item.platformInfos[0],item)"
 						/>
 					</div>
 					<div class="img_box img_box1">
 						<img
 							class="img"
 							:src="item.platformInfos[1].gameImageUrl"
-							@click="open(item.platformInfos[1],item)"
+							@click="beforeOpen(item.platformInfos[1],item)"
 						/>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 						<img
 							class="img"
 							:src="item.platformInfos[0].gameImageUrl"
-							@click="open(item.platformInfos[0],item)"
+							@click="beforeOpen(item.platformInfos[0],item)"
 						/>
 					</div>
 					<div class="img_box img_box1">
@@ -53,14 +53,14 @@
 							<img
 								class="img"
 								:src="item.platformInfos[1].gameImageUrl"
-								@click="open(item.platformInfos[1],item)"
+								@click="beforeOpen(item.platformInfos[1],item)"
 							/>
 						</div>
 						<div class="img_box1_0 img_box1_2">
 							<img
 								class="img"
 								:src="item.platformInfos[2].gameImageUrl"
-								@click="open(item.platformInfos[2],item)"
+								@click="beforeOpen(item.platformInfos[2],item)"
 							/>
 						</div>
 					</div>
@@ -70,14 +70,14 @@
 						<img
 							class="img"
 							:src="item.platformInfos[0].gameImageUrl"
-							@click="open(item.platformInfos[0],item)"
+							@click="beforeOpen(item.platformInfos[0],item)"
 						/>
 					</div>
 					<div class="img_box img_box1">
 						<img
 							class="img"
 							:src="item.platformInfos[1].gameImageUrl"
-							@click="open(item.platformInfos[1],item)"
+							@click="beforeOpen(item.platformInfos[1],item)"
 						/>
 					</div>
 					<div class="img_box2">
@@ -85,14 +85,14 @@
 							<img
 								class="img"
 								:src="item.platformInfos[2].gameImageUrl"
-								@click="open(item.platformInfos[2],item)"
+								@click="beforeOpen(item.platformInfos[2],item)"
 							/>
 						</div>
 						<div class="img_box2_box img_box2_box1">
 							<img
 								class="img"
 								:src="item.platformInfos[3].gameImageUrl"
-								@click="open(item.platformInfos[3],item)"
+								@click="beforeOpen(item.platformInfos[3],item)"
 							/>
 						</div>
 					</div>
@@ -102,7 +102,7 @@
 						<img
 							class="img"
 							:src="item.platformInfos[0].gameImageUrl"
-							@click="open(item.platformInfos[0],item)"
+							@click="beforeOpen(item.platformInfos[0],item)"
 						/>
 					</div>
 					<div class="img_box2 mb_6">
@@ -110,14 +110,14 @@
 							<img
 								class="img"
 								:src="item.platformInfos[1].gameImageUrl"
-								@click="open(item.platformInfos[1],item)"
+								@click="beforeOpen(item.platformInfos[1],item)"
 							/>
 						</div>
 						<div class="img_box2_box img_box2_box1">
 							<img
 								class="img"
 								:src="item.platformInfos[2].gameImageUrl"
-								@click="open(item.platformInfos[2],item)"
+								@click="beforeOpen(item.platformInfos[2],item)"
 							/>
 						</div>
 					</div>
@@ -126,14 +126,14 @@
 							<img
 								class="img"
 								:src="item.platformInfos[3].gameImageUrl"
-								@click="open(item.platformInfos[3],item)"
+								@click="beforeOpen(item.platformInfos[3],item)"
 							/>
 						</div>
 						<div class="img_box2_box img_box2_box1">
 							<img
 								class="img"
 								:src="item.platformInfos[4].gameImageUrl"
-								@click="open(item.platformInfos[4],item)"
+								@click="beforeOpen(item.platformInfos[4],item)"
 							/>
 						</div>
 					</div>
@@ -144,14 +144,14 @@
 							<img
 								class="img"
 								:src="item.platformInfos[0].gameImageUrl"
-								@click="open(item.platformInfos[0],item)"
+								@click="beforeOpen(item.platformInfos[0],item)"
 							/>
 						</div>
 						<div class="img_box2_box img_box2_box1">
 							<img
 								class="img"
 								:src="item.platformInfos[1].gameImageUrl"
-								@click="open(item.platformInfos[1],item)"
+								@click="beforeOpen(item.platformInfos[1],item)"
 							/>
 						</div>
 					</div>
@@ -160,14 +160,14 @@
 							<img
 								class="img"
 								:src="item.platformInfos[2].gameImageUrl"
-								@click="open(item.platformInfos[2],item)"
+								@click="beforeOpen(item.platformInfos[2],item)"
 							/>
 						</div>
 						<div class="img_box2_box img_box2_box1">
 							<img
 								class="img"
 								:src="item.platformInfos[3].gameImageUrl"
-								@click="open(item.platformInfos[3],item)"
+								@click="beforeOpen(item.platformInfos[3],item)"
 							/>
 						</div>
 					</div>
@@ -176,14 +176,14 @@
 							<img
 								class="img"
 								:src="item.platformInfos[4].gameImageUrl"
-								@click="open(item.platformInfos[4],item)"
+								@click="beforeOpen(item.platformInfos[4],item)"
 							/>
 						</div>
 						<div class="img_box2_box img_box2_box1">
 							<img
 								class="img"
 								:src="item.platformInfos[5].gameImageUrl"
-								@click="open(item.platformInfos[5],item)"
+								@click="beforeOpen(item.platformInfos[5],item)"
 							/>
 						</div>
 					</div>
@@ -194,6 +194,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import { net_getGameStatus } from '@/js/network.js'
 export default {
 	props: {
 		lists: {
@@ -237,14 +238,33 @@ export default {
 		}
 	},
 	methods: {
+		beforeOpen(platformInfos, item) {
+			let param = {}
+			let loading = this.$loading({ text: '正在前往…' })
+			param.gameId = platformInfos.id
+			net_getGameStatus(param).then(res => {
+					loading.close()
+					if (res.code == '200') {
+						if (res.data.gameStatus == 1){
+							this.open(platformInfos, item)
+						}else{
+								this.$toast(platformInfos.alertMsg)
+								return
+						}
+					}
+			})
+			.catch(() => {
+				loading.close()
+			})
+		},
 		open(platformInfos, item) {
 			let gameJumpUrl = platformInfos.gameJumpUrl
 
 			const ismjb = this.ismjb || localStorage.getItem('ismjb')
-			if (platformInfos.gameStatus == 2) {
-				this.$toast(platformInfos.alertMsg)
-				return
-			}
+			// if (platformInfos.gameStatus != 1) {
+			// 	this.$toast(platformInfos.alertMsg)
+			// 	return
+			// }
 			if (!this.isLogin) {
 				if (platformInfos.noLoginJumpUrl) {
 					gameJumpUrl = platformInfos.noLoginJumpUrl
