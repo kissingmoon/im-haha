@@ -240,7 +240,7 @@ export default {
 	methods: {
 		beforeOpen(platformInfos, item) {
 			let param = {}
-			let loading = this.$loading({ text: '正在前往…' })
+			let loading = this.$loading({ text: '' })
 			param.gameId = platformInfos.id
 			net_getGameStatus(param).then(res => {
 					loading.close()
@@ -248,7 +248,7 @@ export default {
 						if (res.data.gameStatus == 1){
 							this.open(platformInfos, item)
 						}else{
-								this.$toast(platformInfos.alertMsg)
+								this.$toast(res.data.alertMsg)
 								return
 						}
 					}
