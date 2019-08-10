@@ -69,6 +69,8 @@ export default {
 		this.getAgentUrl()
 		this.fixMjb()
 	},
+	mounted() {
+	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
@@ -123,7 +125,7 @@ export default {
 			}
 			if (U_TK) {
 				this.setUserToken(U_TK)
-				this.$api.getUserInfoNoWarn({ transferOut: '1' })
+				this.$api.getUserInfoNoWarn({ transferOut: '0' })
 			} else {
 				this.setUserToken('')
 			}
