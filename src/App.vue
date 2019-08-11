@@ -126,6 +126,7 @@ export default {
 			if (U_TK) {
 				this.setUserToken(U_TK)
 				this.$api.getUserInfoNoWarn({ transferOut: '0' })
+				console.log("NucyaioadjO")
 			} else {
 				this.setUserToken('')
 			}
