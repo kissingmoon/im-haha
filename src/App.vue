@@ -62,7 +62,7 @@ export default {
 		}
 	},
 	created() {
-		// this.checkUUID()
+		// this.checkUUID()888
 		this.checkUTK()
 		this.setAliToken()
 		this.getServiceUrl()
