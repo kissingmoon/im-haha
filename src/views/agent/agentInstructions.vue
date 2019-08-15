@@ -27,29 +27,29 @@
 
             <div class="col2">
                 <div class="row2 row2_1">团队业绩/日</div>
-                <div class="row2 row2_1">0-2万</div>
-                <div class="row2 row2_1">2万-6万</div>
-                <div class="row2 row2_1">6万-12万</div>
-                <div class="row2 row2_1">12万-20万</div>
-                <div class="row2 row2_1">20万-40万</div>
-                <div class="row2 row2_1">40万-80万</div>
+                <div class="row2 row2_1">0-5万</div>
+                <div class="row2 row2_1">5万-20万</div>
+                <div class="row2 row2_1">20万-50万</div>
+                <div class="row2 row2_1">50万-80万</div>
                 <div class="row2 row2_1">80万-120万</div>
                 <div class="row2 row2_1">120万-160万</div>
-                <div class="row2 row2_1">160万-200万</div>
-                <div class="row2 row2_1">200万以上</div>
+                <div class="row2 row2_1">160万-220万</div>
+                <div class="row2 row2_1">220万-300万</div>
+                <div class="row2 row2_1">300万-380万</div>
+                <div class="row2 row2_1">380万以上</div>
             </div>
             <div class="col2">
                 <div class="row2 row2_1">万/返佣</div>
+                <div class="row2 row2_1">每万返佣10元</div>
+                <div class="row2 row2_1">每万返佣20元</div>
+                <div class="row2 row2_1">每万返佣30元</div>
+                <div class="row2 row2_1">每万返佣40元</div>
+                <div class="row2 row2_1">每万返佣45元</div>
                 <div class="row2 row2_1">每万返佣50元</div>
+                <div class="row2 row2_1">每万返佣55元</div>
                 <div class="row2 row2_1">每万返佣60元</div>
+                <div class="row2 row2_1">每万返佣65元</div>
                 <div class="row2 row2_1">每万返佣70元</div>
-                <div class="row2 row2_1">每万返佣80元</div>
-                <div class="row2 row2_1">每万返佣100元</div>
-                <div class="row2 row2_1">每万返佣120元</div>
-                <div class="row2 row2_1">每万返佣140元</div>
-                <div class="row2 row2_1">每万返佣160元</div>
-                <div class="row2 row2_1">每万返佣180元</div>
-                <div class="row2 row2_1">每万返佣200元</div>
             </div>
         </div>
         <div  class="foot">
@@ -146,7 +146,7 @@
             用户的业绩是一天已结算，代理等级可以叠加，意思是今天20万 （30+20=50）是超级代理级 每万70元 也就是20万*每万70元=1400元昨天是30万 是代理级 
         </p> -->
         <p class="p">
-        业绩即有效投注量、流水，是指某会员下注消费的实际金额（未结算不计算在内）业绩不计算输赢。您的全队所有成员的有效投注（流水）均计为您的业绩。您自己的投注量不计在您团队业绩之内。
+        业绩即有效投注量、流水，是指某会员下注消费的实际金额（未结算不计算在内）业绩不计算输赢。您的全队所有成员的有效投注（流水）均计为您的业绩。
         </p>
     </div>
 </template>
