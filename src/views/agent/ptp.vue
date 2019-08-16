@@ -67,8 +67,8 @@ export default {
             loading.close()
             // this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
             // this.result.link=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
-            this.result.url = 'http://www.pack-page.com/static/index_YG.html' + '?jumpLink=' + encodeURIComponent(this.result.url)
-            this.result.link = 'http://www.pack-page.com/static/index_YG.html' + '?jumpLink=' + encodeURIComponent(this.result.url)
+            this.result.url = this.result.transferUrl + '?jumpLink=' + encodeURIComponent(this.result.url)
+            this.result.link = this.result.transferUrl + '?jumpLink=' + encodeURIComponent(this.result.url)
 						if (this.result.inviteMoney <= 0 || this.result.inviteMoney == 'null') {
 							this.result.url = this.result.url + '&我已经入驻YG娱乐平台，想邀请你来跟我一起免费赚佣金，快点来吧'
 						} else {
