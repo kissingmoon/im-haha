@@ -5,6 +5,8 @@ import Home from './views/Home/Home.vue'
 import Share from './views/Share/index.vue'
 import Activity from './views/Activity/Activity.vue'
 import User from './views/User/User.vue'
+import store from './store'
+
 Vue.use(Router)
 
 let course_router = [
@@ -174,7 +176,7 @@ export let needLoginRoutes = [
     path: '/ptp',
     name: 'ptp',
     component: () => import(/* webpackChunkName: "ptp" */ './views/agent/ptp.vue'),
-  },
+  },  
 ]
 let routes = [
   {
@@ -250,6 +252,11 @@ let routes = [
       import(/* webpackChunkName: "CustomerService" */ './views/User/CustomerService/index.vue')
   },
   {
+    path: '/service',
+    name: 'service',
+    component: () => import(/* webpackChunkName: "ptp" */ './views/service/service.vue')
+  },
+  {
     path: '/mpage',
     name: 'mpage',
     component: () => import(/* webpackChunkName: "mpage" */ './views/mpage/index.vue')
@@ -283,7 +290,7 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  let U_TK = localStorage.getItem('U_TK')
+  let U_TK = store.getters.user_token || localStorage.getItem('U_TK')
   if (!U_TK) {
     //如果没有token 而且访问的路由需要登入那就到首页
     let needLogin = needLoginRoutes.some(item => {

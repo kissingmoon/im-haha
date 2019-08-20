@@ -96,6 +96,7 @@ export default {
 	},
 	activated() {
 		this.Julyfun()
+		// this.init()
 		if (this.isError) {
 			this.init()
 		} else {

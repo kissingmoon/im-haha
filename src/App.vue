@@ -69,6 +69,8 @@ export default {
 		this.getAgentUrl()
 		this.fixMjb()
 	},
+	mounted() {
+	},
 	methods: {
 		...mapMutations({
 			setUserToken: 'SET_USER_TOKEN',
@@ -80,6 +82,7 @@ export default {
 		fixMjb(){
 			let showHeader = this.$route.query.showHeader
 			let ismjb = this.$route.query.ismjb
+			let wrongPos = this.$route.query.ismjb
 			if(ismjb == 'ios'){
 				if (!showHeader) {
 					this.mjb_ios = true
@@ -90,6 +93,8 @@ export default {
 				} else if (showHeader == '2') {
 					this.mjb_ios = false
 					this.mjb_ios_half = true
+				} else if (showHeader == '3') {
+					this.wrong_Pos = true
 				}
 			}
 		},
@@ -120,7 +125,8 @@ export default {
 			}
 			if (U_TK) {
 				this.setUserToken(U_TK)
-				this.$api.getUserInfoNoWarn({ transferOut: '1' })
+				this.$api.getUserInfoNoWarn({ transferOut: '0' })
+				console.log("NucyaioadjO")
 			} else {
 				this.setUserToken('')
 			}
@@ -191,6 +197,7 @@ export default {
 }
 #app {
 	height: 100%;
+	// background: red;
 }
 </style>
 

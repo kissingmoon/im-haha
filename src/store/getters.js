@@ -10,4 +10,5 @@ export default {
   serviceUrl: state => state.serviceUrl,
   agent_url: state => state.agentUrl,
   July:state => state.July,
+  ismjb: state => state.ismjb
 }

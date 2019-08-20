@@ -106,11 +106,34 @@
   }
   //专为残疾马甲包设计
   .wrong_Pos{
-      position: absolute;
-      top: @iPhone_X + @iPhone_X_half;
-      bottom: 0;
-      left: 0;
-      right: 0;
+    position: absolute;
+    top: @iPhone_X + @iPhone_X_half;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .view_wrapper {
+      top: @iPhone_X + @iPhone_X_half !important;
+    }
+    .app_head {
+      .main {
+        top: @iPhone_X + @iPhone_X_half !important;
+      }
+    }
+    .headview_wrapper {
+      padding-top: @app_head_height + @iPhone_X + @iPhone_X_half !important;
+    }
+    .bet-wrapper {
+      // top: @app_head_height + @iPhone_X+ @iPhone_X_half   !important;
+      .formTitle {
+        top: @app_head_height + @iPhone_X + @iPhone_X_half !important;
+      }
+    }
+    .login_back {
+      top: @iPhone_X + @iPhone_X_half !important;
+    }
+    .wfjc .wfjc_tabs {
+      top: @app_head_height + @iPhone_X + @iPhone_X_half !important;
+    }
   }
 }
 //iPhone XR

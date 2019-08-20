@@ -94,6 +94,7 @@
 		border-bottom: 1px solid rgba(190, 184, 181, 1);
 		border-radius: 5px 5px 0 0;
 		padding: 0 12px;
+		background: #fff;
 		.lists_t {
 			flex: 1;
 			font-size: 14px;
@@ -222,10 +223,12 @@ export default {
 			lists: [],
 			loadMoreText: '加载中...',
 			isDateShow: false,
+			obj:{}
 		}
 	},
 	async mounted() {
 		let v = this.$route.query.v || {userId:'',settleTime:'',gameTypeCode:''}
+		this.obj=this.$route.query.v || {userId:'',settleTime:'',gameTypeCode:''}
 		let loading = this.$loading({ text: '正在加载…' })
 		try {
 			let  [res] = await Promise.all([this.getLists(v)])
@@ -286,9 +289,9 @@ export default {
 				.post('/gameAgent/commision/info', {
 					page_no: this.page,
 					page_size: this.page_size,
-					userId:v.userId,
-					time:v.settleTime,
-					gameTypeCode:v.gameTypeCode
+					userId:this.obj.userId,
+					time:this.obj.settleTime,
+					gameTypeCode:this.obj.gameTypeCode
 				})
 				.then(res => {
 					if (res.code == '200') {

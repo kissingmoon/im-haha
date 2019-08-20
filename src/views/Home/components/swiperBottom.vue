@@ -194,6 +194,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import { net_getGameStatus } from '@/js/network.js'
 export default {
 	props: {
 		lists: {
@@ -237,11 +238,30 @@ export default {
 		}
 	},
 	methods: {
+		beforeOpen(platformInfos, item) {
+			let param = {}
+			let loading = this.$loading({ text: '' })
+			param.gameId = platformInfos.id
+			net_getGameStatus(param).then(res => {
+					loading.close()
+					if (res.code == '200') {
+						if (res.data.gameStatus == 1){
+							this.open(platformInfos, item)
+						}else{
+								this.$toast(res.data.alertMsg)
+								return
+						}
+					}
+			})
+			.catch(() => {
+				loading.close()
+			})
+		},
 		open(platformInfos, item) {
 			let gameJumpUrl = platformInfos.gameJumpUrl
 
 			const ismjb = this.ismjb || localStorage.getItem('ismjb')
-			if (platformInfos.gameStatus == 2) {
+			if (platformInfos.gameStatus != 1) {
 				this.$toast(platformInfos.alertMsg)
 				return
 			}

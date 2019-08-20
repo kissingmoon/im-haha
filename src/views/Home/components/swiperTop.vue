@@ -49,8 +49,6 @@ export default {
 	},
 	methods: {
 		open(list) {
-			console.log(list)
-			console.log(list.homeJumpType)
 			const ismjb = this.ismjb || localStorage.getItem('ismjb'); 
 			//homeJumpType:  [0,1]  0:内部页面  1:外部页面
 			if (list.homeJumpType == '0') {
