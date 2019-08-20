@@ -11,7 +11,9 @@ let instance = axios.create({
 })
 
 instance.interceptors.request.use(
+  
   config => {
+    
     let user_token = store.getters.user_token
     let aesKey = user_token.substring(user_token.length - 16) || ''
     if (user_token) {
@@ -60,6 +62,7 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   response => {
+    debugger
     store.commit('SET_NET_BTNCLICK', true)
     if (response.status === 200) {
       /*这里的code是200成功拿到后台参数之后,后台返回的数据带的code状态码，如果后台没有返回这种code码，忽略此步骤*/

@@ -275,6 +275,7 @@ export default {
 			this.activeIndex = this.$refs.bottomSwiper.swiper.activeIndex
 		},
 		changeSwiper(list, index) {
+			console.log(this.$refs.bottomSwiper);
 			this.$refs.bottomSwiper.swiper.slideTo(index)
 		}
 	}
