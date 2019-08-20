@@ -62,7 +62,6 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   response => {
-    debugger
     store.commit('SET_NET_BTNCLICK', true)
     if (response.status === 200) {
       /*这里的code是200成功拿到后台参数之后,后台返回的数据带的code状态码，如果后台没有返回这种code码，忽略此步骤*/
