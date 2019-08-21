@@ -11,7 +11,9 @@ let instance = axios.create({
 })
 
 instance.interceptors.request.use(
+  
   config => {
+    
     let user_token = store.getters.user_token
     let aesKey = user_token.substring(user_token.length - 16) || ''
     if (user_token) {
