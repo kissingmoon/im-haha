@@ -50,7 +50,7 @@ export default {
       }
     }
   },
- 
+
   activated() {
     this.swiper.autoplay.start()
   },
@@ -67,16 +67,22 @@ export default {
     open(list) {
       const ismjb = this.ismjb || localStorage.getItem('ismjb')
       //homeJumpType:  [0,1]  0:内部页面  1:外部页面
-      if (!list.homeJumpUrl) {
-        this.$router.push(`/activity-detail?id=${list.activityId}`)
-      } else {
-        //  如果homeJumpType为1   表示跳外部页面
-        // if(ismjb == "ios"){
-        // 	this.$router.push(`/mpage?jumpLink=${list.homeJumpUrl}`);
-        // }else{
-        // 	window.open(`/mpage?jumpLink=${list.homeJumpUrl}`);
-        // }
-        this.$router.push(list.homeJumpUrl)
+      if (list.homeJumpType == 0) {
+        if (list.homeJumpUrl) {					
+					 this.$router.push(list.homeJumpUrl)
+				} 
+				else {
+          //  如果homeJumpType为1   表示跳外部页面
+        
+					this.$router.push(`/activity-detail?id=${list.activityId}`)
+         
+        }
+      } else if (list.homeJumpType == 1) {
+			 if(ismjb == "ios"){
+          	this.$router.push(`/mpage?jumpLink=${list.homeJumpUrl}`);
+          }else{
+          	window.open(`/mpage?jumpLink=${list.homeJumpUrl}`);
+					}
       }
     },
     progress: function() {

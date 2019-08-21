@@ -11,7 +11,7 @@
 		<div @click.stop v-if="JulyShow" class="JulyActivities">
 				<div class="centent">
 					<div class="centent_head">
-						<p class="centent_head_p1">七月送好礼</p>
+						<p class="centent_head_p1">八月送好礼</p>
 						<p class="centent_head_p1">真人视讯：百家乐，龙虎斗</p>
 						<p class="centent_head_p1">一整月彩金送不停</p>
 						<!-- <p class="centent_head_p2">限时<span style="color:#ff3366">7天</span>，赠送人数无上限～</p> -->
@@ -88,6 +88,7 @@ export default {
 			swiperBottomData: [],
 			Julygame:{
 				gameJumpUrl:'/thirdGames/forward?platformEN=ag_platform',
+				gameStatus:1
 			},
 		}
 	},
