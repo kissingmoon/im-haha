@@ -19,7 +19,7 @@ instance.interceptors.request.use(
     if (user_token) {
       config.headers.common['Authorization'] = 'Bearer_' + user_token
     }
-    config.headers.common['domain'] = 'fwnix.cn'
+    config.headers.common['domain'] = location.host
     config.headers.common['template'] = 'ui_zhongbo'
     config.headers.common['templateId'] = options.templateId
     // 这里设置全局的参数格式，所有类型的请求都会走这个配置
@@ -27,7 +27,7 @@ instance.interceptors.request.use(
     if (!config.headers['Content-Type']) {
       config.headers = {
         'Content-Type': 'application/json',
-        domain: 'fwnix.cn',
+        domain: location.host,
         template: 'ui_zhongbo',
         templateId: options.templateId
       }
