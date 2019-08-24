@@ -10,7 +10,7 @@
 				<ims-image
 					class="img"
 					lazy
-					:src="list.id=='53' ? 'http://cqyyjaaheyaea.com/tupian/das.jpg' : list.imageUrl "
+					:src="list.id=='53' ? 'https://cqyyjaaheyaea.com/tupian/das.jpg' : list.imageUrl "
 				>
 					<div class="img_placeholder" slot="placeholder"></div>
 				</ims-image>

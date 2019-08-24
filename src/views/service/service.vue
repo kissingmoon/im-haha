@@ -69,7 +69,7 @@
         </div>
         <p class="p">{{OBJ.MT2}}</p>
         <p class="p">MT客服2</p>
-        <a href="mtmessenger://localhost?id=999999" target="_blank"
+        <a href="mtmessenger://localhost?id=777777" target="_blank"
          class="btn copy needsclick" 
          :data-clipboard-text="OBJ.MT2" 
          >复制账号并打开</a>
@@ -96,8 +96,8 @@ export default {
       OBJ:{
         QQ1:'97880762',
         QQ2:'97880763',
-        MT1:'888888',
-        MT2:'999999'
+        MT1:'666666',
+        MT2:'777777'
       }
     }
   },
