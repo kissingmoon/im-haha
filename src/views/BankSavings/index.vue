@@ -124,6 +124,7 @@ export default {
 				this.$router.push({
 					path: '/bank-charge',
 					query: {
+						pay:pay,
 						money: this.moneyVal
 					}
 				})
