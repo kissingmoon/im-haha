@@ -2,11 +2,17 @@
 	<div class="mpage"></div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
+  computed: {
+		...mapGetters(['ismjb'])
+	},
 	created() {
 		const gameJumpUrl = this.$route.query.jumpLink
 		const goto = this.$route.query.goto
-		const gameType = this.$route.query.gameType
+    const gameType = this.$route.query.gameType
+    const ismjb = this.ismjb || localStorage.getItem('ismjb')
 		if(!gameJumpUrl) return
 		if (goto == 'pay') {
 			let loading = this.$loading({ text: '正在跳转…' })
@@ -14,7 +20,15 @@ export default {
 				.post(gameJumpUrl, this.$route.query)
 				.then(res => {
 					if (res.code == 200) {
-						location.href = res.data.url
+            // location.href = res.data.url
+            if (ismjb == 'ios') {
+              setTimeout(() => {
+                this.$router.push('/')
+              }, 1000)
+              context(res.data.url)
+            } else {
+              location.href = res.data.url
+            }
 					}
 					loading.close()
 				})
