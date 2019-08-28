@@ -238,7 +238,7 @@ export default {
 		}
 	},
 	methods: {
-		beforeOpen(platformInfos, item) {
+		beforeOpen(platformInfos, item) {			
 			let param = {}
 			let loading = this.$loading({ text: '' })
 			param.gameId = platformInfos.id
@@ -259,7 +259,6 @@ export default {
 		},
 		open(platformInfos, item) {
 			let gameJumpUrl = platformInfos.gameJumpUrl
-
 			const ismjb = this.ismjb || localStorage.getItem('ismjb')
 			if (platformInfos.gameStatus != 1) {
 				this.$toast(platformInfos.alertMsg)
