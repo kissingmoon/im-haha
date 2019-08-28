@@ -17,7 +17,9 @@
               <div :data-clipboard-text="result.inviteCode" @click="codefun('邀请码')" class="inviteCode_right copy">复制</div>
             </div>
             <p class="p">您已通过推荐好友，累计获得了 <span style="color:#FFE04D">￥{{result.inviteMoney=='null'?0:result.inviteMoney}}.00</span> 佣金</p>
-            <p class="p p1">{{result.link}}</p>
+            <!-- <p class="p p1">{{result.link}}</p> -->
+            <!-- <p class="p">我已在YG娱乐平台赚到<span style="color:#FFE04D">￥{{result.inviteMoney=='null'?0:result.inviteMoney}}.00</span> ，想邀请你来跟我一起免费赚佣金，快点来吧</p> -->
+            <p class="p p1"></p>
             <div @click="linkfun('复制链接')" :data-clipboard-text="result.url" class="btn copy">
                 复制链接
             </div>
@@ -67,8 +69,8 @@ export default {
             loading.close()
             // this.result.url=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
             // this.result.link=window.location.origin+'/regist?'+'inviteCode='+this.result.inviteCode
-            this.result.url = 'http://www.pack-page.com/static/index_YG.html' + '?jumpLink=' + encodeURIComponent(this.result.url)
-            this.result.link = 'http://www.pack-page.com/static/index_YG.html' + '?jumpLink=' + encodeURIComponent(this.result.url)
+            this.result.url = this.result.transferUrl + '?jumpLink=' + encodeURIComponent(this.result.url)
+            this.result.link = this.result.transferUrl + '?jumpLink=' + encodeURIComponent(this.result.url)
 						if (this.result.inviteMoney <= 0 || this.result.inviteMoney == 'null') {
 							this.result.url = this.result.url + '&我已经入驻YG娱乐平台，想邀请你来跟我一起免费赚佣金，快点来吧'
 						} else {
