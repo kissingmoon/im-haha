@@ -162,7 +162,8 @@ export default {
 				payUser: this.name,
 				payId: this.moneyInfo.typeDetail[this.curIndex].id,
 				payRemark: this.tip,
-				modelType: this.moneyInfo.model_type
+				modelType: this.moneyInfo.model_type,
+				typeName:this.moneyInfo.typeDetail[this.curIndex].typeName,
 			}
 			console.log(param)
 			this.$http.post(this.interfaces.comPaySubmit, param).then(res => {
