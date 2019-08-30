@@ -28,7 +28,7 @@
 								<div class="bank_text">
 									<div class="left">
 										<div class="left_0">支付宝昵称：</div>
-										<div class="left_1">{{item.account_kh_address}}</div>
+										<div class="left_1">{{item.sk_people}}</div>
 									</div>
 									<div  class="right"></div>
 								</div>
@@ -49,7 +49,7 @@
 								<div class="bank_text">
 									<div class="left">
 										<div class="left_0">微信昵称：</div>
-										<div class="left_1">{{item.account_kh_address}}</div>
+										<div class="left_1">{{item.sk_people}}</div>
 									</div>
 									<div  class="right"></div>
 								</div>
@@ -162,7 +162,8 @@ export default {
 				payUser: this.name,
 				payId: this.moneyInfo.typeDetail[this.curIndex].id,
 				payRemark: this.tip,
-				modelType: this.moneyInfo.model_type
+				modelType: this.moneyInfo.model_type,
+				typeName:this.moneyInfo.typeDetail[this.curIndex].typeName,
 			}
 			console.log(param)
 			this.$http.post(this.interfaces.comPaySubmit, param).then(res => {
