@@ -108,7 +108,8 @@ instance.interceptors.response.use(
         case '113':
         case '114':
         case '115':
-        case '116': {
+        case '116': 
+        case '3002':{
           break
         }
         default:

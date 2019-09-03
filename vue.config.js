@@ -58,7 +58,7 @@ module.exports = {
     proxy: {
       '/api': {
         // target: 'http://sport989.com/prod', 
-        target: 'http://192.168.12.57:8199', 
+        target: 'http://192.168.27.245:8199', 
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api' //代理的路径
@@ -72,5 +72,5 @@ module.exports = {
 // http://192.168.27.207:8199     代理接口 abu
 // http://192.168.27.27:8199      代理接口 lem
 // http://192.168.12.53:8199      代理接口 orea
-// http://192.168.27.254:8199     代理接口 frank
+// http://192.168.27.142:8199     代理接口 frank
 // http://192.168.27.245:8199     代理接口 lanjie

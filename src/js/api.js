@@ -21,7 +21,9 @@ export default {
           // store.commit('SET_Query_Third', false);
           if (res.code == '200') {
             this.handleUserinfo(res)
-          } else {
+          }else if(res.code == '3002'){
+            return
+          }else {
             toast(res.msg)
             this.clearLocal()
           }

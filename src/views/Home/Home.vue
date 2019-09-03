@@ -101,12 +101,15 @@ export default {
 		if (this.isError) {
 			this.init()
 		} else {
-			this.$api.getUserInfoNoWarn({ transferOut: '1' })
+			if(this.user_token){
+				this.$api.getUserInfoNoWarn({ transferOut: '1' })
+			}
 		}
 	},
 	computed:{
 		...mapGetters([
-      'July'
+			'July',
+			'user_token'
     ]),
 	},
 	methods: {
