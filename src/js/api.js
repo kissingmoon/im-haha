@@ -18,17 +18,18 @@ export default {
       $http
         .post('/user/userInfo', newParam)
         .then(res => {
-          // store.commit('SET_Query_Third', false);
           if (res.code == '200') {
             this.handleUserinfo(res)
-          } else {
+          }else if(res.code == '3002'){
+            return
+          }else {
             toast(res.msg)
             this.clearLocal()
           }
         })
         .catch(() => {
           toast('获取用户信息失败！')
-          //this.clearLocal()
+          this.clearLocal()
           router.replace('/login')
         })
     }
@@ -39,15 +40,17 @@ export default {
     $http
       .post('/user/userInfo', param, { loginoutWarn: true })
       .then(res => {
-        // store.commit('SET_Query_Third', false);
         if (res.code == '200') {
           this.handleUserinfo(res)
+        }else if(res.code == '3002'){
+          return
         } else {
-          //this.clearLocal()
+          this.clearLocal()
         }
       })
       .catch(() => {
-        //this.clearLocal()
+        toast('获取用户信息失败！')
+        this.clearLocal()
       })
   },
   handleUserinfo(res) {
@@ -69,11 +72,9 @@ export default {
     }
   },
   clearLocal() {
-
     localStorage.removeItem('U_TK')
     store.commit('SET_USER_TOKEN', '')
     store.commit('SET_ACCOUNT', {})
-    // store.commit('SET_Query_Third', false);
   },
   quitAccount(msg) {
     $http

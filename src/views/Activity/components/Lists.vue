@@ -7,10 +7,15 @@
 				@click="openActivity(list)"
 				class="activity"
 			>
-				<ims-image
+				<!-- <ims-image
 					class="img"
 					lazy
 					:src="list.id=='53' ? 'https://cqyyjaaheyaea.com/tupian/das.jpg' : list.imageUrl "
+				> -->
+				<ims-image
+					class="img"
+					lazy
+					:src="list.imageUrl "
 				>
 					<div class="img_placeholder" slot="placeholder"></div>
 				</ims-image>
