@@ -8,13 +8,12 @@
 			</div>
 			<swiper-bottom ref='bottomSwiper' :lists="swiperBottomData"/>
 		</div>
-		<div @click.stop v-if="JulyShow" class="JulyActivities">
+		<!-- <div @click.stop v-if="JulyShow" class="JulyActivities">
 				<div class="centent">
 					<div class="centent_head">
 						<p class="centent_head_p1">八月送好礼</p>
 						<p class="centent_head_p1">真人视讯：百家乐，龙虎斗</p>
 						<p class="centent_head_p1">一整月彩金送不停</p>
-						<!-- <p class="centent_head_p2">限时<span style="color:#ff3366">7天</span>，赠送人数无上限～</p> -->
 					</div>
 					<div class="table_div">
 						<div class="actv_table12">
@@ -60,6 +59,12 @@
 
           </div>
 				</div>			
+		</div> -->
+		<div v-if="hongbaoShow" class="mask">
+			<div class="mask_div">
+				<img @click.stop="hongbaoShow=false" class="img" src="./img/close.png" alt="">
+				<img @click="topage" src="./img/hongbao.png" alt="">
+			</div>
 		</div>
 	</div>
 </template>
@@ -80,6 +85,7 @@ export default {
 	},
 	data() {
 		return {
+			hongbaoShow:false,
 			JulyShow:false,
 			isShow: false,
 			isError: false,
@@ -93,9 +99,11 @@ export default {
 		}
 	},
 	mounted() {
+		this.cookieInit()		
 		this.init()
 	},
 	activated() {
+		this.cookieInit()	
 		this.Julyfun()
 		// this.init()
 		if (this.isError) {
@@ -113,6 +121,37 @@ export default {
     ]),
 	},
 	methods: {
+		cookieInit(){
+			let getCookie=this.getCookie('zzp')
+			if(!getCookie){
+				this.hongbaoShow=true
+				this.setCookie('zzp','123',1)
+			}
+		},
+		getCookie(cname){
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) 
+			{
+				var c = ca[i].trim();
+				if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+			}
+			return "";
+		},
+		setCookie(name,value,days){//设置cookie
+			var curDate = new Date();
+			var curTamp = curDate.getTime();
+			var curWeeHours = new Date(curDate.toLocaleDateString()).getTime() - 1;
+			var passedTamp = curTamp - curWeeHours;
+			var leftTamp = 24 * 60 * 60 * 1000 - passedTamp;
+			var leftTime = new Date();
+			leftTime.setTime(leftTamp + curTamp);
+			document.cookie = name + "=" + escape(value) + ";expires=" + leftTime.toGMTString(); 
+		},
+		topage(){
+			this.$router.push('/share')
+			this.hongbaoShow=false
+		},
 		...mapMutations({
 			setJuluShow:'SET_JULY_SHOW'
 		}),
@@ -168,6 +207,34 @@ export default {
 }
 </script>
 <style lang='less'>
+.mask{
+	position: fixed;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 999;
+	.mask_div{
+		width:290px;
+		height:336px;
+		position: absolute;
+		left:0;
+		top:0;right:0;bottom:0;
+		margin: auto;
+		img{
+			width:100%;
+			height:100%
+		}
+		.img{
+			width:21px;
+			height:21px;
+			position: absolute;
+			right:0px;
+			top:-50px;
+		}
+	}
+}
 .JulyActivities{
 	position: fixed;
   width:100%;height:100%;
