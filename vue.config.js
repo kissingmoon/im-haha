@@ -57,7 +57,7 @@ module.exports = {
     port: 8080,
     proxy: {
       '/api': {
-        target: 'http://sport989.com/prod', 
+        target: 'http://192.168.12.60:8199', 
         // target: 'http://192.168.27.245:8199', 
         changeOrigin: true,
         pathRewrite: {

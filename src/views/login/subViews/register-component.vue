@@ -9,7 +9,8 @@
       <div class="form-box flex-1">
         <div class="form-title">注册</div>
         <div class="form-input-content"
-             id="regForm" v-if="showRegItem">
+             id="regForm"
+             v-if="showRegItem">
           <div class="form-input-item"
                v-for="(v, k) in formData"
                :key="k">
@@ -77,8 +78,8 @@ export default {
       captchaIns: {},
       WatchMan: {},
       wmToken: '',
-			hasCaptcha: true,
-			showRegItem: false,
+      hasCaptcha: true,
+      showRegItem: false,
       formData: {
         userId: {
           model: '',
@@ -126,18 +127,8 @@ export default {
           maxlength: 11,
           extra: false
         },
-        code: {
-          model: '',
-          placeholder: '验证码',
-          leftIconClass: 'left-icon__simcode',
-          rightIconClass: 'right-icon__simcode',
-          type: '',
-          regTip: '',
-          imgSrc: true,
-          valueType: 'num',
-          maxlength: 6,
-          extra: true
-        },
+        code: {},
+        imgCode: {},
         inviteCode: {
           name: 'inviteCode',
           model: '',
@@ -219,18 +210,17 @@ export default {
       this.$emit('goBefore')
     },
     getWmSwitch() {
-			let loading = this.$loading({ text: '正在加载…' })
+      let loading = this.$loading({ text: '正在加载…' })
       net_openGraph().then(res => {
-				loading.close()
+        loading.close()
         if (res.data) {
-          if (res.data.status == '5001') {
+          if (res.data.wangyiStatus == '1') {
             this.hasCaptcha = true
           } else {
             this.hasCaptcha = false
           }
-          if (res.data.code == 'phone') {
-          } else if (res.data) {
-            this.formData.code = {
+          if (res.data.imgStatus == '1') {
+            this.formData.imgCode = {
               model: '',
               placeholder: '验证码',
               leftIconClass: 'left-icon__code',
@@ -240,12 +230,32 @@ export default {
               imgSrc: true,
               valueType: 'num',
               maxlength: 4
-						}
-						this.formData = Object.assign({},this.formData )
-						this.setCode()
+            }
+            this.formData = Object.assign({}, this.formData)
+            this.setCode()
+          } else {
+            delete this.formData.imgCode
+            this.formData = Object.assign({}, this.formData)
           }
-				}
-				this.showRegItem = true
+          if (res.data.smsStatus == '0') {
+            this.formData.code = {
+              model: '',
+              placeholder: '验证码',
+              leftIconClass: 'left-icon__simcode',
+              rightIconClass: 'right-icon__simcode',
+              type: '',
+              regTip: '',
+              imgSrc: true,
+              valueType: 'num',
+              maxlength: 6,
+              extra: true
+            }
+          } else {
+            delete this.formData.code
+          }
+          this.formData = Object.assign({}, this.formData)
+        }
+        this.showRegItem = true
       })
     },
     // initGeetest() {
@@ -456,7 +466,6 @@ export default {
       if (!result) return
       let param = {}
       param.phone = this.formData.phone.model
-      param.code = this.formData.code.model
       param.inviteCode = this.formData.inviteCode.model
       param.codeId = this.code_id
       param.userId = this.formData.userId.model.toLowerCase()
@@ -464,6 +473,12 @@ export default {
       param.platformFlag = this.setPlatformFlag()
       param.agentUrl = location.host
       param.wmToken = this.wmToken
+      if (this.formData.code && this.formData.code.model) {
+        param.code = this.formData.code.model
+      }
+      if (this.formData.imgCode && this.formData.imgCode.model) {
+        param.imgCode = this.formData.imgCode.model
+      }
       if (this.agent_url) {
         param.agentUrl = this.agent_url
       }

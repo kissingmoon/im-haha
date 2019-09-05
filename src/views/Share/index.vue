@@ -186,7 +186,7 @@
 				<img class="img" src="../../assets/banner.png">
 				<div
 					class="instructions"
-				>推荐佣金：您分享给小伙伴，小伙伴通过您的链接或者是邀请码注册成功后，游戏在线5分钟，您获得2元佣金，小伙伴获得1元佣金，以此类推，分享越多佣金越多！</div>
+				>推荐佣金：您分享给小伙伴，小伙伴通过您的链接或者是邀请码注册成功后，游戏在线5分钟，您获得5元佣金，小伙伴获得1元佣金，以此类推，分享越多佣金越多！</div>
 			</div>
 			<div class="dash">
 				<div @click="gopage('team')" class="dash_l">
