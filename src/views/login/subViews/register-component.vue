@@ -237,7 +237,7 @@ export default {
             delete this.formData.imgCode
             this.formData = Object.assign({}, this.formData)
           }
-          if (res.data.smsStatus == '0') {
+          if (res.data.smsStatus == '1') {
             this.formData.code = {
               model: '',
               placeholder: '验证码',
@@ -250,10 +250,11 @@ export default {
               maxlength: 6,
               extra: true
             }
+            this.formData = Object.assign({}, this.formData)
           } else {
             delete this.formData.code
+            this.formData = Object.assign({}, this.formData)
           }
-          this.formData = Object.assign({}, this.formData)
         }
         this.showRegItem = true
       })
@@ -385,8 +386,8 @@ export default {
     },
     leftClickFun() {},
     rightClickFun(v, k) {
-      if (k == 'code') {
-        this.formData.code.model = ''
+      if (k == 'imgCode') {
+        this.formData.imgCode.model = ''
         this.setCode()
       }
       if (k == 'pwd') {
