@@ -35,7 +35,7 @@
 					</div>
 					<span @click="moneyVal = ''" v-show="!!moneyVal" class="input_clear"></span>
 				</div>
-				<ul class="money">
+				<ul class="money" v-if="money">
 					<li
 						v-for="item in money"
 						@click="selectThis(item)"
@@ -61,6 +61,7 @@
 <script>
 import QS from 'qs'
 import Vue from 'vue'
+import {net_quickmount} from "@/js/network.js"
 import { NumberKeyboard } from 'vant'
 Vue.use(NumberKeyboard)
 
@@ -73,9 +74,10 @@ export default {
 			showKeyboard: false,
 			moneyVal: '',
 			payList: [],
-			money: ['100', '500', '1000', '2000'],
+			money: null,
 			selectedMoney: null,
 			selectPay: null,
+			quickmount:"",
 			placeholder: ''
 		}
 	},
@@ -93,11 +95,12 @@ export default {
 				let item = this.payList[val]
 				if (!item) return
 				this.placeholder = `请输入存款金额，范围（元）：${item.min_money}～${item.max_money}`
-				if (item.id == 23) {
-					this.money = [item.min_money, '500', '1000', '2000']
-				} else {
-					this.money = ['100', '500', '1000', '2000']
-				}
+				// if (item.id == 23) {
+				// 	this.money = [item.min_money, '500', '1000', '2000']
+				// } else {
+				// 	this.money = ['100', '500', '1000', '2000']
+				// }
+		
 			},
 			immediate: true
 		}
@@ -109,6 +112,14 @@ export default {
 			loading.close()
 		} catch {
 			loading.close()
+		}
+	
+		let res = await net_quickmount();
+		if(res.code=="200"){
+			this.quickmount = res.data.payList;
+			if(this.quickmount[this.selectPay].moneyOptions){
+			this.money = this.quickmount[this.selectPay].moneyOptions.split(",")
+			}
 		}
 	},
 	methods: {
@@ -154,7 +165,12 @@ export default {
 				})
 		},
 		selectThisPay(index) {
+			
 			this.selectPay = index
+			this.money = null;
+			if(this.quickmount[this.selectPay].moneyOptions){
+			this.money = this.quickmount[this.selectPay].moneyOptions.split(",")
+			}
 		},
 		closeKeyboard() {
 			this.showKeyboard = false
@@ -291,6 +307,7 @@ export default {
 				margin: 0 6.5px;
 				border: 1px solid transparent;
 				box-sizing: border-box;
+				margin-top: 10px;
 			}
 			.li.active {
 				border: 1px solid #019cfd;
