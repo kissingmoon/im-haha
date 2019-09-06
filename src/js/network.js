@@ -44,3 +44,6 @@ export const net_getShield = (param) => http.get("/user/getShield", param);
 export const net_openGraph = (param) => http.get("/user/openGraphValidate", param);
 /* ------------------ 首页接口 ----------------- */
 export const net_getGameStatus = (param) => http.post("/home/getGameStatus", param);
+
+/* ------------------ 快选金额 ----------------- */
+export const net_quickmount = (param) => http.post("/charge/getPayType", param);
